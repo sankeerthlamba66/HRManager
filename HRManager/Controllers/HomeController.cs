@@ -12,11 +12,27 @@ namespace HRManager.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult GetEmployeeDetails()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult EditEmployeeDetails()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public IActionResult EditEmployeeDetails()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Privacy()
         {

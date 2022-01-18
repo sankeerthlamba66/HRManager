@@ -6,4 +6,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HRManager.Business\HRManager.Business.csproj" />
+    <ProjectReference Include="..\HRManager.Models\HRManager.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\Menus\" />
+  </ItemGroup>
+
 </Project>

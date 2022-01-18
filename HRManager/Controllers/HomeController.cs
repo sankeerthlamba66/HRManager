@@ -28,6 +28,7 @@ namespace HRManager.Controllers
             return View();
         }
 
+
         //[HttpPost]
         //public IActionResult EditEmployeeDetails()
         //{

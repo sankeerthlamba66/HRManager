@@ -11,8 +11,4 @@
     <ProjectReference Include="..\HRManager.Models\HRManager.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Shared\Menus\" />
-  </ItemGroup>
-
 </Project>

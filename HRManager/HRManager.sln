@@ -5,11 +5,13 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManager", "HRManager.csproj", "{4C8176C4-1618-4F2B-A38F-E5020EA5599D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManager.Models", "..\HRManager.Models\HRManager.Models.csproj", "{5CB8D60A-3851-4501-A077-6FC3AB81C920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManager.Models", "..\HRManager.Models\HRManager.Models.csproj", "{5CB8D60A-3851-4501-A077-6FC3AB81C920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManager.Business", "..\HRManager.Business\HRManager.Business.csproj", "{A4D55475-9AC0-44AF-8738-67A2BBC325FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManager.Business", "..\HRManager.Business\HRManager.Business.csproj", "{A4D55475-9AC0-44AF-8738-67A2BBC325FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManager.Data.Entity", "..\HRManager.Data.Entity\HRManager.Data.Entity.csproj", "{67587E8D-EA4F-4852-90F6-5EE089E0480A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRManager.Data.Entity", "..\HRManager.Data.Entity\HRManager.Data.Entity.csproj", "{67587E8D-EA4F-4852-90F6-5EE089E0480A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManager.Utilities", "..\HRManager.Utilities\HRManager.Utilities.csproj", "{CF151A8B-562D-4717-9E31-BE521035AF8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{67587E8D-EA4F-4852-90F6-5EE089E0480A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67587E8D-EA4F-4852-90F6-5EE089E0480A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67587E8D-EA4F-4852-90F6-5EE089E0480A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF151A8B-562D-4717-9E31-BE521035AF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF151A8B-562D-4717-9E31-BE521035AF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF151A8B-562D-4717-9E31-BE521035AF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF151A8B-562D-4717-9E31-BE521035AF8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

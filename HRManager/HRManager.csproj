@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HRManager.Business\HRManager.Business.csproj" />
     <ProjectReference Include="..\HRManager.Models\HRManager.Models.csproj" />
+    <ProjectReference Include="..\HRManager.Utilities\HRManager.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

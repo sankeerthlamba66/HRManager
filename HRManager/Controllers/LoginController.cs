@@ -2,7 +2,7 @@
 
 namespace HRManager.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : Code.BaseController
     {
         public IActionResult Index()
         {

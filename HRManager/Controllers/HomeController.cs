@@ -17,7 +17,7 @@ namespace HRManager.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult GetEmployeeDetails()
+        public IActionResult EmployeeDetails()
         {
             return View();
         }

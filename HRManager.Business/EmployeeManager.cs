@@ -16,9 +16,9 @@ namespace HRManager.Business
             return new EmployeeQueries().GetPersonalInfo(PersonalInfoId);
         }
 
-        public int UpdatePersonalInfo(int UserId, EmployeePersonalInfo PersoanlInfo)
+        public int UpdatePersonalInfo(int UserId, EmployeePersonalInfo PersonalInfo)
         {
-            return new EmployeeQueries().UpdatePersonalInfo(UserId, PersoanlInfo);
+            return new EmployeeQueries().UpdatePersonalInfo(UserId, PersonalInfo);
         }
 
         #endregion

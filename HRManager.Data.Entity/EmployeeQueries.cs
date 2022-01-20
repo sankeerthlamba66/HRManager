@@ -22,12 +22,12 @@ namespace HRManager.Data.Entity
         }
 
         #region Personal Info queries
-        public EmployeePersonalInfo GetPersonalInfo(int? ProfessionalDetailsId)
+        public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId)
         {
             return new EmployeePersonalInfo();
         }
 
-        public int UpdatePersonalInfo(int UserId, EmployeePersonalInfo PersoanlInfo)
+        public int UpdatePersonalInfo(int UserId, EmployeePersonalInfo PersonalInfo)
         {
             //update the values of entities here
             return 0;//return the updated id here

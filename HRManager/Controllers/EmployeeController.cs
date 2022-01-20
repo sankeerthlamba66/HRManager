@@ -36,14 +36,14 @@ namespace HRManager.Controllers
         public IActionResult AddPersonalInfo(EmployeePersonalInfo PersonalInfo)
         {
             int AddedPersonalInfo = new EmployeeManager().AddPersonalInfo(Session.UserId,PersonalInfo);
-            return RedirectToAction("GetPersonalInfo",AddedPersonalInfo);
+            return RedirectToAction("GetPersonalInfo",new { Id = AddedPersonalInfo });
         }
 
         [HttpPost]
         public IActionResult UpdatePersonalInfo(EmployeePersonalInfo PersoanlInfo)
         {
             int UpdatedId = new EmployeeManager().UpdatePersonalInfo(Session.UserId, PersoanlInfo);
-            return RedirectToAction("GetPersonalInfo", UpdatedId);
+            return RedirectToAction("GetPersonalInfo", new { Id=UpdatedId });
         }
 
         [HttpGet]
@@ -66,14 +66,14 @@ namespace HRManager.Controllers
         public IActionResult AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
             var addedProfessionalInfoId = new EmployeeManager().AddProfessionalInfo(Session.UserId,ProfessionalInfo);
-            return RedirectToAction("GetProfessionalInfo", addedProfessionalInfoId);
+            return RedirectToAction("GetProfessionalInfo", new { Id = addedProfessionalInfoId });
         }
 
         [HttpPost]
         public IActionResult UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
             var updatedProfessionalId = new EmployeeManager().UpdateProfessionalInfo(Session.UserId,ProfessionalInfo);
-            return RedirectToAction("GetProfessionalInfo", updatedProfessionalId);
+            return RedirectToAction("GetProfessionalInfo", new { Id = updatedProfessionalId });
         }
 
         [HttpGet]
@@ -94,13 +94,13 @@ namespace HRManager.Controllers
         public IActionResult PostBankInfo(EmployeeBankInfo BankInfo)
         {
             var addedBankInfoId =new EmployeeManager().AddBankInfo(Session.UserId,BankInfo);
-            return RedirectToAction("GetBankInfo", addedBankInfoId);
+            return RedirectToAction("GetBankInfo", new { Id = addedBankInfoId });
         }
 
         public IActionResult PutBankInfo(EmployeeBankInfo BankInfo)
         {
             var updatedBankInfoId = new EmployeeManager().UpdateBankInfo(Session.UserId, BankInfo);
-            return RedirectToAction("GetBankInfo", updatedBankInfoId);
+            return RedirectToAction("GetBankInfo", new { Id = updatedBankInfoId });
         }
 
         public IActionResult DeleteBankInfo(int Id)
@@ -122,14 +122,14 @@ namespace HRManager.Controllers
         public IActionResult AddInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
             int addedInsuranceInfoId = new EmployeeManager().AddInsuranceInfo(Session.UserId, InsuranceInfo);
-            return RedirectToAction("GetInsuranceInfo",addedInsuranceInfoId);
+            return RedirectToAction("GetInsuranceInfo", new { Id = addedInsuranceInfoId });
         }
 
         [HttpPost]
         public IActionResult UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
             var updatedInsuranceInfoId = new EmployeeManager().UpdateInsuranceInfo(Session.UserId, InsuranceInfo);
-            return RedirectToAction("GetInsuranceInfo", updatedInsuranceInfoId);
+            return RedirectToAction("GetInsuranceInfo", new { Id = updatedInsuranceInfoId });
         }
 
         [HttpGet]
@@ -152,14 +152,14 @@ namespace HRManager.Controllers
         public IActionResult AddPFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
             int addedPFAndESIInfoId = new EmployeeManager().AddPFAndESIInfo(Session.UserId, PFAndESIInfo);
-            return RedirectToAction("GetPFAndESIInfo",addedPFAndESIInfoId);
+            return RedirectToAction("GetPFAndESIInfo", new { Id = addedPFAndESIInfoId });
         }
 
         [HttpPost]
         public IActionResult UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
             int updatedPFAndESIInfoId = new EmployeeManager().UpdatePFAndESIInfo(Session.UserId, PFAndESIInfo);
-            return RedirectToAction("GetPFAndESIInfo", updatedPFAndESIInfoId);
+            return RedirectToAction("GetPFAndESIInfo", new { Id = updatedPFAndESIInfoId });
         }
 
         [HttpGet]
@@ -182,14 +182,14 @@ namespace HRManager.Controllers
         public IActionResult AddDocument(EmployeeDocument DocumentInfo)
         {
             int addedDocumentId = new EmployeeManager().AddDocument(Session.UserId,DocumentInfo);
-            return RedirectToAction("GetDocument",addedDocumentId);
+            return RedirectToAction("GetDocument", new { Id = addedDocumentId });
         }
 
         [HttpPost]
         public IActionResult UpdateDocument(EmployeeDocument DocumentInfo)
         {
             int updatedDocumentId = new EmployeeManager().UpdateDocument(Session.UserId, DocumentInfo);
-            return RedirectToAction("GetDocument", updatedDocumentId);
+            return RedirectToAction("GetDocument", new { Id = updatedDocumentId });
         }
 
         [HttpGet]

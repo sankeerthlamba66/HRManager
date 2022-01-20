@@ -8,6 +8,7 @@ namespace HRManager.Models.EntityViews
 {
     public class EmployeeDocument
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
+        public int UserId { get; set; }
     }
 }

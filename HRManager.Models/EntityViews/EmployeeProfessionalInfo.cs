@@ -8,7 +8,8 @@ namespace HRManager.Models.EntityViews
 {
     public class EmployeeProfessionalInfo
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
+        public int UserId { get; set; }
 
         public string ReferenceEmailId { get; set; }
 

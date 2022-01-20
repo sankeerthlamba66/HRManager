@@ -33,24 +33,10 @@ namespace HRManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPersonalInfo(EmployeePersonalInfo PersonalInfo)
+        public IActionResult UpdatePersonalInfo(EmployeePersonalInfo PersonallInfo)
         {
-            int AddedPersonalInfo = new EmployeeManager().AddPersonalInfo(Session.UserId,PersonalInfo);
-            return RedirectToAction("GetPersonalInfo",new { Id = AddedPersonalInfo });
-        }
-
-        [HttpPost]
-        public IActionResult UpdatePersonalInfo(EmployeePersonalInfo PersoanlInfo)
-        {
-            int UpdatedId = new EmployeeManager().UpdatePersonalInfo(Session.UserId, PersoanlInfo);
+            int UpdatedId = new EmployeeManager().UpdatePersonalInfo(Session.UserId, PersonallInfo);
             return RedirectToAction("GetPersonalInfo", new { Id=UpdatedId });
-        }
-
-        [HttpGet]
-        public IActionResult DeletePersonalInfo(int Id)
-        {
-            new EmployeeManager().DeletePersonalInfo(Id);
-            return RedirectToAction("Index");
         }
         #endregion
 

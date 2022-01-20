@@ -16,20 +16,11 @@ namespace HRManager.Business
             return new EmployeeQueries().GetPersonalInfo(PersonalInfoId);
         }
 
-        public int AddPersonalInfo(int UserId, EmployeePersonalInfo PersonalInfo)
-        {
-            return new EmployeeQueries().AddPersonalInfo(UserId,PersonalInfo);
-        }
-
         public int UpdatePersonalInfo(int UserId, EmployeePersonalInfo PersoanlInfo)
         {
             return new EmployeeQueries().UpdatePersonalInfo(UserId, PersoanlInfo);
         }
 
-        public void DeletePersonalInfo(int PersonalInfoId)
-        {
-            new EmployeeQueries().DeletePersonalInfo(PersonalInfoId);
-        }
         #endregion
 
         #region ProfessionalInfo

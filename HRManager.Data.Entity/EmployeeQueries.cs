@@ -27,21 +27,12 @@ namespace HRManager.Data.Entity
             return new EmployeePersonalInfo();
         }
 
-        public int AddPersonalInfo(int UserId, EmployeePersonalInfo PersonalInfo)
-        {
-            //add new coloum and update the values of the entities here
-            return 0;//return the values of the personalId
-        }
         public int UpdatePersonalInfo(int UserId, EmployeePersonalInfo PersoanlInfo)
         {
             //update the values of entities here
             return 0;//return the updated id here
         }
 
-        public void DeletePersonalInfo(int PersonalInfoId)
-        {
-            //linq to delete the id with personalinfoId
-        }
         #endregion
 
         #region ProfessionalInfo Queries

@@ -22,12 +22,12 @@ namespace HRManager.Data.Entity
         }
 
         #region Personal Info queries
-        public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId)
+        public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId,int UserId)
         {
             return new EmployeePersonalInfo();
         }
 
-        public int UpdatePersonalInfo(int UserId, EmployeePersonalInfo PersonalInfo)
+        public int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo)
         {
             //update the values of entities here
             return 0;//return the updated id here
@@ -36,113 +36,113 @@ namespace HRManager.Data.Entity
         #endregion
 
         #region ProfessionalInfo Queries
-        public EmployeeProfessionalInfo GetProfessionalInfo(int? ProfessionalInfoId)
+        public EmployeeProfessionalInfo GetProfessionalInfo(int? ProfessionalInfoId,int UserId)
         {
             //list of professional details
             return new EmployeeProfessionalInfo();//list to be returned
         }
 
-        public int AddProfessionalInfo(int UserId, EmployeeProfessionalInfo ProfessionalInfo)
+        public int AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
             return 0;//added ProfessionalId value
         }
 
-        public int UpdateProfessionalInfo(int UserId, EmployeeProfessionalInfo ProfessionalInfo)
+        public int UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
             return 0;//updated professionalId value
         }
 
-        public void DeleteProfessionalInfo(int ProfessionalInfoId)
+        public void DeleteProfessionalInfo(int ProfessionalInfoId,int UserId)
         {
             //linq to delete the row 
         }
 #endregion
 
         #region BankInfo Queries
-        public EmployeeBankInfo GetBankInfo(int? EmployeeBankInfoId)
+        public EmployeeBankInfo GetBankInfo(int? EmployeeBankInfoId,int UserId)
         {
             return new EmployeeBankInfo();
         }
 
-        public int AddBankInfo(int UserId, EmployeeBankInfo BankInfo)
+        public int AddBankInfo(EmployeeBankInfo BankInfo)
         {
             return 0;//added bankId value
         }
 
-        public int UpdateBankInfo(int UserId, EmployeeBankInfo BankInfo)
+        public int UpdateBankInfo(EmployeeBankInfo BankInfo)
         {
             return 0;//updated employeeBankInfoId value
         }
 
-        public void DeleteBankInfo(int EmployeeBankInfoId)
+        public void DeleteBankInfo(int EmployeeBankInfoId,int UserId)
         {
             //linq to delete the row 
         }
 #endregion
 
         #region Insurance Queries
-        public EmployeeInsuranceInfo GetInsuranceInfo(int? EmployeeInsuranceInfoId)
+        public EmployeeInsuranceInfo GetInsuranceInfo(int? EmployeeInsuranceInfoId,int UserId)
         {
             //details
             return new EmployeeInsuranceInfo();
         }
 
-        public int AddInsuranceInfo(int UserId, EmployeeInsuranceInfo InsuranceInfo)
+        public int AddInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
             return 0;//added insuranceId value
         }
 
-        public int UpdateInsuranceInfo(int UserId, EmployeeInsuranceInfo InsuranceInfo)
+        public int UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
             return 0;//updated employeeinsuranceInfoId value
         }
 
-        public void DeleteInsuranceInfo(int EmployeeInsuranceInfoId)
+        public void DeleteInsuranceInfo(int EmployeeInsuranceInfoId,int UserId)
         {
             //linq to delete the row 
         }
 #endregion
 
         #region PF and ESI queries
-        public EmployeePFandESIInfo GetPFAndESIInfo(int? EmployeePFAndESIInfoId)
+        public EmployeePFandESIInfo GetPFAndESIInfo(int? EmployeePFAndESIInfoId,int UserId)
         {
             return new EmployeePFandESIInfo();
         }
 
-        public int AddPFAndESIInfo(int UserId, EmployeePFandESIInfo PFAndESIInfo)
+        public int AddPFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
             return 0;//added PfId value
         }
 
-        public int UpdatePFAndESIInfo(int UserId, EmployeePFandESIInfo PFAndESIInfo)
+        public int UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
             return 0;//updated employeePfInfoId value
         }
 
-        public void DeletePFAndESIInfo(int EmployeePFAndESIInfoId)
+        public void DeletePFAndESIInfo(int EmployeePFAndESIInfoId,int UserId)
         {
             //linq to delete the row 
         }
 #endregion
 
         #region Document Queries
-        public EmployeeDocument GetDocument(int? EmployeeDocumentInfoId)
+        public EmployeeDocument GetDocument(int? EmployeeDocumentInfoId,int UserId)
         {
             //details
             return new EmployeeDocument();
         }
 
-        public int AddDocument(int UserId, EmployeeDocument DocumentInfo)
+        public int AddDocument(EmployeeDocument DocumentInfo)
         {
             return 0;//added DocumentId value
         }
 
-        public int UpdateDocument(int UserId, EmployeeDocument DocumentInfo)
+        public int UpdateDocument(EmployeeDocument DocumentInfo)
         {
             return 0;//updated employeeDoucumentInfoId value
         }
 
-        public void DeleteDocumant(int EmployeeDocumentInfoId)
+        public void DeleteDocumant(int EmployeeDocumentInfoId,int UserId)
         {
             //linq to delete the row 
         }

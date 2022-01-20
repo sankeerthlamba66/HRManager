@@ -28,14 +28,16 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetPersonalInfo(int? Id)
         {
-            var personalInfo=new EmployeeManager().GetPersonalInfo(Id);
+            var personalInfo=new EmployeeManager().GetPersonalInfo(Id,Session.UserId);
             return View(personalInfo);
         }
 
         [HttpPost]
         public IActionResult UpdatePersonalInfo(EmployeePersonalInfo PersonallInfo)
         {
-            int UpdatedId = new EmployeeManager().UpdatePersonalInfo(Session.UserId, PersonallInfo);
+            PersonallInfo.Id = null;
+            PersonallInfo.UserId = Session.UserId;
+            int UpdatedId = new EmployeeManager().UpdatePersonalInfo(PersonallInfo);
             return RedirectToAction("GetPersonalInfo", new { Id=UpdatedId });
         }
         #endregion
@@ -44,28 +46,32 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetProfessionalInfo(int? Id)
         {
-            var professionalInfo = new EmployeeManager().GetProfessionalInfo(Id);
+            var professionalInfo = new EmployeeManager().GetProfessionalInfo(Id, Session.UserId);
             return View(professionalInfo);
         }
 
         [HttpPost]
         public IActionResult AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
-            var addedProfessionalInfoId = new EmployeeManager().AddProfessionalInfo(Session.UserId,ProfessionalInfo);
+            ProfessionalInfo.Id = null;
+            ProfessionalInfo.UserId = Session.UserId;
+            var addedProfessionalInfoId = new EmployeeManager().AddProfessionalInfo(ProfessionalInfo);
             return RedirectToAction("GetProfessionalInfo", new { Id = addedProfessionalInfoId });
         }
 
         [HttpPost]
         public IActionResult UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
-            var updatedProfessionalId = new EmployeeManager().UpdateProfessionalInfo(Session.UserId,ProfessionalInfo);
+            ProfessionalInfo.Id = null;
+            ProfessionalInfo.UserId = Session.UserId;
+            var updatedProfessionalId = new EmployeeManager().UpdateProfessionalInfo(ProfessionalInfo);
             return RedirectToAction("GetProfessionalInfo", new { Id = updatedProfessionalId });
         }
 
         [HttpGet]
         public IActionResult DeleteProfessionalInfo(int Id)
         {
-            new EmployeeManager().DeleteProfessionalInfo(Id);
+            new EmployeeManager().DeleteProfessionalInfo(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion
@@ -73,25 +79,29 @@ namespace HRManager.Controllers
         #region Bank Info
         public IActionResult GetBankInfo(int? Id)
         {
-            var BankInfo = new EmployeeManager().GetBankInfo(Id);
+            var BankInfo = new EmployeeManager().GetBankInfo(Id,Session.UserId);
             return View(BankInfo);
         }
 
         public IActionResult PostBankInfo(EmployeeBankInfo BankInfo)
         {
-            var addedBankInfoId =new EmployeeManager().AddBankInfo(Session.UserId,BankInfo);
+            BankInfo.Id = null;
+            BankInfo.UserId = Session.UserId;
+            var addedBankInfoId =new EmployeeManager().AddBankInfo(BankInfo);
             return RedirectToAction("GetBankInfo", new { Id = addedBankInfoId });
         }
 
         public IActionResult PutBankInfo(EmployeeBankInfo BankInfo)
         {
-            var updatedBankInfoId = new EmployeeManager().UpdateBankInfo(Session.UserId, BankInfo);
+            BankInfo.Id = null;
+            BankInfo.UserId = Session.UserId;
+            var updatedBankInfoId = new EmployeeManager().UpdateBankInfo(BankInfo);
             return RedirectToAction("GetBankInfo", new { Id = updatedBankInfoId });
         }
 
         public IActionResult DeleteBankInfo(int Id)
         {
-            new EmployeeManager().DeleteBankInfo(Id);
+            new EmployeeManager().DeleteBankInfo(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion
@@ -99,29 +109,33 @@ namespace HRManager.Controllers
         #region Insurance Info
         [HttpGet]
         public IActionResult GetInsuranceInfo(int? Id)
-        {
-            var insuranceInfo = new EmployeeManager().GetInsuranceInfo(Id);
+        { 
+            var insuranceInfo = new EmployeeManager().GetInsuranceInfo(Id,Session.UserId);
             return View(insuranceInfo);
         }
 
         [HttpPost]
         public IActionResult AddInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
-            int addedInsuranceInfoId = new EmployeeManager().AddInsuranceInfo(Session.UserId, InsuranceInfo);
+            InsuranceInfo.Id = null;
+            InsuranceInfo.UserId = Session.UserId;
+            int addedInsuranceInfoId = new EmployeeManager().AddInsuranceInfo(InsuranceInfo);
             return RedirectToAction("GetInsuranceInfo", new { Id = addedInsuranceInfoId });
         }
 
         [HttpPost]
         public IActionResult UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
-            var updatedInsuranceInfoId = new EmployeeManager().UpdateInsuranceInfo(Session.UserId, InsuranceInfo);
+            InsuranceInfo.Id = null;
+            InsuranceInfo.UserId = Session.UserId;
+            var updatedInsuranceInfoId = new EmployeeManager().UpdateInsuranceInfo(InsuranceInfo);
             return RedirectToAction("GetInsuranceInfo", new { Id = updatedInsuranceInfoId });
         }
 
         [HttpGet]
         public IActionResult DeleteInsuranceInfo(int Id)
         {
-            new EmployeeManager().DeleteInsuranceInfo(Id);
+            new EmployeeManager().DeleteInsuranceInfo(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion
@@ -130,28 +144,32 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetPFAndESIInfo(int? Id)
         {
-            var PFAndESIInfo = new EmployeeManager().GetPFAndESIInfo(Id);
+            var PFAndESIInfo = new EmployeeManager().GetPFAndESIInfo(Id,Session.UserId);
             return View(PFAndESIInfo);
         }
 
         [HttpPost]
         public IActionResult AddPFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
-            int addedPFAndESIInfoId = new EmployeeManager().AddPFAndESIInfo(Session.UserId, PFAndESIInfo);
+            PFAndESIInfo.Id = null;
+            PFAndESIInfo.UserId = Session.UserId;
+            int addedPFAndESIInfoId = new EmployeeManager().AddPFAndESIInfo(PFAndESIInfo);
             return RedirectToAction("GetPFAndESIInfo", new { Id = addedPFAndESIInfoId });
         }
 
         [HttpPost]
         public IActionResult UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
-            int updatedPFAndESIInfoId = new EmployeeManager().UpdatePFAndESIInfo(Session.UserId, PFAndESIInfo);
+            PFAndESIInfo.Id = null;
+            PFAndESIInfo.UserId = Session.UserId;
+            int updatedPFAndESIInfoId = new EmployeeManager().UpdatePFAndESIInfo(PFAndESIInfo);
             return RedirectToAction("GetPFAndESIInfo", new { Id = updatedPFAndESIInfoId });
         }
 
         [HttpGet]
         public IActionResult DeletePFAndESIInfo(int Id)
         {
-            new EmployeeManager().DeletePFAndESIInfo(Id);
+            new EmployeeManager().DeletePFAndESIInfo(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion
@@ -160,28 +178,32 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetDocument(int? Id)
         {
-            var document = new EmployeeManager().GetDocument(Id);
+            var document = new EmployeeManager().GetDocument(Id,Session.UserId);
             return View(document);
         }
 
         [HttpPost]
         public IActionResult AddDocument(EmployeeDocument DocumentInfo)
         {
-            int addedDocumentId = new EmployeeManager().AddDocument(Session.UserId,DocumentInfo);
+            DocumentInfo.Id = null;
+            DocumentInfo.UserId = Session.UserId;
+            int addedDocumentId = new EmployeeManager().AddDocument(DocumentInfo);
             return RedirectToAction("GetDocument", new { Id = addedDocumentId });
         }
 
         [HttpPost]
         public IActionResult UpdateDocument(EmployeeDocument DocumentInfo)
         {
-            int updatedDocumentId = new EmployeeManager().UpdateDocument(Session.UserId, DocumentInfo);
+            DocumentInfo.Id = null;
+            DocumentInfo.UserId = Session.UserId;
+            int updatedDocumentId = new EmployeeManager().UpdateDocument(DocumentInfo);
             return RedirectToAction("GetDocument", new { Id = updatedDocumentId });
         }
 
         [HttpGet]
         public IActionResult DeleteDocumant(int Id)
         {
-            new EmployeeManager().DeleteDocumant(Id);
+            new EmployeeManager().DeleteDocumant(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion

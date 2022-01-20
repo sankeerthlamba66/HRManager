@@ -24,4 +24,11 @@ namespace HRManager.Models
         Pan = 1,
         xxx = 2
     }
+
+    public enum RoleType : byte
+    {
+        HRAdmin=0,
+        Admin=1,
+        Employee=2
+    }
 }

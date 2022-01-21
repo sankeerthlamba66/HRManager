@@ -7,9 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HRManager.Business\HRManager.Business.csproj" />
     <ProjectReference Include="..\HRManager.Models\HRManager.Models.csproj" />
     <ProjectReference Include="..\HRManager.Utilities\HRManager.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Employee\EmployeePersonalInfo\" />
   </ItemGroup>
 
 </Project>

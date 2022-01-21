@@ -31,4 +31,19 @@ namespace HRManager.Models
         Admin=1,
         Employee=2
     }
+
+    public enum BloodGroup : byte
+    {
+        APositive = 0,
+        ANegative = 1,
+        xxx = 2
+    }
+
+    public enum ReferalSource : byte
+    {
+        LinkedIn = 0,
+        Naukri = 1,
+        MonsterJobs = 2,
+        xxx = 3
+    }
 }

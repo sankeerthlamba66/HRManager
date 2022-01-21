@@ -13,6 +13,9 @@ namespace HRManager.Data.Entity.Entities
         public string Password { get; set; }
         public string Roles { get; set; }
 
+        public byte OrganizationId { get; set; }
+        public virtual Organization Organization { get; set; }
+
         public ICollection<EmployeeBankInfo> BankInfos { get; set; }
         public ICollection<EmployeeDocument> Documents { get; set; }
         public ICollection<EmployeeInsuranceInfo> InsuranceInfos { get; set; }

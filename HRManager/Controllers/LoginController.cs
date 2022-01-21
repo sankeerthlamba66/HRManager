@@ -8,5 +8,7 @@ namespace HRManager.Controllers
         {
             return View();
         }
+
+
     }
 }

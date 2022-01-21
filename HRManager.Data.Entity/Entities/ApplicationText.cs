@@ -20,5 +20,8 @@ namespace HRManager.Data.Entity.Entities
         //Personal Details Verification
         public string PDVEmailSubjectTemplate { get; set; }
         public string PDVEmailBodyTemplate { get; set; }
+
+        public byte OrganizationId { get; set; }
+        public virtual Organization Organization { get; set; }
     }
 }

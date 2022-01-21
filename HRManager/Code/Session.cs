@@ -37,5 +37,17 @@
                 SessionManager.SetSessionStringArray("UserRoles", value);
             }
         }
+
+        public static int OrganizationId
+        {
+            get
+            {
+                return SessionManager.GetSessionInt("OrganizationId") ?? -1;
+            }
+            set
+            {
+                SessionManager.SetSessionInt("OrganizationId", value);
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 using HRManager.Business;
 using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
+using HRManager.Code;
 
 namespace HRManager.Controllers
 {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HRManager.Data.Entity.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +8,20 @@ using System.Threading.Tasks;
 
 namespace HRManager.Data.Entity
 {
-    internal class Context
+    public class Context:DbContext
     {
-        //Add Context
-    }
+        public Context(DbContextOptions<Context>options):base(options)
+        {
+
+        }
+        public DbSet<ApplicationText> ApplicationTexts { get; set; }
+        public DbSet<EmployeePersonalInfo> EmployeePersonalInfos { get; set; }
+        public DbSet<EmployeeProfessionalInfo>EmployeeProfessionalInfos { get; set; }
+        public DbSet<EmployeeBankInfo> EmployeeBankInfos { get; set; }
+        public DbSet<EmployeeInsuranceInfo>EmployeeInsuranceInfos { get; set; }
+        public DbSet<EmployeePFandESIInfo> EmployeePFandESIInfos { get;set; }
+        public DbSet<EmployeeDocument>EmployeeDocuments { get; set; }
+        public DbSet<Organization>Organizations { get; set; }
+        public DbSet<User> Users { get; set; }
+    } 
 }

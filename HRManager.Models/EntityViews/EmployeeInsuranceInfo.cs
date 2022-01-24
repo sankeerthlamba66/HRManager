@@ -10,5 +10,9 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
+        public string NameAsPerAadhar { get; set; }
+        public string Relationship { get; set; }
+        public Gender Gender { get; set; }
+        public DateOnly DateOfBirthAsPerAadhar { get; set; }
     }
 }

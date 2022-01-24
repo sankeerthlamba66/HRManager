@@ -10,5 +10,11 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
+        public string BankName { get; set; }
+        public string NameAsPerBankAccount { get; set; }
+        public string AccountNumber { get; set; }
+        public string BranchName { get; set; }
+        public string IFSCCode { get; set; }
+
     }
 }

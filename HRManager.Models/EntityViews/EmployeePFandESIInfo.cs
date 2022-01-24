@@ -10,5 +10,7 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
+        public string UAN { get; set; }
+        public string ESIN { get; set; }
     }
 }

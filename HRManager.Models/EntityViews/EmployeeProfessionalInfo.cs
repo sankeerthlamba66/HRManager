@@ -10,8 +10,22 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
-
+        public string OrganizationName { get; set; }
+        public bool IsThisYourLastEmployment { get; set; }
+        public string LastDesignation { get; set; }
+        public DateOnly StartDate { get; set; }
+        public DateOnly EndDate { get; set; }
+        public int CTC { get; set; }
+        public string ReportingManagerName { get; set; }
+        public string ReportingManagerEmailId { get; set; }
+        public string HRName { get; set; }
+        public string HREmailId { get; set; }
+        public string OfferLetterPath { get; set; }
+        public string RelievingLetterPath { get; set; }
+        public string ExperienceLetterPath { get; set; }
+        public string PaySlip1 { get; set; }
+        public string PaySlip2 { get; set; }
+        public string PaySlip3 { get; set; }
         public string ReferenceEmailId { get; set; }
-
     }
 }

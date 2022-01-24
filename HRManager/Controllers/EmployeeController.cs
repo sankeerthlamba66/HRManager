@@ -35,7 +35,6 @@ namespace HRManager.Controllers
         [HttpPost]
         public IActionResult UpdatePersonalInfo(EmployeePersonalInfo PersonallInfo)
         {
-            PersonallInfo.Id = null;
             PersonallInfo.UserId = Session.UserId;
             int UpdatedId = new EmployeeManager().UpdatePersonalInfo(PersonallInfo);
             return RedirectToAction("GetPersonalInfo", new { Id=UpdatedId });
@@ -62,7 +61,6 @@ namespace HRManager.Controllers
         [HttpPost]
         public IActionResult UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
-            ProfessionalInfo.Id = null;
             ProfessionalInfo.UserId = Session.UserId;
             var updatedProfessionalId = new EmployeeManager().UpdateProfessionalInfo(ProfessionalInfo);
             return RedirectToAction("GetProfessionalInfo", new { Id = updatedProfessionalId });
@@ -93,7 +91,6 @@ namespace HRManager.Controllers
 
         public IActionResult PutBankInfo(EmployeeBankInfo BankInfo)
         {
-            BankInfo.Id = null;
             BankInfo.UserId = Session.UserId;
             var updatedBankInfoId = new EmployeeManager().UpdateBankInfo(BankInfo);
             return RedirectToAction("GetBankInfo", new { Id = updatedBankInfoId });
@@ -126,7 +123,6 @@ namespace HRManager.Controllers
         [HttpPost]
         public IActionResult UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
-            InsuranceInfo.Id = null;
             InsuranceInfo.UserId = Session.UserId;
             var updatedInsuranceInfoId = new EmployeeManager().UpdateInsuranceInfo(InsuranceInfo);
             return RedirectToAction("GetInsuranceInfo", new { Id = updatedInsuranceInfoId });
@@ -160,7 +156,6 @@ namespace HRManager.Controllers
         [HttpPost]
         public IActionResult UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
-            PFAndESIInfo.Id = null;
             PFAndESIInfo.UserId = Session.UserId;
             int updatedPFAndESIInfoId = new EmployeeManager().UpdatePFAndESIInfo(PFAndESIInfo);
             return RedirectToAction("GetPFAndESIInfo", new { Id = updatedPFAndESIInfoId });
@@ -194,7 +189,6 @@ namespace HRManager.Controllers
         [HttpPost]
         public IActionResult UpdateDocument(EmployeeDocument DocumentInfo)
         {
-            DocumentInfo.Id = null;
             DocumentInfo.UserId = Session.UserId;
             int updatedDocumentId = new EmployeeManager().UpdateDocument(DocumentInfo);
             return RedirectToAction("GetDocument", new { Id = updatedDocumentId });

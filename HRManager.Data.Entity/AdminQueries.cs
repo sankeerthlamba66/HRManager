@@ -50,15 +50,5 @@ namespace HRManager.Data.Entity
             return new BGVEmailTemplate();
         }
 
-        public string? GetRoles(string[] allowedRoles, int UserId, string UserName)
-        {
-            foreach(var role in allowedRoles)
-            {
-                //linq of containing roles in role of user entity
-                //if condition
-                return "";
-            }
-            return null;
-        }
     }
 }

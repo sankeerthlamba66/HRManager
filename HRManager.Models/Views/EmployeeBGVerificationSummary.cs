@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRManager.Models.EntityViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace HRManager.Models.Views
 {
     public class EmployeeBGVerificationSummary
     {
+        public EmployeeBGVerificationSummary()
+        {
+            this.professionalDetails = new List<EmployeeProfessionalInfo>();
+        }
+        public List<EmployeeProfessionalInfo> professionalDetails { get; set; }
     }
 }

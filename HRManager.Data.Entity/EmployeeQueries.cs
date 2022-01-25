@@ -47,6 +47,15 @@ namespace HRManager.Data.Entity
             return employeeShortSummary;
         }
 
+        public EmployeeIndexModels GetEmployeeDetails(int UserId)
+        {
+            EmployeeIndexModels employeeIndexModels = new EmployeeIndexModels();
+            var EmployeePersonaldetails = context.EmployeePersonalInfos.Where(s => s.UserId == UserId).Select(s=>s);
+            employeeIndexModels.employeePersonalInfo = mapper.Map < Models.EntityViews.EmployeePersonalInfo >(EmployeePersonaldetails);
+            var EmployeeProfessionalDetails = context.EmployeeProfessionalInfos.Where(s => s.UserId == UserId).ToList();
+            return employeeIndexModels;
+        }
+
         #region Personal Info queries
         public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId,int UserId)
         {

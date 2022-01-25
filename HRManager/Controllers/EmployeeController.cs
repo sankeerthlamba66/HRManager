@@ -21,6 +21,7 @@ namespace HRManager.Controllers
 
         public IActionResult Index()
         {
+            EmployeeIndexModels employeeIndexModels = new EmployeeManager().GetEmployeeDetails(Session.UserId);
             return View();
         }
 

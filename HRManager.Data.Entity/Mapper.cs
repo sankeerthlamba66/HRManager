@@ -12,6 +12,8 @@ namespace HRManager.Data.Entity
             CreateMap<HRManager.Data.Entity.Entities.EmployeeDocument,HRManager.Models.EntityViews.EmployeeDocument> ().ReverseMap();
             CreateMap<HRManager.Data.Entity.Entities.EmployeeInsuranceInfo, HRManager.Models.EntityViews.EmployeeInsuranceInfo>().ReverseMap();
             CreateMap<HRManager.Data.Entity.Entities.EmployeePFandESIInfo,HRManager.Models.EntityViews.EmployeePFandESIInfo> ().ReverseMap();
+            CreateMap<Data.Entity.Entities.EmployeePersonalInfo, Models.Views.EmployeeTableSummary>().ReverseMap();
+            CreateMap<Data.Entity.Entities.EmployeePersonalInfo, Models.Views.EmployeeCardSummary>().ReverseMap();
         }
     }
 }

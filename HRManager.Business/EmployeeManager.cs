@@ -1,5 +1,6 @@
 ﻿using HRManager.Data.Entity;
 using HRManager.Models.EntityViews;
+using HRManager.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,10 @@ namespace HRManager.Business
 {
     public class EmployeeManager
     {
+        public EmployeeIndexModels GetEmployeeDetails(int UserId)
+        {
+            return new EmployeeQueries().GetEmployeeDetails(UserId);
+        }
         #region PersonalInfo
         public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId,int UserId)
         {

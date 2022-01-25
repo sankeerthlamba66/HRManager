@@ -65,9 +65,6 @@ namespace HRManager.Business
             Helpers.Utilities.SendEmail(ProfDetails.ReferenceEmailId, Subject, Body);
         }
 
-        public string? GetRoles(string[] allowedRoles,int UserId,string UserName)
-        {
-            return new AdminQueries().GetRoles(allowedRoles, UserId, UserName);
-        }
+        
     }
 }

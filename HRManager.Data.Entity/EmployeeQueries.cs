@@ -142,7 +142,7 @@ namespace HRManager.Data.Entity
             return 0;//updated employeeDoucumentInfoId value
         }
 
-        public void DeleteDocumant(int EmployeeDocumentInfoId,int UserId)
+        public void DeleteDocument(int EmployeeDocumentInfoId,int UserId)
         {
             //linq to delete the row 
         }

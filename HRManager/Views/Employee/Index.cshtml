@@ -1,29 +1,47 @@
-﻿@{
+﻿@model HRManager.Models.ViewModels.EmployeeIndexModels;
+
+@{
     ViewData["Title"] = "Employee Page";
 }
 
-
+@if (Model is not null)
+{
     <div>
-    <partial name="_PersonalInfo.cshtml" model="@Model.EmployeePersonalInfo">
+    <partial name="_PersonalInfo.cshtml" model="@Model.employeePersonalInfo">
     </div>
+    
+    foreach (var item in @Model.employeeProfessionalInfo)
+    {
+      <div>
+        <partial name="_ProfessionalInfo.cshtml"model="item">
+      </div>
+    }
 
+    foreach (var item in @Model.employeeBankInfo)
+    {
+        <div>
+           <partial name="_BankInfo.cshtml" model="item">
+        </div>
+    }
+
+    foreach(var item in @Model.employeeInsuranceInfo)
+    {
+        <div>
+            <partial name="_InsuranceInfo.cshtml" model="item">
+        </div>
+    }
+
+    foreach(var item in @Model.employeePFandESIInfo)
+    {
     <div>
-    <partial name="_ProfessionalInfo.cshtml"model="@Model.EmployeeProfessionalInfo">
-    </div>
+    <partial name="_PFandESIInfo.cshtml" model="item">
+        </div>
+    }
 
-    <div>
-    <partial name="_BankInfo.cshtml" model="@Model.EmployeeBankInfo">
-    </div>
-
-    <div>
-    <partial name="_InsuranceInfo.cshtml" model="@Model.EmployeeInsuranceInfo">
-    </div>
-
-    <div>
-    <partial name="_PFandESIInfo.cshtml" model="@Model.EmployeePFandESIInfo">
-    </div>
-
-    <div>
-    <partial name="_Document.cshtml" model="@Model.EmployeeDocumentInfo" >
-    </div>
-
+    foreach (var item in @Model.employeeDocument)
+    {
+        <div>
+                <partial name="_Document.cshtml" model="item">
+        </div>
+    }
+}

@@ -64,7 +64,5 @@ namespace HRManager.Business
 
             Helpers.Utilities.SendEmail(ProfDetails.ReferenceEmailId, Subject, Body);
         }
-
-        
     }
 }

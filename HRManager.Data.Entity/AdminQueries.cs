@@ -50,6 +50,5 @@ namespace HRManager.Data.Entity
             return new BGVEmailTemplate();
         }
 
-       
     }
 }

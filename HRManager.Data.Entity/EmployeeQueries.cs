@@ -11,14 +11,36 @@ namespace HRManager.Data.Entity
 {
     public class EmployeeQueries
     {
+        private readonly Context context = new Context();
         public EmployeeProfessionalInfo GetProfessionalDetails(int ProfessionalDetailsId)
         {
-            return new EmployeeProfessionalInfo();
+            EmployeeProfessionalInfo professionalInfo = new EmployeeProfessionalInfo();
+            var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalDetailsId);
+            professionalInfo.OrganizationName = employeeProfessionalInfo.OrganizationName;
+            professionalInfo.IsThisYourLastEmployment = employeeProfessionalInfo.IsThisYourLastEmployment;
+            professionalInfo.StartDate = employeeProfessionalInfo.StartDate;
+            professionalInfo.EndDate = employeeProfessionalInfo.EndDate;
+            professionalInfo.CTC = employeeProfessionalInfo.CTC;
+            professionalInfo.ReportingManagerName = employeeProfessionalInfo.ReportingManagerName;
+            professionalInfo.ReportingManagerEmailId = employeeProfessionalInfo.ReportingManagerEmailId;
+            professionalInfo.HRName = employeeProfessionalInfo.HRName;
+            professionalInfo.HREmailId = employeeProfessionalInfo.HREmailId;
+            professionalInfo.OfferLetterPath = employeeProfessionalInfo.OfferLetterPath;
+            professionalInfo.RelievingLetterPath = employeeProfessionalInfo.RelievingLetterPath;
+            professionalInfo.ExperienceLetterPath = employeeProfessionalInfo.ExperienceLetterPath;
+            professionalInfo.PaySlip1 = employeeProfessionalInfo.PaySlip1;
+            professionalInfo.PaySlip2 = employeeProfessionalInfo.PaySlip2;
+            professionalInfo.PaySlip3 = employeeProfessionalInfo.PaySlip3;
+            return professionalInfo;
         }
 
         public EmployeeShortSummary GetEmployeeShortSummary(int EmployeeId)
         {
-            return new EmployeeShortSummary();
+            EmployeeShortSummary employeeShortSummary = new EmployeeShortSummary();
+            var shortSummery = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == EmployeeId);
+            employeeShortSummary.Name = shortSummery.FirstName;
+            employeeShortSummary.Email = shortSummery.PersonalEmailId;
+            return employeeShortSummary;
         }
 
         #region Personal Info queries
@@ -29,7 +51,7 @@ namespace HRManager.Data.Entity
 
         public int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo)
         {
-            //update the values of entities here
+            
             return 0;//return the updated id here
         }
 

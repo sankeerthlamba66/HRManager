@@ -291,7 +291,7 @@ namespace HRManager.Data.Entity
             return employeeDocumentInfo.Id;//updated employeeDoucumentInfoId value
         }
 
-        public void DeleteDocumant(int EmployeeDocumentInfoId,int UserId)
+        public void DeleteDocument(int EmployeeDocumentInfoId,int UserId)
         {
             var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == EmployeeDocumentInfoId && s.UserId == UserId).FirstOrDefault();
             if (employeeDocumentInfo != null)

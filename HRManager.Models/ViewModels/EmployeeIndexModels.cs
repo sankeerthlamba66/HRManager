@@ -24,5 +24,11 @@ namespace HRManager.Models.ViewModels
         public List<EmployeeInsuranceInfo> employeeInsuranceInfos { get; set; }
         public List<EmployeePFandESIInfo> employeePFandESIInfos { get; set; }
         public List<EmployeeDocument> employeeDocuments { get; set; }
+        public EmployeePersonalInfo employeePersonalInfo { get; set; }
+        public List<EmployeeProfessionalInfo> employeeProfessionalInfo { get; set; }
+        public List<EmployeeBankInfo> employeeBankInfo { get; set; }
+        public List<EmployeeDocument> employeeDocument { get; set; }
+        public List<EmployeeInsuranceInfo> employeeInsuranceInfo { get; set; }
+        public List<EmployeePFandESIInfo> employeePFandESIInfo { get;set; }
     }
 }

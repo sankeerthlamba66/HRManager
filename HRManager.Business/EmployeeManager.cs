@@ -132,9 +132,9 @@ namespace HRManager.Business
             return new EmployeeQueries().UpdateDocument(DocumentInfo);
         }
 
-        public void DeleteDocumant(int EmployeeDocumentInfoId,int UserId)
+        public void DeleteDocument(int EmployeeDocumentInfoId,int UserId)
         {
-            new EmployeeQueries().DeleteDocumant(EmployeeDocumentInfoId,UserId);
+            new EmployeeQueries().DeleteDocument(EmployeeDocumentInfoId,UserId);
         }
         #endregion
     }

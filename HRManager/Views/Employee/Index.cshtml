@@ -10,35 +10,35 @@
     <partial name="_PersonalInfo.cshtml" model="@Model.employeePersonalInfo">
     </div>
     
-    foreach (var item in @Model.employeeProfessionalInfo)
+    foreach (var item in @Model.employeeProfessionalInfos)
     {
       <div>
         <partial name="_ProfessionalInfo.cshtml"model="item">
       </div>
     }
 
-    foreach (var item in @Model.employeeBankInfo)
+    foreach (var item in @Model.employeeBankInfos)
     {
         <div>
            <partial name="_BankInfo.cshtml" model="item">
         </div>
     }
 
-    foreach(var item in @Model.employeeInsuranceInfo)
+    foreach(var item in @Model.employeeInsuranceInfos)
     {
         <div>
             <partial name="_InsuranceInfo.cshtml" model="item">
         </div>
     }
 
-    foreach(var item in @Model.employeePFandESIInfo)
+    foreach(var item in @Model.employeePFandESIInfos)
     {
     <div>
     <partial name="_PFandESIInfo.cshtml" model="item">
         </div>
     }
 
-    foreach (var item in @Model.employeeDocument)
+    foreach (var item in @Model.employeeDocuments)
     {
         <div>
                 <partial name="_Document.cshtml" model="item">

@@ -10,7 +10,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace HRManager.Controllers
 {
-    [HRAuthorization("HRAdmin")]
+    //[HRAuthorization("HRAdmin")]
     public class AdminController : Code.BaseController
     {
         public ViewResult Index()

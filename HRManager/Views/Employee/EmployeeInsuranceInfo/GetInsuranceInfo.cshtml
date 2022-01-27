@@ -13,11 +13,32 @@
    </div>
     <div class="form-group">
     <partial name="_InsuranceInfo.cshtml">
-         <button type="button" class="btn btn-primary">Add</button>
+         <input type='button' value='Add' id='AddInsuranceInfoButton'/> 
+         <input type='button' value='Edit' id='UpdateInsuranceInfoButton'/> 
+         <input type='button' value='Delete' id='DeleteInsuranceInfoButton'/> 
+         @*<button type="button" class="btn btn-primary">Add</button>
     
          <button type="button" class="btn btn-secondary">Update</button>
 
-         <button type="button" class="btn btn-secondary">Delete</button>
+         <button type="button" class="btn btn-secondary">Delete</button>*@
     </div>
 
 }
+@section Scripts
+ {           
+    <script>
+        $(document).ready(function () {
+        $("#AddInsuranceInfoButton").OnClick(function (){
+            document.location ='Employee/AddInsuranceInfo';
+                });
+         $("#UpdateInsuranceInfoButton").OnClick(function (){
+            document.location ='Employee/UpdateInsuranceInfo';
+                });
+         $("#DeleteInsuranceInfoButton").OnClick(function (){
+            document.location ='Employee/DeleteInsuranceInfo';
+                });
+        });
+   
+    </script>
+
+ }

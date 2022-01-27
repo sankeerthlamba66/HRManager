@@ -14,7 +14,7 @@ namespace HRManager.Models.EntityViews
         public int UserId { get; set; }
         
         [Display(Name = "Passport Photo")]       
-        public string  PassportPhoto { get; set; }
+        public string PassportPhoto { get; set; }
 
         [Display(Name = "Resume")]
         public string Resume { get; set; }

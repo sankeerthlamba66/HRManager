@@ -7,17 +7,15 @@ namespace HRManager.Controllers
 {
     public class LoginController : Code.BaseController
     {
+        [HttpGet]
         public IActionResult Index()
         { 
             return View();
         }
 
         [HttpPost]
-        public IActionResult LogIn(int Id,string Password)
+        public IActionResult LogIn(User user)
         {
-            User user=new User();
-            user.Id= Id;
-            user.Password= Password;
             if (new LoginManager().CheckUser(user))
             {
                 var UserDetails = new LoginManager().GetUserDetails(user.Id);

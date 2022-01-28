@@ -1,49 +1,51 @@
 ﻿@model IEnumerable<HRManager.Models.Views.EmployeeCardSummary>
 
 <div>
-    <h4>Employee Detail</h4>
-    <hr />
-    @{
-    string ColMedSize = "12";
-    string ColLgSize = "12";
-    if (ViewBag.ShowColumns == true)
+  <h4>Employee Details</h4>
+  <hr />
+  @{
+   string ColMedSize = "6";
+   string ColLgSize = "4";
+   }
+@if (Model is not null)
     {
-        ColMedSize = "6";
-        ColLgSize = "4";
+      foreach (var item in Model)
+       {
+          <div class="col-lg-@ColLgSize col-md-@ColMedSize">
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="text-muted">Id:&nbsp;</h6>
+                    <h5 class="my-0">item.Id</h5>
+                  </div>
+              </li>
+
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                 <div>
+                   <h6 class="text-muted">Name:&nbsp;</h6>
+                   <h5 class="my-0">item.EmployeeName</h5>
+                 </div>
+              </li>
+
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                   <h6 class="text-muted">Mobile Number:&nbsp;</h6>
+                   <h5 class="my-0">item.MobileNumber</h5>
+                </div>
+              </li>
+
+             <li class="list-group-item d-flex justify-content-between lh-sm">
+               <div>
+                  <h6 class="text-muted">Phone&nbsp;Number:&nbsp;</h6>
+                  <h5 class="my-0">item.PersonalEmailId</h5>
+               </div>
+             </li>
+
+           </ul>
+        </div>
+        }
     }
-}
-@{
-    <div class="col-lg-@ColLgSize col-md-@ColMedSize">
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MobileNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MobileNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PersonalEmailId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PersonalEmailId)
-        </dd>
-    </dl>
+</div>
+    <div>
+       <a asp-action="Index">Back</a>
     </div>
-    }
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>

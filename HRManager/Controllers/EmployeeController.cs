@@ -10,7 +10,7 @@ using HRManager.Code;
 
 namespace HRManager.Controllers
 {
-    //[HRAuthorization("Employee")]
+    [HRAuthorization("Employee")]
     public class EmployeeController : Code.BaseController
     {
         private readonly ILogger<EmployeeController> _logger;

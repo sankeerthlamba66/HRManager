@@ -1,3 +1,4 @@
+
 using HRManager.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<Context>(options => options.UseSqlServer("Server =Tekfriday122; database=HRManager; User ID=sa; Password=friday123!;"));
+builder.Services.AddDbContext<Context>(options => options.UseSqlServer("Server =Tekfriday122; database=HRManager; User ID=sa; Password=friday123!"));
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddSession(options =>

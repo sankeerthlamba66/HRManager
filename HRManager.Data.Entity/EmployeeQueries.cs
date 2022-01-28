@@ -12,8 +12,9 @@ namespace HRManager.Data.Entity
 {
     public class EmployeeQueries
     {
-        private readonly Context context = new Context();
-        private readonly IMapper mapper;
+        private Context context { get; set; }
+        private IMapper mapper { get; set; }
+
         public EmployeeProfessionalInfo GetProfessionalDetails(int ProfessionalDetailsId)
         {
             //EmployeeProfessionalInfo professionalInfo = new EmployeeProfessionalInfo();
@@ -50,9 +51,8 @@ namespace HRManager.Data.Entity
         public EmployeeIndexModels GetEmployeeDetails(int UserId)
         {
             EmployeeIndexModels employeeIndexModels = new EmployeeIndexModels();
-            var EmployeePersonaldetails = context.EmployeePersonalInfos.Where(s => s.UserId == UserId).Select(s=>s);
+            var EmployeePersonaldetails = context.EmployeePersonalInfos.Where(s => s.UserId == UserId);
             employeeIndexModels.employeePersonalInfo = mapper.Map < Models.EntityViews.EmployeePersonalInfo >(EmployeePersonaldetails);
-            var EmployeeProfessionalDetails = context.EmployeeProfessionalInfos.Where(s => s.UserId == UserId).ToList();
             return employeeIndexModels;
         }
 

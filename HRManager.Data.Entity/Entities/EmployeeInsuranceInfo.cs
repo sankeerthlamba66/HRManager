@@ -15,6 +15,7 @@ namespace HRManager.Data.Entity.Entities
         public string NameAsPerAadhar { get; set; }
         public string Relationship { get; set; }
         public Gender Gender { get; set; }
+
         [NotMapped]
         public DateOnly DateOfBirthAsPerAadhar { get; set; }
 

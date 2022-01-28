@@ -13,7 +13,7 @@ namespace HRManager.Data.Entity.Entities
 
         public string OrganizationName { get; set; }
         public bool IsThisYourLastEmployment { get; set; }
-        public string LastDesignation { get; set; } 
+        public string LastDesignation { get; set; }
         [NotMapped]
         public DateOnly StartDate { get; set; }
         [NotMapped]

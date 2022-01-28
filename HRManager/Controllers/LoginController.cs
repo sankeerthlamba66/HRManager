@@ -7,9 +7,15 @@ namespace HRManager.Controllers
 {
     public class LoginController : Code.BaseController
     {
-        public IActionResult Index(User user)
+        public IActionResult Index()
+        { 
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult LogIn(User user)
         {
-            if(new LoginManager().CheckUser(user))
+            if (new LoginManager().CheckUser(user))
             {
                 var UserDetails = new LoginManager().GetUserDetails(user.Id);
                 Session.UserId = Convert.ToInt32(UserDetails.Id);
@@ -19,13 +25,12 @@ namespace HRManager.Controllers
                 {
                     return RedirectToAction("Index", "Employee");
                 }
-                else if(UserDetails.Roles.Contains("HRAdmin"))
+                else if (UserDetails.Roles.Contains("HRAdmin"))
                 {
                     return RedirectToAction("Index", "Admin");
                 }
             }
             return View();
-            
         }
 
 

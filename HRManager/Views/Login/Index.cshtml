@@ -12,7 +12,7 @@
                 <form asp-controller="Login" asp-action="LogIn" method="post">
                   <p>Please Login to your account</p>
 
-                  <div class="form-outline mb-4">
+                 @* <div class="form-outline mb-4">
                     <label class="form-label" for="UserId">UserId</label>
                     <input type="text" id="UserId" class="form-control" placeholder="User Id"/>
                   </div>
@@ -23,8 +23,8 @@
                   </div>
                   <div class="text-center pt-1 mb-5 pb-1">
                       <input type='submit' value='Login' id='submit'>
-                    @*<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Log in</button>*@
-                  </div>
+                  </div>*@
+                  <partial name="_LogIn.cshtml" />
                 </form>
               </div>
             </div>

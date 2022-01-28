@@ -1,0 +1,94 @@
+﻿<script src="//code.jquery.com/jquery.min.js"></script>
+@{
+    ViewData["Title"] = "All Employees Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>All Employee Details</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active" id="table-tab" data-bs-toggle="pill" data-bs-target="#table-data" aria-current="page">Table</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="cards-tab" data-bs-toggle="pill" data-bs-target="#card-data">Cards</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="table-data" role="tabpanel" aria-labelledby="table-tab">
+            <div class="alert alert-dismissible alert-success" style="display:none">
+              <strong>Fetching data!</strong> Please wait...
+            </div>
+            <div id="table-data-container"></div>
+          </div>
+          <div class="tab-pane" id="card-data" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="alert alert-dismissible alert-success" style="display:none">
+              <strong>Fetching data!</strong> Please wait...
+            </div>
+            <div id="card-data-container"></div>
+          </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+ {
+    <script>  
+        $(document).ready(function () {
+    $("#table-tab").click(function () {
+        loadAllEmployeeTableData();
+    });
+
+    $("#cards-tab").click(function () {
+        loadAllEmployeeData("card-data", "AllEmployeeCards");
+    });
+
+    loadAllEmployeeData = function (panelName, endPointName) {
+        $("#" + panelName + " .alert").show();
+        $.ajax({
+            url: "/Home/" + endPointName
+        }).done(function (data) {
+            $("#" + panelName + "-container").html(data);
+            $("#" + panelName + " .alert").hide();
+        });
+    };
+
+    loadAllEmployeeTableData = function () {
+        loadAllEmployeeData("table-data", "AllEmployeeTable");
+    };
+
+    loadAllEmployeeTableData();
+
+        //downloadable csv file
+        $("table").table2csv();
+
+        $("table").table2csv('output', 
+        {
+          appendTo:'#out'
+        });
+        //specify file name
+        $("table").table2csv({
+          filename:'table.csv'
+        })
+        //general settings with default values
+        $("table").table2csv({
+        separator:',',
+
+          newline:'\n',
+          quoteFields:true,
+          excludeColumns:'',
+          excludeRows:''
+          trimContent:true  //Trims the content of individual <th>, <td> tags of whitespaces.
+        });
+
+    });
+    </script>
+ }

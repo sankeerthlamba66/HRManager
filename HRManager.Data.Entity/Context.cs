@@ -11,11 +11,15 @@ namespace HRManager.Data.Entity
     public class Context:DbContext
     {
         public Context()
-        { 
+        {
         }
-        public Context(DbContextOptions<Context>options):base(options)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
 
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Data Source=TEJU;Initial Catalog=HRManager;Integrated Security=True");
         }
         public DbSet<ApplicationText> ApplicationTexts { get; set; }
         public DbSet<EmployeePersonalInfo> EmployeePersonalInfos { get; set; }
@@ -26,5 +30,5 @@ namespace HRManager.Data.Entity
         public DbSet<EmployeeDocument>EmployeeDocuments { get; set; }
         public DbSet<Organization>Organizations { get; set; }
         public DbSet<User> Users { get; set; }
-    } 
+    }
 }

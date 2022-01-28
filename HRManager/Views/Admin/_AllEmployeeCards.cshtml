@@ -1,8 +1,19 @@
-﻿@model HRManager.Models.Views.EmployeeCardSummary
+﻿@model IEnumerable<HRManager.Models.Views.EmployeeCardSummary>
 
 <div>
-    <h4>EmployeeCardSummary</h4>
+    <h4>Employee Detail</h4>
     <hr />
+    @{
+    string ColMedSize = "12";
+    string ColLgSize = "12";
+    if (ViewBag.ShowColumns == true)
+    {
+        ColMedSize = "6";
+        ColLgSize = "4";
+    }
+}
+@{
+    <div class="col-lg-@ColLgSize col-md-@ColMedSize">
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Id)
@@ -29,6 +40,8 @@
             @Html.DisplayFor(model => model.PersonalEmailId)
         </dd>
     </dl>
+    </div>
+    }
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

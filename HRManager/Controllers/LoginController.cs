@@ -13,8 +13,11 @@ namespace HRManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult LogIn(User user)
+        public IActionResult LogIn(int Id,string Password)
         {
+            User user=new User();
+            user.Id= Id;
+            user.Password= Password;
             if (new LoginManager().CheckUser(user))
             {
                 var UserDetails = new LoginManager().GetUserDetails(user.Id);
@@ -30,7 +33,7 @@ namespace HRManager.Controllers
                     return RedirectToAction("Index", "Admin");
                 }
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
 

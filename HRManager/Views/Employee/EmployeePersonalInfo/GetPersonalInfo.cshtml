@@ -1,0 +1,30 @@
+﻿@model HRManager.Models.EntityViews.EmployeePersonalInfo
+<div class="page-header">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Employee Personal Details</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    
+    <div class="form-group">
+         <partial name="_PersonalInfo.cshtml">
+           <input type='button' value='Update' id='UpdatePersonalInfoButton'/> 
+         @*<button type="button" class="btn btn-secondary">Update</button>*@
+    </div>
+</div>
+
+@section Scripts
+{           
+<script>
+    $(document).ready(function () {
+    $("#UpdatePersonalInfoButton").OnClick(function (){
+        document.location ='Employee/UpdatePersonalInfo';
+     });
+    });
+   
+</script>
+
+}

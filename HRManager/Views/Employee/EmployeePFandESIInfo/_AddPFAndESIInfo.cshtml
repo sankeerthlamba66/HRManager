@@ -1,20 +1,20 @@
-﻿@model HRManager.Models.EntityViews.EmployeeDocument
+﻿@model HRManager.Models.EntityViews.EmployeePFandESIInfo
 
-<h4>EmployeeDocument</h4>
+<h4>Add PF and ESI Details</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="_AddDocument">
+        <form asp-action="_AddPFAndESIInfo">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+                <label asp-for="UAN" class="control-label"></label>
+                <input asp-for="UAN" class="form-control" />
+                <span asp-validation-for="UAN" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <input asp-for="UserId" class="form-control" />
-                <span asp-validation-for="UserId" class="text-danger"></span>
+                <label asp-for="ESIN" class="control-label"></label>
+                <input asp-for="ESIN" class="form-control" />
+                <span asp-validation-for="ESIN" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

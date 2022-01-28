@@ -3,9 +3,14 @@ using HRManager.Business;
 using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using HRManager.Code;
+using System.Data;
+using System.Text;
+
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace HRManager.Controllers
 {
+    //[HRAuthorization("HRAdmin")]
     public class AdminController : Code.BaseController
     {
         public ViewResult Index()
@@ -151,5 +156,7 @@ namespace HRManager.Controllers
                 return HandleException(ex);
             }
         }
+
+        
     }
 }

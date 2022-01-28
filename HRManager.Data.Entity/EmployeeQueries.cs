@@ -105,7 +105,7 @@ namespace HRManager.Data.Entity
             Entities.EmployeeProfessionalInfo employeeProfessionalInfo = mapper.Map<Entities.EmployeeProfessionalInfo>(ProfessionalInfo);
             context.EmployeeProfessionalInfos.Add(employeeProfessionalInfo);
             context.SaveChanges();
-            return 0;//added ProfessionalId value
+            return employeeProfessionalInfo.Id;//added ProfessionalId value
         }
 
         public int UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
@@ -154,7 +154,7 @@ namespace HRManager.Data.Entity
             Entities.EmployeeBankInfo employeeBankInfo = mapper.Map<Entities.EmployeeBankInfo>(BankInfo);
             context.EmployeeBankInfos.Add(employeeBankInfo);
             context.SaveChanges();
-            return 0;//added bankId value
+            return employeeBankInfo.Id;//added bankId value
         }
 
         public int UpdateBankInfo(EmployeeBankInfo BankInfo)
@@ -192,7 +192,7 @@ namespace HRManager.Data.Entity
             Entities.EmployeeInsuranceInfo employeeInsuranceInfo = mapper.Map<Entities.EmployeeInsuranceInfo>(InsuranceInfo);
             context.EmployeeInsuranceInfos.Add(employeeInsuranceInfo);
             context.SaveChanges();
-            return 0;//added insuranceId value
+            return employeeInsuranceInfo.Id;//added insuranceId value
         }
 
         public int UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
@@ -228,7 +228,7 @@ namespace HRManager.Data.Entity
             Entities.EmployeePFandESIInfo employeePFAndESIInfo = mapper.Map<Entities.EmployeePFandESIInfo>(PFAndESIInfo);
             context.EmployeePFandESIInfos.Add(employeePFAndESIInfo);
             context.SaveChanges();
-            return 0;//added PfId value
+            return employeePFAndESIInfo.Id;//added PfId value
         }
 
         public int UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
@@ -263,7 +263,7 @@ namespace HRManager.Data.Entity
             Entities.EmployeeDocument employeeDocumentInfo = mapper.Map<Entities.EmployeeDocument>(DocumentInfo);
             context.EmployeeDocuments.Add(employeeDocumentInfo);
             context.SaveChanges();
-            return 0;//added DocumentId value
+            return employeeDocumentInfo.Id;//added DocumentId value
         }
 
         public int UpdateDocument(EmployeeDocument DocumentInfo)
@@ -291,7 +291,7 @@ namespace HRManager.Data.Entity
             return employeeDocumentInfo.Id;//updated employeeDoucumentInfoId value
         }
 
-        public void DeleteDocumant(int EmployeeDocumentInfoId,int UserId)
+        public void DeleteDocument(int EmployeeDocumentInfoId,int UserId)
         {
             var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == EmployeeDocumentInfoId && s.UserId == UserId).FirstOrDefault();
             if (employeeDocumentInfo != null)

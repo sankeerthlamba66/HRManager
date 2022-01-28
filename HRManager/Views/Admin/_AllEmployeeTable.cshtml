@@ -1,6 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model AllEmployeeTable
-@{
-}
+﻿@model HRManager.Models.Views.EmployeeTableSummary
+
+<div>
+    <h4>Employee Table</h4>
+    <hr />
+    <div>
+        <partial name="_DateRange.cshtml" />
+    </div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.HiddenFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.HiddenFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MobileNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PersonalEmailId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PersonalEmailId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back</a>
+</div>

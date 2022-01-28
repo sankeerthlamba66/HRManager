@@ -10,6 +10,7 @@ using HRManager.Code;
 
 namespace HRManager.Controllers
 {
+    //[HRAuthorization("Employee")]
     public class EmployeeController : Code.BaseController
     {
         private readonly ILogger<EmployeeController> _logger;
@@ -196,9 +197,9 @@ namespace HRManager.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteDocumant(int Id)
+        public IActionResult DeleteDocument(int Id)
         {
-            new EmployeeManager().DeleteDocumant(Id,Session.UserId);
+            new EmployeeManager().DeleteDocument(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion

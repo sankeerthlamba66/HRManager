@@ -2,7 +2,7 @@
 {
     public class FileManager
     {
-        public static string UploadProfile(IFormFile Document, string UploadFolderPath)
+        public static string UploadDocument(IFormFile Document, string UploadFolderPath)
         {
             string uniqueFileName = string.Empty;
             string filePath = string.Empty;

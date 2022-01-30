@@ -51,8 +51,43 @@ namespace HRManager.Data.Entity
         public EmployeeIndexModels GetEmployeeDetails(int UserId)
         {
             EmployeeIndexModels employeeIndexModels = new EmployeeIndexModels();
-            var EmployeePersonaldetails = context.EmployeePersonalInfos.Where(s => s.UserId == UserId);
-            employeeIndexModels.employeePersonalInfo = mapper.Map < Models.EntityViews.EmployeePersonalInfo >(EmployeePersonaldetails);
+            var EmployeePersonalDetails = context.EmployeePersonalInfos.Where(s => s.UserId == UserId);
+            employeeIndexModels.employeePersonalInfo = mapper.Map < Models.EntityViews.EmployeePersonalInfo >(EmployeePersonalDetails);
+            var EmployeeProfessionalDetails = context.EmployeeProfessionalInfos.Where(s => s.UserId == UserId).ToList();
+            List<EmployeeProfessionalInfo> ListEmployeeProfessionalInfo = new List<EmployeeProfessionalInfo>();
+            foreach(var item in EmployeeProfessionalDetails)
+            {
+                ListEmployeeProfessionalInfo.Add(mapper.Map<EmployeeProfessionalInfo>(item));
+            }
+            var EmployeeBankDetails = context.EmployeeBankInfos.Where(s => s.UserId == UserId).ToList();
+            List<EmployeeBankInfo> ListEmployeeBankDetails = new List<EmployeeBankInfo>();
+            foreach (var item in EmployeeBankDetails)
+            {
+                ListEmployeeBankDetails.Add(mapper.Map<EmployeeBankInfo>(item));
+            }
+            var EmployeeInsuranceDetails=context.EmployeeInsuranceInfos.Where(s => s.UserId == UserId).ToList();
+            List<EmployeeInsuranceInfo> ListEmployeeInsuranceDetails = new List<EmployeeInsuranceInfo>();
+            foreach (var item in EmployeeInsuranceDetails)
+            {
+                ListEmployeeInsuranceDetails.Add(mapper.Map<EmployeeInsuranceInfo>(item));
+            }
+            var EmployeePFAndESIDetails = context.EmployeePFandESIInfos.Where(s => s.UserId == UserId).ToList();
+            List<EmployeePFandESIInfo> ListEmployeePFAndESIDetails = new List<EmployeePFandESIInfo>();
+            foreach (var item in EmployeeInsuranceDetails)
+            {
+                ListEmployeePFAndESIDetails.Add(mapper.Map<EmployeePFandESIInfo>(item));
+            }
+            var EmployeeDocumentDetails = context.EmployeeDocuments.Where(s => s.UserId == UserId).ToList();
+            List<EmployeeDocument> ListEmployeeDocumentDetails = new List<EmployeeDocument>();
+            foreach (var item in EmployeeInsuranceDetails)
+            {
+                ListEmployeeDocumentDetails.Add(mapper.Map<EmployeeDocument>(item));
+            }
+            employeeIndexModels.employeeProfessionalInfos = ListEmployeeProfessionalInfo;
+            employeeIndexModels.employeeBankInfos = ListEmployeeBankDetails;
+            employeeIndexModels.employeeInsuranceInfos = ListEmployeeInsuranceDetails;
+            employeeIndexModels.employeePFandESIInfos = ListEmployeePFAndESIDetails;
+            employeeIndexModels.employeeDocuments = ListEmployeeDocumentDetails;
             return employeeIndexModels;
         }
 

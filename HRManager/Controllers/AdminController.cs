@@ -7,7 +7,7 @@ using HRManager.Business.BussinessRepository;
 
 namespace HRManager.Controllers
 {
-    [HRAuthorization("HRAdmin")]
+    //[HRAuthorization("HRAdmin")]
     public class AdminController : Code.BaseController
     {
         private readonly IAdminManager adminManager;

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HRManager.Data.Entity.EntityRepository;
+using HRManager.Models.Views;
 
 namespace HRManager.Data.Entity
 {
@@ -16,9 +17,9 @@ namespace HRManager.Data.Entity
         {
             context = _context;
         }
-        public bool CheckUser(User user)
+        public bool CheckUser(LoginUser loginUser)
         {
-            var userDetails = context.Users.Where(s => s.UserName.Equals(user.UserName) && s.Password.Equals(user.Password)).Select(s=>s);
+            var userDetails = context.Users.Where(s => s.UserName.Equals(loginUser.UserName) && s.Password.Equals(loginUser.Password)).Select(s=>s);
             if(userDetails!=null)
             {
                 return true;

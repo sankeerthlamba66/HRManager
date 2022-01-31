@@ -2,6 +2,7 @@
 using HRManager.Business.BussinessRepository;
 using HRManager.Code;
 using HRManager.Models.EntityViews;
+using HRManager.Models.Views;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRManager.Controllers
@@ -20,12 +21,12 @@ namespace HRManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult LogIn(User user)
+        public IActionResult LogIn(LoginUser loginUser)
         {
-            if (loginManager.CheckUser(user))
+            if (loginManager.CheckUser(loginUser))
             {
-                var UserDetails = loginManager.GetUserDetails(user.UserName);
-                Session.UserId = Convert.ToInt32(UserDetails.Id);
+                var UserDetails = loginManager.GetUserDetails(loginUser.UserName);
+                Session.UserId = (int)UserDetails.Id;
                 Session.UserName = UserDetails.UserName;
                 Session.UserRoles = UserDetails.Roles.Split(",").ToList();
                 if (UserDetails.Roles.Contains("Employee"))

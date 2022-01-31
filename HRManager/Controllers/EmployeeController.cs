@@ -23,7 +23,7 @@ namespace HRManager.Controllers
             employeeManager = _employeeManager;
         }
 
-        [HRAuthorization("Employee")]
+        //[HRAuthorization("Employee")]
         public IActionResult Index()
         {
             EmployeeIndexModels employeeIndexModels = employeeManager.GetEmployeeDetails(Session.UserId);

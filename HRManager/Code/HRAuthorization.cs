@@ -15,18 +15,18 @@ namespace HRManager.Code
         
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            if(!Code.Session.UserRoles.Contains(_RequiredRole))
-            {
-                var errorNumber = ErrorLogger.LogError("Unauthorized Access");
-                if(context.HttpContext.Request.Headers["X-Requested-With"]=="XMLHttpRequest")
-                {
-                    context.Result = new StatusCodeResult(401); 
-                }
-                else
-                {
-                    context.Result = new RedirectToActionResult("Employee", "Error", new HRManager.Models.ErrorViewModel() { RequestId = "Unauthorized Exception" });
-                }
-            }
+        //    if(!Code.Session.UserRoles.Contains(_RequiredRole))
+        //    {
+        //        var errorNumber = ErrorLogger.LogError("Unauthorized Access");
+        //        if(context.HttpContext.Request.Headers["X-Requested-With"]=="XMLHttpRequest")
+        //        {
+        //            context.Result = new StatusCodeResult(401); 
+        //        }
+        //        else
+        //        {
+        //            context.Result = new RedirectToActionResult("Employee", "Error", new HRManager.Models.ErrorViewModel() { RequestId = "Unauthorized Exception" });
+        //        }
+        //    }
 
         }
     }

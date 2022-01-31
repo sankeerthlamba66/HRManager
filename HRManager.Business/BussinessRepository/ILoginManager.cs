@@ -1,4 +1,5 @@
 ﻿using HRManager.Models.EntityViews;
+using HRManager.Models.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace HRManager.Business.BussinessRepository
 {
     public interface ILoginManager
     {
-        bool CheckUser(User user);
+        bool CheckUser(LoginUser loginUser);
         User GetUserDetails(string UserName);
     }
 }

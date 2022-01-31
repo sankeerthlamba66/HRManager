@@ -2,6 +2,7 @@
 using HRManager.Data.Entity;
 using HRManager.Data.Entity.EntityRepository;
 using HRManager.Models.EntityViews;
+using HRManager.Models.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace HRManager.Business
         {
             loginQueries = _loginQueries;
         }
-        public bool CheckUser(User user)
+        public bool CheckUser(LoginUser loginUser)
         {
-            return loginQueries.CheckUser(user);
+            return loginQueries.CheckUser(loginUser);
         }
 
         public User GetUserDetails(string UserName)

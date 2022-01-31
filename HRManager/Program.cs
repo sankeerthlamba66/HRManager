@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<Context>(options => options.UseSqlServer("Data Source=tekfriday122;User ID=sa;Password=tekfriday123!"));
+builder.Services.AddDbContext<Context>(options => options.UseSqlServer("Data Source=tekfriday122;User ID=sa;Password=friday123!"));
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddSession(options =>

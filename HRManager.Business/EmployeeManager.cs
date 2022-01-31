@@ -1,4 +1,6 @@
-﻿using HRManager.Data.Entity;
+﻿using HRManager.Business.BussinessRepository;
+using HRManager.Data.Entity;
+using HRManager.Data.Entity.EntityRepository;
 using HRManager.Models.EntityViews;
 using HRManager.Models.ViewModels;
 using System;
@@ -9,21 +11,26 @@ using System.Threading.Tasks;
 
 namespace HRManager.Business
 {
-    public class EmployeeManager
+    public class EmployeeManager:IEmployeeManager
     {
+        private readonly IEmployeeQueries employeeQueries;
+        public EmployeeManager(IEmployeeQueries _employeeQueries)
+        {
+            employeeQueries = _employeeQueries;
+        }
         public EmployeeIndexModels GetEmployeeDetails(int UserId)
         {
-            return new EmployeeQueries().GetEmployeeDetails(UserId);
+            return employeeQueries.GetEmployeeDetails(UserId);
         }
         #region PersonalInfo
         public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId,int UserId)
         {
-            return new EmployeeQueries().GetPersonalInfo(PersonalInfoId, UserId);
+            return employeeQueries.GetPersonalInfo(PersonalInfoId, UserId);
         }
 
         public int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo)
         {
-            return new EmployeeQueries().UpdatePersonalInfo(PersonalInfo);
+            return employeeQueries.UpdatePersonalInfo(PersonalInfo);
         }
 
         #endregion
@@ -31,110 +38,110 @@ namespace HRManager.Business
         #region ProfessionalInfo
         public EmployeeProfessionalInfo GetProfessionalInfo(int? ProfessionalInfoId,int UserId)
         {
-            return new EmployeeQueries().GetProfessionalInfo(ProfessionalInfoId,UserId);
+            return employeeQueries.GetProfessionalInfo(ProfessionalInfoId,UserId);
         }
 
         public int AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
-            return new EmployeeQueries().AddProfessionalInfo(ProfessionalInfo);
+            return employeeQueries.AddProfessionalInfo(ProfessionalInfo);
         }
 
         public int UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
-            return new EmployeeQueries().UpdateProfessionalInfo(ProfessionalInfo);
+            return employeeQueries.UpdateProfessionalInfo(ProfessionalInfo);
         }
 
         public void DeleteProfessionalInfo(int ProfessionalInfoId,int UserId)
         {
-            new EmployeeQueries().DeleteProfessionalInfo(ProfessionalInfoId,UserId);
+            employeeQueries.DeleteProfessionalInfo(ProfessionalInfoId,UserId);
         }
         #endregion
 
         #region BankInfo
         public EmployeeBankInfo GetBankInfo(int? EmployeeBankInfoId,int UserId)
         {
-            return new EmployeeQueries().GetBankInfo(EmployeeBankInfoId,UserId);
+            return employeeQueries.GetBankInfo(EmployeeBankInfoId,UserId);
         }
 
         public int AddBankInfo(EmployeeBankInfo ProfessionalInfo)
         {
-            return new EmployeeQueries().AddBankInfo(ProfessionalInfo);
+            return employeeQueries.AddBankInfo(ProfessionalInfo);
         }
 
         public int UpdateBankInfo(EmployeeBankInfo BankInfo)
         {
-            return new EmployeeQueries().UpdateBankInfo(BankInfo);
+            return employeeQueries.UpdateBankInfo(BankInfo);
         }
 
         public void DeleteBankInfo(int EmployeeBankInfoId,int UserId)
         {
-            new EmployeeQueries().DeleteBankInfo(EmployeeBankInfoId,UserId);
+            employeeQueries.DeleteBankInfo(EmployeeBankInfoId,UserId);
         }
         #endregion
 
         #region InsuranceInfo
         public EmployeeInsuranceInfo GetInsuranceInfo(int? EmployeeInsuranceInfoId,int UserId)
         {
-            return new EmployeeQueries().GetInsuranceInfo(EmployeeInsuranceInfoId,UserId);
+            return employeeQueries.GetInsuranceInfo(EmployeeInsuranceInfoId,UserId);
         }
 
         public int AddInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
-            return new EmployeeQueries().AddInsuranceInfo(InsuranceInfo);
+            return employeeQueries.AddInsuranceInfo(InsuranceInfo);
         }
 
         public int UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
-            return new EmployeeQueries().UpdateInsuranceInfo(InsuranceInfo);
+            return employeeQueries.UpdateInsuranceInfo(InsuranceInfo);
         }
 
         public void DeleteInsuranceInfo(int EmployeeInsuranceInfoId,int UserId)
         {
-            new EmployeeQueries().DeleteInsuranceInfo(EmployeeInsuranceInfoId,UserId);
+            employeeQueries.DeleteInsuranceInfo(EmployeeInsuranceInfoId,UserId);
         }
         #endregion
 
         #region PF and ESI 
         public EmployeePFandESIInfo GetPFAndESIInfo(int? EmployeePFAndESIInfoId,int UserId)
         {
-            return new EmployeeQueries().GetPFAndESIInfo(EmployeePFAndESIInfoId,UserId);
+            return employeeQueries.GetPFAndESIInfo(EmployeePFAndESIInfoId,UserId);
         }
 
         public int AddPFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
-            return new EmployeeQueries().AddPFAndESIInfo(PFAndESIInfo);
+            return employeeQueries.AddPFAndESIInfo(PFAndESIInfo);
         }
 
         public int UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
-            return new EmployeeQueries().UpdatePFAndESIInfo(PFAndESIInfo);
+            return employeeQueries.UpdatePFAndESIInfo(PFAndESIInfo);
         }
 
         public void DeletePFAndESIInfo(int EmployeePFAndESIInfoId,int UserId)
         {
-            new EmployeeQueries().DeletePFAndESIInfo(EmployeePFAndESIInfoId,UserId);
+            employeeQueries.DeletePFAndESIInfo(EmployeePFAndESIInfoId,UserId);
         }
         #endregion
 
         #region Document
         public EmployeeDocument GetDocument(int? EmployeeDocumentInfoId,int UserId)
         {
-            return new EmployeeQueries().GetDocument(EmployeeDocumentInfoId,UserId);
+            return employeeQueries.GetDocument(EmployeeDocumentInfoId,UserId);
         }
 
         public int AddDocument(EmployeeDocument DocumentInfo)
         {
-            return new EmployeeQueries().AddDocument(DocumentInfo);
+            return employeeQueries.AddDocument(DocumentInfo);
         }
 
         public int UpdateDocument(EmployeeDocument DocumentInfo)
         {
-            return new EmployeeQueries().UpdateDocument(DocumentInfo);
+            return employeeQueries.UpdateDocument(DocumentInfo);
         }
 
         public void DeleteDocument(int EmployeeDocumentInfoId,int UserId)
         {
-            new EmployeeQueries().DeleteDocument(EmployeeDocumentInfoId,UserId);
+            employeeQueries.DeleteDocument(EmployeeDocumentInfoId,UserId);
         }
         #endregion
     }

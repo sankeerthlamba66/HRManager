@@ -3,12 +3,20 @@ using HRManager.Business;
 using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using HRManager.Code;
+using HRManager.Business.BussinessRepository;
 
 namespace HRManager.Controllers
 {
     [HRAuthorization("HRAdmin")]
     public class AdminController : Code.BaseController
     {
+        private readonly IAdminManager adminManager;
+
+        public AdminController(IAdminManager _adminManager)
+        {
+            adminManager = _adminManager;
+        }
+
         public ViewResult Index()
         {
             try
@@ -49,7 +57,6 @@ namespace HRManager.Controllers
         {
             try
             {
-                var adminManager = new AdminManager();
                 var employeeData = new List<EmployeeTableSummary>();
 
                 if ((DateFrom != null) && (DateTo != null))
@@ -75,7 +82,6 @@ namespace HRManager.Controllers
         {
             try
             {
-                var adminManager = new AdminManager();
                 var employeeData = new List<EmployeeCardSummary>();
 
                 if ((DateFrom != null) && (DateTo != null))
@@ -101,7 +107,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                var pdValidationSummary = new AdminManager().GetEmployeePDValidationSummary(EmployeeId);
+                var pdValidationSummary = adminManager.GetEmployeePDValidationSummary(EmployeeId);
 
                 return PartialView(pdValidationSummary);
             }
@@ -115,7 +121,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                var bgVerificationSummary = new AdminManager().GetEmployeeBGVerificationSummary(EmployeeId);
+                var bgVerificationSummary = adminManager.GetEmployeeBGVerificationSummary(EmployeeId);
 
                 return PartialView(bgVerificationSummary);
             }
@@ -129,7 +135,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                new AdminManager().SendPDValidationEmail(EmployeeId, FieldsToUpdate);
+                adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate);
 
                 return Ok(true);
             }
@@ -143,7 +149,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                new AdminManager().SendBGVerificationEmail(ProfessionalDetailsId);
+                adminManager.SendBGVerificationEmail(ProfessionalDetailsId);
 
                 return Ok(true);
             }

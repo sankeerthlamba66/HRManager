@@ -7,22 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using HRManager.Business;
 using HRManager.Code;
+using HRManager.Business.BussinessRepository;
 
 namespace HRManager.Controllers
 {
     [HRAuthorization("Employee")]
     public class EmployeeController : Code.BaseController
     {
+        private readonly IEmployeeManager employeeManager;
         private readonly ILogger<EmployeeController> _logger;
 
-        public EmployeeController(ILogger<EmployeeController> logger)
+        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeManager _employeeManager)
         {
             _logger = logger;
+            employeeManager = _employeeManager;
         }
 
         public IActionResult Index()
         {
-            EmployeeIndexModels employeeIndexModels = new EmployeeManager().GetEmployeeDetails(Session.UserId);
+            EmployeeIndexModels employeeIndexModels = employeeManager.GetEmployeeDetails(Session.UserId);
             return View();
         }
 
@@ -30,7 +33,7 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetPersonalInfo(int? Id)
         {
-            var personalInfo=new EmployeeManager().GetPersonalInfo(Id,Session.UserId);
+            var personalInfo= employeeManager.GetPersonalInfo(Id,Session.UserId);
             return View(personalInfo);
         }
 
@@ -38,7 +41,7 @@ namespace HRManager.Controllers
         public IActionResult UpdatePersonalInfo(EmployeePersonalInfo PersonallInfo)
         {
             PersonallInfo.UserId = Session.UserId;
-            int UpdatedId = new EmployeeManager().UpdatePersonalInfo(PersonallInfo);
+            int UpdatedId = employeeManager.UpdatePersonalInfo(PersonallInfo);
             return RedirectToAction("GetPersonalInfo", new { Id=UpdatedId });
         }
         #endregion
@@ -47,7 +50,7 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetProfessionalInfo(int? Id)
         {
-            var professionalInfo = new EmployeeManager().GetProfessionalInfo(Id, Session.UserId);
+            var professionalInfo = employeeManager.GetProfessionalInfo(Id, Session.UserId);
             return View(professionalInfo);
         }
 
@@ -56,7 +59,7 @@ namespace HRManager.Controllers
         {
             ProfessionalInfo.Id = null;
             ProfessionalInfo.UserId = Session.UserId;
-            var addedProfessionalInfoId = new EmployeeManager().AddProfessionalInfo(ProfessionalInfo);
+            var addedProfessionalInfoId = employeeManager.AddProfessionalInfo(ProfessionalInfo);
             return RedirectToAction("GetProfessionalInfo", new { Id = addedProfessionalInfoId });
         }
 
@@ -64,14 +67,14 @@ namespace HRManager.Controllers
         public IActionResult UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
             ProfessionalInfo.UserId = Session.UserId;
-            var updatedProfessionalId = new EmployeeManager().UpdateProfessionalInfo(ProfessionalInfo);
+            var updatedProfessionalId = employeeManager.UpdateProfessionalInfo(ProfessionalInfo);
             return RedirectToAction("GetProfessionalInfo", new { Id = updatedProfessionalId });
         }
 
         [HttpGet]
         public IActionResult DeleteProfessionalInfo(int Id)
         {
-            new EmployeeManager().DeleteProfessionalInfo(Id,Session.UserId);
+            employeeManager.DeleteProfessionalInfo(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion
@@ -79,7 +82,7 @@ namespace HRManager.Controllers
         #region Bank Info
         public IActionResult GetBankInfo(int? Id)
         {
-            var BankInfo = new EmployeeManager().GetBankInfo(Id,Session.UserId);
+            var BankInfo = employeeManager.GetBankInfo(Id,Session.UserId);
             return View(BankInfo);
         }
 
@@ -87,20 +90,20 @@ namespace HRManager.Controllers
         {
             BankInfo.Id = null;
             BankInfo.UserId = Session.UserId;
-            var addedBankInfoId =new EmployeeManager().AddBankInfo(BankInfo);
+            var addedBankInfoId = employeeManager.AddBankInfo(BankInfo);
             return RedirectToAction("GetBankInfo", new { Id = addedBankInfoId });
         }
 
         public IActionResult PutBankInfo(EmployeeBankInfo BankInfo)
         {
             BankInfo.UserId = Session.UserId;
-            var updatedBankInfoId = new EmployeeManager().UpdateBankInfo(BankInfo);
+            var updatedBankInfoId = employeeManager.UpdateBankInfo(BankInfo);
             return RedirectToAction("GetBankInfo", new { Id = updatedBankInfoId });
         }
 
         public IActionResult DeleteBankInfo(int Id)
         {
-            new EmployeeManager().DeleteBankInfo(Id,Session.UserId);
+            employeeManager.DeleteBankInfo(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion
@@ -109,7 +112,7 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetInsuranceInfo(int? Id)
         { 
-            var insuranceInfo = new EmployeeManager().GetInsuranceInfo(Id,Session.UserId);
+            var insuranceInfo = employeeManager.GetInsuranceInfo(Id,Session.UserId);
             return View(insuranceInfo);
         }
 
@@ -118,7 +121,7 @@ namespace HRManager.Controllers
         {
             InsuranceInfo.Id = null;
             InsuranceInfo.UserId = Session.UserId;
-            int addedInsuranceInfoId = new EmployeeManager().AddInsuranceInfo(InsuranceInfo);
+            int addedInsuranceInfoId = employeeManager.AddInsuranceInfo(InsuranceInfo);
             return RedirectToAction("GetInsuranceInfo", new { Id = addedInsuranceInfoId });
         }
 
@@ -126,14 +129,14 @@ namespace HRManager.Controllers
         public IActionResult UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
             InsuranceInfo.UserId = Session.UserId;
-            var updatedInsuranceInfoId = new EmployeeManager().UpdateInsuranceInfo(InsuranceInfo);
+            var updatedInsuranceInfoId = employeeManager.UpdateInsuranceInfo(InsuranceInfo);
             return RedirectToAction("GetInsuranceInfo", new { Id = updatedInsuranceInfoId });
         }
 
         [HttpGet]
         public IActionResult DeleteInsuranceInfo(int Id)
         {
-            new EmployeeManager().DeleteInsuranceInfo(Id,Session.UserId);
+            employeeManager.DeleteInsuranceInfo(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion
@@ -142,7 +145,7 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetPFAndESIInfo(int? Id)
         {
-            var PFAndESIInfo = new EmployeeManager().GetPFAndESIInfo(Id,Session.UserId);
+            var PFAndESIInfo = employeeManager.GetPFAndESIInfo(Id,Session.UserId);
             return View(PFAndESIInfo);
         }
 
@@ -151,7 +154,7 @@ namespace HRManager.Controllers
         {
             PFAndESIInfo.Id = null;
             PFAndESIInfo.UserId = Session.UserId;
-            int addedPFAndESIInfoId = new EmployeeManager().AddPFAndESIInfo(PFAndESIInfo);
+            int addedPFAndESIInfoId = employeeManager.AddPFAndESIInfo(PFAndESIInfo);
             return RedirectToAction("GetPFAndESIInfo", new { Id = addedPFAndESIInfoId });
         }
 
@@ -159,14 +162,14 @@ namespace HRManager.Controllers
         public IActionResult UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
             PFAndESIInfo.UserId = Session.UserId;
-            int updatedPFAndESIInfoId = new EmployeeManager().UpdatePFAndESIInfo(PFAndESIInfo);
+            int updatedPFAndESIInfoId = employeeManager.UpdatePFAndESIInfo(PFAndESIInfo);
             return RedirectToAction("GetPFAndESIInfo", new { Id = updatedPFAndESIInfoId });
         }
 
         [HttpGet]
         public IActionResult DeletePFAndESIInfo(int Id)
         {
-            new EmployeeManager().DeletePFAndESIInfo(Id,Session.UserId);
+            employeeManager.DeletePFAndESIInfo(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion
@@ -175,7 +178,7 @@ namespace HRManager.Controllers
         [HttpGet]
         public IActionResult GetDocument(int? Id)
         {
-            var document = new EmployeeManager().GetDocument(Id,Session.UserId);
+            var document = employeeManager.GetDocument(Id,Session.UserId);
             return View(document);
         }
 
@@ -184,7 +187,7 @@ namespace HRManager.Controllers
         {
             DocumentInfo.Id = null;
             DocumentInfo.UserId = Session.UserId;
-            int addedDocumentId = new EmployeeManager().AddDocument(DocumentInfo);
+            int addedDocumentId = employeeManager.AddDocument(DocumentInfo);
             return RedirectToAction("GetDocument", new { Id = addedDocumentId });
         }
 
@@ -192,14 +195,14 @@ namespace HRManager.Controllers
         public IActionResult UpdateDocument(EmployeeDocument DocumentInfo)
         {
             DocumentInfo.UserId = Session.UserId;
-            int updatedDocumentId = new EmployeeManager().UpdateDocument(DocumentInfo);
+            int updatedDocumentId = employeeManager.UpdateDocument(DocumentInfo);
             return RedirectToAction("GetDocument", new { Id = updatedDocumentId });
         }
 
         [HttpGet]
         public IActionResult DeleteDocument(int Id)
         {
-            new EmployeeManager().DeleteDocument(Id,Session.UserId);
+            employeeManager.DeleteDocument(Id,Session.UserId);
             return RedirectToAction("Index");
         }
         #endregion

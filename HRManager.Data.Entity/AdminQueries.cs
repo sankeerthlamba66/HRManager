@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using AutoMapper;
+using HRManager.Data.Entity.EntityRepository;
 
 namespace HRManager.Data.Entity
 {
-    public class AdminQueries
+    public class AdminQueries:IAdminQueries
     {
         private readonly Context context;
         private readonly IMapper mapper;
+        public AdminQueries(Context _context, IMapper _mapper)
+        {
+            context = _context;
+            mapper = _mapper;
+        }
 
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees()
         {

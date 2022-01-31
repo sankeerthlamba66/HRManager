@@ -11,6 +11,10 @@ namespace HRManager.Data.Entity
     public class LoginQueries
     {
         private Context context { get; set; }
+        public LoginQueries(Context _context)
+        {
+            context = _context;
+        }
         public bool CheckUser(User user)
         {
             var userDetails = context.Users.Where(s => s.UserName == user.UserName && s.Password.Equals(user.Password)).Select(s=>s);

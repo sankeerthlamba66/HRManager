@@ -7,13 +7,19 @@ using HRManager.Models.EntityViews;
 using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using AutoMapper;
+using HRManager.Data.Entity.EntityRepository;
 
 namespace HRManager.Data.Entity
 {
-    public class EmployeeQueries
+    public class EmployeeQueries: IEmployeeQueries
     {
-        private Context context { get; set; }
-        private IMapper mapper { get; set; }
+        private Context context;
+        private IMapper mapper;
+        public EmployeeQueries(Context _context, IMapper _mapper)
+        {
+            context = _context;
+            mapper = _mapper;
+        }
 
         public EmployeeProfessionalInfo GetProfessionalDetails(int ProfessionalDetailsId)
         {

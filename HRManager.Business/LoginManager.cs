@@ -1,4 +1,5 @@
 ﻿using HRManager.Data.Entity;
+using HRManager.Data.Entity.EntityRepository;
 using HRManager.Models.EntityViews;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,19 @@ namespace HRManager.Business
 {
     public class LoginManager
     {
+        private readonly ILoginQueries loginQueries;
+        public LoginManager(ILoginQueries _loginQueries)
+        {
+            loginQueries = _loginQueries;
+        }
         public bool CheckUser(User user)
         {
-            return new LoginQueries().CheckUser(user);
+            return loginQueries.CheckUser(user);
         }
 
         public User GetUserDetails(string UserName)
         {
-            return new LoginQueries().GetUserDetails(UserName);
+            return loginQueries.GetUserDetails(UserName);
         }
     }
 }

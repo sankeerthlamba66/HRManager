@@ -1,4 +1,5 @@
 ﻿using HRManager.Business;
+using HRManager.Business.BussinessRepository;
 using HRManager.Code;
 using HRManager.Models.EntityViews;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,11 @@ namespace HRManager.Controllers
 {
     public class LoginController : Code.BaseController
     {
+        private readonly ILoginManager loginManager;
+        public LoginController(ILoginManager _loginManager)
+        {
+            loginManager = _loginManager;
+        }
         [HttpGet]
         public IActionResult Index()
         { 
@@ -16,9 +22,9 @@ namespace HRManager.Controllers
         [HttpPost]
         public IActionResult LogIn(User user)
         {
-            if (new LoginManager().CheckUser(user))
+            if (loginManager.CheckUser(user))
             {
-                var UserDetails = new LoginManager().GetUserDetails(user.UserName);
+                var UserDetails = loginManager.GetUserDetails(user.UserName);
                 Session.UserId = Convert.ToInt32(UserDetails.Id);
                 Session.UserName = UserDetails.UserName;
                 Session.UserRoles = UserDetails.Roles.Split(",").ToList();

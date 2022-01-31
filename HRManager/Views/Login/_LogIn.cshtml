@@ -4,15 +4,15 @@
     <div class="col-md-4">
         <form asp-action="_LogIn">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-outline mb-4">
+            @*<div class="form-outline mb-4">
                 <label asp-for="Id" class="control-label">User Id</label>
                 <input asp-for="Id" class="form-control" placeholder="User Id"/>
-            </div>
-           @* <div class="form-group">
+            </div>*@
+           <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>*@
+            </div>
             <div class="form-outline mb-4">
                 <label asp-for="Password" class="control-label">Passsword</label>
                 <input type="password" asp-for="Password" class="form-control" placeholder="Password" />

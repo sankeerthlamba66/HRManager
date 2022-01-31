@@ -18,7 +18,7 @@ namespace HRManager.Controllers
         {
             if (new LoginManager().CheckUser(user))
             {
-                var UserDetails = new LoginManager().GetUserDetails(user.Id);
+                var UserDetails = new LoginManager().GetUserDetails(user.UserName);
                 Session.UserId = Convert.ToInt32(UserDetails.Id);
                 Session.UserName = UserDetails.UserName;
                 Session.UserRoles = UserDetails.Roles.Split(",").ToList();

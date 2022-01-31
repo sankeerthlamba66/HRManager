@@ -13,16 +13,16 @@ namespace HRManager.Data.Entity
         private Context context { get; set; }
         public bool CheckUser(User user)
         {
-            var userDetails = context.Users.Where(s => s.Id == user.Id && s.Password.Equals(user.Password));
+            var userDetails = context.Users.Where(s => s.UserName == user.UserName && s.Password.Equals(user.Password)).Select(s=>s);
             if(userDetails is not null)
             {
                 return true;
             }
             return false;
         }
-        public User GetUserDetails(int? UserId)
+        public User GetUserDetails(string UserName)
         {
-            var userDetails = context.Users.Where(s => s.Id == UserId).FirstOrDefault();
+            var userDetails = context.Users.Where(s => s.UserName == UserName).FirstOrDefault();
             User user = new User();
             user.Id = userDetails.Id;
             user.UserName = userDetails.UserName;

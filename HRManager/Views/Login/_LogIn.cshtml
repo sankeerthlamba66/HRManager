@@ -1,38 +1,22 @@
 ﻿@model HRManager.Models.EntityViews.User
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="_LogIn">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-outline mb-4">
-                <label asp-for="Id" class="control-label">User Id</label>
-                <input asp-for="Id" class="form-control" placeholder="User Id"/>
-            </div>*@
-           <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-outline mb-4">
-                <label asp-for="Password" class="control-label">Passsword</label>
-                <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
-            </div>
-            @*<div class="form-group">
-                <label asp-for="Roles" class="control-label"></label>
-                <input asp-for="Roles" class="form-control" />
-                <span asp-validation-for="Roles" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrganizationId" class="control-label"></label>
-                <input asp-for="OrganizationId" class="form-control" />
-                <span asp-validation-for="OrganizationId" class="text-danger"></span>
-            </div>*@
-            <div class="form-outline mb-4">
-                <input type="submit" value="LogIn" class="btn btn-primary" />
-            </div>
-        </form>
+<div>
+    <div>
+    <h3 class="fw-bold mb-2 text-uppercase">Login</h3>
+    <p class="text-white-50 mb-5">Please enter your User Id and Password!</p>
     </div>
-</div>
+    <div class="form-outline form-white mb-4">
+        <label class="form-label" for="UserId">User Id</label>
+        <input asp-for="Id" id="UserId" class="form-control form-control-lg" />
+    </div>
+
+    <div class="form-outline form-white mb-4">
+        <label class="form-label" asp-for="Password">Password</label>
+        <input type="password" asp-for="Password" id="Password" class="form-control form-control-lg" />
+    </div>
+
+        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+    </div>
 
 <div>
     <a asp-action="Index">Back to List</a>

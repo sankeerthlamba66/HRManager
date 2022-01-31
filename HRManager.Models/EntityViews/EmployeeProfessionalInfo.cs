@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRManager.Models.EntityViews
 {
@@ -22,10 +23,14 @@ namespace HRManager.Models.EntityViews
         public string LastDesignation { get; set; }
         [Display(Name = "Start Date")]
         [Required]
-        public DateOnly StartDate { get; set; }
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime StartDate { get; set; }
         [Display(Name = "End Date")]
         [Required]
-        public DateOnly EndDate { get; set; }
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime EndDate { get; set; }
         [Display(Name = "CTC")]
         [Required]
         public int CTC { get; set; }

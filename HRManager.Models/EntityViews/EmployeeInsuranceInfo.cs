@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRManager.Models.EntityViews
 {
@@ -22,7 +23,9 @@ namespace HRManager.Models.EntityViews
         public Gender Gender { get; set; }
         [Display(Name = "Date Of Birth As Per Aadhar")]
         [Required]
-        public DateOnly DateOfBirthAsPerAadhar { get; set; }
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime DateOfBirthAsPerAadhar { get; set; }
         
     }
 }

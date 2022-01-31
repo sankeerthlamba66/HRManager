@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,9 @@ namespace HRManager.Data.Entity.Entities
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public Gender Gender { get; set; }
+
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
         public DateTime DateOfBirth { get; set; }
         public string MobileNumber { get; set; }
         public string PersonalEmailId { get; set; }

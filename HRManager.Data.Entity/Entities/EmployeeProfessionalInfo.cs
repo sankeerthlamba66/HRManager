@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,14 @@ namespace HRManager.Data.Entity.Entities
         public string OrganizationName { get; set; }
         public bool IsThisYourLastEmployment { get; set; }
         public string LastDesignation { get; set; }
-        [NotMapped]
-        public DateOnly StartDate { get; set; }
-        [NotMapped]
-        public DateOnly EndDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime StartDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime EndDate { get; set; }
         public int CTC { get; set; }
         public string ReportingManagerName { get; set; }
         public string ReportingManagerEmailId { get; set; }

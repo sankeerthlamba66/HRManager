@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,9 @@ namespace HRManager.Data.Entity.Entities
         public string Relationship { get; set; }
         public Gender Gender { get; set; }
 
-        [NotMapped]
-        public DateOnly DateOfBirthAsPerAadhar { get; set; }
-
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime DateOfBirthAsPerAadhar { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
     }

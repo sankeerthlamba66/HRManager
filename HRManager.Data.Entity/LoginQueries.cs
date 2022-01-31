@@ -18,8 +18,8 @@ namespace HRManager.Data.Entity
         }
         public bool CheckUser(User user)
         {
-            var userDetails = context.Users.Where(s => s.UserName == user.UserName && s.Password.Equals(user.Password)).Select(s=>s);
-            if(userDetails is not null)
+            var userDetails = context.Users.Where(s => s.UserName.Equals(user.UserName) && s.Password.Equals(user.Password)).Select(s=>s);
+            if(userDetails!=null)
             {
                 return true;
             }

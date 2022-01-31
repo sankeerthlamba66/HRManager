@@ -22,7 +22,7 @@ namespace HRManager.Data.Entity
         public DbSet<EmployeeInsuranceInfo>EmployeeInsuranceInfos { get; set; }
         public DbSet<EmployeePFandESIInfo> EmployeePFandESIInfos { get;set; }
         public DbSet<EmployeeDocument>EmployeeDocuments { get; set; }
-        public DbSet<Organization>Organizations { get; set; }
+        public DbSet<Organization>Organizations{ get; set; }
         public DbSet<User> Users { get; set; }
     }
 }

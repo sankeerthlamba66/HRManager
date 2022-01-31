@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRManager.Data.Entity.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220128044927_tables")]
+    [Migration("20220131112630_tables")]
     partial class tables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,7 +50,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<byte>("OrganizationId")
                         .HasColumnType("tinyint");
@@ -72,7 +72,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.HasKey("Id");
 
@@ -106,7 +106,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<string>("IFSCCode")
                         .IsRequired()
@@ -121,7 +121,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -154,7 +154,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<string>("CurrentAddressProof")
                         .IsRequired()
@@ -221,7 +221,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -250,7 +250,10 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
+
+                    b.Property<DateTime>("DateOfBirthAsPerAadhar")
+                        .HasColumnType("Date");
 
                     b.Property<byte>("Gender")
                         .HasColumnType("tinyint");
@@ -268,7 +271,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -300,14 +303,14 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<string>("CurrentAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<string>("EmergencyContactName")
                         .IsRequired()
@@ -376,7 +379,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -402,7 +405,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<string>("ESIN")
                         .IsRequired()
@@ -417,7 +420,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -445,7 +448,10 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("Date");
 
                     b.Property<string>("ExperienceLetterPath")
                         .IsRequired()
@@ -498,12 +504,15 @@ namespace HRManager.Data.Entity.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("Date");
+
                     b.Property<string>("UpdatedBy")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -525,7 +534,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<string>("OrganizationName")
                         .IsRequired()
@@ -536,7 +545,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.HasKey("Id");
 
@@ -556,7 +565,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<byte>("OrganizationId")
                         .HasColumnType("tinyint");
@@ -574,7 +583,7 @@ namespace HRManager.Data.Entity.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("Date");
 
                     b.Property<string>("UserName")
                         .IsRequired()

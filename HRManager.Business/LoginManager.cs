@@ -1,4 +1,5 @@
-﻿using HRManager.Data.Entity;
+﻿using HRManager.Business.BussinessRepository;
+using HRManager.Data.Entity;
 using HRManager.Data.Entity.EntityRepository;
 using HRManager.Models.EntityViews;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Business
 {
-    public class LoginManager
+    public class LoginManager:ILoginManager
     {
         private readonly ILoginQueries loginQueries;
         public LoginManager(ILoginQueries _loginQueries)

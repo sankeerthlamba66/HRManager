@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HRManager.Data.Entity.EntityRepository;
 
 namespace HRManager.Data.Entity
 {
-    public class LoginQueries
+    public class LoginQueries: ILoginQueries
     {
         private Context context { get; set; }
         public LoginQueries(Context _context)

@@ -28,11 +28,11 @@
                         }
                         else if (Session.UserRoles.Contains("Employee"))
                         {
-                            await Html.RenderPartialAsync("~/Views/Shared/Menus/_EmployeeMenu");
+                            await Html.RenderPartialAsync("~/Views/Shared/Menus/_EmployeeMenu.cshtml");
                         }
                         else if (Session.UserRoles.Contains("HR") || Session.UserRoles.Contains("HRAdmin"))
                         {
-                            await Html.RenderPartialAsync("~/Views/Shared/Menus/_AdminMenu");
+                            await Html.RenderPartialAsync("~/Views/Shared/Menus/_AdminMenu.cshtml");
                         }
                     </ul>
                 </div>

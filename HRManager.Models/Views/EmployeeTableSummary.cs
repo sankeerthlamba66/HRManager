@@ -9,7 +9,7 @@ namespace HRManager.Models.Views
     public class EmployeeTableSummary
     { 
         public int Id { get; set; }
-        public string? EmployeeName { get; set; }
+        public string EmployeeName { get; set; }
         public string MobileNumber { get; set; }
         public string PersonalEmailId { get; set; }
     }

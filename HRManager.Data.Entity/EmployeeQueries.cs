@@ -13,29 +13,27 @@ namespace HRManager.Data.Entity
     public class EmployeeQueries
     {
         private readonly Context context=new Context();
-        private readonly IMapper mapper;
         public EmployeeProfessionalInfo GetProfessionalDetails(int ProfessionalDetailsId)
         {
-            //EmployeeProfessionalInfo professionalInfo = new EmployeeProfessionalInfo();
+            EmployeeProfessionalInfo professionalInfo = new EmployeeProfessionalInfo();
             var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalDetailsId);
-            return mapper.Map<EmployeeProfessionalInfo>(employeeProfessionalInfo);
-
-            //professionalInfo.OrganizationName = employeeProfessionalInfo.OrganizationName;
-            //professionalInfo.IsThisYourLastEmployment = employeeProfessionalInfo.IsThisYourLastEmployment;
-            //professionalInfo.StartDate = employeeProfessionalInfo.StartDate;
-            //professionalInfo.EndDate = employeeProfessionalInfo.EndDate;
-            //professionalInfo.CTC = employeeProfessionalInfo.CTC;
-            //professionalInfo.ReportingManagerName = employeeProfessionalInfo.ReportingManagerName;
-            //professionalInfo.ReportingManagerEmailId = employeeProfessionalInfo.ReportingManagerEmailId;
-            //professionalInfo.HRName = employeeProfessionalInfo.HRName;
-            //professionalInfo.HREmailId = employeeProfessionalInfo.HREmailId;
-            //professionalInfo.OfferLetterPath = employeeProfessionalInfo.OfferLetterPath;
-            //professionalInfo.RelievingLetterPath = employeeProfessionalInfo.RelievingLetterPath;
-            //professionalInfo.ExperienceLetterPath = employeeProfessionalInfo.ExperienceLetterPath;
-            //professionalInfo.PaySlip1 = employeeProfessionalInfo.PaySlip1;
-            //professionalInfo.PaySlip2 = employeeProfessionalInfo.PaySlip2;
-            //professionalInfo.PaySlip3 = employeeProfessionalInfo.PaySlip3;
-            //return professionalInfo;
+            //return mapper.Map<EmployeeProfessionalInfo>(employeeProfessionalInfo);
+            professionalInfo.OrganizationName = employeeProfessionalInfo.OrganizationName;
+            professionalInfo.IsThisYourLastEmployment = employeeProfessionalInfo.IsThisYourLastEmployment;
+            professionalInfo.StartDate = employeeProfessionalInfo.StartDate;
+            professionalInfo.EndDate = employeeProfessionalInfo.EndDate;
+            professionalInfo.CTC = employeeProfessionalInfo.CTC;
+            professionalInfo.ReportingManagerName = employeeProfessionalInfo.ReportingManagerName;
+            professionalInfo.ReportingManagerEmailId = employeeProfessionalInfo.ReportingManagerEmailId;
+            professionalInfo.HRName = employeeProfessionalInfo.HRName;
+            professionalInfo.HREmailId = employeeProfessionalInfo.HREmailId;
+            professionalInfo.OfferLetterPath = employeeProfessionalInfo.OfferLetterPath;
+            professionalInfo.RelievingLetterPath = employeeProfessionalInfo.RelievingLetterPath;
+            professionalInfo.ExperienceLetterPath = employeeProfessionalInfo.ExperienceLetterPath;
+            professionalInfo.PaySlip1 = employeeProfessionalInfo.PaySlip1;
+            professionalInfo.PaySlip2 = employeeProfessionalInfo.PaySlip2;
+            professionalInfo.PaySlip3 = employeeProfessionalInfo.PaySlip3;
+            return professionalInfo;
         }
 
         public EmployeeShortSummary GetEmployeeShortSummary(int EmployeeId)
@@ -50,37 +48,37 @@ namespace HRManager.Data.Entity
         public EmployeeIndexModels GetEmployeeDetails(int UserId)
         {
             EmployeeIndexModels employeeIndexModels = new EmployeeIndexModels();
-            var EmployeePersonalDetails = context.EmployeePersonalInfos.Where(s => s.UserId == UserId);
-            employeeIndexModels.employeePersonalInfo = mapper.Map < Models.EntityViews.EmployeePersonalInfo >(EmployeePersonalDetails);
+            var EmployeePersonalDetails = context.EmployeePersonalInfos.Where(s => s.UserId == UserId).FirstOrDefault();
+            employeeIndexModels.employeePersonalInfo = GetEmployeePersonalInfoMapper(EmployeePersonalDetails);
             var EmployeeProfessionalDetails = context.EmployeeProfessionalInfos.Where(s => s.UserId == UserId).ToList();
             List<EmployeeProfessionalInfo> ListEmployeeProfessionalInfo = new List<EmployeeProfessionalInfo>();
             foreach(var item in EmployeeProfessionalDetails)
             {
-                ListEmployeeProfessionalInfo.Add(mapper.Map<EmployeeProfessionalInfo>(item));
+                ListEmployeeProfessionalInfo.Add(GetEmployeeProfessionalInfoMapper(item));
             }
             var EmployeeBankDetails = context.EmployeeBankInfos.Where(s => s.UserId == UserId).ToList();
             List<EmployeeBankInfo> ListEmployeeBankDetails = new List<EmployeeBankInfo>();
             foreach (var item in EmployeeBankDetails)
             {
-                ListEmployeeBankDetails.Add(mapper.Map<EmployeeBankInfo>(item));
+                ListEmployeeBankDetails.Add(GetEmployeeBankMapper(item));
             }
             var EmployeeInsuranceDetails=context.EmployeeInsuranceInfos.Where(s => s.UserId == UserId).ToList();
             List<EmployeeInsuranceInfo> ListEmployeeInsuranceDetails = new List<EmployeeInsuranceInfo>();
             foreach (var item in EmployeeInsuranceDetails)
             {
-                ListEmployeeInsuranceDetails.Add(mapper.Map<EmployeeInsuranceInfo>(item));
+                ListEmployeeInsuranceDetails.Add(GetEmployeeInsuranceMapper(item));
             }
             var EmployeePFAndESIDetails = context.EmployeePFandESIInfos.Where(s => s.UserId == UserId).ToList();
             List<EmployeePFandESIInfo> ListEmployeePFAndESIDetails = new List<EmployeePFandESIInfo>();
-            foreach (var item in EmployeeInsuranceDetails)
+            foreach (var item in EmployeePFAndESIDetails)
             {
-                ListEmployeePFAndESIDetails.Add(mapper.Map<EmployeePFandESIInfo>(item));
+                ListEmployeePFAndESIDetails.Add(GetPFandESIInfoMapper(item));
             }
             var EmployeeDocumentDetails = context.EmployeeDocuments.Where(s => s.UserId == UserId).ToList();
             List<EmployeeDocument> ListEmployeeDocumentDetails = new List<EmployeeDocument>();
-            foreach (var item in EmployeeInsuranceDetails)
+            foreach (var item in EmployeeDocumentDetails)
             {
-                ListEmployeeDocumentDetails.Add(mapper.Map<EmployeeDocument>(item));
+                ListEmployeeDocumentDetails.Add(GetEmployeeDocumentMapper(item));
             }
             employeeIndexModels.employeeProfessionalInfos = ListEmployeeProfessionalInfo;
             employeeIndexModels.employeeBankInfos = ListEmployeeBankDetails;
@@ -90,11 +88,114 @@ namespace HRManager.Data.Entity
             return employeeIndexModels;
         }
 
+        #region Entities to Entity view Mappers returns EntityViews
+        public EmployeePersonalInfo GetEmployeePersonalInfoMapper(Entities.EmployeePersonalInfo PersonalInfo)
+        {
+            EmployeePersonalInfo EmployeePersonalInfo = new EmployeePersonalInfo();
+            EmployeePersonalInfo.FirstName = PersonalInfo.FirstName;
+            EmployeePersonalInfo.MiddleName = PersonalInfo.MiddleName;
+            EmployeePersonalInfo.LastName = PersonalInfo.LastName;
+            EmployeePersonalInfo.Gender = PersonalInfo.Gender;
+            EmployeePersonalInfo.DateOfBirth = PersonalInfo.DateOfBirth;
+            EmployeePersonalInfo.MobileNumber = PersonalInfo.MobileNumber;
+            EmployeePersonalInfo.PersonalEmailId = PersonalInfo.PersonalEmailId;
+            EmployeePersonalInfo.CurrentAddress = PersonalInfo.CurrentAddress;
+            EmployeePersonalInfo.PermanentAddress = PersonalInfo.PermanentAddress;
+            EmployeePersonalInfo.BloodGroup = PersonalInfo.BloodGroup;
+            EmployeePersonalInfo.EmergencyContactName = PersonalInfo.EmergencyContactName;
+            EmployeePersonalInfo.EmergencyContactNumber = PersonalInfo.EmergencyContactNumber;
+            EmployeePersonalInfo.RelationshipWithContact = PersonalInfo.RelationshipWithContact;
+            EmployeePersonalInfo.PanCardNumber = PersonalInfo.PanCardNumber;
+            EmployeePersonalInfo.NameAsPerAadhar = PersonalInfo.NameAsPerAadhar;
+            EmployeePersonalInfo.AadharCardNumber = PersonalInfo.AadharCardNumber;
+            EmployeePersonalInfo.FathersNameAsPerAadhar = PersonalInfo.FathersNameAsPerAadhar;
+            EmployeePersonalInfo.FathersMobileNumber = PersonalInfo.FathersMobileNumber;
+            EmployeePersonalInfo.MothersNameAsPerAadhar = PersonalInfo.MothersNameAsPerAadhar;
+            EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
+            return EmployeePersonalInfo;
+        }
+
+        public EmployeeProfessionalInfo GetEmployeeProfessionalInfoMapper(Entities.EmployeeProfessionalInfo ProfessionalInfo)
+        {
+            EmployeeProfessionalInfo employeeProfessionalInfo = new EmployeeProfessionalInfo();
+            employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
+            employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
+            employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
+            employeeProfessionalInfo.StartDate = ProfessionalInfo.StartDate;
+            employeeProfessionalInfo.EndDate = ProfessionalInfo.EndDate;
+            employeeProfessionalInfo.CTC = ProfessionalInfo.CTC;
+            employeeProfessionalInfo.ReportingManagerName = ProfessionalInfo.ReportingManagerName;
+            employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+            employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
+            employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
+            employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath;
+            employeeProfessionalInfo.RelievingLetterPath = ProfessionalInfo.RelievingLetterPath;
+            employeeProfessionalInfo.ExperienceLetterPath = ProfessionalInfo.ExperienceLetterPath;
+            employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
+            employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
+            employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+            return employeeProfessionalInfo;
+        }
+
+        public EmployeeBankInfo GetEmployeeBankMapper(Entities.EmployeeBankInfo BankInfo)
+        {
+            EmployeeBankInfo employeeBankInfo = new EmployeeBankInfo();
+            employeeBankInfo.BankName = BankInfo.BankName;
+            employeeBankInfo.NameAsPerBankAccount = BankInfo.NameAsPerBankAccount;
+            employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
+            employeeBankInfo.BranchName = BankInfo.BranchName;
+            employeeBankInfo.IFSCCode = BankInfo.IFSCCode;
+            return employeeBankInfo;
+        }
+
+        public EmployeeInsuranceInfo GetEmployeeInsuranceMapper(Entities.EmployeeInsuranceInfo InsuranceInfo)
+        {
+            EmployeeInsuranceInfo employeeInsuranceInfo = new EmployeeInsuranceInfo();
+            employeeInsuranceInfo.NameAsPerAadhar = InsuranceInfo.NameAsPerAadhar;
+            employeeInsuranceInfo.Relationship = InsuranceInfo.Relationship;
+            employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
+            employeeInsuranceInfo.DateOfBirthAsPerAadhar = InsuranceInfo.DateOfBirthAsPerAadhar;
+            return employeeInsuranceInfo;
+        }
+
+        public EmployeePFandESIInfo GetPFandESIInfoMapper(Entities.EmployeePFandESIInfo PFAndESIInfo)
+        {
+            EmployeePFandESIInfo employeePFandESIInfo = new EmployeePFandESIInfo();
+            employeePFandESIInfo.UAN = PFAndESIInfo.UAN;
+            employeePFandESIInfo.ESIN = PFAndESIInfo.ESIN;
+            return employeePFandESIInfo;
+        }
+
+        public EmployeeDocument GetEmployeeDocumentMapper(Entities.EmployeeDocument DocumentInfo)
+        {
+            EmployeeDocument employeeDocumentInfo = new EmployeeDocument();
+            employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto;
+            employeeDocumentInfo.Resume = DocumentInfo.Resume;
+            employeeDocumentInfo.PanCard = DocumentInfo.PanCard;
+            employeeDocumentInfo.AadharCard = DocumentInfo.AadharCard;
+            employeeDocumentInfo.Passport = DocumentInfo.Passport;
+            employeeDocumentInfo.VoterId = DocumentInfo.VoterId;
+            employeeDocumentInfo.CurrentAddressProof = DocumentInfo.CurrentAddressProof;
+            employeeDocumentInfo.PermanentAddressProof = DocumentInfo.PermanentAddressProof;
+            employeeDocumentInfo.FathersAadharCard = DocumentInfo.FathersAadharCard;
+            employeeDocumentInfo.MothersAadharCard = DocumentInfo.MothersAadharCard;
+            employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount = DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount;
+            employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear = DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear;
+            employeeDocumentInfo.SSCOrEquivalent = DocumentInfo.SSCOrEquivalent;
+            employeeDocumentInfo.IntermediateOrEquivalent = DocumentInfo.IntermediateOrEquivalent;
+            employeeDocumentInfo.GraduationOrEquivalent = DocumentInfo.GraduationOrEquivalent;
+            employeeDocumentInfo.PGOrEquivalent = DocumentInfo.PGOrEquivalent;
+            employeeDocumentInfo.AdvancedDiplomaIfAny = DocumentInfo.AdvancedDiplomaIfAny;
+            employeeDocumentInfo.ProfessionalCertificationsIfAny = DocumentInfo.ProfessionalCertificationsIfAny;
+            return employeeDocumentInfo;
+        }
+        #endregion
+
         #region Personal Info queries
         public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId,int UserId)
         {
             var employeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == PersonalInfoId && s.UserId == UserId);
-            return mapper.Map<EmployeePersonalInfo>(employeePersonalInfo);
+            return GetEmployeePersonalInfoMapper(employeePersonalInfo);
         }
 
         public int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo)
@@ -131,12 +232,28 @@ namespace HRManager.Data.Entity
         public EmployeeProfessionalInfo GetProfessionalInfo(int? ProfessionalInfoId,int UserId)
         {
             var professionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalInfoId && s.UserId == UserId);
-            return mapper.Map<EmployeeProfessionalInfo>(professionalInfo);//list to be returned
+            return GetEmployeeProfessionalInfoMapper(professionalInfo);//list to be returned
         }
 
         public int AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
-            Entities.EmployeeProfessionalInfo employeeProfessionalInfo = mapper.Map<Entities.EmployeeProfessionalInfo>(ProfessionalInfo);
+            Entities.EmployeeProfessionalInfo employeeProfessionalInfo = new Entities.EmployeeProfessionalInfo();
+            employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
+            employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
+            employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
+            employeeProfessionalInfo.StartDate = ProfessionalInfo.StartDate;
+            employeeProfessionalInfo.EndDate = ProfessionalInfo.EndDate;
+            employeeProfessionalInfo.CTC = ProfessionalInfo.CTC;
+            employeeProfessionalInfo.ReportingManagerName = ProfessionalInfo.ReportingManagerName;
+            employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+            employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
+            employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
+            employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath;
+            employeeProfessionalInfo.RelievingLetterPath = ProfessionalInfo.RelievingLetterPath;
+            employeeProfessionalInfo.ExperienceLetterPath = ProfessionalInfo.ExperienceLetterPath;
+            employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
+            employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
+            employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
             context.EmployeeProfessionalInfos.Add(employeeProfessionalInfo);
             context.SaveChanges();
             return employeeProfessionalInfo.Id;//added ProfessionalId value
@@ -180,12 +297,17 @@ namespace HRManager.Data.Entity
         public EmployeeBankInfo GetBankInfo(int? EmployeeBankInfoId,int UserId)
         {
             var bankInfo = context.EmployeeBankInfos.Where(s => s.Id == EmployeeBankInfoId && s.UserId == UserId).FirstOrDefault();
-            return mapper.Map<EmployeeBankInfo>(bankInfo);
+            return GetEmployeeBankMapper(bankInfo);
         }
 
         public int AddBankInfo(EmployeeBankInfo BankInfo)
         {
-            Entities.EmployeeBankInfo employeeBankInfo = mapper.Map<Entities.EmployeeBankInfo>(BankInfo);
+            Entities.EmployeeBankInfo employeeBankInfo = new Entities.EmployeeBankInfo();
+            employeeBankInfo.BankName = BankInfo.BankName;
+            employeeBankInfo.NameAsPerBankAccount = BankInfo.NameAsPerBankAccount;
+            employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
+            employeeBankInfo.BranchName = BankInfo.BranchName;
+            employeeBankInfo.IFSCCode = BankInfo.IFSCCode;
             context.EmployeeBankInfos.Add(employeeBankInfo);
             context.SaveChanges();
             return employeeBankInfo.Id;//added bankId value
@@ -217,13 +339,17 @@ namespace HRManager.Data.Entity
         #region Insurance Queries
         public EmployeeInsuranceInfo GetInsuranceInfo(int? EmployeeInsuranceInfoId,int UserId)
         {
-            var employeeInsuranceInfo = context.EmployeeBankInfos.Where(s => s.Id == EmployeeInsuranceInfoId && s.UserId == UserId).FirstOrDefault();
-            return mapper.Map<EmployeeInsuranceInfo>(employeeInsuranceInfo);
+            var employeeInsuranceInfo = context.EmployeeInsuranceInfos.Where(s => s.Id == EmployeeInsuranceInfoId && s.UserId == UserId).FirstOrDefault();
+            return GetEmployeeInsuranceMapper(employeeInsuranceInfo);
         }
 
         public int AddInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
-            Entities.EmployeeInsuranceInfo employeeInsuranceInfo = mapper.Map<Entities.EmployeeInsuranceInfo>(InsuranceInfo);
+            Entities.EmployeeInsuranceInfo employeeInsuranceInfo = new Entities.EmployeeInsuranceInfo();
+            employeeInsuranceInfo.NameAsPerAadhar = InsuranceInfo.NameAsPerAadhar;
+            employeeInsuranceInfo.Relationship = InsuranceInfo.Relationship;
+            employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
+            employeeInsuranceInfo.DateOfBirthAsPerAadhar = InsuranceInfo.DateOfBirthAsPerAadhar;
             context.EmployeeInsuranceInfos.Add(employeeInsuranceInfo);
             context.SaveChanges();
             return employeeInsuranceInfo.Id;//added insuranceId value
@@ -253,13 +379,15 @@ namespace HRManager.Data.Entity
         #region PF and ESI queries
         public EmployeePFandESIInfo GetPFAndESIInfo(int? EmployeePFAndESIInfoId,int UserId)
         {
-            var employeePFAndESIInfo = context.EmployeeBankInfos.Where(s => s.Id == EmployeePFAndESIInfoId && s.UserId == UserId).FirstOrDefault();
-            return mapper.Map<EmployeePFandESIInfo>(employeePFAndESIInfo);
+            var employeePFAndESIInfo = context.EmployeePFandESIInfos.Where(s => s.Id == EmployeePFAndESIInfoId && s.UserId == UserId).FirstOrDefault();
+            return GetPFandESIInfoMapper(employeePFAndESIInfo);
         }
 
         public int AddPFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
-            Entities.EmployeePFandESIInfo employeePFAndESIInfo = mapper.Map<Entities.EmployeePFandESIInfo>(PFAndESIInfo);
+            Entities.EmployeePFandESIInfo employeePFAndESIInfo = new Entities.EmployeePFandESIInfo();
+            employeePFAndESIInfo.UAN = PFAndESIInfo.UAN;
+            employeePFAndESIInfo.ESIN = PFAndESIInfo.ESIN;
             context.EmployeePFandESIInfos.Add(employeePFAndESIInfo);
             context.SaveChanges();
             return employeePFAndESIInfo.Id;//added PfId value
@@ -288,13 +416,31 @@ namespace HRManager.Data.Entity
         #region Document Queries
         public EmployeeDocument GetDocument(int? EmployeeDocumentInfoId,int UserId)
         {
-            var employeeDocumentInfo = context.EmployeeBankInfos.Where(s => s.Id == EmployeeDocumentInfoId && s.UserId == UserId).FirstOrDefault();
-            return mapper.Map<EmployeeDocument>(employeeDocumentInfo);
+            var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == EmployeeDocumentInfoId && s.UserId == UserId).FirstOrDefault();
+            return GetEmployeeDocumentMapper(employeeDocumentInfo);
         }
 
         public int AddDocument(EmployeeDocument DocumentInfo)
         {
-            Entities.EmployeeDocument employeeDocumentInfo = mapper.Map<Entities.EmployeeDocument>(DocumentInfo);
+            Entities.EmployeeDocument employeeDocumentInfo = new Entities.EmployeeDocument();
+            employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto;
+            employeeDocumentInfo.Resume = DocumentInfo.Resume;
+            employeeDocumentInfo.PanCard = DocumentInfo.PanCard;
+            employeeDocumentInfo.AadharCard = DocumentInfo.AadharCard;
+            employeeDocumentInfo.Passport = DocumentInfo.Passport;
+            employeeDocumentInfo.VoterId = DocumentInfo.VoterId;
+            employeeDocumentInfo.CurrentAddressProof = DocumentInfo.CurrentAddressProof;
+            employeeDocumentInfo.PermanentAddressProof = DocumentInfo.PermanentAddressProof;
+            employeeDocumentInfo.FathersAadharCard = DocumentInfo.FathersAadharCard;
+            employeeDocumentInfo.MothersAadharCard = DocumentInfo.MothersAadharCard;
+            employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount = DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount;
+            employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear = DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear;
+            employeeDocumentInfo.SSCOrEquivalent = DocumentInfo.SSCOrEquivalent;
+            employeeDocumentInfo.IntermediateOrEquivalent = DocumentInfo.IntermediateOrEquivalent;
+            employeeDocumentInfo.GraduationOrEquivalent = DocumentInfo.GraduationOrEquivalent;
+            employeeDocumentInfo.PGOrEquivalent = DocumentInfo.PGOrEquivalent;
+            employeeDocumentInfo.AdvancedDiplomaIfAny = DocumentInfo.AdvancedDiplomaIfAny;
+            employeeDocumentInfo.ProfessionalCertificationsIfAny = DocumentInfo.ProfessionalCertificationsIfAny;
             context.EmployeeDocuments.Add(employeeDocumentInfo);
             context.SaveChanges();
             return employeeDocumentInfo.Id;//added DocumentId value

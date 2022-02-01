@@ -5,10 +5,10 @@ using HRManager.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
+HRManager.Code.DBSetup.IntializeConfig(builder);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<Context>(options => options.UseSqlServer("Data Source=tekfriday122;Database=HRManager;User ID=sa;Password=friday123!"));
+//builder.Services.AddDbContext<Context>(options => options.UseSqlServer("Data Source=tekfriday122;Database=HRManager;User ID=sa;Password=friday123!"));
 builder.Services.AddScoped<IAdminManager,AdminManager>();
 builder.Services.AddScoped<IEmployeeManager,EmployeeManager>();
 builder.Services.AddScoped<ILoginManager,LoginManager>();

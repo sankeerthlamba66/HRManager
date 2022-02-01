@@ -11,9 +11,13 @@ namespace HRManager.Data.Entity
 {
     public class Context:DbContext
     {
-        public Context(DbContextOptions<Context> options):base(options)
-        {
+        //public Context(DbContextOptions<Context> options):base(options)
+        //{
 
+        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(Setup.DBConnectionString);
         }
         public DbSet<ApplicationText> ApplicationTexts { get; set; }
         public DbSet<EmployeePersonalInfo> EmployeePersonalInfos { get; set; }

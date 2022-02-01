@@ -11,7 +11,7 @@ using HRManager.Business.BussinessRepository;
 
 namespace HRManager.Controllers
 {
-    
+    [HRAuthorization("Employee")]
     public class EmployeeController : Code.BaseController
     {
         private readonly IEmployeeManager employeeManager;
@@ -24,7 +24,6 @@ namespace HRManager.Controllers
             employeeManager = _employeeManager;
         }
 
-        //[HRAuthorization("Employee")]
         public IActionResult Index()
         {
             EmployeeIndexModels employeeIndexModels = employeeManager.GetEmployeeDetails(Session.UserId);

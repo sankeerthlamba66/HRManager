@@ -11,7 +11,7 @@ namespace HRManager.Data.Entity
 {
     public class AdminQueries
     {
-        private readonly Context context;
+        private readonly Context context=new Context();
         private readonly IMapper mapper;
 
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees()

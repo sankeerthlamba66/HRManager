@@ -12,8 +12,8 @@ namespace HRManager.Data.Entity
 {
     public class EmployeeQueries
     {
-        private Context context;
-        private IMapper mapper;
+        private readonly Context context=new Context();
+        private readonly IMapper mapper;
         public EmployeeProfessionalInfo GetProfessionalDetails(int ProfessionalDetailsId)
         {
             //EmployeeProfessionalInfo professionalInfo = new EmployeeProfessionalInfo();

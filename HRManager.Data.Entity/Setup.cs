@@ -10,9 +10,9 @@ namespace HRManager.Data.Entity
     public class Setup
     {
         internal static String DBConnectionString = String.Empty;
-        public static void IntializeHRConfig(IConfigurationSection HRManagerDetails)
+        public static void IntializeHRConfig(string HRManagerDetails)
         {
-            Setup.DBConnectionString = HRManagerDetails.Value;
+            Setup.DBConnectionString = HRManagerDetails;
         }
     }
 }

@@ -11,7 +11,8 @@ namespace HRManager.Data.Entity
 {
     public class LoginQueries
     {
-        private Context context { get; set; }
+        private Context context;
+        
         public bool CheckUser(LoginUser loginUser)
         {
             var userDetails = context.Users.Where(s => s.UserName.Equals(loginUser.UserName) && s.Password.Equals(loginUser.Password)).Select(s=>s);

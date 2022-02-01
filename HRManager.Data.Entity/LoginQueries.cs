@@ -5,18 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HRManager.Data.Entity.EntityRepository;
 using HRManager.Models.Views;
 
 namespace HRManager.Data.Entity
 {
-    public class LoginQueries: ILoginQueries
+    public class LoginQueries
     {
         private Context context { get; set; }
-        public LoginQueries(Context _context)
-        {
-            context = _context;
-        }
         public bool CheckUser(LoginUser loginUser)
         {
             var userDetails = context.Users.Where(s => s.UserName.Equals(loginUser.UserName) && s.Password.Equals(loginUser.Password)).Select(s=>s);

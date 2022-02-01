@@ -7,53 +7,45 @@ using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using HRManager.Data.Entity;
 using HRManager.Business.BussinessRepository;
-using HRManager.Data.Entity.EntityRepository;
 
 namespace HRManager.Business
 {
     public class AdminManager:IAdminManager
     {
-        private readonly IAdminQueries adminQueries;
-        private readonly IEmployeeQueries employeeQueries;
-        public AdminManager(IAdminQueries _adminQueries, IEmployeeQueries _employeeQueries)
-        {
-            adminQueries = _adminQueries;
-            employeeQueries = _employeeQueries;
-        }
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees()
         {
-            return adminQueries.GetRecentlyUpdatedEmployees();
+            return new AdminQueries().GetRecentlyUpdatedEmployees();
         }
 
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees(DateTime DateFrom, DateTime DateTo)
         {
-            return adminQueries.GetRecentlyUpdatedEmployees(DateFrom, DateTo);
+            return new AdminQueries().GetRecentlyUpdatedEmployees(DateFrom, DateTo);
         }
 
         public List<EmployeeCardSummary> GetRecentlyUpdatedEmployeeCards()
         {
-            return adminQueries.GetRecentlyUpdatedEmployeeCards();
+            return new AdminQueries().GetRecentlyUpdatedEmployeeCards();
         }
 
         public List<EmployeeCardSummary> GetRecentlyUpdatedEmployeeCards(DateTime DateFrom, DateTime DateTo)
         {
-            return adminQueries.GetRecentlyUpdatedEmployeeCards(DateFrom, DateTo);
+            return new AdminQueries().GetRecentlyUpdatedEmployeeCards(DateFrom, DateTo);
         }
 
         public EmployeePDValidationSummary GetEmployeePDValidationSummary(int EmployeeId)
         {
-            return adminQueries.GetEmployeePDValidationSummary(EmployeeId);
+            return new AdminQueries().GetEmployeePDValidationSummary(EmployeeId);
         }
 
         public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId)
         {
-            return adminQueries.GetEmployeeBGVerificationSummary(EmployeeId);
+            return new AdminQueries().GetEmployeeBGVerificationSummary(EmployeeId);
         }
 
         public void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate)
         {
-            var Summary = employeeQueries.GetEmployeeShortSummary(EmployeeId);
-            var EmailTemplate = adminQueries.GetPDVEmailTemplate();
+            var Summary = new EmployeeQueries().GetEmployeeShortSummary(EmployeeId);
+            var EmailTemplate = new AdminQueries().GetPDVEmailTemplate();
 
             //Substitute placeholders in the templates with the employee details and Fields List.
             string Subject = string.Empty;
@@ -64,8 +56,8 @@ namespace HRManager.Business
 
         public void SendBGVerificationEmail(int ProfessionalDetailsId)
         {
-            var ProfDetails = employeeQueries.GetProfessionalDetails(ProfessionalDetailsId);
-            var EmailTemplate = adminQueries.GetBGVEmailTemplate();
+            var ProfDetails = new EmployeeQueries().GetProfessionalDetails(ProfessionalDetailsId);
+            var EmailTemplate = new AdminQueries().GetBGVEmailTemplate();
 
             //Substitute placeholders in the templates with the professional details.
             string Subject = string.Empty;

@@ -2,7 +2,6 @@
 using HRManager.Business;
 using HRManager.Business.BussinessRepository;
 using HRManager.Data.Entity;
-using HRManager.Data.Entity.EntityRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,11 +12,9 @@ builder.Services.AddDbContext<Context>(options => options.UseSqlServer("Data Sou
 builder.Services.AddScoped<IAdminManager,AdminManager>();
 builder.Services.AddScoped<IEmployeeManager,EmployeeManager>();
 builder.Services.AddScoped<ILoginManager,LoginManager>();
-builder.Services.AddScoped<IAdminQueries,AdminQueries>();
-builder.Services.AddScoped<IEmployeeQueries,EmployeeQueries>();
-builder.Services.AddScoped<ILoginQueries,LoginQueries>();
 builder.Services.AddAutoMapper(typeof(Program));
 
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(20);
@@ -39,7 +36,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(

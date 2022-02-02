@@ -85,6 +85,7 @@ namespace HRManager.Data.Entity
             EmployeePersonalInfo EmployeePersonalInfo = new EmployeePersonalInfo();
             try
             {
+                EmployeePersonalInfo.Id = PersonalInfo.Id;
                 EmployeePersonalInfo.FirstName = PersonalInfo.FirstName;
                 EmployeePersonalInfo.MiddleName = PersonalInfo.MiddleName;
                 EmployeePersonalInfo.LastName = PersonalInfo.LastName;
@@ -118,6 +119,7 @@ namespace HRManager.Data.Entity
             EmployeeProfessionalInfo employeeProfessionalInfo = new EmployeeProfessionalInfo();
             try
             {
+                employeeProfessionalInfo.Id = ProfessionalInfo.Id;
                 employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
                 employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
                 employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
@@ -147,6 +149,7 @@ namespace HRManager.Data.Entity
             EmployeeBankInfo employeeBankInfo = new EmployeeBankInfo();
             try
             {
+                employeeBankInfo.Id = BankInfo.Id;
                 employeeBankInfo.BankName = BankInfo.BankName;
                 employeeBankInfo.NameAsPerBankAccount = BankInfo.NameAsPerBankAccount;
                 employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
@@ -165,6 +168,7 @@ namespace HRManager.Data.Entity
             EmployeeInsuranceInfo employeeInsuranceInfo = new EmployeeInsuranceInfo();
             try
             {
+                employeeInsuranceInfo.Id = InsuranceInfo.Id;
                 employeeInsuranceInfo.NameAsPerAadhar = InsuranceInfo.NameAsPerAadhar;
                 employeeInsuranceInfo.Relationship = InsuranceInfo.Relationship;
                 employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
@@ -182,6 +186,7 @@ namespace HRManager.Data.Entity
             EmployeePFandESIInfo employeePFandESIInfo = new EmployeePFandESIInfo();
             try
             {
+                employeePFandESIInfo.Id = PFAndESIInfo.Id;
                 employeePFandESIInfo.UAN = PFAndESIInfo.UAN;
                 employeePFandESIInfo.ESIN = PFAndESIInfo.ESIN;
             }
@@ -197,6 +202,7 @@ namespace HRManager.Data.Entity
             EmployeeDocument employeeDocumentInfo = new EmployeeDocument();
             try
             {
+                employeeDocumentInfo.Id = DocumentInfo.Id;
                 employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto;
                 employeeDocumentInfo.Resume = DocumentInfo.Resume;
                 employeeDocumentInfo.PanCard = DocumentInfo.PanCard;

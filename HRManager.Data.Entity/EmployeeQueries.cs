@@ -309,7 +309,7 @@ namespace HRManager.Data.Entity
 
         public List<EmployeeProfessionalInfo> GetProfessionalInfo(int UserId)
         {
-            List<EmployeeProfessionalInfo> employeeProfessionalInfo = null;
+            List<EmployeeProfessionalInfo> employeeProfessionalInfo = new List<EmployeeProfessionalInfo>();
             try
             {
                 var professionalInfo = context.EmployeeProfessionalInfos.Where(s =>s.UserId == UserId).ToList();
@@ -422,7 +422,7 @@ namespace HRManager.Data.Entity
 
         public List<EmployeeBankInfo> GetBankInfo(int UserId)
         {
-            List<EmployeeBankInfo> employeeBankInfo = null;
+            List<EmployeeBankInfo> employeeBankInfo = new List<EmployeeBankInfo>();
             try
             {
                 var bankInfo = context.EmployeeBankInfos.Where(s => s.UserId == UserId).ToList();
@@ -511,7 +511,7 @@ namespace HRManager.Data.Entity
 
         public List<EmployeeInsuranceInfo> GetInsuranceInfo(int UserId)
         {
-            List<EmployeeInsuranceInfo> _employeeInsuranceInfo = null;
+            List<EmployeeInsuranceInfo> _employeeInsuranceInfo = new List<EmployeeInsuranceInfo>();
             try
             {
                 var employeeInsuranceInfo = context.EmployeeInsuranceInfos.Where(s => s.UserId == UserId).ToList();
@@ -599,7 +599,7 @@ namespace HRManager.Data.Entity
 
         public List<EmployeePFandESIInfo> GetPFAndESIInfo(int UserId)
         {
-            List<EmployeePFandESIInfo> _employeePFandESIInfo = null;
+            List<EmployeePFandESIInfo> _employeePFandESIInfo = new List<EmployeePFandESIInfo>();
             try
             {
                 var employeePFAndESIInfo = context.EmployeePFandESIInfos.Where(s=>s.UserId == UserId).ToList();
@@ -684,7 +684,7 @@ namespace HRManager.Data.Entity
 
         public List<EmployeeDocument> GetDocument(int UserId)
         {
-            List<EmployeeDocument> _employeeDocument = null;
+            List<EmployeeDocument> _employeeDocument = new List<EmployeeDocument>();
             try
             {
                 var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.UserId == UserId).ToList();
@@ -699,6 +699,7 @@ namespace HRManager.Data.Entity
             }
             return _employeeDocument;
         }
+
         public int AddDocument(EmployeeDocument DocumentInfo)
         {
             Entities.EmployeeDocument employeeDocumentInfo = new Entities.EmployeeDocument();

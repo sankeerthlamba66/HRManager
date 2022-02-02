@@ -336,6 +336,7 @@ namespace HRManager.Data.Entity
             Entities.EmployeeProfessionalInfo employeeProfessionalInfo = new Entities.EmployeeProfessionalInfo();
             try
             {
+                employeeProfessionalInfo.UserId = ProfessionalInfo.UserId;
                 employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
                 employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
                 employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
@@ -352,6 +353,10 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+                employeeProfessionalInfo.CreatedBy = "";
+                employeeProfessionalInfo.CreatedDate = DateTime.Now;
+                employeeProfessionalInfo.UpdatedBy = "";
+                employeeProfessionalInfo.UpdatedDate = DateTime.Now;
                 context.EmployeeProfessionalInfos.Add(employeeProfessionalInfo);
                 context.SaveChanges();
             }
@@ -447,11 +452,16 @@ namespace HRManager.Data.Entity
             Entities.EmployeeBankInfo employeeBankInfo = new Entities.EmployeeBankInfo();
             try
             {
+                employeeBankInfo.UserId = BankInfo.UserId;
                 employeeBankInfo.BankName = BankInfo.BankName;
                 employeeBankInfo.NameAsPerBankAccount = BankInfo.NameAsPerBankAccount;
                 employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
                 employeeBankInfo.BranchName = BankInfo.BranchName;
                 employeeBankInfo.IFSCCode = BankInfo.IFSCCode;
+                employeeBankInfo.CreatedBy = "";
+                employeeBankInfo.CreatedDate = DateTime.Now;
+                employeeBankInfo.UpdatedBy = "";
+                employeeBankInfo.UpdatedDate = DateTime.Now;
                 context.EmployeeBankInfos.Add(employeeBankInfo);
                 context.SaveChanges();
             }
@@ -538,10 +548,15 @@ namespace HRManager.Data.Entity
             Entities.EmployeeInsuranceInfo employeeInsuranceInfo = new Entities.EmployeeInsuranceInfo();
             try
             {
+                employeeInsuranceInfo.UserId = InsuranceInfo.UserId;
                 employeeInsuranceInfo.NameAsPerAadhar = InsuranceInfo.NameAsPerAadhar;
                 employeeInsuranceInfo.Relationship = InsuranceInfo.Relationship;
                 employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
                 employeeInsuranceInfo.DateOfBirthAsPerAadhar = InsuranceInfo.DateOfBirthAsPerAadhar;
+                employeeInsuranceInfo.CreatedDate = DateTime.Now;
+                employeeInsuranceInfo.CreatedBy = "";
+                employeeInsuranceInfo.UpdatedDate= DateTime.Now;
+                employeeInsuranceInfo.UpdatedBy = "";
                 context.EmployeeInsuranceInfos.Add(employeeInsuranceInfo);
                 context.SaveChanges();
             }
@@ -626,8 +641,13 @@ namespace HRManager.Data.Entity
             Entities.EmployeePFandESIInfo employeePFAndESIInfo = new Entities.EmployeePFandESIInfo();
             try
             {
+                employeePFAndESIInfo.UserId = PFAndESIInfo.UserId;
                 employeePFAndESIInfo.UAN = PFAndESIInfo.UAN;
                 employeePFAndESIInfo.ESIN = PFAndESIInfo.ESIN;
+                employeePFAndESIInfo.CreatedBy = "";
+                employeePFAndESIInfo.CreatedDate = DateTime.Now;
+                employeePFAndESIInfo.UpdatedDate = DateTime.Now;
+                employeePFAndESIInfo.UpdatedBy = "";
                 context.EmployeePFandESIInfos.Add(employeePFAndESIInfo);
                 context.SaveChanges();
             }
@@ -711,6 +731,7 @@ namespace HRManager.Data.Entity
             Entities.EmployeeDocument employeeDocumentInfo = new Entities.EmployeeDocument();
             try
             {
+                employeeDocumentInfo.UserId = DocumentInfo.UserId;
                 employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto;
                 employeeDocumentInfo.Resume = DocumentInfo.Resume;
                 employeeDocumentInfo.PanCard = DocumentInfo.PanCard;
@@ -729,6 +750,10 @@ namespace HRManager.Data.Entity
                 employeeDocumentInfo.PGOrEquivalent = DocumentInfo.PGOrEquivalent;
                 employeeDocumentInfo.AdvancedDiplomaIfAny = DocumentInfo.AdvancedDiplomaIfAny;
                 employeeDocumentInfo.ProfessionalCertificationsIfAny = DocumentInfo.ProfessionalCertificationsIfAny;
+                employeeDocumentInfo.CreatedDate = DateTime.Now;
+                employeeDocumentInfo.CreatedBy = "";
+                employeeDocumentInfo.UpdatedDate = DateTime.Now;
+                employeeDocumentInfo.UpdatedBy = "";
                 context.EmployeeDocuments.Add(employeeDocumentInfo);
                 context.SaveChanges();
             }

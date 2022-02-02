@@ -256,9 +256,9 @@ namespace HRManager.Data.Entity
 
         public int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo)
         {
-            var EmployeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == PersonalInfo.Id && s.UserId==PersonalInfo.UserId);
             try
             {
+                var EmployeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == PersonalInfo.Id && s.UserId == PersonalInfo.UserId);
                 EmployeePersonalInfo.FirstName = PersonalInfo.FirstName;
                 EmployeePersonalInfo.MiddleName = PersonalInfo.MiddleName;
                 EmployeePersonalInfo.LastName = PersonalInfo.LastName;
@@ -286,7 +286,7 @@ namespace HRManager.Data.Entity
             {
                 ErrorLogger.LogError(ex.Message);
             }
-            return EmployeePersonalInfo.Id;//return the updated id here
+            return Convert.ToInt32(PersonalInfo.Id);//return the updated id here
         }
 
         #endregion
@@ -358,9 +358,9 @@ namespace HRManager.Data.Entity
 
         public int UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
         {
-            var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalInfo.Id && s.UserId==ProfessionalInfo.UserId);
             try
             {
+                var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalInfo.Id && s.UserId == ProfessionalInfo.UserId);
                 employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
                 employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
                 employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
@@ -383,7 +383,7 @@ namespace HRManager.Data.Entity
             {
                 ErrorLogger.LogError(ex.Message);
             }
-            return employeeProfessionalInfo.Id;//updated professionalId value
+            return Convert.ToInt32(ProfessionalInfo.Id);//updated professionalId value
         }
 
         public void DeleteProfessionalInfo(int ProfessionalInfoId,int UserId)
@@ -458,9 +458,9 @@ namespace HRManager.Data.Entity
 
         public int UpdateBankInfo(EmployeeBankInfo BankInfo)
         {
-            var employeeBankInfo = context.EmployeeBankInfos.Where(s => s.Id == BankInfo.Id && s.UserId==BankInfo.UserId).FirstOrDefault();
             try
             {
+                var employeeBankInfo = context.EmployeeBankInfos.Where(s => s.Id == BankInfo.Id && s.UserId == BankInfo.UserId).FirstOrDefault();
                 employeeBankInfo.BankName = BankInfo.BankName;
                 employeeBankInfo.NameAsPerBankAccount = BankInfo.NameAsPerBankAccount;
                 employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
@@ -472,7 +472,7 @@ namespace HRManager.Data.Entity
             {
                 ErrorLogger.LogError(ex.Message);
             }
-            return employeeBankInfo.Id;//updated employeeBankInfoId value
+            return Convert.ToInt32(BankInfo.Id);//updated employeeBankInfoId value
         }
 
         public void DeleteBankInfo(int EmployeeBankInfoId,int UserId)
@@ -548,9 +548,9 @@ namespace HRManager.Data.Entity
 
         public int UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
-            var employeeInsuranceInfo = context.EmployeeInsuranceInfos.Where(s => s.Id == InsuranceInfo.Id && s.UserId == InsuranceInfo.UserId).FirstOrDefault();
             try
             {
+                var employeeInsuranceInfo = context.EmployeeInsuranceInfos.Where(s => s.Id == InsuranceInfo.Id && s.UserId == InsuranceInfo.UserId).FirstOrDefault();
                 employeeInsuranceInfo.NameAsPerAadhar = InsuranceInfo.NameAsPerAadhar;
                 employeeInsuranceInfo.Relationship = InsuranceInfo.Relationship;
                 employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
@@ -560,7 +560,7 @@ namespace HRManager.Data.Entity
             {
                 ErrorLogger.LogError(ex.Message);
             }
-            return employeeInsuranceInfo.Id;//updated employeeinsuranceInfoId value
+            return Convert.ToInt32(InsuranceInfo.Id);//updated employeeinsuranceInfoId value
         }
 
         public void DeleteInsuranceInfo(int EmployeeInsuranceInfoId,int UserId)
@@ -634,9 +634,9 @@ namespace HRManager.Data.Entity
 
         public int UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
-            var employeePFandESIInfo = context.EmployeePFandESIInfos.Where(s => s.Id == PFAndESIInfo.Id && s.UserId == PFAndESIInfo.UserId).FirstOrDefault();
             try
             {
+                var employeePFandESIInfo = context.EmployeePFandESIInfos.Where(s => s.Id == PFAndESIInfo.Id && s.UserId == PFAndESIInfo.UserId).FirstOrDefault();
                 employeePFandESIInfo.UAN = PFAndESIInfo.UAN;
                 employeePFandESIInfo.ESIN = PFAndESIInfo.ESIN;
                 context.SaveChanges();
@@ -645,7 +645,7 @@ namespace HRManager.Data.Entity
             {
                 ErrorLogger.LogError(ex.Message);
             }
-            return employeePFandESIInfo.Id;//updated employeePfInfoId value
+            return Convert.ToInt32(PFAndESIInfo.Id);//updated employeePfInfoId value
         }
 
         public void DeletePFAndESIInfo(int EmployeePFAndESIInfoId,int UserId)
@@ -734,9 +734,9 @@ namespace HRManager.Data.Entity
 
         public int UpdateDocument(EmployeeDocument DocumentInfo)
         {
-            var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == DocumentInfo.Id && s.UserId == DocumentInfo.UserId).FirstOrDefault();
             try
             {
+                var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == DocumentInfo.Id && s.UserId == DocumentInfo.UserId).FirstOrDefault();
                 employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto;
                 employeeDocumentInfo.Resume = DocumentInfo.Resume;
                 employeeDocumentInfo.PanCard = DocumentInfo.PanCard;
@@ -761,7 +761,7 @@ namespace HRManager.Data.Entity
             {
                 ErrorLogger.LogError(ex.Message);
             }
-            return employeeDocumentInfo.Id;//updated employeeDoucumentInfoId value
+            return Convert.ToInt32(DocumentInfo.Id);//updated employeeDoucumentInfoId value
         }
 
         public void DeleteDocument(int EmployeeDocumentInfoId,int UserId)

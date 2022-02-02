@@ -1,20 +1,33 @@
 ﻿@model HRManager.Models.EntityViews.EmployeeProfessionalInfo
 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetProfessionalInfo</title>
+</head>
+<body>
+
 <div>
     <h4>EmployeeProfessionalInfo</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.HiddenFor(model => model.Id)
+            @Html.DisplayNameFor(model => model.Id)
         </dt>
         <dd class = "col-sm-10">
-            @Html.HiddenFor(model => model.Id)
+            @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.HiddenFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.UserId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.HiddenFor(model => model.UserId)
+            @Html.DisplayFor(model => model.UserId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OrganizationName)
@@ -33,6 +46,18 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.LastDesignation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndDate)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CTC)
@@ -109,5 +134,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Back</a>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
 </div>
+</body>
+</html>

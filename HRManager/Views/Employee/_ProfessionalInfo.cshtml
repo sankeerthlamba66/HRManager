@@ -1,0 +1,120 @@
+﻿@model HRManager.Models.EntityViews.EmployeeProfessionalInfo
+
+@if (Model is not null)
+{
+    <div>
+        <h4>EmployeeProfessionalInfo</h4>
+        <hr />
+
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.HiddenFor(model => model.Id)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.HiddenFor(model => model.Id)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.HiddenFor(model => model.UserId)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.HiddenFor(model => model.UserId)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.OrganizationName)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.OrganizationName)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.IsThisYourLastEmployment)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.IsThisYourLastEmployment)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.LastDesignation)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.LastDesignation)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.CTC)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.CTC)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ReportingManagerName)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ReportingManagerName)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ReportingManagerEmailId)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ReportingManagerEmailId)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.HRName)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.HRName)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.HREmailId)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.HREmailId)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.OfferLetterPath)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.OfferLetterPath)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.RelievingLetterPath)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.RelievingLetterPath)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ExperienceLetterPath)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ExperienceLetterPath)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PaySlip1)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PaySlip1)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PaySlip2)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PaySlip2)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PaySlip3)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PaySlip3)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ReferenceEmailId)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ReferenceEmailId)
+            </dd>
+        </dl>
+        @Html.ActionLink("Add","AddProfessionalInfo","Employee")|
+
+        @Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})
+
+         @Html.ActionLink("Delete","DeleteProfessionalInfo","Employee",new{id=Model.Id})
+    </div>
+}
+

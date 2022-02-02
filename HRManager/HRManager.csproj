@@ -21,29 +21,41 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Shared\EmployeeDetails\_BankInfo.cshtml">
+    <Content Update="Views\Employee\AddInsuranceInfo.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Views\Shared\EmployeeDetails\_Document.cshtml">
+    <Content Update="Views\Employee\AddPFAndESIInfo.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Views\Shared\EmployeeDetails\_InsuranceInfo.cshtml">
+    <Content Update="Views\Employee\_BankInfo.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Views\Shared\EmployeeDetails\_PersonalInfo.cshtml">
+    <Content Update="Views\Employee\_Document.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="Views\Shared\EmployeeDetails\_PFandESIInfo.cshtml">
+    <Content Update="Views\Employee\_InsuranceInfo.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Employee\_PFandESIInfo.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Employee\_ProfessionalInfo.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Employee\EmployeePersonalInfo\" />
+    <Folder Include="Views\Employee\EmployeePFandESIInfo\" />
+    <Folder Include="Views\Employee\EmployeeProfessionalInfo\" />
+    <Folder Include="Views\Shared\EmployeeDetails\" />
     <Folder Include="wwwroot\Documents\" />
   </ItemGroup>
 

@@ -96,6 +96,18 @@ namespace HRManager.Controllers
                 return HandleException(ex);
             }
         }
+        [HttpGet]
+        public IActionResult AddProfessionalInfo()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
 
         [HttpPost]
         public IActionResult AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)

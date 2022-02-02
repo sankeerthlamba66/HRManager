@@ -4,8 +4,11 @@
     ViewData["Title"] = "Employee Page";
 }
 
+<h1>Employee Details</h1>
+ <div>
+     <form asp-controller="Employee" asp-action="Index">
 @if (Model is not null)
-{
+{  
     <div>
     <partial name="_PersonalInfo.cshtml" model="@Model.employeePersonalInfo">
     </div>
@@ -45,3 +48,5 @@
         </div>
     }
 }
+ </form>
+ </div>

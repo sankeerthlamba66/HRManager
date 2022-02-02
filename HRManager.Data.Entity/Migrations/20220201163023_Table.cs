@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRManager.Data.Entity.Migrations
 {
-    public partial class tables : Migration
+    public partial class Table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

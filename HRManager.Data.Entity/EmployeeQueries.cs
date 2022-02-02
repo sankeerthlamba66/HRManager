@@ -65,43 +65,12 @@ namespace HRManager.Data.Entity
             EmployeeIndexModels employeeIndexModels = new EmployeeIndexModels();
             try
             {
-                var EmployeePersonalDetails = context.EmployeePersonalInfos.Where(s => s.UserId == UserId).FirstOrDefault();
-                employeeIndexModels.employeePersonalInfo = GetEmployeePersonalInfoMapper(EmployeePersonalDetails);
-                var EmployeeProfessionalDetails = context.EmployeeProfessionalInfos.Where(s => s.UserId == UserId).ToList();
-                List<EmployeeProfessionalInfo> ListEmployeeProfessionalInfo = new List<EmployeeProfessionalInfo>();
-                foreach (var item in EmployeeProfessionalDetails)
-                {
-                    ListEmployeeProfessionalInfo.Add(GetEmployeeProfessionalInfoMapper(item));
-                }
-                var EmployeeBankDetails = context.EmployeeBankInfos.Where(s => s.UserId == UserId).ToList();
-                List<EmployeeBankInfo> ListEmployeeBankDetails = new List<EmployeeBankInfo>();
-                foreach (var item in EmployeeBankDetails)
-                {
-                    ListEmployeeBankDetails.Add(GetEmployeeBankMapper(item));
-                }
-                var EmployeeInsuranceDetails = context.EmployeeInsuranceInfos.Where(s => s.UserId == UserId).ToList();
-                List<EmployeeInsuranceInfo> ListEmployeeInsuranceDetails = new List<EmployeeInsuranceInfo>();
-                foreach (var item in EmployeeInsuranceDetails)
-                {
-                    ListEmployeeInsuranceDetails.Add(GetEmployeeInsuranceMapper(item));
-                }
-                var EmployeePFAndESIDetails = context.EmployeePFandESIInfos.Where(s => s.UserId == UserId).ToList();
-                List<EmployeePFandESIInfo> ListEmployeePFAndESIDetails = new List<EmployeePFandESIInfo>();
-                foreach (var item in EmployeePFAndESIDetails)
-                {
-                    ListEmployeePFAndESIDetails.Add(GetPFandESIInfoMapper(item));
-                }
-                var EmployeeDocumentDetails = context.EmployeeDocuments.Where(s => s.UserId == UserId).ToList();
-                List<EmployeeDocument> ListEmployeeDocumentDetails = new List<EmployeeDocument>();
-                foreach (var item in EmployeeDocumentDetails)
-                {
-                    ListEmployeeDocumentDetails.Add(GetEmployeeDocumentMapper(item));
-                }
-                employeeIndexModels.employeeProfessionalInfos = ListEmployeeProfessionalInfo;
-                employeeIndexModels.employeeBankInfos = ListEmployeeBankDetails;
-                employeeIndexModels.employeeInsuranceInfos = ListEmployeeInsuranceDetails;
-                employeeIndexModels.employeePFandESIInfos = ListEmployeePFAndESIDetails;
-                employeeIndexModels.employeeDocuments = ListEmployeeDocumentDetails;
+                employeeIndexModels.employeePersonalInfo = GetPersonalInfo(UserId);
+                employeeIndexModels.employeeProfessionalInfos = GetProfessionalInfo(UserId);
+                employeeIndexModels.employeeBankInfos = GetBankInfo(UserId);
+                employeeIndexModels.employeeInsuranceInfos = GetInsuranceInfo(UserId);
+                employeeIndexModels.employeePFandESIInfos = GetPFAndESIInfo(UserId);
+                employeeIndexModels.employeeDocuments = GetDocument(UserId);
             }
             catch (Exception ex)
             {
@@ -540,7 +509,7 @@ namespace HRManager.Data.Entity
             return _employeeInsuranceInfo;
         }
 
-        public List<EmployeeInsuranceInfo> GetInsuranceInfo( int UserId)
+        public List<EmployeeInsuranceInfo> GetInsuranceInfo(int UserId)
         {
             List<EmployeeInsuranceInfo> _employeeInsuranceInfo = null;
             try

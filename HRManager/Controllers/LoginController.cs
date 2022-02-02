@@ -16,29 +16,43 @@ namespace HRManager.Controllers
         }
         [HttpGet]
         public IActionResult Index()
-        { 
-            return View();
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
         }
 
         [HttpPost]
         public IActionResult LogIn(LoginUser loginUser)
         {
-            if (loginManager.CheckUser(loginUser))
+            try
             {
-                var UserDetails = loginManager.GetUserDetails(loginUser.UserName);
-                Session.UserId = (int)UserDetails.Id;
-                Session.UserName = UserDetails.UserName;
-                Session.UserRoles = UserDetails.Roles.Split(",").ToList();
-                if (UserDetails.Roles.Contains("Employee"))
+                if (loginManager.CheckUser(loginUser))
                 {
-                    return RedirectToAction("Index", "Employee");
+                    var UserDetails = loginManager.GetUserDetails(loginUser.UserName);
+                    Session.UserId = (int)UserDetails.Id;
+                    Session.UserName = UserDetails.UserName;
+                    Session.UserRoles = UserDetails.Roles.Split(",").ToList();
+                    if (UserDetails.Roles.Contains("Employee"))
+                    {
+                        return RedirectToAction("Index", "Employee");
+                    }
+                    else if (UserDetails.Roles.Contains("HRAdmin"))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                 }
-                else if (UserDetails.Roles.Contains("HRAdmin"))
-                {
-                    return RedirectToAction("Index", "Admin");
-                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
         }
 
 

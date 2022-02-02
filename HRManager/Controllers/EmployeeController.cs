@@ -52,6 +52,20 @@ namespace HRManager.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult UpdatePersonalInfo()
+        {
+            try
+            {
+                var personalInfo = employeeManager.GetPersonalInfo(Session.UserId);
+                return View(personalInfo);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+
+        }
         [HttpPost]
         public IActionResult UpdatePersonalInfo(EmployeePersonalInfo PersonallInfo)
         {
@@ -92,6 +106,20 @@ namespace HRManager.Controllers
                 ProfessionalInfo.UserId = Session.UserId;
                 var addedProfessionalInfoId = employeeManager.AddProfessionalInfo(ProfessionalInfo);
                 return RedirectToAction("GetProfessionalInfo", new { Id = addedProfessionalInfoId });
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult UpdateProfessionalInfo()
+        {
+            try
+            {
+                var professionalInfo = employeeManager.GetProfessionalInfo(Session.UserId);
+                return View(professionalInfo);
             }
             catch (Exception ex)
             {
@@ -158,6 +186,20 @@ namespace HRManager.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult PutBankInfo()
+        {
+            try
+            {
+                var BankInfoList = employeeManager.GetBankInfo(Session.UserId);
+                return View(BankInfoList);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
         public IActionResult PutBankInfo(EmployeeBankInfo BankInfo)
         {
             try
@@ -210,6 +252,20 @@ namespace HRManager.Controllers
                 InsuranceInfo.UserId = Session.UserId;
                 int addedInsuranceInfoId = employeeManager.AddInsuranceInfo(InsuranceInfo);
                 return RedirectToAction("GetInsuranceInfo", new { Id = addedInsuranceInfoId });
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult UpdateInsuranceInfo()
+        {
+            try
+            {
+                var insuranceInfo = employeeManager.GetInsuranceInfo( Session.UserId);
+                return View(insuranceInfo);
             }
             catch (Exception ex)
             {
@@ -271,6 +327,19 @@ namespace HRManager.Controllers
                 PFAndESIInfo.UserId = Session.UserId;
                 int addedPFAndESIInfoId = employeeManager.AddPFAndESIInfo(PFAndESIInfo);
                 return RedirectToAction("GetPFAndESIInfo", new { Id = addedPFAndESIInfoId });
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+        [HttpGet]
+        public IActionResult UpdatePFAndESIInfo()
+        {
+            try
+            {
+                var PFAndESIInfoList = employeeManager.GetPFAndESIInfo(Session.UserId);
+                return View(PFAndESIInfoList);
             }
             catch (Exception ex)
             {
@@ -369,6 +438,19 @@ namespace HRManager.Controllers
                 { employeeDocument.ProfessionalCertificationsIfAny = Code.FileManager.UploadDocument(DocumentInfo.ProfessionalCertificationsIfAny, Path.Combine(_webHostEnvironment.WebRootPath, "/Documents")); }
                 int addedDocumentId = employeeManager.AddDocument(employeeDocument);
                 return RedirectToAction("GetDocument", new { Id = addedDocumentId });
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+        [HttpGet]
+        public IActionResult UpdateDocument()
+        {
+            try
+            {
+                var document = employeeManager.GetDocument(Session.UserId);
+                return View(document);
             }
             catch (Exception ex)
             {

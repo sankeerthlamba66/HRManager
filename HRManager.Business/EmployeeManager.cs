@@ -23,6 +23,10 @@ namespace HRManager.Business
             return new EmployeeQueries().GetPersonalInfo(PersonalInfoId, UserId);
         }
 
+        public EmployeePersonalInfo GetPersonalInfo(int UserId)
+        {
+            return new EmployeeQueries().GetPersonalInfo(UserId);
+        }
         public int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo)
         {
             return new EmployeeQueries().UpdatePersonalInfo(PersonalInfo);
@@ -34,6 +38,11 @@ namespace HRManager.Business
         public EmployeeProfessionalInfo GetProfessionalInfo(int? ProfessionalInfoId,int UserId)
         {
             return new EmployeeQueries().GetProfessionalInfo(ProfessionalInfoId,UserId);
+        }
+
+        public List<EmployeeProfessionalInfo> GetProfessionalInfo(int UserId)
+        {
+            return new EmployeeQueries().GetProfessionalInfo(UserId);
         }
 
         public int AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
@@ -58,6 +67,10 @@ namespace HRManager.Business
             return new EmployeeQueries().GetBankInfo(EmployeeBankInfoId,UserId);
         }
 
+        public List<EmployeeBankInfo> GetBankInfo( int UserId)
+        {
+            return new EmployeeQueries().GetBankInfo(UserId);
+        }
         public int AddBankInfo(EmployeeBankInfo ProfessionalInfo)
         {
             return new EmployeeQueries().AddBankInfo(ProfessionalInfo);
@@ -80,6 +93,10 @@ namespace HRManager.Business
             return new EmployeeQueries().GetInsuranceInfo(EmployeeInsuranceInfoId,UserId);
         }
 
+        public List<EmployeeInsuranceInfo> GetInsuranceInfo(int UserId)
+        {
+            return new EmployeeQueries().GetInsuranceInfo(UserId);
+        }
         public int AddInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
         {
             return new EmployeeQueries().AddInsuranceInfo(InsuranceInfo);
@@ -102,6 +119,10 @@ namespace HRManager.Business
             return new EmployeeQueries().GetPFAndESIInfo(EmployeePFAndESIInfoId,UserId);
         }
 
+        public List<EmployeePFandESIInfo> GetPFAndESIInfo(int UserId)
+        {
+            return new EmployeeQueries().GetPFAndESIInfo(UserId);
+        }
         public int AddPFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
             return new EmployeeQueries().AddPFAndESIInfo(PFAndESIInfo);
@@ -122,6 +143,11 @@ namespace HRManager.Business
         public EmployeeDocument GetDocument(int? EmployeeDocumentInfoId,int UserId)
         {
             return new EmployeeQueries().GetDocument(EmployeeDocumentInfoId,UserId);
+        }
+
+        public List<EmployeeDocument> GetDocument(int UserId)
+        {
+            return new EmployeeQueries().GetDocument(UserId);
         }
 
         public int AddDocument(EmployeeDocument DocumentInfo)

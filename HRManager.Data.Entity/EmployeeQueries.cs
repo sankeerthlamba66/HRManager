@@ -270,6 +270,20 @@ namespace HRManager.Data.Entity
             }
             return _employeePersonalInfo;  
         }
+        public EmployeePersonalInfo GetPersonalInfo(int UserId)
+        {
+            EmployeePersonalInfo _employeePersonalInfo = null;
+            try
+            {
+                var employeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.UserId == UserId);
+                _employeePersonalInfo = GetEmployeePersonalInfoMapper(employeePersonalInfo);
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return _employeePersonalInfo;
+        }
 
         public int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo)
         {
@@ -316,6 +330,24 @@ namespace HRManager.Data.Entity
             {
                 var professionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalInfoId && s.UserId == UserId);
                 employeeProfessionalInfo = GetEmployeeProfessionalInfoMapper(professionalInfo);
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return employeeProfessionalInfo;//list to be returned
+        }
+
+        public List<EmployeeProfessionalInfo> GetProfessionalInfo(int UserId)
+        {
+            List<EmployeeProfessionalInfo> employeeProfessionalInfo = null;
+            try
+            {
+                var professionalInfo = context.EmployeeProfessionalInfos.Where(s =>s.UserId == UserId).ToList();
+                foreach (var item in professionalInfo)
+                {
+                    employeeProfessionalInfo.Add(GetEmployeeProfessionalInfoMapper(item));
+                }
             }
             catch (Exception ex)
             {
@@ -419,6 +451,22 @@ namespace HRManager.Data.Entity
             return employeeBankInfo;
         }
 
+        public List<EmployeeBankInfo> GetBankInfo(int UserId)
+        {
+            List<EmployeeBankInfo> employeeBankInfo = null;
+            try
+            {
+                var bankInfo = context.EmployeeBankInfos.Where(s => s.UserId == UserId).ToList();
+                foreach (var item in bankInfo)
+                { employeeBankInfo.Add(GetEmployeeBankMapper(item)); }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return employeeBankInfo;
+        }
+
         public int AddBankInfo(EmployeeBankInfo BankInfo)
         {
             Entities.EmployeeBankInfo employeeBankInfo = new Entities.EmployeeBankInfo();
@@ -490,7 +538,24 @@ namespace HRManager.Data.Entity
                 ErrorLogger.LogError(ex.Message);
             }
             return _employeeInsuranceInfo;
+        }
 
+        public List<EmployeeInsuranceInfo> GetInsuranceInfo( int UserId)
+        {
+            List<EmployeeInsuranceInfo> _employeeInsuranceInfo = null;
+            try
+            {
+                var employeeInsuranceInfo = context.EmployeeInsuranceInfos.Where(s => s.UserId == UserId).ToList();
+                foreach (var item in employeeInsuranceInfo)
+                {
+                    _employeeInsuranceInfo.Add(GetEmployeeInsuranceMapper(item));
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return _employeeInsuranceInfo;
         }
 
         public int AddInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo)
@@ -555,6 +620,24 @@ namespace HRManager.Data.Entity
             {
                 var employeePFAndESIInfo = context.EmployeePFandESIInfos.Where(s => s.Id == EmployeePFAndESIInfoId && s.UserId == UserId).FirstOrDefault();
                 _employeePFandESIInfo = GetPFandESIInfoMapper(employeePFAndESIInfo);
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return _employeePFandESIInfo;
+        }
+
+        public List<EmployeePFandESIInfo> GetPFAndESIInfo(int UserId)
+        {
+            List<EmployeePFandESIInfo> _employeePFandESIInfo = null;
+            try
+            {
+                var employeePFAndESIInfo = context.EmployeePFandESIInfos.Where(s=>s.UserId == UserId).ToList();
+                foreach (var item in employeePFAndESIInfo)
+                {
+                    _employeePFandESIInfo.Add(GetPFandESIInfoMapper(item));
+                }
             }
             catch (Exception ex)
             {
@@ -630,6 +713,23 @@ namespace HRManager.Data.Entity
             return _employeeDocument;
         }
 
+        public List<EmployeeDocument> GetDocument(int UserId)
+        {
+            List<EmployeeDocument> _employeeDocument = null;
+            try
+            {
+                var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.UserId == UserId).ToList();
+                foreach (var item in employeeDocumentInfo)
+                {
+                    _employeeDocument.Add(GetEmployeeDocumentMapper(item));
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return _employeeDocument;
+        }
         public int AddDocument(EmployeeDocument DocumentInfo)
         {
             Entities.EmployeeDocument employeeDocumentInfo = new Entities.EmployeeDocument();

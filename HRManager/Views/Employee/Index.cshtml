@@ -2,10 +2,10 @@
 
 @{
     ViewData["Title"] = "Employee Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
-<h1>Employee Details</h1>
+<h2>Employee Details</h2>
  <div>
      <form asp-controller="Employee" asp-action="Index">
 @if (Model is not null)
@@ -42,12 +42,9 @@
         </div>
     }
 
-    foreach (var item in @Model.employeeDocuments)
-    {
         <div>
-                <partial name="_Document.cshtml" model="item">
+                <partial name="_Document.cshtml" model="@Model.employeeDocuments">
         </div>
-    }
 }
  </form>
  </div>

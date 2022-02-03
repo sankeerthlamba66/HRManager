@@ -49,8 +49,9 @@
                 @Html.DisplayFor(model => model.IFSCCode)
             </dd>
         </dl>
-         @Html.ActionLink("Edit","PutBankInfo","Employee",new{id=Model.Id})
-          @Html.ActionLink("Add","PostBankInfo","Employee",new{id=Model.Id})
+         
+          @Html.ActionLink("Add","PostBankInfo","Employee")
+          @Html.ActionLink("Edit","PutBankInfo","Employee",new{id=Model.Id})
            @Html.ActionLink("Delete","DeleteBankInfo","Employee",new{id=Model.Id})
     </div>
 }

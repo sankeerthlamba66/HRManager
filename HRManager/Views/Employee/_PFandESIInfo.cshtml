@@ -31,8 +31,10 @@
                 @Html.DisplayFor(model => model.ESIN)
             </dd>
         </dl>
+        @Html.ActionLink("Add","AddPFAndESIInfo","Employee")|
+
         @Html.ActionLink("Edit","UpdatePFAndESIInfo","Employee",new{Id=Model.Id})|
-         @Html.ActionLink("Add","AddPFAndESIInfo","Employee",new{id=Model.Id})|
+         
           @Html.ActionLink("Edit","DeletePFAndESIInfo","Employee",new{id=Model.Id})
     </div>
 }

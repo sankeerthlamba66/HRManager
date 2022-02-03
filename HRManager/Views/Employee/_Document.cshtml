@@ -127,8 +127,9 @@
                 @Html.DisplayFor(model => model.ProfessionalCertificationsIfAny)
             </dd>
         </dl>
-         @Html.ActionLink("Edit","UpdatePersonalInfo","Employee",new{id=Model.Id})|
-          @Html.ActionLink("Edit","UpdatePersonalInfo","Employee",new{id=Model.Id})|
-           @Html.ActionLink("Edit","UpdatePersonalInfo","Employee",new{id=Model.Id})
+        <input type="file" value="Add"  class="btn btn-primary" asp-action="AddDocument" />
+         @Html.ActionLink("Add","AddDocument","Employee")|
+          @Html.ActionLink("Edit","UpdateDocument","Employee",new{id=Model.Id})|
+           @Html.ActionLink("Delete","DeleteDocument","Employee",new{id=Model.Id})
     </div>
 }

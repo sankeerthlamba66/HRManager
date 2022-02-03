@@ -126,11 +126,11 @@ namespace HRManager.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpdateProfessionalInfo()
+        public IActionResult UpdateProfessionalInfo(int Id)
         {
             try
             {
-                var professionalInfo = employeeManager.GetProfessionalInfo(Session.UserId);
+                var professionalInfo = employeeManager.GetProfessionalInfo(Id, Session.UserId);
                 return View(professionalInfo);
             }
             catch (Exception ex)
@@ -212,11 +212,11 @@ namespace HRManager.Controllers
         }
 
         [HttpGet]
-        public IActionResult PutBankInfo()
+        public IActionResult PutBankInfo(int? Id)
         {
             try
             {
-                var BankInfoList = employeeManager.GetBankInfo(Session.UserId);
+                var BankInfoList = employeeManager.GetBankInfo(Id,Session.UserId);
                 return View(BankInfoList);
             }
             catch (Exception ex)
@@ -297,11 +297,11 @@ namespace HRManager.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpdateInsuranceInfo()
+        public IActionResult UpdateInsuranceInfo(int? Id)
         {
             try
             {
-                var insuranceInfo = employeeManager.GetInsuranceInfo( Session.UserId);
+                var insuranceInfo = employeeManager.GetInsuranceInfo(Id,Session.UserId);
                 return View(insuranceInfo);
             }
             catch (Exception ex)
@@ -384,11 +384,11 @@ namespace HRManager.Controllers
             }
         }
         [HttpGet]
-        public IActionResult UpdatePFAndESIInfo()
+        public IActionResult UpdatePFAndESIInfo(int? Id)
         {
             try
             {
-                var PFAndESIInfoList = employeeManager.GetPFAndESIInfo(Session.UserId);
+                var PFAndESIInfoList = employeeManager.GetPFAndESIInfo(Id,Session.UserId);
                 return View(PFAndESIInfoList);
             }
             catch (Exception ex)
@@ -508,11 +508,11 @@ namespace HRManager.Controllers
             }
         }
         [HttpGet]
-        public IActionResult UpdateDocument()
+        public IActionResult UpdateDocument(int? Id)
         {
             try
             {
-                var document = employeeManager.GetDocument(Session.UserId);
+                var document = employeeManager.GetDocument(Id,Session.UserId);
                 return View(document);
             }
             catch (Exception ex)

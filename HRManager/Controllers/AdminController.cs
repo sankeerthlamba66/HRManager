@@ -4,6 +4,7 @@ using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using HRManager.Code;
 using HRManager.Business.BussinessRepository;
+using System.Text;
 
 namespace HRManager.Controllers
 {
@@ -161,6 +162,26 @@ namespace HRManager.Controllers
             }
         }
 
-        
+        public FileResult Export(DateTime? DateFrom, DateTime? DateTo)
+        {
+            var employeeData = new List<EmployeeTableSummary>();
+
+            if ((DateFrom != null) && (DateTo != null))
+            {
+                employeeData = adminManager.GetRecentlyUpdatedEmployees(DateFrom.Value, DateTo.Value);
+            }
+            else
+            {
+                employeeData = adminManager.GetRecentlyUpdatedEmployees();
+            }
+
+            var sb = new StringBuilder();
+            foreach (var data in employeeData)
+            {
+                sb.AppendLine(data.Id + "," + data.EmployeeName + "," +data.MobileNumber+", "+data.PersonalEmailId);
+            }
+            return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "export.csv");
+        }
+
     }
 }

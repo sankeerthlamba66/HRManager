@@ -38,40 +38,33 @@ namespace HRManager.Models.EntityViews
         public IFormFile PermanentAddressProof { get; set; }
 
         [Display(Name = "Father's Aadhar Card")]
-
         public IFormFile FathersAadharCard { get; set; }
 
         [Display(Name = "Mother's Aadhar Card")]
-
         public IFormFile MothersAadharCard { get; set; }
 
         [Display(Name = "Three Months Bank Statement Of Salary Account")]
-
         public IFormFile ThreeMonthsBankStatementOfSalaryAccount { get; set; }
 
         [Display(Name = "Form 160r Income Certificate Of Current Fin Year")]
-
         public IFormFile Form16OrIncomeCertificateOfCurrentFinYear { get; set; }
 
         [Display(Name = "SSC Or Equivalent")]
-
         public IFormFile SSCOrEquivalent { get; set; }
 
         [Display(Name = "Intermediate Or Equivalent")]
-
         public IFormFile IntermediateOrEquivalent { get; set; }
 
         [Display(Name = "Graduation Or Equivalent")]
-
         public IFormFile GraduationOrEquivalent { get; set; }
+
         [Display(Name = "PG Or Equivalent ")]
-
         public IFormFile PGOrEquivalent { get; set; }
+
         [Display(Name = "Advanced Diploma If Any")]
-
         public IFormFile AdvancedDiplomaIfAny { get; set; }
-        [Display(Name = "Professional Certifications If Any")]
 
+        [Display(Name = "Professional Certifications If Any")]
         public IFormFile ProfessionalCertificationsIfAny { get; set; }
     }
 }

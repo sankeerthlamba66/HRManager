@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Shared\EmployeeDetails\**" />
+    <Content Remove="Views\Shared\EmployeeDetails\**" />
+    <EmbeddedResource Remove="Views\Shared\EmployeeDetails\**" />
+    <None Remove="Views\Shared\EmployeeDetails\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -52,7 +59,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\EmployeeDetails\" />
     <Folder Include="wwwroot\Documents\" />
   </ItemGroup>
 

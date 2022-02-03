@@ -145,7 +145,7 @@ namespace HRManager.Business
             return new EmployeeQueries().GetDocument(EmployeeDocumentInfoId,UserId);
         }
 
-        public List<EmployeeDocument> GetDocument(int UserId)
+        public EmployeeDocument GetDocument(int UserId)
         {
             return new EmployeeQueries().GetDocument(UserId);
         }

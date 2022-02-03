@@ -35,7 +35,7 @@ namespace HRManager.Business.BussinessRepository
         int UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo);
         void DeletePFAndESIInfo(int EmployeePFAndESIInfoId, int UserId);
         EmployeeDocument GetDocument(int? EmployeeDocumentInfoId, int UserId);
-        List<EmployeeDocument> GetDocument(int UserId);
+        EmployeeDocument GetDocument(int UserId);
         int AddDocument(EmployeeDocument DocumentInfo);
         int UpdateDocument(EmployeeDocument DocumentInfo);
         void DeleteDocument(int EmployeeDocumentInfoId, int UserId);

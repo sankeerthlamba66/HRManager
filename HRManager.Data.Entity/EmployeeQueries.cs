@@ -708,16 +708,13 @@ namespace HRManager.Data.Entity
             return _employeeDocument;
         }
 
-        public List<EmployeeDocument> GetDocument(int UserId)
+        public EmployeeDocument GetDocument(int UserId)
         {
-            List<EmployeeDocument> _employeeDocument = new List<EmployeeDocument>();
+            EmployeeDocument _employeeDocument = new EmployeeDocument();
             try
             {
-                var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.UserId == UserId).ToList();
-                foreach (var item in employeeDocumentInfo)
-                {
-                    _employeeDocument.Add(GetEmployeeDocumentMapper(item));
-                }
+                var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.UserId == UserId).FirstOrDefault();
+                _employeeDocument=GetEmployeeDocumentMapper(employeeDocumentInfo);
             }
             catch (Exception ex)
             {

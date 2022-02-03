@@ -16,13 +16,13 @@ namespace HRManager.Models.ViewModels
             this.employeeBankInfos = new List<EmployeeBankInfo>();
             this.employeeInsuranceInfos = new List<EmployeeInsuranceInfo>();
             this.employeePFandESIInfos = new List<EmployeePFandESIInfo>();
-            this.employeeDocuments = new List<EmployeeDocument>();
+            this.employeeDocuments = new EmployeeDocument();
         }
         public EmployeePersonalInfo employeePersonalInfo { get; set; }
         public List<EmployeeProfessionalInfo> employeeProfessionalInfos { get; set; }
         public List<EmployeeBankInfo> employeeBankInfos { get; set; }
         public List<EmployeeInsuranceInfo> employeeInsuranceInfos { get; set; }
         public List<EmployeePFandESIInfo> employeePFandESIInfos { get; set; }
-        public List<EmployeeDocument> employeeDocuments { get; set; }
+        public EmployeeDocument employeeDocuments { get; set; }
     }
 }

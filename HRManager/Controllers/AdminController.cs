@@ -29,34 +29,6 @@ namespace HRManager.Controllers
             }
         }
 
-        public ViewResult PDValidation()
-        {
-            try
-            {
-                return View();
-            }
-            catch (Exception ex)
-            {
-                return ReturnErrorView(ex);
-            }
-        }
-
-        public ViewResult BGVerification()
-        {
-            try
-            {
-                return View();
-            }
-            catch (Exception ex)
-            {
-                return ReturnErrorView(ex);
-            }
-        }
-        public IActionResult AllEmployeeDetails()
-        {
-            return View();
-        }
-
         public IActionResult AllEmployeeTable(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
         {
             try
@@ -74,7 +46,7 @@ namespace HRManager.Controllers
 
                 var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
 
-                return PartialView("_AllEmployeeTable",allEmployeeTable);
+                return PartialView("_AllEmployeeTable", allEmployeeTable);
             }
             catch (Exception ex)
             {
@@ -106,6 +78,32 @@ namespace HRManager.Controllers
                 return HandleException(ex);
             }
         }
+
+        public ViewResult PDValidation()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return ReturnErrorView(ex);
+            }
+        }
+
+        public ViewResult BGVerification()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return ReturnErrorView(ex);
+            }
+        }
+
+        
 
         public IActionResult PDValidationPopup(int EmployeeId)
         {

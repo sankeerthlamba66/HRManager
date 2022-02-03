@@ -20,7 +20,7 @@ namespace HRManager.Data.Entity
             List<EmployeeTableSummary> employeeTableSummary = new List<EmployeeTableSummary>();
             try
             {
-                var employeesPersonlInfos = context.EmployeePersonalInfos.OrderByDescending(s => s.UpdatedDate);
+                var employeesPersonlInfos = context.EmployeePersonalInfos.OrderByDescending(s => s.UpdatedDate).ToList();
                 foreach (var item in employeesPersonlInfos)
                 {
                     employeeTableSummary.Add(GetEmployeeTableSummaryMapper(item));
@@ -98,7 +98,7 @@ namespace HRManager.Data.Entity
             List<EmployeeTableSummary> employeeTableSummary = new List<EmployeeTableSummary>();
             try
             {
-                var employeesPersonlInfos = context.EmployeePersonalInfos.Where(s => s.UpdatedDate <= DateTo && s.UpdatedDate >= DateFrom).OrderByDescending(s => s.UpdatedDate);
+                var employeesPersonlInfos = context.EmployeePersonalInfos.Where(s => s.UpdatedDate <= DateTo && s.UpdatedDate >= DateFrom).OrderByDescending(s => s.UpdatedDate).ToList();
                 foreach (var item in employeesPersonlInfos)
                 {
                     employeeTableSummary.Add(GetEmployeeTableSummaryMapper(item));
@@ -116,7 +116,7 @@ namespace HRManager.Data.Entity
             List<EmployeeCardSummary> employeeCardsSummary = new List<EmployeeCardSummary>();
             try
             { 
-                var employeesPersonlInfos = context.EmployeePersonalInfos.OrderByDescending(s => s.UpdatedDate);
+                var employeesPersonlInfos = context.EmployeePersonalInfos.OrderByDescending(s => s.UpdatedDate).ToList();
                 foreach (var item in employeesPersonlInfos)
                 {
                     employeeCardsSummary.Add(GetEmployeeCardSummaryMapper(item));
@@ -134,7 +134,7 @@ namespace HRManager.Data.Entity
             List<EmployeeCardSummary> employeeCardsSummary = new List<EmployeeCardSummary>();
             try
             {
-                var employeesPersonlInfos = context.EmployeePersonalInfos.Where(s => s.UpdatedDate <= DateTo && s.UpdatedDate >= DateFrom).OrderByDescending(s => s.UpdatedDate);
+                var employeesPersonlInfos = context.EmployeePersonalInfos.Where(s => s.UpdatedDate <= DateTo && s.UpdatedDate >= DateFrom).OrderByDescending(s => s.UpdatedDate).ToList();
                 foreach (var item in employeesPersonlInfos)
                 {
                     employeeCardsSummary.Add(GetEmployeeCardSummaryMapper(item));

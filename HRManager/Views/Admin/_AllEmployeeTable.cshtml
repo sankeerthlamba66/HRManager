@@ -1,10 +1,8 @@
-﻿
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+﻿@model IEnumerable<HRManager.Models.Views.EmployeeTableSummary>
 
-@model IEnumerable<HRManager.Models.Views.EmployeeTableSummary>
-@if (Model is not null)
-{    
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
 <table class="table">
     <thead>
         <tr>
@@ -20,11 +18,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.PersonalEmailId)
             </th>
-           
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
@@ -38,8 +36,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PersonalEmailId)
             </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
         </tr>
-        }
-    </tbody>
-</table>   
 }
+    </tbody>
+</table>

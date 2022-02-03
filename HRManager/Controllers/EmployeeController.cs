@@ -183,6 +183,19 @@ namespace HRManager.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult PostBankInfo()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
         public IActionResult PostBankInfo(EmployeeBankInfo BankInfo)
         {
             try
@@ -248,6 +261,18 @@ namespace HRManager.Controllers
             {
                 var insuranceInfo = employeeManager.GetInsuranceInfo(Id, Session.UserId);
                 return View(insuranceInfo);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+        [HttpGet]
+        public IActionResult AddInsuranceInfo()
+        {
+            try
+            {
+                return View();
             }
             catch (Exception ex)
             {
@@ -330,6 +355,19 @@ namespace HRManager.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult AddPFAndESIInfo()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
         [HttpPost]
         public IActionResult AddPFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo)
         {
@@ -397,6 +435,19 @@ namespace HRManager.Controllers
             {
                 var document = employeeManager.GetDocument(Id, Session.UserId);
                 return View(document);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult AddDocument()
+        {
+            try
+            {
+                return View();
             }
             catch (Exception ex)
             {

@@ -769,24 +769,42 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == DocumentInfo.Id && s.UserId == DocumentInfo.UserId).FirstOrDefault();
-                employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto;
-                employeeDocumentInfo.Resume = DocumentInfo.Resume;
-                employeeDocumentInfo.PanCard = DocumentInfo.PanCard;
-                employeeDocumentInfo.AadharCard = DocumentInfo.AadharCard;
-                employeeDocumentInfo.Passport = DocumentInfo.Passport;
-                employeeDocumentInfo.VoterId = DocumentInfo.VoterId;
-                employeeDocumentInfo.CurrentAddressProof = DocumentInfo.CurrentAddressProof;
-                employeeDocumentInfo.PermanentAddressProof = DocumentInfo.PermanentAddressProof;
-                employeeDocumentInfo.FathersAadharCard = DocumentInfo.FathersAadharCard;
-                employeeDocumentInfo.MothersAadharCard = DocumentInfo.MothersAadharCard;
-                employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount = DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount;
-                employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear = DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear;
-                employeeDocumentInfo.SSCOrEquivalent = DocumentInfo.SSCOrEquivalent;
-                employeeDocumentInfo.IntermediateOrEquivalent = DocumentInfo.IntermediateOrEquivalent;
-                employeeDocumentInfo.GraduationOrEquivalent = DocumentInfo.GraduationOrEquivalent;
-                employeeDocumentInfo.PGOrEquivalent = DocumentInfo.PGOrEquivalent;
-                employeeDocumentInfo.AdvancedDiplomaIfAny = DocumentInfo.AdvancedDiplomaIfAny;
-                employeeDocumentInfo.ProfessionalCertificationsIfAny = DocumentInfo.ProfessionalCertificationsIfAny;
+                if (!string.IsNullOrEmpty(DocumentInfo.PassportPhoto))
+                { employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto; }
+                if (!string.IsNullOrEmpty(DocumentInfo.Resume))
+                { employeeDocumentInfo.Resume = DocumentInfo.Resume; }
+                if (!string.IsNullOrEmpty(DocumentInfo.PanCard))
+                { employeeDocumentInfo.PanCard = DocumentInfo.PanCard; }
+                if (!string.IsNullOrEmpty(DocumentInfo.AadharCard))
+                { employeeDocumentInfo.AadharCard = DocumentInfo.AadharCard;}
+                if (!string.IsNullOrEmpty(DocumentInfo.Passport))
+                { employeeDocumentInfo.Passport = DocumentInfo.Passport; }
+                if (!string.IsNullOrEmpty(DocumentInfo.VoterId))
+                { employeeDocumentInfo.VoterId = DocumentInfo.VoterId; }
+                if (!string.IsNullOrEmpty(DocumentInfo.CurrentAddressProof))
+                { employeeDocumentInfo.CurrentAddressProof = DocumentInfo.CurrentAddressProof; }
+                if (!string.IsNullOrEmpty(DocumentInfo.PermanentAddressProof))
+                { employeeDocumentInfo.PermanentAddressProof = DocumentInfo.PermanentAddressProof; }
+                if (!string.IsNullOrEmpty(DocumentInfo.FathersAadharCard))
+                { employeeDocumentInfo.FathersAadharCard = DocumentInfo.FathersAadharCard; }
+                if (!string.IsNullOrEmpty(DocumentInfo.MothersAadharCard))
+                { employeeDocumentInfo.MothersAadharCard = DocumentInfo.MothersAadharCard; }
+                if (!string.IsNullOrEmpty(DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount))
+                { employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount = DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount; }
+                if (!string.IsNullOrEmpty(DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear))
+                { employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear = DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear; }
+                if (!string.IsNullOrEmpty(DocumentInfo.SSCOrEquivalent))
+                { employeeDocumentInfo.SSCOrEquivalent = DocumentInfo.SSCOrEquivalent; }
+                if (!string.IsNullOrEmpty(DocumentInfo.IntermediateOrEquivalent))
+                { employeeDocumentInfo.IntermediateOrEquivalent = DocumentInfo.IntermediateOrEquivalent; }
+                if (!string.IsNullOrEmpty(DocumentInfo.GraduationOrEquivalent))
+                { employeeDocumentInfo.GraduationOrEquivalent = DocumentInfo.GraduationOrEquivalent; }
+                if (!string.IsNullOrEmpty(DocumentInfo.PGOrEquivalent))
+                { employeeDocumentInfo.PGOrEquivalent = DocumentInfo.PGOrEquivalent; }
+                if (!string.IsNullOrEmpty(DocumentInfo.AdvancedDiplomaIfAny))
+                { employeeDocumentInfo.AdvancedDiplomaIfAny = DocumentInfo.AdvancedDiplomaIfAny; }
+                if (!string.IsNullOrEmpty(DocumentInfo.ProfessionalCertificationsIfAny))
+                { employeeDocumentInfo.ProfessionalCertificationsIfAny = DocumentInfo.ProfessionalCertificationsIfAny;}
                 context.SaveChanges();
             }
             catch (Exception ex)

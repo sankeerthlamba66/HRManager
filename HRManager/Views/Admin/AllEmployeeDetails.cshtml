@@ -1,5 +1,4 @@
-﻿<script src="//code.jquery.com/jquery.min.js"></script>
-@{
+﻿@{
     ViewData["Title"] = "All Employees Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -54,7 +53,7 @@
     loadAllEmployeeData = function (panelName, endPointName) {
         $("#" + panelName + " .alert").show();
         $.ajax({
-            url: "/Home/" + endPointName
+            url: "/Admin/" + endPointName
         }).done(function (data) {
             $("#" + panelName + "-container").html(data);
             $("#" + panelName + " .alert").hide();

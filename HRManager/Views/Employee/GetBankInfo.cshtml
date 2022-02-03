@@ -14,52 +14,7 @@
 <body>
 
 <div>
-    <h4>EmployeeBankInfo</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.HiddenFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.HiddenFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.HiddenFor(model => model.UserId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.HiddenFor(model => model.UserId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BankName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BankName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NameAsPerBankAccount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NameAsPerBankAccount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccountNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BranchName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BranchName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IFSCCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IFSCCode)
-        </dd>
-    </dl>
+     <partial name ="_BankInfo" />
 </div>
 @*<div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

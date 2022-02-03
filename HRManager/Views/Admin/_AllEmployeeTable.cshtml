@@ -1,22 +1,39 @@
-﻿@model IEnumerable<HRManager.Models.ViewModels.AllEmployeeTable>
+﻿@model IEnumerable<HRManager.Models.Views.EmployeeTableSummary>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (Model is not null)
+{
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.AddVerificationLinks)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonalEmailId)
+            </th>
+            
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AddVerificationLinks)
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonalEmailId)
             </td>
             <td>
                @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
@@ -27,3 +44,4 @@
 }
     </tbody>
 </table>
+}

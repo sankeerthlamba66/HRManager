@@ -11,6 +11,7 @@ namespace HRManager.Models.ViewModels
     {
         public AllEmployeeTable()
         {
+            this.EmployeeData = new List<EmployeeTableSummary>();
          
         }
         public List<EmployeeTableSummary> EmployeeData { get; set; }

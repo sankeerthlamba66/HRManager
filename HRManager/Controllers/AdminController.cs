@@ -18,11 +18,18 @@ namespace HRManager.Controllers
             adminManager = _adminManager;
         }
 
-        public ViewResult Index()
+        public IActionResult Index()
         {
             try
             {
-                return View();
+                var employeeData = new List<EmployeeTableSummary>();
+
+               
+                    employeeData = adminManager.GetRecentlyUpdatedEmployees();
+
+                var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = true, EmployeeData = employeeData };
+
+                return View(allEmployeeTable);
             }
             catch (Exception ex)
             {

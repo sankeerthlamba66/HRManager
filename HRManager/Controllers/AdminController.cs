@@ -52,6 +52,10 @@ namespace HRManager.Controllers
                 return ReturnErrorView(ex);
             }
         }
+        public IActionResult AllEmployeeDetails()
+        {
+            return View();
+        }
 
         public IActionResult AllEmployeeTable(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
         {
@@ -70,7 +74,7 @@ namespace HRManager.Controllers
 
                 var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
 
-                return PartialView(allEmployeeTable);
+                return PartialView("_AllEmployeeTable",allEmployeeTable);
             }
             catch (Exception ex)
             {

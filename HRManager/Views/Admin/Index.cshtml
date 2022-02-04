@@ -14,22 +14,22 @@
             <h1>All Employee Details</h1>
             @using(Html.BeginForm("Index","Admin",FormMethod.Get))
             {
-            <input type="date" name="start"/>
-            <input type="date" name="end" />
+            <input type="date" name="DateFrom"/>
+            <input type="date" name="DateTo" />
             <input type="submit" name="submit" value="Search" />
             }
         </div>
     </div>
 </div>
-@if(Model is not null)
+@*@if(Model is not null)
 {
     
     <div>
         <partial name="_AllEmployeeTable.cshtml" model="@Model.EmployeeData"/>
     </div>
 
-}
-@*<div class="row">
+}*@
+<div class="row">
     <div class="col-lg-12">
         <ul class="nav nav-pills">
           <li class="nav-item">
@@ -45,18 +45,24 @@
             <div class="alert alert-dismissible alert-success" style="display:none">
               <strong>Fetching data!</strong> Please wait...
             </div>
-            <div id="table-data-container"></div>
+          @if (Model is not null)
+            {
+             <div id="table-data-container">
+                 <partial name="_AllEmployeeTable.cshtml" model="@Model.EmployeeData"/>
+            </div>
+            }
           </div>
           <div class="tab-pane" id="card-data" role="tabpanel" aria-labelledby="profile-tab">
             <div class="alert alert-dismissible alert-success" style="display:none">
               <strong>Fetching data!</strong> Please wait...
             </div>
-            <div id="card-data-container"></div>
+            <div id="card-data-container">
+            </div>
           </div>
         </div>
     </div>
    
-</div>*@
+</div>
 <div class="nav-item">
     <a role="button" class="btn btn-light" asp-area="" asp-controller="Admin" asp-action="Export">Export Data</a>
  </div>
@@ -64,7 +70,7 @@
     @Html.ActionLink("Export","Export","Admin")
 </div>*@
 
-@*@section Scripts
+@section Scripts
 {
 <script>
 $(document).ready(function () {
@@ -93,7 +99,7 @@ $(document).ready(function () {
     loadAllEmployeeTableData();
 });
 </script>
-}*@
+}
 
        
 

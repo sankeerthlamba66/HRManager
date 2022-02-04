@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HRManager.Models.EntityViews
 {
-    public class EmployeeBankInfo
+    public class EmployeeBankInfo:EntityBase
     {
         public int? Id { get; set; }
         public int UserId { get; set; }

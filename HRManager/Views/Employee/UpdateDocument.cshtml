@@ -1,4 +1,4 @@
-﻿@model HRManager.Models.EntityViews.EmployeeFileDocument
+﻿@model HRManager.Models.ViewModels.EmployeeDocumentModels
 
 @{
     Layout = null;
@@ -13,113 +13,115 @@
 </head>
 <body>
 
-<h4>EmployeeFileDocument</h4>
+<h4>Documents</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="UpdateDocument" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="PassportPhoto" class="control-label"></label>
-                <input asp-for="PassportPhoto" class="custom-file-input" />
-                <span asp-validation-for="PassportPhoto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Resume" class="control-label"></label>
-                <input asp-for="Resume" class="custom-file-input" />
-                <span asp-validation-for="Resume" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PanCard" class="control-label"></label>
-                <input asp-for="PanCard" class="custom-file-input" />
-                <span asp-validation-for="PanCard" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AadharCard" class="control-label"></label>
-                <input asp-for="AadharCard" class="custom-file-input" />
-                <span asp-validation-for="AadharCard" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Passport" class="control-label"></label>
-                <input asp-for="Passport" class="custom-file-input" />
-                <span asp-validation-for="Passport" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VoterId" class="control-label"></label>
-                <input asp-for="VoterId" class="custom-file-input" />
-                <span asp-validation-for="VoterId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CurrentAddressProof" class="control-label"></label>
-                <input asp-for="CurrentAddressProof" class="custom-file-input" />
-                <span asp-validation-for="CurrentAddressProof" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PermanentAddressProof" class="control-label"></label>
-                <input asp-for="PermanentAddressProof" class="custom-file-input" />
-                <span asp-validation-for="PermanentAddressProof" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FathersAadharCard" class="control-label"></label>
-                <input asp-for="FathersAadharCard" class="custom-file-input" />
-                <span asp-validation-for="FathersAadharCard" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MothersAadharCard" class="control-label"></label>
-                <input asp-for="MothersAadharCard" class="custom-file-input" />
-                <span asp-validation-for="MothersAadharCard" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ThreeMonthsBankStatementOfSalaryAccount" class="control-label"></label>
-                <input asp-for="ThreeMonthsBankStatementOfSalaryAccount" class="custom-file-input" />
-                <span asp-validation-for="ThreeMonthsBankStatementOfSalaryAccount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Form16OrIncomeCertificateOfCurrentFinYear" class="control-label"></label>
-                <input asp-for="Form16OrIncomeCertificateOfCurrentFinYear" class="custom-file-input" />
-                <span asp-validation-for="Form16OrIncomeCertificateOfCurrentFinYear" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SSCOrEquivalent" class="control-label"></label>
-                <input asp-for="SSCOrEquivalent" class="custom-file-input" />
-                <span asp-validation-for="SSCOrEquivalent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IntermediateOrEquivalent" class="control-label"></label>
-                <input asp-for="IntermediateOrEquivalent" class="custom-file-input" />
-                <span asp-validation-for="IntermediateOrEquivalent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GraduationOrEquivalent" class="control-label"></label>
-                <input asp-for="GraduationOrEquivalent" class="custom-file-input" />
-                <span asp-validation-for="GraduationOrEquivalent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PGOrEquivalent" class="control-label"></label>
-                <input asp-for="PGOrEquivalent" class="custom-file-input" />
-                <span asp-validation-for="PGOrEquivalent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AdvancedDiplomaIfAny" class="control-label"></label>
-                <input asp-for="AdvancedDiplomaIfAny" class="custom-file-input" />
-                <span asp-validation-for="AdvancedDiplomaIfAny" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProfessionalCertificationsIfAny" class="control-label"></label>
-                <input asp-for="ProfessionalCertificationsIfAny" class="custom-file-input" />
-                <span asp-validation-for="ProfessionalCertificationsIfAny" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save & Continue" class="btn btn-primary"/>
-            </div>
+            @if (Model is not null)
+            {
+                <form asp-action="UpdateDocument" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label hidden-for="@Model.employeeDocuments.Id" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.PassportPhoto" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.PassportPhoto" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.PassportPhoto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.Resume" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.Resume" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.Resume" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.PanCard" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.PanCard" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.PanCard" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.AadharCard" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.AadharCard" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.AadharCard" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.Passport" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.Passport" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.Passport" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.VoterId" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.VoterId" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.VoterId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.CurrentAddressProof" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.CurrentAddressProof" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.CurrentAddressProof" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.PermanentAddressProof" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.PermanentAddressProof" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.PermanentAddressProof" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.FathersAadharCard" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.FathersAadharCard" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.FathersAadharCard" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.MothersAadharCard" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.MothersAadharCard" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.MothersAadharCard" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.SSCOrEquivalent" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.SSCOrEquivalent" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.SSCOrEquivalent" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.IntermediateOrEquivalent" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.GraduationOrEquivalent" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.PGOrEquivalent" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.PGOrEquivalent" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.PGOrEquivalent" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny" class="control-label"></label>
+                    <input asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny" class="custom-file-input" />
+                    <span asp-validation-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save & Continue" class="btn btn-primary"/>
+                </div>
         </form>
+        }
     </div>
 </div>
 
-<div>
-    <a asp-action="UpdatePFAndESIInfo">Back</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

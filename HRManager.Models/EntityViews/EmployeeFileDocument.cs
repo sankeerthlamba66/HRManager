@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Models.EntityViews
 {
-    public class EmployeeFileDocument
+    public class EmployeeFileDocument : EntityBase
     { 
         public int? Id { get; set; }
         public int UserId { get; set; }

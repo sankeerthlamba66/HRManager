@@ -3,7 +3,7 @@
 @if (Model is not null)
 {
     <div>
-        <h4>EmployeeProfessionalInfo</h4>
+        <h4>Professional Information</h4>
         <hr />
 
         <dl class="row">
@@ -110,7 +110,7 @@
                 @Html.DisplayFor(model => model.ReferenceEmailId)
             </dd>
         </dl>
-        @Html.ActionLink("Add","AddProfessionalInfo","Employee")|
+        @Html.ActionLink("Add","AddProfessionalInfo","Employee")
 
         @Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})
 

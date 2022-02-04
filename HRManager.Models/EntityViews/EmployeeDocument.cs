@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace HRManager.Models.EntityViews
 {
-    public class EmployeeDocument
+    public class EmployeeDocument : EntityBase
     {
         public int? Id { get; set; }
         public int UserId { get; set; }

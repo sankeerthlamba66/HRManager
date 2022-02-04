@@ -37,14 +37,16 @@
 
     foreach(var item in @Model.employeePFandESIInfos)
     {
-    <div>
-    <partial name="_PFandESIInfo.cshtml" model="item">
+        <div>
+            <partial name="_PFandESIInfo.cshtml" model="item">
         </div>
     }
-
+    if(@Model.employeeDocuments is not null)
+    {
         <div>
                 <partial name="_Document.cshtml" model="@Model.employeeDocuments">
         </div>
+    }
 }
  </form>
  </div>

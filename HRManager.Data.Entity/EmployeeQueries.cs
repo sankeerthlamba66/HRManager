@@ -251,7 +251,8 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.UserId == UserId);
-                _employeePersonalInfo = GetEmployeePersonalInfoMapper(employeePersonalInfo);
+                if (employeePersonalInfo is not null)
+                { _employeePersonalInfo = GetEmployeePersonalInfoMapper(employeePersonalInfo); }
             }
             catch (Exception ex)
             {
@@ -285,6 +286,8 @@ namespace HRManager.Data.Entity
                 EmployeePersonalInfo.FathersMobileNumber = PersonalInfo.FathersMobileNumber;
                 EmployeePersonalInfo.MothersNameAsPerAadhar = PersonalInfo.MothersNameAsPerAadhar;
                 EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
+                EmployeePersonalInfo.UpdatedBy = PersonalInfo.UpdatedBy;
+                EmployeePersonalInfo.UpdatedDate = DateTime.Now;
 
                 context.SaveChanges();
             }
@@ -353,9 +356,9 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
-                employeeProfessionalInfo.CreatedBy = "";
+                employeeProfessionalInfo.CreatedBy = ProfessionalInfo.CreatedBy;
                 employeeProfessionalInfo.CreatedDate = DateTime.Now;
-                employeeProfessionalInfo.UpdatedBy = "";
+                employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.CreatedBy;
                 employeeProfessionalInfo.UpdatedDate = DateTime.Now;
                 context.EmployeeProfessionalInfos.Add(employeeProfessionalInfo);
                 context.SaveChanges();
@@ -388,6 +391,8 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+                employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.UpdatedBy;
+                employeeProfessionalInfo.UpdatedDate = DateTime.Now;
                 context.SaveChanges();
             }
             catch (Exception ex)
@@ -458,9 +463,9 @@ namespace HRManager.Data.Entity
                 employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
                 employeeBankInfo.BranchName = BankInfo.BranchName;
                 employeeBankInfo.IFSCCode = BankInfo.IFSCCode;
-                employeeBankInfo.CreatedBy = "";
+                employeeBankInfo.CreatedBy = BankInfo.CreatedBy;
                 employeeBankInfo.CreatedDate = DateTime.Now;
-                employeeBankInfo.UpdatedBy = "";
+                employeeBankInfo.UpdatedBy = BankInfo.CreatedBy;
                 employeeBankInfo.UpdatedDate = DateTime.Now;
                 context.EmployeeBankInfos.Add(employeeBankInfo);
                 context.SaveChanges();
@@ -482,6 +487,8 @@ namespace HRManager.Data.Entity
                 employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
                 employeeBankInfo.BranchName = BankInfo.BranchName;
                 employeeBankInfo.IFSCCode = BankInfo.IFSCCode;
+                employeeBankInfo.UpdatedBy = BankInfo.UpdatedBy;
+                employeeBankInfo.UpdatedDate = DateTime.Now;
                 context.SaveChanges();
             }
             catch (Exception ex)
@@ -554,9 +561,9 @@ namespace HRManager.Data.Entity
                 employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
                 employeeInsuranceInfo.DateOfBirthAsPerAadhar = InsuranceInfo.DateOfBirthAsPerAadhar;
                 employeeInsuranceInfo.CreatedDate = DateTime.Now;
-                employeeInsuranceInfo.CreatedBy = "";
+                employeeInsuranceInfo.CreatedBy = InsuranceInfo.CreatedBy;
                 employeeInsuranceInfo.UpdatedDate= DateTime.Now;
-                employeeInsuranceInfo.UpdatedBy = "";
+                employeeInsuranceInfo.UpdatedBy = InsuranceInfo.CreatedBy;
                 context.EmployeeInsuranceInfos.Add(employeeInsuranceInfo);
                 context.SaveChanges();
             }
@@ -576,6 +583,8 @@ namespace HRManager.Data.Entity
                 employeeInsuranceInfo.Relationship = InsuranceInfo.Relationship;
                 employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
                 employeeInsuranceInfo.DateOfBirthAsPerAadhar = InsuranceInfo.DateOfBirthAsPerAadhar;
+                employeeInsuranceInfo.UpdatedBy = InsuranceInfo.UpdatedBy;
+                employeeInsuranceInfo.UpdatedDate = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -644,10 +653,10 @@ namespace HRManager.Data.Entity
                 employeePFAndESIInfo.UserId = PFAndESIInfo.UserId;
                 employeePFAndESIInfo.UAN = PFAndESIInfo.UAN;
                 employeePFAndESIInfo.ESIN = PFAndESIInfo.ESIN;
-                employeePFAndESIInfo.CreatedBy = "";
+                employeePFAndESIInfo.CreatedBy = PFAndESIInfo.CreatedBy;
                 employeePFAndESIInfo.CreatedDate = DateTime.Now;
                 employeePFAndESIInfo.UpdatedDate = DateTime.Now;
-                employeePFAndESIInfo.UpdatedBy = "";
+                employeePFAndESIInfo.UpdatedBy = PFAndESIInfo.CreatedBy;
                 context.EmployeePFandESIInfos.Add(employeePFAndESIInfo);
                 context.SaveChanges();
             }
@@ -665,6 +674,8 @@ namespace HRManager.Data.Entity
                 var employeePFandESIInfo = context.EmployeePFandESIInfos.Where(s => s.Id == PFAndESIInfo.Id && s.UserId == PFAndESIInfo.UserId).FirstOrDefault();
                 employeePFandESIInfo.UAN = PFAndESIInfo.UAN;
                 employeePFandESIInfo.ESIN = PFAndESIInfo.ESIN;
+                employeePFandESIInfo.UpdatedDate = DateTime.Now;
+                employeePFandESIInfo.UpdatedBy = PFAndESIInfo.UpdatedBy;
                 context.SaveChanges();
             }
             catch (Exception ex)
@@ -710,11 +721,12 @@ namespace HRManager.Data.Entity
 
         public EmployeeDocument GetDocument(int UserId)
         {
-            EmployeeDocument _employeeDocument = new EmployeeDocument();
+            EmployeeDocument _employeeDocument = null;
             try
             {
                 var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.UserId == UserId).FirstOrDefault();
-                _employeeDocument=GetEmployeeDocumentMapper(employeeDocumentInfo);
+                if (employeeDocumentInfo is not null)
+                { _employeeDocument = GetEmployeeDocumentMapper(employeeDocumentInfo); }
             }
             catch (Exception ex)
             {
@@ -748,9 +760,9 @@ namespace HRManager.Data.Entity
                 employeeDocumentInfo.AdvancedDiplomaIfAny = DocumentInfo.AdvancedDiplomaIfAny;
                 employeeDocumentInfo.ProfessionalCertificationsIfAny = DocumentInfo.ProfessionalCertificationsIfAny;
                 employeeDocumentInfo.CreatedDate = DateTime.Now;
-                employeeDocumentInfo.CreatedBy = "";
+                employeeDocumentInfo.CreatedBy = DocumentInfo.CreatedBy;
                 employeeDocumentInfo.UpdatedDate = DateTime.Now;
-                employeeDocumentInfo.UpdatedBy = "";
+                employeeDocumentInfo.UpdatedBy = DocumentInfo.CreatedBy;
                 context.EmployeeDocuments.Add(employeeDocumentInfo);
                 context.SaveChanges();
             }
@@ -766,43 +778,48 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == DocumentInfo.Id && s.UserId == DocumentInfo.UserId).FirstOrDefault();
-                if (!string.IsNullOrEmpty(DocumentInfo.PassportPhoto))
-                { employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto; }
-                if (!string.IsNullOrEmpty(DocumentInfo.Resume))
-                { employeeDocumentInfo.Resume = DocumentInfo.Resume; }
-                if (!string.IsNullOrEmpty(DocumentInfo.PanCard))
-                { employeeDocumentInfo.PanCard = DocumentInfo.PanCard; }
-                if (!string.IsNullOrEmpty(DocumentInfo.AadharCard))
-                { employeeDocumentInfo.AadharCard = DocumentInfo.AadharCard;}
-                if (!string.IsNullOrEmpty(DocumentInfo.Passport))
-                { employeeDocumentInfo.Passport = DocumentInfo.Passport; }
-                if (!string.IsNullOrEmpty(DocumentInfo.VoterId))
-                { employeeDocumentInfo.VoterId = DocumentInfo.VoterId; }
-                if (!string.IsNullOrEmpty(DocumentInfo.CurrentAddressProof))
-                { employeeDocumentInfo.CurrentAddressProof = DocumentInfo.CurrentAddressProof; }
-                if (!string.IsNullOrEmpty(DocumentInfo.PermanentAddressProof))
-                { employeeDocumentInfo.PermanentAddressProof = DocumentInfo.PermanentAddressProof; }
-                if (!string.IsNullOrEmpty(DocumentInfo.FathersAadharCard))
-                { employeeDocumentInfo.FathersAadharCard = DocumentInfo.FathersAadharCard; }
-                if (!string.IsNullOrEmpty(DocumentInfo.MothersAadharCard))
-                { employeeDocumentInfo.MothersAadharCard = DocumentInfo.MothersAadharCard; }
-                if (!string.IsNullOrEmpty(DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount))
-                { employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount = DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount; }
-                if (!string.IsNullOrEmpty(DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear))
-                { employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear = DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear; }
-                if (!string.IsNullOrEmpty(DocumentInfo.SSCOrEquivalent))
-                { employeeDocumentInfo.SSCOrEquivalent = DocumentInfo.SSCOrEquivalent; }
-                if (!string.IsNullOrEmpty(DocumentInfo.IntermediateOrEquivalent))
-                { employeeDocumentInfo.IntermediateOrEquivalent = DocumentInfo.IntermediateOrEquivalent; }
-                if (!string.IsNullOrEmpty(DocumentInfo.GraduationOrEquivalent))
-                { employeeDocumentInfo.GraduationOrEquivalent = DocumentInfo.GraduationOrEquivalent; }
-                if (!string.IsNullOrEmpty(DocumentInfo.PGOrEquivalent))
-                { employeeDocumentInfo.PGOrEquivalent = DocumentInfo.PGOrEquivalent; }
-                if (!string.IsNullOrEmpty(DocumentInfo.AdvancedDiplomaIfAny))
-                { employeeDocumentInfo.AdvancedDiplomaIfAny = DocumentInfo.AdvancedDiplomaIfAny; }
-                if (!string.IsNullOrEmpty(DocumentInfo.ProfessionalCertificationsIfAny))
-                { employeeDocumentInfo.ProfessionalCertificationsIfAny = DocumentInfo.ProfessionalCertificationsIfAny;}
-                context.SaveChanges();
+                if (employeeDocumentInfo is not null)
+                {
+                    if (!string.IsNullOrEmpty(DocumentInfo.PassportPhoto))
+                    { employeeDocumentInfo.PassportPhoto = DocumentInfo.PassportPhoto; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.Resume))
+                    { employeeDocumentInfo.Resume = DocumentInfo.Resume; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.PanCard))
+                    { employeeDocumentInfo.PanCard = DocumentInfo.PanCard; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.AadharCard))
+                    { employeeDocumentInfo.AadharCard = DocumentInfo.AadharCard; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.Passport))
+                    { employeeDocumentInfo.Passport = DocumentInfo.Passport; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.VoterId))
+                    { employeeDocumentInfo.VoterId = DocumentInfo.VoterId; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.CurrentAddressProof))
+                    { employeeDocumentInfo.CurrentAddressProof = DocumentInfo.CurrentAddressProof; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.PermanentAddressProof))
+                    { employeeDocumentInfo.PermanentAddressProof = DocumentInfo.PermanentAddressProof; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.FathersAadharCard))
+                    { employeeDocumentInfo.FathersAadharCard = DocumentInfo.FathersAadharCard; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.MothersAadharCard))
+                    { employeeDocumentInfo.MothersAadharCard = DocumentInfo.MothersAadharCard; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount))
+                    { employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount = DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear))
+                    { employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear = DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.SSCOrEquivalent))
+                    { employeeDocumentInfo.SSCOrEquivalent = DocumentInfo.SSCOrEquivalent; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.IntermediateOrEquivalent))
+                    { employeeDocumentInfo.IntermediateOrEquivalent = DocumentInfo.IntermediateOrEquivalent; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.GraduationOrEquivalent))
+                    { employeeDocumentInfo.GraduationOrEquivalent = DocumentInfo.GraduationOrEquivalent; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.PGOrEquivalent))
+                    { employeeDocumentInfo.PGOrEquivalent = DocumentInfo.PGOrEquivalent; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.AdvancedDiplomaIfAny))
+                    { employeeDocumentInfo.AdvancedDiplomaIfAny = DocumentInfo.AdvancedDiplomaIfAny; }
+                    if (!string.IsNullOrEmpty(DocumentInfo.ProfessionalCertificationsIfAny))
+                    { employeeDocumentInfo.ProfessionalCertificationsIfAny = DocumentInfo.ProfessionalCertificationsIfAny; }
+                    employeeDocumentInfo.UpdatedBy = DocumentInfo.UpdatedBy;
+                    employeeDocumentInfo.UpdatedDate = DateTime.Now;
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
@@ -816,11 +833,59 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == EmployeeDocumentInfoId && s.UserId == UserId).FirstOrDefault();
+                DeleteDocumentsFromFolder(employeeDocumentInfo);
                 if (employeeDocumentInfo != null)
                 {
                     context.EmployeeDocuments.Remove(employeeDocumentInfo);
                     context.SaveChanges();
                 }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+        }
+
+        public void DeleteDocumentsFromFolder(Entities.EmployeeDocument employeeDocumentInfo)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.PassportPhoto))
+                { File.Delete(employeeDocumentInfo.PassportPhoto); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.Resume))
+                { File.Delete(employeeDocumentInfo.Resume); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.PanCard))
+                { File.Delete(employeeDocumentInfo.PanCard); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.AadharCard))
+                { File.Delete(employeeDocumentInfo.AadharCard); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.Passport))
+                { File.Delete(employeeDocumentInfo.Passport); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.VoterId))
+                { File.Delete(employeeDocumentInfo.VoterId); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.CurrentAddressProof))
+                { File.Delete(employeeDocumentInfo.CurrentAddressProof); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.PermanentAddressProof))
+                { File.Delete(employeeDocumentInfo.PermanentAddressProof); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.FathersAadharCard))
+                { File.Delete(employeeDocumentInfo.FathersAadharCard); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.MothersAadharCard))
+                { File.Delete(employeeDocumentInfo.MothersAadharCard); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount))
+                { File.Delete(employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear))
+                { File.Delete(employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.SSCOrEquivalent))
+                { File.Delete(employeeDocumentInfo.SSCOrEquivalent); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.IntermediateOrEquivalent))
+                { File.Delete(employeeDocumentInfo.IntermediateOrEquivalent); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.GraduationOrEquivalent))
+                { File.Delete(employeeDocumentInfo.GraduationOrEquivalent); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.PGOrEquivalent))
+                { File.Delete(employeeDocumentInfo.PGOrEquivalent); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.AdvancedDiplomaIfAny))
+                { File.Delete(employeeDocumentInfo.AdvancedDiplomaIfAny); }
+                if (!string.IsNullOrEmpty(employeeDocumentInfo.ProfessionalCertificationsIfAny))
+                { File.Delete(employeeDocumentInfo.ProfessionalCertificationsIfAny); }
             }
             catch (Exception ex)
             {

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRManager.Models.EntityViews
 {
-    public class EmployeeInsuranceInfo
+    public class EmployeeInsuranceInfo : EntityBase
     {
         public int? Id { get; set; }
         public int UserId { get; set; }

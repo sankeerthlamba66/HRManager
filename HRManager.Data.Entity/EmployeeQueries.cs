@@ -833,7 +833,7 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeDocumentInfo = context.EmployeeDocuments.Where(s => s.Id == EmployeeDocumentInfoId && s.UserId == UserId).FirstOrDefault();
-                DeleteDocumentsFromFolder(employeeDocumentInfo);
+                //DeleteDocumentsFromFolder(employeeDocumentInfo);
                 if (employeeDocumentInfo != null)
                 {
                     context.EmployeeDocuments.Remove(employeeDocumentInfo);
@@ -846,52 +846,52 @@ namespace HRManager.Data.Entity
             }
         }
 
-        public void DeleteDocumentsFromFolder(Entities.EmployeeDocument employeeDocumentInfo)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.PassportPhoto))
-                { File.Delete(employeeDocumentInfo.PassportPhoto); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.Resume))
-                { File.Delete(employeeDocumentInfo.Resume); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.PanCard))
-                { File.Delete(employeeDocumentInfo.PanCard); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.AadharCard))
-                { File.Delete(employeeDocumentInfo.AadharCard); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.Passport))
-                { File.Delete(employeeDocumentInfo.Passport); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.VoterId))
-                { File.Delete(employeeDocumentInfo.VoterId); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.CurrentAddressProof))
-                { File.Delete(employeeDocumentInfo.CurrentAddressProof); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.PermanentAddressProof))
-                { File.Delete(employeeDocumentInfo.PermanentAddressProof); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.FathersAadharCard))
-                { File.Delete(employeeDocumentInfo.FathersAadharCard); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.MothersAadharCard))
-                { File.Delete(employeeDocumentInfo.MothersAadharCard); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount))
-                { File.Delete(employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear))
-                { File.Delete(employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.SSCOrEquivalent))
-                { File.Delete(employeeDocumentInfo.SSCOrEquivalent); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.IntermediateOrEquivalent))
-                { File.Delete(employeeDocumentInfo.IntermediateOrEquivalent); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.GraduationOrEquivalent))
-                { File.Delete(employeeDocumentInfo.GraduationOrEquivalent); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.PGOrEquivalent))
-                { File.Delete(employeeDocumentInfo.PGOrEquivalent); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.AdvancedDiplomaIfAny))
-                { File.Delete(employeeDocumentInfo.AdvancedDiplomaIfAny); }
-                if (!string.IsNullOrEmpty(employeeDocumentInfo.ProfessionalCertificationsIfAny))
-                { File.Delete(employeeDocumentInfo.ProfessionalCertificationsIfAny); }
-            }
-            catch (Exception ex)
-            {
-                ErrorLogger.LogError(ex.Message);
-            }
-        }
+        //public void DeleteDocumentsFromFolder(Entities.EmployeeDocument employeeDocumentInfo)
+        //{
+        //    try
+        //    {
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.PassportPhoto))
+        //        { File.Delete(employeeDocumentInfo.PassportPhoto); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.Resume))
+        //        { File.Delete(employeeDocumentInfo.Resume); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.PanCard))
+        //        { File.Delete(employeeDocumentInfo.PanCard); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.AadharCard))
+        //        { File.Delete(employeeDocumentInfo.AadharCard); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.Passport))
+        //        { File.Delete(employeeDocumentInfo.Passport); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.VoterId))
+        //        { File.Delete(employeeDocumentInfo.VoterId); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.CurrentAddressProof))
+        //        { File.Delete(employeeDocumentInfo.CurrentAddressProof); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.PermanentAddressProof))
+        //        { File.Delete(employeeDocumentInfo.PermanentAddressProof); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.FathersAadharCard))
+        //        { File.Delete(employeeDocumentInfo.FathersAadharCard); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.MothersAadharCard))
+        //        { File.Delete(employeeDocumentInfo.MothersAadharCard); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount))
+        //        { File.Delete(employeeDocumentInfo.ThreeMonthsBankStatementOfSalaryAccount); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear))
+        //        { File.Delete(employeeDocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.SSCOrEquivalent))
+        //        { File.Delete(employeeDocumentInfo.SSCOrEquivalent); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.IntermediateOrEquivalent))
+        //        { File.Delete(employeeDocumentInfo.IntermediateOrEquivalent); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.GraduationOrEquivalent))
+        //        { File.Delete(employeeDocumentInfo.GraduationOrEquivalent); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.PGOrEquivalent))
+        //        { File.Delete(employeeDocumentInfo.PGOrEquivalent); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.AdvancedDiplomaIfAny))
+        //        { File.Delete(employeeDocumentInfo.AdvancedDiplomaIfAny); }
+        //        if (!string.IsNullOrEmpty(employeeDocumentInfo.ProfessionalCertificationsIfAny))
+        //        { File.Delete(employeeDocumentInfo.ProfessionalCertificationsIfAny); }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ErrorLogger.LogError(ex.Message);
+        //    }
+        //}
         #endregion
     }
 }

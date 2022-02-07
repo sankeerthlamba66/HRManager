@@ -8,12 +8,12 @@
 
 <div class="row">
     <div class="col-md-6">
-        @if (Model is not null)
-        {
-           <form asp-action="UpdateDocument" enctype="multipart/form-data">
+        
+           <form asp-action="UpdateDocument" method="post" enctype="multipart/form-data">
                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label hidden-for="@Model.employeeDocuments.Id" class="control-label"></label>
+                    <input class="form-control" type="hidden" asp-for="@Model.employeeDocuments.Id"/>
                 </div>
 
                 <div class="form group mb-3">
@@ -169,10 +169,9 @@
                 
                 <div class="form-group">
                     <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
-                    <input type="submit" value="Save" class="btn btn-primary "/>
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
            </form>
-        }
     </div>
 </div>
 

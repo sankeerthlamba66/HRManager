@@ -17,7 +17,7 @@
                 }
             }
 
-            return filePath;
+            return uniqueFileName;
         }
     }
 }

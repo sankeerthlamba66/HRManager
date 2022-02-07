@@ -2,51 +2,86 @@
 
 @{
     ViewData["Title"] = "Employee Page";
-    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<h2>Employee Details</h2>
- <div>
-     <form asp-controller="Employee" asp-action="Index">
-@if (Model is not null)
-{  
-    <div>
-    <partial name="_PersonalInfo.cshtml" model="@Model.employeePersonalInfo">
-    </div>
-    
-    foreach (var item in @Model.employeeProfessionalInfos)
-    {
-      <div>
-        <partial name="_ProfessionalInfo.cshtml"model="item">
-      </div>
-    }
-
-    foreach (var item in @Model.employeeBankInfos)
-    {
-        <div>
-           <partial name="_BankInfo.cshtml" model="item">
+    <h2>Your Details</h2>
+<div>
+  <form asp-controller="Employee" asp-action="Index">
+    @if (Model is not null)
+    {  
+        <h3>Personal Details</h3>
+        <div>      
+          <partial name="_PersonalInfo.cshtml" model="@Model.employeePersonalInfo">
+          <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePersonalInfo", "Employee",new{Id=Model.employeePersonalInfo.Id})'" />
         </div>
-    }
+           
+        <span>
+         <h3>Professional Details</h3>
+         
+         <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddProfessionalInfo", "Employee")'" />
+         </span>
+        foreach (var item in @Model.employeeProfessionalInfos)
+        {
+          <div>
+            <partial name="_ProfessionalInfo.cshtml"model="item">
+          </div>
+          <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateProfessionalInfo", "Employee",new{Id=item.Id})'" />
+          <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteProfessionalInfo", "Employee",new{Id=item.Id})'" />
+        }
 
-    foreach(var item in @Model.employeeInsuranceInfos)
-    {
-        <div>
-            <partial name="_InsuranceInfo.cshtml" model="item">
-        </div>
-    }
+         <h3>Bank Details</h3>
+          <span>
+              <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("PostBankInfo", "Employee")'" />
+          </span>
+        foreach (var item in @Model.employeeBankInfos)
+        {
+            <div>
+               <partial name="_BankInfo.cshtml" model="item">
+            </div>
+            <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("PutBankInfo", "Employee",new{Id=item.Id})'" />
+            <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteBankInfo", "Employee",new{Id=item.Id})'" />
+        }
 
-    foreach(var item in @Model.employeePFandESIInfos)
-    {
-        <div>
-            <partial name="_PFandESIInfo.cshtml" model="item">
-        </div>
-    }
-    if(@Model.employeeDocuments is not null)
-    {
-        <div>
+         <h3>Insurance Details</h3>
+         <span>
+             <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddInsuranceInfo", "Employee")'" />
+         </span>
+        foreach(var item in @Model.employeeInsuranceInfos)
+        {
+            <div>
+                <partial name="_InsuranceInfo.cshtml" model="item">
+            </div>
+            <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateInsuranceInfo", "Employee",new{Id=item.Id})'" />
+            <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteInsuranceInfo", "Employee",new{Id=item.Id})'" />
+        }
+
+         <h3>PF and ESI Details</h3>
+         <span>
+             <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddPFAndESIInfo", "Employee")'" />
+         </span>
+        foreach(var item in @Model.employeePFandESIInfos)
+        {
+            <div>
+                <partial name="_PFandESIInfo.cshtml" model="item">
+            </div>
+            <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePFandESIInfo", "Employee",new{Id=item.Id})'" />
+            <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeletePFandESIInfo", "Employee",new{Id=item.Id})'" />
+        }
+
+         <h3>Documents</h3>
+         <span>
+             <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddDocument", "Employee")'" />
+         </span>
+        if(@Model.employeeDocuments is not null)
+        {
+            <div>
                 <partial name="_Document.cshtml" model="@Model.employeeDocuments">
-        </div>
+                 <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
+                 <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
+            </div>           
+        }
     }
-}
- </form>
- </div>
+  </form>
+</div>

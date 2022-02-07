@@ -4,18 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>GetPersonalInfo</title>
-</head>
-<body>
-
 <div>
-    <h4>EmployeePersonalInfo</h4>
+    <h4>Updated Personal Details</h4>
     <partial name="_PersonalInfo.cshtml" />
+
+    <input type="button" title="Save" value="Go To HomePage" onclick="location.href='@Url.Action("Index", "Employee")'" />
 </div>
-</body>
-</html>

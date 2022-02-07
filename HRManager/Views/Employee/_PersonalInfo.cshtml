@@ -1,16 +1,8 @@
 ﻿@model HRManager.Models.EntityViews.EmployeePersonalInfo
 
 
-
-<h1>Personal Details</h1>
-
-@if (Model is not null)
-{
-    <form asp-action="GetPersonalInfo">
     <div>
-        <h4>Employee Personal Info</h4>
-        <hr />
-        <dl class="row">
+      <dl class="row">
             <dt class = "col-sm-2">
                 @Html.HiddenFor(model => model.Id)
             </dt>
@@ -143,10 +135,9 @@
             <dd class = "col-sm-10">
                 @Html.DisplayFor(model => model.HowWereYouReferredToUs)
             </dd>
-        </dl>
-            @Html.ActionLink("Edit","UpdatePersonalInfo","Employee",new{id=Model.Id})
+      </dl>
+            @*@Html.ActionLink("Edit","UpdatePersonalInfo","Employee",new{id=Model.Id})*@
              
     </div>
-    </form>
-}
+
 

@@ -2,8 +2,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Delete PF and ESI Details</h4>
-    <hr />
+   <form asp-action="DeletePFAndESIInfo">
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.UAN)
@@ -18,10 +17,8 @@
             @Html.DisplayFor(model => model.ESIN)
         </dd>
     </dl>
-    
-    <form asp-action="_DeletePFAndESIInfo">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back</a>
+        <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
     </form>
 </div>
 

@@ -1,11 +1,7 @@
 ﻿@model HRManager.Models.EntityViews.EmployeeProfessionalInfo
 
-@if (Model is not null)
-{
-    <div>
-        <h4>Professional Information</h4>
-        <hr />
 
+    <div>
         <dl class="row">
             <dt class = "col-sm-2">
                 @Html.HiddenFor(model => model.Id)
@@ -110,11 +106,7 @@
                 @Html.DisplayFor(model => model.ReferenceEmailId)
             </dd>
         </dl>
-        @Html.ActionLink("Add","AddProfessionalInfo","Employee")
-
-        @Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})
-
-         @Html.ActionLink("Delete","DeleteProfessionalInfo","Employee",new{id=Model.Id})
+        @*@Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})
+        @Html.ActionLink("Delete","DeleteProfessionalInfo","Employee",new{id=Model.Id})*@
     </div>
-}
 

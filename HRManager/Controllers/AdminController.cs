@@ -18,40 +18,40 @@ namespace HRManager.Controllers
             adminManager = _adminManager;
         }
 
-        //public IActionResult Index()
-        //{
-        //    try
-        //    {
-        //        return View();
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        return ReturnErrorView(ex);
-        //    }
-        //}
-        public IActionResult Index(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
+        public IActionResult Index()
         {
             try
             {
-                var employeeData = new List<EmployeeTableSummary>();
-                if ((DateFrom != null) && (DateTo != null))
-                {
-                    employeeData = adminManager.GetRecentlyUpdatedEmployees(DateFrom.Value, DateTo.Value);
-                }
-                else
-                {
-                    employeeData = adminManager.GetRecentlyUpdatedEmployees();
-                }
-
-                var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
-
-                return View(allEmployeeTable);
+                return View();
             }
             catch (Exception ex)
             {
                 return ReturnErrorView(ex);
             }
         }
+        //public IActionResult Index(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
+        //{
+        //    try
+        //    {
+        //        var employeeData = new List<EmployeeTableSummary>();
+        //        if ((DateFrom != null) && (DateTo != null))
+        //        {
+        //            employeeData = adminManager.GetRecentlyUpdatedEmployees(DateFrom.Value, DateTo.Value);
+        //        }
+        //        else
+        //        {
+        //            employeeData = adminManager.GetRecentlyUpdatedEmployees();
+        //        }
+
+        //        var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
+
+        //        return View(allEmployeeTable);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return ReturnErrorView(ex);
+        //    }
+        //}
 
         public IActionResult AllEmployeeTable(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
         {

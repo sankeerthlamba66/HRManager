@@ -1,6 +1,6 @@
 ﻿@model HRManager.Models.EntityViews.EmployeeFileDocument
 
-<h4>Upload Documents</h4>
+<h3 class="align-content-center">Documents</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -96,16 +96,14 @@
                 <input asp-for="ProfessionalCertificationsIfAny" class="custom-file-input" />
                 <span asp-validation-for="ProfessionalCertificationsIfAny" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group">               
+                 <input type="submit" value="Back"  class="btn btn-primary" asp-action="AddPFAndESIInfo" />
+                <input type="submit" value="Save" class="btn btn-primary" />              
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

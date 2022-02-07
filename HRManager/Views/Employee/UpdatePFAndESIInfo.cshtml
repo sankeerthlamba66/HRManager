@@ -1,20 +1,11 @@
 ﻿@model HRManager.Models.EntityViews.EmployeePFandESIInfo
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h3>Edit Your PF and ESI Details</h3>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UpdatePFAndESIInfo</title>
-</head>
-<body>
-
-<h4>EmployeePFandESIInfo</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="UpdatePFAndESIInfo">
@@ -40,18 +31,15 @@
                 <span asp-validation-for="ESIN" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save & Continue" class="btn btn-primary" asp-action="UpdateDocument"/>
+                <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
+                <input type="submit" value="Save" class="btn btn-primary"/>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="UpdateInsurance">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>
+

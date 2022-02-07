@@ -1,123 +1,177 @@
 ﻿@model HRManager.Models.ViewModels.EmployeeDocumentModels
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h3>Edit Your Documents</h3>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UpdateDocument</title>
-</head>
-<body>
-
-<h4>Documents</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-            @if (Model is not null)
-            {
-                <form asp-action="UpdateDocument" enctype="multipart/form-data">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-6">
+        @if (Model is not null)
+        {
+           <form asp-action="UpdateDocument" enctype="multipart/form-data">
+               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label hidden-for="@Model.employeeDocuments.Id" class="control-label"></label>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.PassportPhoto" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.PassportPhoto" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.PassportPhoto" class="text-danger"></span>
+
+                <div class="form group mb-3">
+                    
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PassportPhoto"></label>         
+                <span>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PassportPhoto"/>
+                </span>
+                
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.Resume" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.Resume" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.Resume" class="text-danger"></span>
+                <span>
+                 @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PassportPhoto))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.PassportPhoto">Passport Photo</a>
+                    }
+                </span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Resume))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.Resume">Resume</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Resume"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Resume"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.PanCard" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.PanCard" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.PanCard" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PanCard))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.PanCard">Pan Card</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PanCard"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PanCard"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.AadharCard" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.AadharCard" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.AadharCard" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.AadharCard))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.AadharCard">AadharCard</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.AadharCard"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.AadharCard"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.Passport" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.Passport" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.Passport" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Passport))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.Passport">Passport</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Passport"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Passport"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.VoterId" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.VoterId" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.VoterId" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.VoterId))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.VoterId">VoterId</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.VoterId"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.VoterId"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.CurrentAddressProof" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.CurrentAddressProof" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.CurrentAddressProof" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.CurrentAddressProof))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.CurrentAddressProof">Current Address Proof</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.CurrentAddressProof"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.CurrentAddressProof"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.PermanentAddressProof" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.PermanentAddressProof" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.PermanentAddressProof" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PermanentAddressProof))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.PermanentAddressProof">Permanent Address Proof</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PermanentAddressProof"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PermanentAddressProof"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.FathersAadharCard" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.FathersAadharCard" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.FathersAadharCard" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.FathersAadharCard))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.FathersAadharCard">Fathers Aadhar Card</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.FathersAadharCard"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.FathersAadharCard"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.MothersAadharCard" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.MothersAadharCard" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.MothersAadharCard" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.MothersAadharCard))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.MothersAadharCard">Mothers Aadhar Card</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.MothersAadharCard"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.MothersAadharCard"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount">Three Months Bank Statement Of Salary Account</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear">Form16OrIncomeCertificateOfCurrentFinYear</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.SSCOrEquivalent" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.SSCOrEquivalent" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.SSCOrEquivalent" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.SSCOrEquivalent))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.SSCOrEquivalent">SSC Or Equivalent</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.SSCOrEquivalent"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.SSCOrEquivalent"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.IntermediateOrEquivalent" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.IntermediateOrEquivalent))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.IntermediateOrEquivalent">Intermediate Or Equivalent</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.GraduationOrEquivalent" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.GraduationOrEquivalent))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.GraduationOrEquivalent">Graduation Or Equivalent</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.PGOrEquivalent" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.PGOrEquivalent" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.PGOrEquivalent" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PGOrEquivalent))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.PGOrEquivalent">PG Or Equivalent</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PGOrEquivalent"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PGOrEquivalent"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.AdvancedDiplomaIfAny))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.AdvancedDiplomaIfAny">Advanced Diploma If Any</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny"/>
                 </div>
-                <div class="form-group">
-                    <label asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny" class="control-label"></label>
-                    <input asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny" class="custom-file-input" />
-                    <span asp-validation-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny" class="text-danger"></span>
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.ProfessionalCertificationsIfAny))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.ProfessionalCertificationsIfAny">Professional Certifications If Any</a>
+                    }
+                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny"></label>
+                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny"/>
                 </div>
+                
                 <div class="form-group">
-                    <input type="submit" value="Save & Continue" class="btn btn-primary"/>
+                    <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
+                    <input type="submit" value="Save" class="btn btn-primary "/>
                 </div>
-        </form>
+           </form>
         }
     </div>
 </div>
@@ -126,5 +180,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>

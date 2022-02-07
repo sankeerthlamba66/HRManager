@@ -4,15 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h3>Edit Your Personal Details</h3>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit Personal Details</title>
-</head>
-<body>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-controller="Employee" asp-action="UpdatePersonalInfo" method="post">
@@ -119,6 +112,7 @@
                 <span asp-validation-for="HowWereYouReferredToUs" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
                 <input type="submit" value="Save" class="btn btn-primary"/>
             </div>
         </form>
@@ -128,5 +122,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>

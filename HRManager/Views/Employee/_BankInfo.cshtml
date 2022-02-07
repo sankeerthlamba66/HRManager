@@ -1,10 +1,7 @@
 ﻿@model HRManager.Models.EntityViews.EmployeeBankInfo
 
-@if (Model is not null)
-{
+@*<h3>Bank Details</h3>*@
     <div>
-        <h4>EmployeeBankInfo</h4>
-        <hr />
         <dl class="row">
             <dt class = "col-sm-2">
                 @Html.HiddenFor(model => model.Id)
@@ -50,8 +47,7 @@
             </dd>
         </dl>
          
-          @Html.ActionLink("Add","PostBankInfo","Employee")
+         @* @Html.ActionLink("Add","PostBankInfo","Employee")
           @Html.ActionLink("Edit","PutBankInfo","Employee",new{id=Model.Id})
-           @Html.ActionLink("Delete","DeleteBankInfo","Employee",new{id=Model.Id})
+           @Html.ActionLink("Delete","DeleteBankInfo","Employee",new{id=Model.Id})*@
     </div>
-}

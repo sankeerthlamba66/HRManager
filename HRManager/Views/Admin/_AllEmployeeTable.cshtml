@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HRManager.Models.Views.EmployeeTableSummary>
+﻿@model HRManager.Models.ViewModels.AllEmployeeTable
 
 @if (Model is not null)
 {
@@ -6,19 +6,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeName)
+                @Html.DisplayNameFor(model => model.EmployeeData[0].EmployeeName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MobileNumber)
+                @Html.DisplayNameFor(model => model.EmployeeData[0].MobileNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PersonalEmailId)
+                @Html.DisplayNameFor(model => model.EmployeeData[0].PersonalEmailId)
             </th>
             
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model.EmployeeData) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.EmployeeName)
@@ -35,7 +35,7 @@
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
 }

@@ -46,7 +46,7 @@ namespace HRManager.Models.EntityViews
         [Display(Name = "Three Months Bank Statement Of Salary Account")]
         public IFormFile ThreeMonthsBankStatementOfSalaryAccount { get; set; }
 
-        [Display(Name = "Form 160r Income Certificate Of Current Fin Year")]
+        [Display(Name = "Form 16 Or Income Certificate Of Current Fin Year")]
         public IFormFile Form16OrIncomeCertificateOfCurrentFinYear { get; set; }
 
         [Display(Name = "SSC Or Equivalent")]

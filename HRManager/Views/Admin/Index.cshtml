@@ -1,7 +1,6 @@
 ﻿<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 
-@model  HRManager.Models.ViewModels.AllEmployeeTable
 
 @{
     ViewData["Title"] = "All Employees";
@@ -21,19 +20,12 @@
         </div>
     </div>
 </div>
-@*@if(Model is not null)
-{
-    
-    <div>
-        <partial name="_AllEmployeeTable.cshtml" model="@Model.EmployeeData"/>
-    </div>
 
-}*@
 <div class="row">
     <div class="col-lg-12">
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a class="nav-link active" id="table-tab" data-bs-toggle="pill" data-bs-target="#table-data" aria-current="page" asp-contoller="Admin" asp-action="AllEmployeeTable">Table</a>
+            <a class="nav-link active" id="table-tab" data-bs-toggle="pill" data-bs-target="#table-data" aria-current="page">Table</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="cards-tab" data-bs-toggle="pill" data-bs-target="#card-data">Cards</a>
@@ -45,12 +37,8 @@
             <div class="alert alert-dismissible alert-success" style="display:none">
               <strong>Fetching data!</strong> Please wait...
             </div>
-          @if (Model is not null)
-            {
-             <div id="table-data-container">
-                 <partial name="_AllEmployeeTable.cshtml" model="@Model.EmployeeData"/>
+            <div id="table-data-container">
             </div>
-            }
           </div>
           <div class="tab-pane" id="card-data" role="tabpanel" aria-labelledby="profile-tab">
             <div class="alert alert-dismissible alert-success" style="display:none">

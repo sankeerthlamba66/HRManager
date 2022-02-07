@@ -55,7 +55,7 @@ namespace HRManager.Models.EntityViews
         [Display(Name = "Experience Letter Path")]
         [Required]
         public string ExperienceLetterPath { get; set; }
-        [Display(Name = "Pay Slip !")]
+        [Display(Name = "Pay Slip 1")]
         [Required]
         public string PaySlip1 { get; set; }
         [Display(Name = "Pay Slip 2")]

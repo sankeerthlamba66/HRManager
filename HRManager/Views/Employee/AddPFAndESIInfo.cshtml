@@ -1,6 +1,6 @@
 ﻿@model HRManager.Models.EntityViews.EmployeePFandESIInfo
 
-<h4>Add PF and ESI Details</h4>
+<h3 class="align-content-center">PF and ESI Details</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,14 +17,11 @@
                 <span asp-validation-for="ESIN" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Back"  class="btn btn-primary" asp-action="AddInsuranceInfo" />
+                <input type="submit" value="Save & Continue" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back</a>
 </div>
 
 @section Scripts {

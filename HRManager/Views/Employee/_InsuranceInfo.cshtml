@@ -1,10 +1,7 @@
 ﻿@model HRManager.Models.EntityViews.EmployeeInsuranceInfo
 
-@if (Model is not null)
-{
+
     <div>
-        <h4>EmployeeInsuranceInfo</h4>
-        <hr />
         <dl class="row">
             <dt class = "col-sm-2">
                 @Html.HiddenFor(model => model.Id)
@@ -37,9 +34,7 @@
                 @Html.DisplayFor(model => model.Gender)
             </dd>
         </dl>
-         @Html.ActionLink("Add","AddInsuranceInfo","Employee")
-         @Html.ActionLink("Edit","UpdateInsuranceInfo","Employee",new{Id=Model.Id})
-          @Html.ActionLink("Delete","DeleteInsuranceInfo","Employee",new{id=Model.Id})
+         @*@Html.ActionLink("Edit","UpdateInsuranceInfo","Employee",new{Id=Model.Id})
+          @Html.ActionLink("Delete","DeleteInsuranceInfo","Employee",new{id=Model.Id})*@
     </div>
-}
 

@@ -74,7 +74,8 @@ namespace HRManager.Controllers
                 PersonallInfo.UserId = Session.UserId;
                 PersonallInfo.UpdatedBy = Session.UserName;
                 int UpdatedId = employeeManager.UpdatePersonalInfo(PersonallInfo);
-                return RedirectToAction("GetPersonalInfo", new { Id = UpdatedId });
+                return RedirectToAction("Index");
+                //return RedirectToAction("GetPersonalInfo", new { Id = UpdatedId });
             }
             catch (Exception ex)
             {
@@ -119,7 +120,8 @@ namespace HRManager.Controllers
                 ProfessionalInfo.UserId = Session.UserId;
                 ProfessionalInfo.CreatedBy = Session.UserName;
                 var addedProfessionalInfoId = employeeManager.AddProfessionalInfo(ProfessionalInfo);
-                return RedirectToAction("GetProfessionalInfo", new { Id = addedProfessionalInfoId });
+                return RedirectToAction("Index");
+                //return RedirectToAction("PostBankInfo", new { Id = addedProfessionalInfoId });
             }
             catch (Exception ex)
             {
@@ -207,7 +209,8 @@ namespace HRManager.Controllers
                 BankInfo.UserId = Session.UserId;
                 BankInfo.CreatedBy = Session.UserName;
                 var addedBankInfoId = employeeManager.AddBankInfo(BankInfo);
-                return RedirectToAction("GetBankInfo", new { Id = addedBankInfoId });
+                return RedirectToAction("Index");
+                //return RedirectToAction("AddInsuranceInfo", new { Id = addedBankInfoId });
             }
             catch (Exception ex)
             {
@@ -294,7 +297,8 @@ namespace HRManager.Controllers
                 InsuranceInfo.UserId = Session.UserId;
                 InsuranceInfo.CreatedBy = Session.UserName;
                 int addedInsuranceInfoId = employeeManager.AddInsuranceInfo(InsuranceInfo);
-                return RedirectToAction("GetInsuranceInfo", new { Id = addedInsuranceInfoId });
+                return RedirectToAction("Index");
+                //return RedirectToAction("AddPFAndESIInfo", new { Id = addedInsuranceInfoId });
             }
             catch (Exception ex)
             {
@@ -384,7 +388,8 @@ namespace HRManager.Controllers
                 PFAndESIInfo.UserId = Session.UserId;
                 PFAndESIInfo.CreatedBy = Session.UserName;
                 int addedPFAndESIInfoId = employeeManager.AddPFAndESIInfo(PFAndESIInfo);
-                return RedirectToAction("GetPFAndESIInfo", new { Id = addedPFAndESIInfoId });
+                return RedirectToAction("Index");
+                //return RedirectToAction("AddDocument", new { Id = addedPFAndESIInfoId });
             }
             catch (Exception ex)
             {
@@ -473,7 +478,7 @@ namespace HRManager.Controllers
                 employeeDocument.Id = null;
                 employeeDocument.UserId = Session.UserId;
                 employeeDocument.CreatedBy = Session.UserName;
-                string path2 = @"C:\Users\srinivas.rathod\source\repos\rockzz66\HRManager\HRManager\wwwroot\Documents";
+                string path2 = @"Documents";
                 if (DocumentInfo.PassportPhoto != null)
                 { employeeDocument.PassportPhoto = Code.FileManager.UploadDocument(DocumentInfo.PassportPhoto, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 if (DocumentInfo.Resume != null)
@@ -511,7 +516,8 @@ namespace HRManager.Controllers
                 if (DocumentInfo.ProfessionalCertificationsIfAny != null)
                 { employeeDocument.ProfessionalCertificationsIfAny = Code.FileManager.UploadDocument(DocumentInfo.ProfessionalCertificationsIfAny, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 int addedDocumentId = employeeManager.AddDocument(employeeDocument);
-                return RedirectToAction("GetDocument", new { Id = addedDocumentId });
+                return RedirectToAction("Index");
+                //return RedirectToAction("Index", new { Id = addedDocumentId });
             }
             catch (Exception ex)
             {
@@ -544,92 +550,92 @@ namespace HRManager.Controllers
                 employeeDocument.Id = employeeDocumentModelInfo.employeeDocuments.Id;
                 employeeDocument.UserId = Session.UserId;
                 employeeDocument.UpdatedBy = Session.UserName;
-                string path2 = @"C:\Users\srinivas.rathod\source\repos\rockzz66\HRManager\HRManager\wwwroot\Documents";
+                string path2 = @"Documents";
                 if (DocumentInfo.PassportPhoto != null)
                 {
                     System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PassportPhoto);
-                    employeeDocument.PassportPhoto = Code.FileManager.UploadDocument(DocumentInfo.PassportPhoto, Path.Combine(_webHostEnvironment.WebRootPath, path2));
+                    employeeDocument.PassportPhoto = Code.FileManager.UploadDocument(DocumentInfo.PassportPhoto, path2);/*Path.Combine(_webHostEnvironment.WebRootPath, path2))*/
                 }
                 if (DocumentInfo.Resume != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.Resume);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.Resume);
                     employeeDocument.Resume = Code.FileManager.UploadDocument(DocumentInfo.Resume, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.PanCard != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PanCard);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PanCard);
                     employeeDocument.PanCard = Code.FileManager.UploadDocument(DocumentInfo.PanCard, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.AadharCard != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.AadharCard);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.AadharCard);
                     employeeDocument.AadharCard = Code.FileManager.UploadDocument(DocumentInfo.AadharCard, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 if (DocumentInfo.Passport != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.Passport);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.Passport);
                     employeeDocument.Passport = Code.FileManager.UploadDocument(DocumentInfo.Passport, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 if (DocumentInfo.VoterId != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.VoterId);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.VoterId);
                     employeeDocument.VoterId = Code.FileManager.UploadDocument(DocumentInfo.VoterId, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 if (DocumentInfo.CurrentAddressProof != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.CurrentAddressProof);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.CurrentAddressProof);
                     employeeDocument.CurrentAddressProof = Code.FileManager.UploadDocument(DocumentInfo.CurrentAddressProof, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.PermanentAddressProof != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PermanentAddressProof);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PermanentAddressProof);
                     employeeDocument.PermanentAddressProof = Code.FileManager.UploadDocument(DocumentInfo.PermanentAddressProof, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.FathersAadharCard != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.FathersAadharCard);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.FathersAadharCard);
                     employeeDocument.FathersAadharCard = Code.FileManager.UploadDocument(DocumentInfo.FathersAadharCard, Path.Combine(_webHostEnvironment.WebRootPath, path2));
                 }
                 if (DocumentInfo.MothersAadharCard != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.MothersAadharCard);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.MothersAadharCard);
                     employeeDocument.MothersAadharCard = Code.FileManager.UploadDocument(DocumentInfo.MothersAadharCard, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount);
                     employeeDocument.ThreeMonthsBankStatementOfSalaryAccount = Code.FileManager.UploadDocument(DocumentInfo.ThreeMonthsBankStatementOfSalaryAccount, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear);
                     employeeDocument.Form16OrIncomeCertificateOfCurrentFinYear = Code.FileManager.UploadDocument(DocumentInfo.Form16OrIncomeCertificateOfCurrentFinYear, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.SSCOrEquivalent != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.SSCOrEquivalent);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.SSCOrEquivalent);
                     employeeDocument.SSCOrEquivalent = Code.FileManager.UploadDocument(DocumentInfo.SSCOrEquivalent, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.IntermediateOrEquivalent != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.IntermediateOrEquivalent);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.IntermediateOrEquivalent);
                     employeeDocument.IntermediateOrEquivalent = Code.FileManager.UploadDocument(DocumentInfo.IntermediateOrEquivalent, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.GraduationOrEquivalent != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.GraduationOrEquivalent);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.GraduationOrEquivalent);
                     employeeDocument.GraduationOrEquivalent = Code.FileManager.UploadDocument(DocumentInfo.GraduationOrEquivalent, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.PGOrEquivalent != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PGOrEquivalent);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PGOrEquivalent);
                     employeeDocument.PGOrEquivalent = Code.FileManager.UploadDocument(DocumentInfo.PGOrEquivalent, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.AdvancedDiplomaIfAny != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.AdvancedDiplomaIfAny);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.AdvancedDiplomaIfAny);
                     employeeDocument.AdvancedDiplomaIfAny = Code.FileManager.UploadDocument(DocumentInfo.AdvancedDiplomaIfAny, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.ProfessionalCertificationsIfAny != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.ProfessionalCertificationsIfAny);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.ProfessionalCertificationsIfAny);
                     employeeDocument.ProfessionalCertificationsIfAny = Code.FileManager.UploadDocument(DocumentInfo.ProfessionalCertificationsIfAny, Path.Combine(_webHostEnvironment.WebRootPath, path2));
                 }
                 int updatedDocumentId = employeeManager.UpdateDocument(employeeDocument);

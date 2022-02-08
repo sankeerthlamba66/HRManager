@@ -8,5 +8,6 @@ namespace HRManager.Models.Views
 {
     public class EmployeePDValidationSummary
     {
+
     }
 }

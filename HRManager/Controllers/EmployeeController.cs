@@ -151,7 +151,7 @@ namespace HRManager.Controllers
                 ProfessionalInfo.UserId = Session.UserId;
                 ProfessionalInfo.UpdatedBy = Session.UserName;
                 var updatedProfessionalId = employeeManager.UpdateProfessionalInfo(ProfessionalInfo);
-                return RedirectToAction("GetProfessionalInfo", new { Id = updatedProfessionalId });
+                return RedirectToAction("Index", new { Id = updatedProfessionalId });
             }
             catch (Exception ex)
             {
@@ -239,7 +239,7 @@ namespace HRManager.Controllers
                 BankInfo.UserId = Session.UserId;
                 BankInfo.UpdatedBy = Session.UserName;
                 var updatedBankInfoId = employeeManager.UpdateBankInfo(BankInfo);
-                return RedirectToAction("GetBankInfo", new { Id = updatedBankInfoId });
+                return RedirectToAction("Index", new { Id = updatedBankInfoId });
             }
             catch (Exception ex)
             {
@@ -328,7 +328,7 @@ namespace HRManager.Controllers
                 InsuranceInfo.UserId = Session.UserId;
                 InsuranceInfo.UpdatedBy = Session.UserName;
                 var updatedInsuranceInfoId = employeeManager.UpdateInsuranceInfo(InsuranceInfo);
-                return RedirectToAction("GetInsuranceInfo", new { Id = updatedInsuranceInfoId });
+                return RedirectToAction("Index", new { Id = updatedInsuranceInfoId });
             }
             catch (Exception ex)
             {
@@ -418,7 +418,7 @@ namespace HRManager.Controllers
                 PFAndESIInfo.UserId = Session.UserId;
                 PFAndESIInfo.UpdatedBy = Session.UserName;
                 int updatedPFAndESIInfoId = employeeManager.UpdatePFAndESIInfo(PFAndESIInfo);
-                return RedirectToAction("GetPFAndESIInfo", new { Id = updatedPFAndESIInfoId });
+                return RedirectToAction("Index", new { Id = updatedPFAndESIInfoId });
             }
             catch (Exception ex)
             {
@@ -639,7 +639,7 @@ namespace HRManager.Controllers
                     employeeDocument.ProfessionalCertificationsIfAny = Code.FileManager.UploadDocument(DocumentInfo.ProfessionalCertificationsIfAny, Path.Combine(_webHostEnvironment.WebRootPath, path2));
                 }
                 int updatedDocumentId = employeeManager.UpdateDocument(employeeDocument);
-                return RedirectToAction("GetDocument", new { Id = updatedDocumentId });
+                return RedirectToAction("Index", new { Id = updatedDocumentId });
             }
             catch (Exception ex)
             {

@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1>All Employee Details</h1>
-            @using(Html.BeginForm("Index","Admin",FormMethod.Get))
+            @using(Html.BeginForm("AllEmployeeTable","Admin",FormMethod.Get))
             {
             <input type="date" name="DateFrom"/>
             <input type="date" name="DateTo" />
@@ -65,11 +65,9 @@ $(document).ready(function () {
     $("#table-tab").click(function () {
         loadAllEmployeeTableData();
     });
-
     $("#cards-tab").click(function () {
         loadAllEmployeeData("card-data", "AllEmployeeCards");
     });
-
     loadAllEmployeeData = function (panelName, endPointName) {
         $("#" + panelName + " .alert").show();
         $.ajax({
@@ -79,15 +77,14 @@ $(document).ready(function () {
             $("#" + panelName + " .alert").hide();
         });
     };
-
     loadAllEmployeeTableData = function () {
         loadAllEmployeeData("table-data", "AllEmployeeTable");
     };
-
     loadAllEmployeeTableData();
 });
 </script>
 }
+
 
        
 

@@ -13,19 +13,19 @@
     {  
         <h3>Personal Details</h3>
         <div>      
-          <partial name="_PersonalInfo.cshtml" model="@Model.employeePersonalInfo">
+          <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo">
           <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePersonalInfo", "Employee",new{Id=Model.employeePersonalInfo.Id})'" />
         </div>
            
         <span>
-         <h3>Professional Details</h3>
-         
+         <h3>Professional Details         
          <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddProfessionalInfo", "Employee")'" />
-         </span>
+         </h3> 
+        </span>
         foreach (var item in @Model.employeeProfessionalInfos)
         {
           <div>
-            <partial name="_ProfessionalInfo.cshtml"model="item">
+            <partial name="_GetProfessionalInfo.cshtml"model="item">
           </div>
           <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateProfessionalInfo", "Employee",new{Id=item.Id})'" />
           <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteProfessionalInfo", "Employee",new{Id=item.Id})'" />
@@ -38,7 +38,7 @@
         foreach (var item in @Model.employeeBankInfos)
         {
             <div>
-               <partial name="_BankInfo.cshtml" model="item">
+               <partial name="_GetBankInfo.cshtml" model="item">
             </div>
             <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("PutBankInfo", "Employee",new{Id=item.Id})'" />
             <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteBankInfo", "Employee",new{Id=item.Id})'" />
@@ -51,7 +51,7 @@
         foreach(var item in @Model.employeeInsuranceInfos)
         {
             <div>
-                <partial name="_InsuranceInfo.cshtml" model="item">
+                <partial name="_GetInsuranceInfo.cshtml" model="item">
             </div>
             <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateInsuranceInfo", "Employee",new{Id=item.Id})'" />
             <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteInsuranceInfo", "Employee",new{Id=item.Id})'" />
@@ -64,7 +64,7 @@
         foreach(var item in @Model.employeePFandESIInfos)
         {
             <div>
-                <partial name="_PFandESIInfo.cshtml" model="item">
+                <partial name="_GetPFandESIInfo.cshtml" model="item">
             </div>
             <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePFandESIInfo", "Employee",new{Id=item.Id})'" />
             <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeletePFandESIInfo", "Employee",new{Id=item.Id})'" />
@@ -77,7 +77,7 @@
         if(@Model.employeeDocuments is not null)
         {
             <div>
-                <partial name="_Document.cshtml" model="@Model.employeeDocuments">
+                <partial name="_GetDocument.cshtml" model="@Model.employeeDocuments">
                  <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
                  <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
             </div>           

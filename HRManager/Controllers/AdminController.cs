@@ -18,7 +18,7 @@ namespace HRManager.Controllers
             adminManager = _adminManager;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(DateTime? DateFrom, DateTime? DateTo)
         {
             try
             {

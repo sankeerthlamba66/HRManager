@@ -43,6 +43,48 @@ namespace HRManager.Data.Entity
             }
             return professionalInfo;
         }
+        public EmployeeAllDetails GetEmployeeAllDetails(int UserId)
+        {
+            EmployeeAllDetails employeeAllDetails = new EmployeeAllDetails();
+            try
+            {
+                employeeAllDetails.employeePersonalInfo = GetPersonalInfo(UserId);
+                employeeAllDetails.employeeProfessionalInfos = GetProfessionalInfo(UserId);
+                employeeAllDetails.employeeBankInfos = GetBankInfo(UserId);
+                employeeAllDetails.employeeInsuranceInfos = GetInsuranceInfo(UserId);
+                employeeAllDetails.employeePFandESIInfos = GetPFAndESIInfo(UserId);
+                employeeAllDetails.employeeDocuments = GetDocument(UserId);
+                employeeAllDetails.user = GetUserDetails(UserId);
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return employeeAllDetails;
+
+        }
+
+        public User GetUserDetails(int UserId)
+        {
+            User user = new User();
+            try
+            {
+                var UserDetails = context.Users.Where(s => s.Id == UserId).FirstOrDefault();
+                if (UserDetails != null)
+                {
+                    user.Id = UserDetails.Id;
+                    user.UserName = UserDetails.UserName;
+                    user.Roles = UserDetails.Roles;
+                    user.OrganizationId = UserDetails.OrganizationId;
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return user;
+        }
 
         public EmployeeShortSummary GetEmployeeShortSummary(int EmployeeId)
         {
@@ -50,7 +92,7 @@ namespace HRManager.Data.Entity
             try
             {
                 var shortSummery = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == EmployeeId);
-                employeeShortSummary.Name = shortSummery.FirstName;
+                employeeShortSummary.Name = shortSummery.FirstName+" "+shortSummery.MiddleName+" "+shortSummery.LastName;
                 employeeShortSummary.Email = shortSummery.PersonalEmailId;
             }
             catch (Exception ex)

@@ -17,6 +17,11 @@ namespace HRManager.Business
             return new AdminQueries().GetRecentlyUpdatedEmployees();
         }
 
+        public EmployeeAllDetails GetEmployeeAllDetails(int EmployeeId)
+        {
+            return new EmployeeQueries().GetEmployeeAllDetails(EmployeeId);
+        }
+
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees(DateTime DateFrom, DateTime DateTo)
         {
             return new AdminQueries().GetRecentlyUpdatedEmployees(DateFrom, DateTo);

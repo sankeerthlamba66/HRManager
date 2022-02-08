@@ -38,9 +38,14 @@ namespace HRManager.Data.Entity
             try
             {
                 employeeTableSummary.Id = employeePersonalInfo.Id;
-                employeeTableSummary.EmployeeName = employeePersonalInfo.FirstName;
+                if (!string.IsNullOrEmpty(employeePersonalInfo.MiddleName))
+                { employeeTableSummary.EmployeeName = employeePersonalInfo.FirstName + " " + employeePersonalInfo.MiddleName + " " + employeePersonalInfo.LastName; }
+                else
+                { employeeTableSummary.EmployeeName = employeePersonalInfo.FirstName + " " + employeePersonalInfo.LastName; }
                 employeeTableSummary.MobileNumber = employeePersonalInfo.MobileNumber;
                 employeeTableSummary.PersonalEmailId = employeePersonalInfo.PersonalEmailId;
+                employeeTableSummary.PanCard = employeePersonalInfo.PanCardNumber;
+                employeeTableSummary.UserId = employeePersonalInfo.UserId;
             }
             catch (Exception ex)
             {
@@ -54,9 +59,14 @@ namespace HRManager.Data.Entity
             try
             {
                 employeeCardSummary.Id = employeePersonalInfo.Id;
-                employeeCardSummary.EmployeeName = employeePersonalInfo.FirstName;
+                if (!string.IsNullOrEmpty(employeePersonalInfo.MiddleName))
+                { employeeCardSummary.EmployeeName = employeePersonalInfo.FirstName + " " + employeePersonalInfo.MiddleName + " " + employeePersonalInfo.LastName; }
+                else 
+                { employeeCardSummary.EmployeeName= employeePersonalInfo.FirstName+ " " + employeePersonalInfo.LastName; }
                 employeeCardSummary.MobileNumber = employeePersonalInfo.MobileNumber;
                 employeeCardSummary.PersonalEmailId = employeePersonalInfo.PersonalEmailId;
+                employeeCardSummary.PanCard = employeePersonalInfo.PanCardNumber;
+                employeeCardSummary.UserId = employeePersonalInfo.UserId;
             }
             catch (Exception ex)
             {

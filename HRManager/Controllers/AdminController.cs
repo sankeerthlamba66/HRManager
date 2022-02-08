@@ -103,11 +103,12 @@ namespace HRManager.Controllers
             }
         }
 
-        public ViewResult PDValidation()
+        public ViewResult PDValidation(int EmployeeId)
         {
             try
             {
-                return View();
+                var employeeAllDetails =adminManager.GetEmployeeAllDetails(EmployeeId);
+                return View(employeeAllDetails);
             }
             catch (Exception ex)
             {

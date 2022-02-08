@@ -553,8 +553,8 @@ namespace HRManager.Controllers
                 string path2 = @"Documents";
                 if (DocumentInfo.PassportPhoto != null)
                 {
-                    System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PassportPhoto);
-                    employeeDocument.PassportPhoto = Code.FileManager.UploadDocument(DocumentInfo.PassportPhoto, path2);/*Path.Combine(_webHostEnvironment.WebRootPath, path2))*/
+                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.PassportPhoto);
+                    employeeDocument.PassportPhoto = Code.FileManager.UploadDocument(DocumentInfo.PassportPhoto, Path.Combine(_webHostEnvironment.WebRootPath, path2));
                 }
                 if (DocumentInfo.Resume != null)
                 {

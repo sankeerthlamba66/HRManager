@@ -6,82 +6,102 @@
 
 }
 
-    <h2>Your Details</h2>
-<div>
+
+    <h2 class="text-center">Your Details</h2>
   <form asp-controller="Employee" asp-action="Index">
     @if (Model is not null)
     {  
-        <h3>Personal Details</h3>
-        <div>      
-          <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo">
-          <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePersonalInfo", "Employee",new{Id=Model.employeePersonalInfo.Id})'" />
-        </div>
-           
-        <span>
-         <h3>Professional Details         
-         <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddProfessionalInfo", "Employee")'" />
-         </h3> 
-        </span>
-        foreach (var item in @Model.employeeProfessionalInfos)
-        {
-          <div>
-            <partial name="_GetProfessionalInfo.cshtml"model="item">
-          </div>
-          <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateProfessionalInfo", "Employee",new{Id=item.Id})'" />
-          <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteProfessionalInfo", "Employee",new{Id=item.Id})'" />
-        }
-
-         <h3>Bank Details</h3>
-          <span>
-              <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("PostBankInfo", "Employee")'" />
-          </span>
-        foreach (var item in @Model.employeeBankInfos)
-        {
-            <div>
-               <partial name="_GetBankInfo.cshtml" model="item">
+        <div class="card bg-transparent border-3">
+            <div class="cardbody align-content-md-center">
+                <h3>Personal Details</h3>
+                <div class="align-items-center">      
+                  <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo">
+                  <input type="button" class="btn btn-secondary align-content-sm-center" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePersonalInfo", "Employee",new{Id=Model.employeePersonalInfo.Id})'" />
+                </div>
             </div>
+        </div>
+        <br />
+        <div>
+             <h3>Professional Details         
+             <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddProfessionalInfo", "Employee")'" />
+             </h3> 
+            @foreach (var item in @Model.employeeProfessionalInfos)
+            {
+              <div class="card bg-transparent border-3 col-6">
+                  <div class="cardbody">
+                    <partial name="_GetProfessionalInfo.cshtml" model="item">
+                    <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateProfessionalInfo", "Employee",new{Id=item.Id})'" />
+                    <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteProfessionalInfo", "Employee",new{Id=item.Id})'" />
+                  </div>
+              </div>
+            }
+
+            </div>
+        <div>
+           <h3>Bank Details
+              <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("PostBankInfo", "Employee")'" />
+              </h3>
+        @foreach (var item in @Model.employeeBankInfos)
+        {
+            <div class="card bg-transparent border-3 col-sm-6">
+                  <div class="cardbody">
+               <partial name="_GetBankInfo.cshtml" model="item">
+           
             <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("PutBankInfo", "Employee",new{Id=item.Id})'" />
             <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteBankInfo", "Employee",new{Id=item.Id})'" />
-        }
-
-         <h3>Insurance Details</h3>
-         <span>
-             <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddInsuranceInfo", "Employee")'" />
-         </span>
-        foreach(var item in @Model.employeeInsuranceInfos)
-        {
-            <div>
-                <partial name="_GetInsuranceInfo.cshtml" model="item">
             </div>
-            <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateInsuranceInfo", "Employee",new{Id=item.Id})'" />
-            <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteInsuranceInfo", "Employee",new{Id=item.Id})'" />
-        }
+        </div>
 
-         <h3>PF and ESI Details</h3>
-         <span>
-             <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddPFAndESIInfo", "Employee")'" />
-         </span>
-        foreach(var item in @Model.employeePFandESIInfos)
+        }
+        </div>
+
+        <div>
+             <h3>Insurance Details
+             <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddInsuranceInfo", "Employee")'" /> 
+             </h3>
+        @foreach(var item in @Model.employeeInsuranceInfos)
         {
-            <div>
+           <div class="card bg-transparent border-3 row-col-sm-6">
+                  <div class="cardbody">
+                    <partial name="_GetInsuranceInfo.cshtml" model="item">
+                    <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateInsuranceInfo", "Employee",new{Id=item.Id})'" />
+                    <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteInsuranceInfo", "Employee",new{Id=item.Id})'" />
+                  </div>
+            </div>
+
+        }
+        </div>
+        
+        <div>
+           <h3>PF and ESI Details
+           <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddPFAndESIInfo", "Employee")'" />
+           </h3>
+        @foreach(var item in @Model.employeePFandESIInfos)
+        {
+            <div class="card bg-transparent border-3 col-sm-6">
+                  <div class="cardbody">
                 <partial name="_GetPFandESIInfo.cshtml" model="item">
-            </div>
             <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePFandESIInfo", "Employee",new{Id=item.Id})'" />
             <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeletePFandESIInfo", "Employee",new{Id=item.Id})'" />
+            </div>
+            </div>
         }
+        </div>
 
-         <h3>Documents</h3>
-         <span>
+        <div>
+             <h3>Documents
              <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddDocument", "Employee")'" />
-         </span>
-        if(@Model.employeeDocuments is not null)
+             </h3>
+        @if(@Model.employeeDocuments is not null)
         {
-            <div>
+            <div class="card bg-transparent border-3">
+                  <div class="cardbody">
                 <partial name="_GetDocument.cshtml" model="@Model.employeeDocuments">
                  <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
                  <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
-            </div>           
+            </div>
+            </div>
         }
+        </div>
     }
   </form>
-</div>

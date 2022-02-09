@@ -43,18 +43,18 @@ namespace HRManager.Data.Entity
             }
             return professionalInfo;
         }
-        public EmployeeAllDetails GetEmployeeAllDetails(int UserId)
+        public EmployeeAllDetails GetEmployeeAllDetails(int EmployeeUserId)
         {
             EmployeeAllDetails employeeAllDetails = new EmployeeAllDetails();
             try
             {
-                employeeAllDetails.employeePersonalInfo = GetPersonalInfo(UserId);
-                employeeAllDetails.employeeProfessionalInfos = GetProfessionalInfo(UserId);
-                employeeAllDetails.employeeBankInfos = GetBankInfo(UserId);
-                employeeAllDetails.employeeInsuranceInfos = GetInsuranceInfo(UserId);
-                employeeAllDetails.employeePFandESIInfos = GetPFAndESIInfo(UserId);
-                employeeAllDetails.employeeDocuments = GetDocument(UserId);
-                employeeAllDetails.user = GetUserDetails(UserId);
+                employeeAllDetails.employeePersonalInfo = GetPersonalInfo(EmployeeUserId);
+                employeeAllDetails.employeeProfessionalInfos = GetProfessionalInfo(EmployeeUserId);
+                employeeAllDetails.employeeBankInfos = GetBankInfo(EmployeeUserId);
+                employeeAllDetails.employeeInsuranceInfos = GetInsuranceInfo(EmployeeUserId);
+                employeeAllDetails.employeePFandESIInfos = GetPFAndESIInfo(EmployeeUserId);
+                employeeAllDetails.employeeDocuments = GetDocument(EmployeeUserId);
+                employeeAllDetails.user = GetUserDetails(EmployeeUserId);
             }
             catch (Exception ex)
             {

@@ -17,9 +17,9 @@ namespace HRManager.Business
             return new AdminQueries().GetRecentlyUpdatedEmployees();
         }
 
-        public EmployeeAllDetails GetEmployeeAllDetails(int EmployeeId)
+        public EmployeeAllDetails GetEmployeeAllDetails(int EmployeeUserId)
         {
-            return new EmployeeQueries().GetEmployeeAllDetails(EmployeeId);
+            return new EmployeeQueries().GetEmployeeAllDetails(EmployeeUserId);
         }
 
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees(DateTime DateFrom, DateTime DateTo)
@@ -53,8 +53,8 @@ namespace HRManager.Business
             var EmailTemplate = new AdminQueries().GetPDVEmailTemplate();
 
             //Substitute placeholders in the templates with the employee details and Fields List.
-            string Subject = string.Empty;
-            string Body = string.Empty;
+            string Subject = "Please Validate Following";//string.Empty;
+            string Body = FieldsToUpdate[0];//string.Empty;
 
             Helpers.Utilities.SendEmail(Summary.Email, Subject, Body);
         }

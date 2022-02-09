@@ -14,7 +14,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeData[0].PersonalEmailId)
             </th>
-            
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeData[0].PanCard)
+            </th>
+            <th>
+                @Html.HiddenFor(model => model.EmployeeData[0].UserId)
+            </th>
+            <th>
+                @Html.DisplayName("PD Validation")
+            </th>
+
         </tr>
     </thead>
     <tbody>
@@ -29,8 +38,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PersonalEmailId)
             </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.PanCard)
+            </td>
+             <td>
+                @Html.HiddenFor(modelItem => item.UserId)
+            </td>
             <td>
-              @* @Html.ActionLink("PDValidation")*@
+              @Html.ActionLink("PD Validation","PDValidation","Admin",new{EmployeeUserId=item.UserId})
             </td>
         </tr>
         }

@@ -1,51 +1,8 @@
-﻿@model IEnumerable<HRManager.Models.Views.EmployeeCardSummary>
-
-<div>
-  <h4>Employee Details</h4>
-  <hr />
-  @{
-   string ColMedSize = "6";
-   string ColLgSize = "4";
-   }
+﻿@model HRManager.Models.ViewModels.AllEmployeeCards
+<div class="row">
 @if (Model is not null)
-    {
-      foreach (var item in Model)
-       {
-          <div class="col-lg-@ColLgSize col-md-@ColMedSize">
-            <ul class="list-group mb-3">
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                  <div>
-                    <h6 class="text-muted">Id:&nbsp;</h6>
-                    <h5 class="my-0">item.Id</h5>
-                  </div>
-              </li>
-
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                 <div>
-                   <h6 class="text-muted">Name:&nbsp;</h6>
-                   <h5 class="my-0">item.EmployeeName</h5>
-                 </div>
-              </li>
-
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                   <h6 class="text-muted">Mobile Number:&nbsp;</h6>
-                   <h5 class="my-0">item.MobileNumber</h5>
-                </div>
-              </li>
-
-             <li class="list-group-item d-flex justify-content-between lh-sm">
-               <div>
-                  <h6 class="text-muted">Phone&nbsp;Number:&nbsp;</h6>
-                  <h5 class="my-0">item.PersonalEmailId</h5>
-               </div>
-             </li>
-
-           </ul>
-        </div>
-        }
-    }
+{       
+        await Html.RenderPartialAsync("_EmployeeCardSummary.cshtml", @Model.EmployeeData, new ViewDataDictionary(this.ViewData) { {"ShowColumns", true} });
+    
+}
 </div>
-    <div>
-       <a asp-action="Index">Back</a>
-    </div>

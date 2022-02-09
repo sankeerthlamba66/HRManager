@@ -11,7 +11,7 @@ namespace HRManager.Business.BussinessRepository
     public interface IAdminManager
     {
         List<EmployeeTableSummary> GetRecentlyUpdatedEmployees();
-        EmployeeAllDetails GetEmployeeAllDetails(int UserId);
+        EmployeeAllDetails GetEmployeeAllDetails(int EmployeeUserId);
         List<EmployeeTableSummary> GetRecentlyUpdatedEmployees(DateTime DateFrom, DateTime DateTo);
         List<EmployeeCardSummary> GetRecentlyUpdatedEmployeeCards();
         List<EmployeeCardSummary> GetRecentlyUpdatedEmployeeCards(DateTime DateFrom, DateTime DateTo);
@@ -19,7 +19,5 @@ namespace HRManager.Business.BussinessRepository
         EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId);
         void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate);
         void SendBGVerificationEmail(int ProfessionalDetailsId);
-
-
     }
 }

@@ -13,13 +13,14 @@ namespace HRManager.Business.Helpers
         //Functionality to send email
         public static void SendEmail(string EmailId, string Subject, string Body)
         { 
-            var senderEmail = new MailAddress("******HR@tekfriday.com", "Name Of the sender");
+            var senderEmail = new MailAddress("sankeerth.lamba@tekfriday.com", "Sankeerth");
+            //
             var receiverEmail = new MailAddress(EmailId);
-            var password = "********";//HRadmin or HR password
+            var password = "S@nk33rth66";//HRadmin or HR password
             var smtp = new SmtpClient
             {
                 Host = "imap.ionos.com", //smtp address 
-                Port = 993,             //port number to be updated
+                Port = 465,             //port number to be updated
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,

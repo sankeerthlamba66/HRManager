@@ -1,4 +1,4 @@
-﻿@model HRManager.Models.ViewModels.EmployeeIndexModels;
+﻿@model HRManager.Models.ViewModels.EmployeeAllDetails;
 
 @{
     
@@ -60,8 +60,33 @@
         {
             <div>
                 <partial name="_Document.cshtml" model="@Model.employeeDocuments"/>
-            </div>
+                </div>
+            }
+            <input type="button" class="btn btn-primary" value="Send Mail" id="SendEmail" onclick="location.href='@Url.Action("SendPDValidationEmail", "Admin",new{EmployeeId=Model.employeePersonalInfo.Id,FieldsToUpdate="FieldsToUpdate"})'"/>
         }
-    }
   </form>
 </div>
+
+@section Scripts
+{
+<script>
+$(document).ready(function()
+{
+    $("#SendEmail").click(function()
+    {
+            var FieldsToUpdate1 = [];
+            $('input[type=checkbox]:checked').each(function() {
+          FieldsToUpdate1.push($(this).val());
+        });
+        $.ajax({
+            //type:"POST",
+            url:"Admin/SendPDValidationEmail", //url of the action page
+            data:{'EmployeeId':@Model.employeePersonalInfo.Id,'FieldsToUpdate':FieldsToUpdate1},
+            success : function(response){
+               //code to do somethng if its success
+            } 
+            });
+    }
+}
+</script>
+}

@@ -95,7 +95,7 @@ namespace HRManager.Controllers
 
                 var allEmployeeCards = new AllEmployeeCards() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
 
-                return PartialView(allEmployeeCards);
+                return PartialView("_AllEmployeeCards",allEmployeeCards);
             }
             catch (Exception ex)
             {
@@ -103,11 +103,11 @@ namespace HRManager.Controllers
             }
         }
 
-        public ViewResult PDValidation(int EmployeeId)
+        public ViewResult PDValidation(int EmployeeUserId)
         {
             try
             {
-                var employeeAllDetails =adminManager.GetEmployeeAllDetails(EmployeeId);
+                var employeeAllDetails =adminManager.GetEmployeeAllDetails(EmployeeUserId);
                 return View(employeeAllDetails);
             }
             catch (Exception ex)

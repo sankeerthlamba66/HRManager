@@ -1,0 +1,41 @@
+﻿@model IEnumerable<HRManager.Models.Views.EmployeeCardSummary>
+
+@{
+    string ColMedSize = "12";
+    string ColLgSize = "12";
+    if (ViewBag.ShowColumns == true)
+    {
+        ColMedSize = "6";
+        ColLgSize = "4";
+    }
+}
+<div class="row">
+@if (Model is not null)
+{
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-@ColLgSize col-md-@ColMedSize">
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="text-muted">@Html.DisplayNameFor(modelItem => item.EmployeeName)</h6>
+                            <h5 class="my-0">@Html.DisplayFor(modelItem => item.EmployeeName)</h5>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="text-muted">@Html.DisplayNameFor(modelItem => item.MobileNumber)</h6>
+                            <h5 class="my-0">@Html.DisplayFor(modelItem => item.MobileNumber)</h5>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="text-muted">@Html.DisplayNameFor(modelItem => item.PersonalEmailId)</h6>
+                            <h5 class="my-0">@Html.DisplayFor(modelItem => item.PersonalEmailId)</h5>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        }
+    }
+ </div>

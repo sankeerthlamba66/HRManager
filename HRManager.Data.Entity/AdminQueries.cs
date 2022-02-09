@@ -180,9 +180,18 @@ namespace HRManager.Data.Entity
             return employeeBGVerificationSummary;
         }
 
-        public PDVEmailTemplate GetPDVEmailTemplate()
+        public PDVEmailTemplate GetPDVEmailTemplate(String EmployeeName,List<String> FieldsToUpdate)
         {
-            return new PDVEmailTemplate();
+            PDVEmailTemplate EmailTemplate = new PDVEmailTemplate();
+            StringBuilder subject = new StringBuilder();
+            EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
+            subject.Append("Dear " + EmployeeName + ",\n        The following Details should be updated Or Are not matching with data Provided.\n");
+            foreach(var item in FieldsToUpdate)
+            {
+                subject.Append("* "+item+"\n");
+            }
+            EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
+            return EmailTemplate;
         }
 
         public BGVEmailTemplate GetBGVEmailTemplate()

@@ -50,11 +50,11 @@ namespace HRManager.Business
         public void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate)
         {
             var Summary = new EmployeeQueries().GetEmployeeShortSummary(EmployeeId);
-            var EmailTemplate = new AdminQueries().GetPDVEmailTemplate();
+            var EmailTemplate = new AdminQueries().GetPDVEmailTemplate(Summary.Name,FieldsToUpdate);
 
             //Substitute placeholders in the templates with the employee details and Fields List.
-            string Subject = "Please Validate Following";//string.Empty;
-            string Body = FieldsToUpdate[0];//string.Empty;
+            string Subject = EmailTemplate.PDVEmailSubjectTemplate;//string.Empty;
+            string Body = EmailTemplate.PDVEmailBodyTemplate;//string.Empty;
 
             Helpers.Utilities.SendEmail(Summary.Email, Subject, Body);
         }

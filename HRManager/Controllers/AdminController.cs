@@ -135,7 +135,6 @@ namespace HRManager.Controllers
             try
             {
                 var pdValidationSummary = adminManager.GetEmployeePDValidationSummary(EmployeeId);
-
                 return PartialView(pdValidationSummary);
             }
             catch (Exception ex)
@@ -149,7 +148,6 @@ namespace HRManager.Controllers
             try
             {
                 var bgVerificationSummary = adminManager.GetEmployeeBGVerificationSummary(EmployeeId);
-
                 return PartialView(bgVerificationSummary);
             }
             catch(Exception ex)
@@ -164,7 +162,6 @@ namespace HRManager.Controllers
             try
             {
                 adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate);
-
                 return Ok();
                 //return RedirectToAction("PDValidation",new { EmployeeId = EmployeeId });
             }
@@ -179,7 +176,6 @@ namespace HRManager.Controllers
             try
             {
                 adminManager.SendBGVerificationEmail(ProfessionalDetailsId);
-
                 return Ok(true);
             }
             catch (Exception ex)

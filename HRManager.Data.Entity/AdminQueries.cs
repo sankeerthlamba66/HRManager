@@ -190,13 +190,21 @@ namespace HRManager.Data.Entity
             {
                 subject.Append("* "+item+"\n");
             }
+            subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
             EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
             return EmailTemplate;
         }
 
-        public BGVEmailTemplate GetBGVEmailTemplate()
+        public BGVEmailTemplate GetBGVEmailTemplate(EmployeeProfessionalInfo professionalInfo)
         {
-            return new BGVEmailTemplate();
+            BGVEmailTemplate EmailTemplate = new BGVEmailTemplate();
+            StringBuilder subject = new StringBuilder();
+            EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
+            subject.Append("Sir/Madam,\n        I am HRManager from TekFriday Pvt. Ltd. This is with regard to referral check of Mr. *****, whoworked with you as "+professionalInfo.LastDesignation+". Can you please let me know the following details about him:");
+            subject.Append("Period Of Employeement:\nCTC:\nDesignation:\nReason Of Leaving:\n");
+            subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
+            EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
+            return EmailTemplate;
         }
 
     }

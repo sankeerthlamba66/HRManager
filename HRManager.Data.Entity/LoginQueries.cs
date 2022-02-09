@@ -35,7 +35,7 @@ namespace HRManager.Data.Entity
             User user = new User();
             try
             {
-                var userDetails = context.Users.Where(s => s.UserName == UserName).FirstOrDefault();
+                var userDetails = context.Users.Where(s => s.UserName.Equals(UserName)).FirstOrDefault();
                 user.Id = userDetails.Id;
                 user.UserName = userDetails.UserName;
                 user.Roles = userDetails.Roles;

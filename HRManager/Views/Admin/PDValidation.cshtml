@@ -64,7 +64,8 @@
             }           
         }
          <input type="button" class="btn btn-primary" value="Send Mail" id="SendEmail" @*onclick="location.href='@Url.Action("SendPDValidationEmail", "Admin",new{EmployeeId=Model.employeePersonalInfo.Id,FieldsToUpdate="FieldsToUpdate"})'"*@/>
-  </form>
+    
+     </form>
 </div>
 
 @section Scripts
@@ -74,25 +75,29 @@ $(document).ready(function()
 {
     $("#SendEmail").click(function()
     {
-            var FieldsToUpdate = [];
-       $('input[name='checkbox']:checked').each(function() 
+         var FieldsToUpdate1 = [];
+       $(".validation-checkbox").click(function()
+       {
+           $(input[type='checkbox']).each(function() 
         {
-          FieldsToUpdate.push($(this).val());
+          FieldsToUpdate1.push($(this).val());
         });
         $.ajax(
         {
             type:"POST",
-            url:"Admin/SendPDValidationEmail", //url of the action page
-            data:{EmployeeId:@Model.employeePersonalInfo.Id,FieldsToUpdate:FieldsToUpdate}
+            url:"/Admin/SendPDValidationEmail/", //url of the action page
+            data:{EmployeeId:@Model.employeePersonalInfo.Id,FieldsToUpdate:FieldsToUpdate1}
             //success : function(response)
             //{
                //code to do somethng if its success
             //}
-        }).status(function(response)
+        }).done(function(response)
         {
 
         });
+       });
    });
-}
+  
+});
 </script>
 }

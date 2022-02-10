@@ -157,13 +157,13 @@ namespace HRManager.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate)
         {
             try
             {
                 adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate);
-                return Ok();
+                return Ok(true);
                 //return RedirectToAction("PDValidation",new { EmployeeId = EmployeeId });
             }
             catch (Exception ex)

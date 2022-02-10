@@ -120,7 +120,8 @@ namespace HRManager.Controllers
         {
             try
             {
-                return View();
+                var employeeAllProfessionalInfo=adminManager.GetEmployeeBGVerificationSummary(EmployeeUserId);
+                return View(employeeAllProfessionalInfo);
             }
             catch (Exception ex)
             {

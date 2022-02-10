@@ -35,6 +35,7 @@ namespace HRManager.Data.Entity.Entities
         public string PaySlip2 { get; set; }
         public string PaySlip3 { get; set; }
 
+
         public int UserId { get; set; }
         public virtual User User { get; set; }
     }

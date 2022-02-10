@@ -80,6 +80,7 @@ namespace HRManager.Data.Entity
             EmployeeProfessionalInfo employeeProfessionalInfo = new EmployeeProfessionalInfo();
             try
             {
+                employeeProfessionalInfo.Id = ProfessionalInfo.Id;
                 employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
                 employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
                 employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
@@ -162,12 +163,12 @@ namespace HRManager.Data.Entity
             return new EmployeePDValidationSummary();
         }
 
-        public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId)
+        public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeUserId)
         {
             EmployeeBGVerificationSummary employeeBGVerificationSummary = new EmployeeBGVerificationSummary();
             try
             {
-                var employeeProfessionalInfos = context.EmployeeProfessionalInfos.Where(s => s.UserId == EmployeeId);
+                var employeeProfessionalInfos = context.EmployeeProfessionalInfos.Where(s => s.UserId == EmployeeUserId);
                 foreach (var item in employeeProfessionalInfos)
                 {
                     employeeBGVerificationSummary.professionalDetails.Add(GetEmployeeProfessionalInfoMapper(item));
@@ -183,27 +184,41 @@ namespace HRManager.Data.Entity
         public PDVEmailTemplate GetPDVEmailTemplate(String EmployeeName,List<String> FieldsToUpdate)
         {
             PDVEmailTemplate EmailTemplate = new PDVEmailTemplate();
-            StringBuilder subject = new StringBuilder();
-            EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
-            subject.Append("Dear " + EmployeeName + ",\n        The following Details should be updated Or Are not matching with data Provided.\n");
-            foreach(var item in FieldsToUpdate)
-            {
-                subject.Append("* "+item+"\n");
+            try
+            {                
+                StringBuilder subject = new StringBuilder();
+                EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
+                subject.Append("Dear " + EmployeeName + ",\n        The following Details should be updated Or Are not matching with data Provided.\n");
+                foreach (var item in FieldsToUpdate)
+                {
+                    subject.Append("* " + item + "\n");
+                }
+                subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
+                EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
             }
-            subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
-            EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
+            catch(Exception ex)
+            {
+                ErrorLogger.LogInfo(ex.Message);
+            }
             return EmailTemplate;
         }
 
         public BGVEmailTemplate GetBGVEmailTemplate(EmployeeProfessionalInfo professionalInfo)
         {
             BGVEmailTemplate EmailTemplate = new BGVEmailTemplate();
-            StringBuilder subject = new StringBuilder();
-            EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
-            subject.Append("Sir/Madam,\n        I am HRManager from TekFriday Pvt. Ltd. This is with regard to referral check of Mr. *****, whoworked with you as "+professionalInfo.LastDesignation+". Can you please let me know the following details about him:");
-            subject.Append("Period Of Employeement:\nCTC:\nDesignation:\nReason Of Leaving:\n");
-            subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
-            EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
+            try
+            {
+                StringBuilder subject = new StringBuilder();
+                EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
+                subject.Append("Sir/Madam,\n        I am HRManager from TekFriday Pvt. Ltd. This is with regard to referral check of Mr. *****, whoworked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him:");
+                subject.Append("\nPeriod Of Employeement:\nCTC:\nDesignation:\nReason Of Leaving:\n");
+                subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
+                EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
+            }
+            catch( Exception ex)
+            {
+                ErrorLogger.LogInfo(ex.Message);
+            }
             return EmailTemplate;
         }
 

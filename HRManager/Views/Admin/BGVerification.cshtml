@@ -2,8 +2,10 @@
 
 @if(Model is not null)
 {
-    foreach(var item in @Model.professionalDetails)
+    @foreach(var item in Model.professionalDetails)
     {
+    <h2>Professional Details</h2>
     <partial name="~/Views/Employee/_GetProfessionalInfo.cshtml" model="item"/>
+    <input type="button" class="btn btn-primary" value="Send Mail" id="SendEmail" onclick="location.href='@Url.Action("SendBGVerificationEmail", "Admin",new{ProfessionalDetailsId=item.Id})'"/>
     }
 }

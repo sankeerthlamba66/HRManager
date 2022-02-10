@@ -68,7 +68,7 @@ namespace HRManager.Business
             string Subject = EmailTemplate.PDVEmailSubjectTemplate;
             string Body = EmailTemplate.PDVEmailBodyTemplate;
 
-            Helpers.Utilities.SendEmail(ProfDetails.ReferenceEmailId, Subject, Body);
+            Helpers.Utilities.SendEmail(ProfDetails.HREmailId, Subject, Body);
         }
     }
 }

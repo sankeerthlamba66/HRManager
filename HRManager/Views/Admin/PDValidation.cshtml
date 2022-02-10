@@ -75,24 +75,24 @@ $(document).ready(function()
     $("#SendEmail").click(function()
     {
             var FieldsToUpdate = [];
-            $('input[name='checkbox']:checked').each(function() {
+       $('input[name='checkbox']:checked').each(function() 
+        {
           FieldsToUpdate.push($(this).val());
         });
         $.ajax(
         {
             type:"POST",
             url:"Admin/SendPDValidationEmail", //url of the action page
-            data:{'EmployeeId':@Model.employeePersonalInfo.Id,'FieldsToUpdate':FieldsToUpdate},
+            data:{EmployeeId:@Model.employeePersonalInfo.Id,FieldsToUpdate:FieldsToUpdate}
             //success : function(response)
             //{
                //code to do somethng if its success
             //}
-          }   
         }).status(function(response)
         {
 
         });
-    });
+   });
 }
 </script>
 }

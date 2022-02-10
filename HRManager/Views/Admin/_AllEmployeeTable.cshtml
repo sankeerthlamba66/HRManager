@@ -23,6 +23,9 @@
             <th>
                 @Html.DisplayName("PD Validation")
             </th>
+            <th>
+                @Html.DisplayName("BG Verification")
+            </th>
 
         </tr>
     </thead>
@@ -46,6 +49,9 @@
             </td>
             <td>
               @Html.ActionLink("PD Validation","PDValidation","Admin",new{EmployeeUserId=item.UserId})
+            </td>
+            <td>
+              @Html.ActionLink("BG Verification","BGVerification","Admin",new{EmployeeUserId=item.UserId})
             </td>
         </tr>
         }

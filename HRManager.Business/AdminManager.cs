@@ -42,9 +42,9 @@ namespace HRManager.Business
             return new AdminQueries().GetEmployeePDValidationSummary(EmployeeId);
         }
 
-        public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId)
+        public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeUserId)
         {
-            return new AdminQueries().GetEmployeeBGVerificationSummary(EmployeeId);
+            return new AdminQueries().GetEmployeeBGVerificationSummary(EmployeeUserId);
         }
 
         public void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate)

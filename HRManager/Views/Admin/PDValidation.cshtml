@@ -67,21 +67,21 @@
   </form>
 </div>
 
-@*section Scripts
+@section Scripts
 {
 <script>
 $(document).ready(function()
 {
     $("#SendEmail").click(function()
     {
-            var FieldsToUpdate1 = [];
-            $('input[type=checkbox]:checked').each(function() {
-          FieldsToUpdate1.push($(this).val());
+            var FieldsToUpdate = [];
+            $('input[name='checkbox']:checked').each(function() {
+          FieldsToUpdate.push($(this).val());
         });
         $.ajax({
-            //type:"POST",
+            type:"POST",
             url:"Admin/SendPDValidationEmail", //url of the action page
-            data:{'EmployeeId':@Model.employeePersonalInfo.Id,'FieldsToUpdate':FieldsToUpdate1},
+            data:{'EmployeeId':@Model.employeePersonalInfo.Id,'FieldsToUpdate':FieldsToUpdate},
             success : function(response){
                //code to do somethng if its success
             } 
@@ -89,4 +89,4 @@ $(document).ready(function()
     }
 }
 </script>
-}*@
+}

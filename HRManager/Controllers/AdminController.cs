@@ -116,7 +116,7 @@ namespace HRManager.Controllers
             }
         }
 
-        public ViewResult BGVerification()
+        public ViewResult BGVerification(int EmployeeUserId)
         {
             try
             {

@@ -1,6 +1,7 @@
 ﻿@model HRManager.Models.EntityViews.EmployeePersonalInfo
 
-
+@if(Model is not null)
+{
     <div>
       <dl class="row">
             <dt class = "col-sm-2">
@@ -16,7 +17,7 @@
                 @Html.HiddenFor(model => model.UserId)
             </dd>
             <dt class = "col-sm-2">
-                <input type="checkbox" class="validation-checkbox" name="checkbox" field-name="@Html.DisplayNameFor(model => model.FirstName)" value="@Model.FirstName"/>
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="FirstName" field-name="@Html.DisplayNameFor(model => model.FirstName)" value="@Model.FirstName"/>
                 @Html.DisplayNameFor(model => model.FirstName)
             </dt>
             <dd class = "col-sm-10">
@@ -161,3 +162,4 @@
     </div>
 
 
+}

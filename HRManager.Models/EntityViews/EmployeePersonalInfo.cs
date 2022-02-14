@@ -26,7 +26,7 @@ namespace HRManager.Models.EntityViews
         [Display(Name = "Date Of Birth")]
         [Required]
         public DateTime DateOfBirth { get; set; }
-        [Display(Name = "Middle Number")]
+        [Display(Name = "Mobile Number")]
         [Required]
         public string MobileNumber { get; set; }
         [Display(Name = "Personal Email Id")]

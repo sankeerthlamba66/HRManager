@@ -20,8 +20,11 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalDetailsId);
+
                 //return mapper.Map<EmployeeProfessionalInfo>(employeeProfessionalInfo);
+                professionalInfo.UserId = employeeProfessionalInfo.UserId;
                 professionalInfo.OrganizationName = employeeProfessionalInfo.OrganizationName;
+                professionalInfo.LastDesignation = employeeProfessionalInfo.LastDesignation;
                 professionalInfo.IsThisYourLastEmployment = employeeProfessionalInfo.IsThisYourLastEmployment;
                 professionalInfo.StartDate = employeeProfessionalInfo.StartDate;
                 professionalInfo.EndDate = employeeProfessionalInfo.EndDate;
@@ -102,6 +105,21 @@ namespace HRManager.Data.Entity
             return employeeShortSummary;
         }
 
+        public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId)
+        {
+            EmployeeBGVerificationSummary employeeBGVerificationSummary = new EmployeeBGVerificationSummary();
+            try
+            {
+                var bgVerificationSummary = context.EmployeePersonalInfos.FirstOrDefault(s => s.UserId == EmployeeId);
+                employeeBGVerificationSummary.Name=bgVerificationSummary.FirstName+" "+bgVerificationSummary.MiddleName+" "+bgVerificationSummary.LastName;
+            }
+            catch(Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return employeeBGVerificationSummary;
+        }
+
         public EmployeeIndexModels GetEmployeeDetails(int UserId)
         {
             EmployeeIndexModels employeeIndexModels = new EmployeeIndexModels();
@@ -162,6 +180,7 @@ namespace HRManager.Data.Entity
             try
             {
                 employeeProfessionalInfo.Id = ProfessionalInfo.Id;
+                employeeProfessionalInfo.UserId = ProfessionalInfo.UserId;
                 employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
                 employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
                 employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;

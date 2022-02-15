@@ -81,6 +81,7 @@ namespace HRManager.Data.Entity
             try
             {
                 employeeProfessionalInfo.Id = ProfessionalInfo.Id;
+                employeeProfessionalInfo.UserId= ProfessionalInfo.UserId;
                 employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
                 employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
                 employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
@@ -181,7 +182,7 @@ namespace HRManager.Data.Entity
             return employeeBGVerificationSummary;
         }
 
-        public PDVEmailTemplate GetPDVEmailTemplate(String EmployeeName,List<String> FieldsToUpdate)
+        public PDVEmailTemplate GetPDVEmailTemplate(string EmployeeName,List<String> FieldsToUpdate)
         {
             PDVEmailTemplate EmailTemplate = new PDVEmailTemplate();
             try
@@ -203,15 +204,15 @@ namespace HRManager.Data.Entity
             return EmailTemplate;
         }
 
-        public BGVEmailTemplate GetBGVEmailTemplate(EmployeeProfessionalInfo professionalInfo)
+        public BGVEmailTemplate GetBGVEmailTemplate(string EmployeeName, EmployeeProfessionalInfo professionalInfo)
         {
             BGVEmailTemplate EmailTemplate = new BGVEmailTemplate();
             try
             {
                 StringBuilder subject = new StringBuilder();
                 EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
-                subject.Append("Sir/Madam,\n        I am HRManager from TekFriday Pvt. Ltd. This is with regard to referral check of Mr. *****, whoworked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him:");
-                subject.Append("\nPeriod Of Employeement:\nCTC:\nDesignation:\nReason Of Leaving:\n");
+                subject.Append("Sir/Madam,\n        I am HR Manager from TekFriday Pvt. Ltd. This is with regard to referral check of " + EmployeeName +", who worked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him/her: ");
+                subject.Append("\nPeriod Of Employeement: From "+professionalInfo.StartDate+" To"+professionalInfo.EndDate+"\nCTC: "+professionalInfo.CTC+"\nDesignation: "+professionalInfo.LastDesignation+"\n");
                 subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
                 EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
             }

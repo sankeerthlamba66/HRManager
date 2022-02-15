@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
-
-    <h2>Details</h2>
 <div>
   <form>
     @if (Model is not null)
@@ -63,7 +61,7 @@
                 </div>
             }           
         }
-         <input type="button" class="btn btn-primary" value="Send Mail" id="SendEmail" @*onclick="location.href='@Url.Action("SendPDValidationEmail", "Admin",new{EmployeeId=Model.employeePersonalInfo.Id,FieldsToUpdate="FieldsToUpdate"})'"*@/>
+         <input type="button" class="btn btn-primary" value="SendMail" name="Send Email" id="SendEmail" @*onclick="location.href='@Url.Action("SendPDValidationEmail", "Admin",new{EmployeeId=Model.employeePersonalInfo.Id,FieldsToUpdate="FieldsToUpdate"})'"*@/>
     
      </form>
 </div>
@@ -71,20 +69,13 @@
 @section Scripts
 {
 <script>
-$(document).ready(function()
-{
-    var FieldsToUpdate1 = [];
-    storeChecked=function()
-    {
-        if("input:checked")
-        {
-            FieldsToUpdate1.push($(this).val());
-        }
-    };
-    $( "input[type=checkbox]" ).on( "click", storeChecked() );
-    $("#SendEmail").click(function()
-    {
-        $.ajax(
+    $(document).ready(function() {
+        $("#SendEmail").click(function(){
+           var FieldsToUpdate1 = [];
+           $.each($("input[name='checkbox']:checked"), function(){            
+                FieldsToUpdate1.push($(this).val());
+            });
+       $.ajax(
         {
             type:"POST",
             url:"/Admin/SendPDValidationEmail/", //url of the action page
@@ -95,9 +86,14 @@ $(document).ready(function()
             //}
         }).done(function(response)
         {
-
+            alert("Email Sent Successfully")
+        });
+ 
         });
        });
+   });
+  
 });
 </script>
 }
+

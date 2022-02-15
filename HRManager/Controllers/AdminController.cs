@@ -163,7 +163,7 @@ namespace HRManager.Controllers
             try
             {
                 adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate);
-                return Ok(true);
+                return RedirectToAction("Index");
                 //return RedirectToAction("PDValidation",new { EmployeeId = EmployeeId });
             }
             catch (Exception ex)
@@ -172,12 +172,12 @@ namespace HRManager.Controllers
             }
         }
 
-        public IActionResult SendBGVerificationEmail(int ProfessionalDetailsId)
+        public IActionResult SendBGVerificationEmail(int EmployeeId,int ProfessionalDetailsId)
         {
             try
             {
-                adminManager.SendBGVerificationEmail(ProfessionalDetailsId);
-                return Ok(true);
+                adminManager.SendBGVerificationEmail(EmployeeId,ProfessionalDetailsId);
+                return RedirectToAction("BGVerification");
             }
             catch (Exception ex)
             {

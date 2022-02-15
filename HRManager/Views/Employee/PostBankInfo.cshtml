@@ -31,16 +31,13 @@
                 <input asp-for="IFSCCode" class="form-control" />
                 <span asp-validation-for="IFSCCode" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">               
                 <input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />
-                <input type="submit" value="Save & Continue" class="btn btn-primary" />              
+                <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>              
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back</a>
 </div>
 
 @section Scripts {

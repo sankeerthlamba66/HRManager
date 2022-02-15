@@ -66,6 +66,7 @@
                 <input asp-for="HREmailId" class="form-control" />
                 <span asp-validation-for="HREmailId" class="text-danger"></span>
             </div>
+             
             <div class="form-group">
                 <label asp-for="OfferLetter" class="control-label"></label>
                 <input asp-for="OfferLetter" class="form-control" />
@@ -83,27 +84,27 @@
             </div>
             <div class="form-group">
                 <label asp-for="PaySlip1" class="control-label"></label>
-                <input asp-for="PaySlip1" class="form-control" />
+                <input type="file" asp-for="PaySlip1" class="custom-file-input" />
                 <span asp-validation-for="PaySlip1" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PaySlip2" class="control-label"></label>
-                <input asp-for="PaySlip2" class="form-control" />
+                <input type="file" asp-for="PaySlip2" class="custom-file-input"/>
                 <span asp-validation-for="PaySlip2" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PaySlip3" class="control-label"></label>
-                <input asp-for="PaySlip3" class="form-control" />
+                <input type="file" asp-for="PaySlip3" class="custom-file-input" />
                 <span asp-validation-for="PaySlip3" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ReferenceEmailId" class="control-label"></label>
-                <input asp-for="ReferenceEmailId" class="form-control" />
+                <input  asp-for="ReferenceEmailId" class="form-control" />
                 <span asp-validation-for="ReferenceEmailId" class="text-danger"></span>
             </div>
             <div class="form-group">
                  <input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />
-                <input type="submit" value="Save" class="btn btn-primary" />
+                 <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
             </div>
         </form>
     </div>

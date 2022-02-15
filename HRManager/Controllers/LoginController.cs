@@ -55,6 +55,13 @@ namespace HRManager.Controllers
             }
         }
 
+        public ActionResult LogOut()
+        {
+            Session.UserRoles.Clear();
+            // Redirecting to Login page after deleting Session
+            return RedirectToAction("Index", "Login");
+        }
+
 
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +15,14 @@ namespace HRManager.Data.Entity.Entities
         public string OrganizationName { get; set; }
         public bool IsThisYourLastEmployment { get; set; }
         public string LastDesignation { get; set; }
-        public DateOnly StartDate { get; set; }
-        public DateOnly EndDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime StartDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime EndDate { get; set; }
         public int CTC { get; set; }
         public string ReportingManagerName { get; set; }
         public string ReportingManagerEmailId { get; set; }
@@ -26,6 +34,7 @@ namespace HRManager.Data.Entity.Entities
         public string PaySlip1 { get; set; }
         public string PaySlip2 { get; set; }
         public string PaySlip3 { get; set; }
+
 
         public int UserId { get; set; }
         public virtual User User { get; set; }

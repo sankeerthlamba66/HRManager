@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using HRManager.Data.Entity;
+using HRManager.Business.BussinessRepository;
 
 namespace HRManager.Business
 {
-    public class AdminManager
+    public class AdminManager:IAdminManager
     {
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees()
         {
             return new AdminQueries().GetRecentlyUpdatedEmployees();
+        }
+
+        public EmployeeAllDetails GetEmployeeAllDetails(int EmployeeUserId)
+        {
+            return new EmployeeQueries().GetEmployeeAllDetails(EmployeeUserId);
         }
 
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees(DateTime DateFrom, DateTime DateTo)
@@ -36,19 +42,19 @@ namespace HRManager.Business
             return new AdminQueries().GetEmployeePDValidationSummary(EmployeeId);
         }
 
-        public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId)
+        public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeUserId)
         {
-            return new AdminQueries().GetEmployeeBGVerificationSummary(EmployeeId);
+            return new AdminQueries().GetEmployeeBGVerificationSummary(EmployeeUserId);
         }
 
         public void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate)
         {
             var Summary = new EmployeeQueries().GetEmployeeShortSummary(EmployeeId);
-            var EmailTemplate = new AdminQueries().GetPDVEmailTemplate();
+            var EmailTemplate = new AdminQueries().GetPDVEmailTemplate(Summary.Name,FieldsToUpdate);
 
             //Substitute placeholders in the templates with the employee details and Fields List.
-            string Subject = string.Empty;
-            string Body = string.Empty;
+            string Subject = EmailTemplate.PDVEmailSubjectTemplate;//string.Empty;
+            string Body = EmailTemplate.PDVEmailBodyTemplate;//string.Empty;
 
             Helpers.Utilities.SendEmail(Summary.Email, Subject, Body);
         }
@@ -56,14 +62,15 @@ namespace HRManager.Business
         public void SendBGVerificationEmail(int ProfessionalDetailsId)
         {
             var ProfDetails = new EmployeeQueries().GetProfessionalDetails(ProfessionalDetailsId);
-            var EmailTemplate = new AdminQueries().GetBGVEmailTemplate();
+            var Summary = new EmployeeQueries().GetEmployeeFullName(ProfDetails.UserId);
+            
+            var EmailTemplate = new AdminQueries().GetBGVEmailTemplate(Summary.EmployeeFullName,ProfDetails);
 
             //Substitute placeholders in the templates with the professional details.
-            string Subject = string.Empty;
-            string Body = string.Empty;
+            string Subject = EmailTemplate.PDVEmailSubjectTemplate;
+            string Body = EmailTemplate.PDVEmailBodyTemplate;
 
-            Helpers.Utilities.SendEmail(ProfDetails.ReferenceEmailId, Subject, Body);
+            Helpers.Utilities.SendEmail(ProfDetails.HREmailId, Subject, Body);
         }
-
     }
 }

@@ -1,5 +1,99 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model HRManager.Models.ViewModels.EmployeeAllDetails;
+
 @{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+<div>
+  <form>
+    @if (Model is not null)
+    {  
+        <h3>Personal Details</h3>
+        <div> 
+            
+          <partial name="_PersonalInfo.cshtml"  model="@Model.employeePersonalInfo">
+        </div>
+           
+        
+         <h3>Professional Details</h3>
+        foreach (var item in @Model.employeeProfessionalInfos)
+        {
+          <div>
+
+            <partial name="_ProfessionalInfo.cshtml"model="item"/>
+          </div>          
+        }
+
+         <h3>Bank Details</h3>
+          
+        foreach (var item in @Model.employeeBankInfos)
+        {
+            <div>
+               <partial name="_BankInfo.cshtml" model="item"/>
+            </div>            
+        }
+
+         <h3>Insurance Details</h3>
+         
+        foreach(var item in @Model.employeeInsuranceInfos)
+        {
+            <div>
+                <partial name="_InsuranceInfo.cshtml" model="item"/>
+            </div>
+        }
+
+         <h3>PF and ESI Details</h3>
+         
+        foreach(var item in @Model.employeePFandESIInfos)
+        {
+            <div>
+                <partial name="_PFandESIInfo.cshtml" model="item"/>
+            </div>
+        }
+
+         <h3>Documents</h3>
+        
+        if(@Model.employeeDocuments is not null)
+        {
+            <div>
+                <partial name="_Document.cshtml" model="@Model.employeeDocuments"/>
+                </div>
+            }           
+        }
+         <input type="button" class="btn btn-primary" value="SendMail" name="Send Email" id="SendEmail" @*onclick="location.href='@Url.Action("SendPDValidationEmail", "Admin",new{EmployeeId=Model.employeePersonalInfo.Id,FieldsToUpdate="FieldsToUpdate"})'"*@/>
+    
+     </form>
+</div>
+
+@section Scripts
+{
+<script>
+    $(document).ready(function() {
+        $("#SendEmail").click(function(){
+           var FieldsToUpdate1 = [];
+           $.each($("input[name='checkbox']:checked"), function(){            
+                FieldsToUpdate1.push($(this).val());
+            });
+       $.ajax(
+        {
+            type:"POST",
+            url:"/Admin/SendPDValidationEmail/", //url of the action page
+            data:{EmployeeId:@Model.employeePersonalInfo.Id,FieldsToUpdate:FieldsToUpdate1}
+            //success : function(response)
+            //{
+               //code to do somethng if its success
+            //}
+        }).done(function(response)
+        {
+            alert("Email Sent Successfully")
+        });
+ 
+        });
+       });
+   });
+  
+});
+</script>
+}
+

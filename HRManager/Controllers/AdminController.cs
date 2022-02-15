@@ -3,24 +3,22 @@ using HRManager.Business;
 using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using HRManager.Code;
+using HRManager.Business.BussinessRepository;
+using System.Text;
 
 namespace HRManager.Controllers
 {
+    [HRAuthorization("HRAdmin")]
     public class AdminController : Code.BaseController
     {
-        public ViewResult Index()
+        private readonly IAdminManager adminManager;
+
+        public AdminController(IAdminManager _adminManager)
         {
-            try
-            {
-                return View();
-            }
-            catch (Exception ex)
-            {
-                return ReturnErrorView(ex);
-            }
+            adminManager = _adminManager;
         }
 
-        public ViewResult PDValidation()
+        public IActionResult Index(DateTime? DateFrom, DateTime? DateTo)
         {
             try
             {
@@ -31,24 +29,34 @@ namespace HRManager.Controllers
                 return ReturnErrorView(ex);
             }
         }
+        //public IActionResult Index(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
+        //{
+        //    try
+        //    {
+        //        var employeeData = new List<EmployeeTableSummary>();
+        //        if ((DateFrom != null) && (DateTo != null))
+        //        {
+        //            employeeData = adminManager.GetRecentlyUpdatedEmployees(DateFrom.Value, DateTo.Value);
+        //        }
+        //        else
+        //        {
+        //            employeeData = adminManager.GetRecentlyUpdatedEmployees();
+        //        }
 
-        public ViewResult BGVerification()
-        {
-            try
-            {
-                return View();
-            }
-            catch (Exception ex)
-            {
-                return ReturnErrorView(ex);
-            }
-        }
+        //        var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
+
+        //        return View(allEmployeeTable);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return ReturnErrorView(ex);
+        //    }
+        //}
 
         public IActionResult AllEmployeeTable(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
         {
             try
             {
-                var adminManager = new AdminManager();
                 var employeeData = new List<EmployeeTableSummary>();
 
                 if ((DateFrom != null) && (DateTo != null))
@@ -62,7 +70,7 @@ namespace HRManager.Controllers
 
                 var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
 
-                return PartialView(allEmployeeTable);
+                return PartialView("_AllEmployeeTable", allEmployeeTable);
             }
             catch (Exception ex)
             {
@@ -74,7 +82,6 @@ namespace HRManager.Controllers
         {
             try
             {
-                var adminManager = new AdminManager();
                 var employeeData = new List<EmployeeCardSummary>();
 
                 if ((DateFrom != null) && (DateTo != null))
@@ -88,7 +95,7 @@ namespace HRManager.Controllers
 
                 var allEmployeeCards = new AllEmployeeCards() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
 
-                return PartialView(allEmployeeCards);
+                return PartialView("_AllEmployeeCards",allEmployeeCards);
             }
             catch (Exception ex)
             {
@@ -96,12 +103,39 @@ namespace HRManager.Controllers
             }
         }
 
+        public ViewResult PDValidation(int EmployeeUserId)
+        {
+            try
+            {
+                var employeeAllDetails =adminManager.GetEmployeeAllDetails(EmployeeUserId);
+                return View(employeeAllDetails);
+            }
+            catch (Exception ex)
+            {
+                return ReturnErrorView(ex);
+            }
+        }
+
+        public ViewResult BGVerification(int EmployeeUserId)
+        {
+            try
+            {
+                var employeeAllProfessionalInfo=adminManager.GetEmployeeBGVerificationSummary(EmployeeUserId);
+                return View(employeeAllProfessionalInfo);
+            }
+            catch (Exception ex)
+            {
+                return ReturnErrorView(ex);
+            }
+        }
+
+        
+
         public IActionResult PDValidationPopup(int EmployeeId)
         {
             try
             {
-                var pdValidationSummary = new AdminManager().GetEmployeePDValidationSummary(EmployeeId);
-
+                var pdValidationSummary = adminManager.GetEmployeePDValidationSummary(EmployeeId);
                 return PartialView(pdValidationSummary);
             }
             catch (Exception ex)
@@ -114,8 +148,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                var bgVerificationSummary = new AdminManager().GetEmployeeBGVerificationSummary(EmployeeId);
-
+                var bgVerificationSummary = adminManager.GetEmployeeBGVerificationSummary(EmployeeId);
                 return PartialView(bgVerificationSummary);
             }
             catch(Exception ex)
@@ -124,13 +157,14 @@ namespace HRManager.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate)
         {
             try
             {
-                new AdminManager().SendPDValidationEmail(EmployeeId, FieldsToUpdate);
-
-                return Ok(true);
+                adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate);
+                return RedirectToAction("Index");
+                //return RedirectToAction("PDValidation",new { EmployeeId = EmployeeId });
             }
             catch (Exception ex)
             {
@@ -138,18 +172,39 @@ namespace HRManager.Controllers
             }
         }
 
-        public IActionResult SendBGVerificationEmail(int ProfessionalDetailsId)
+        public IActionResult SendBGVerificationEmail(int EmployeeUserId,int ProfessionalDetailsId)
         {
             try
             {
-                new AdminManager().SendBGVerificationEmail(ProfessionalDetailsId);
-
-                return Ok(true);
+                adminManager.SendBGVerificationEmail(ProfessionalDetailsId);
+                return RedirectToAction("BGVerification", new {EmployeeUserId= EmployeeUserId });
             }
             catch (Exception ex)
             {
                 return HandleException(ex);
             }
         }
+
+        public FileResult Export(DateTime? DateFrom, DateTime? DateTo)
+        {
+            var employeeData = new List<EmployeeTableSummary>();
+
+            if ((DateFrom != null) && (DateTo != null))
+            {
+                employeeData = adminManager.GetRecentlyUpdatedEmployees(DateFrom.Value, DateTo.Value);
+            }
+            else
+            {
+                employeeData = adminManager.GetRecentlyUpdatedEmployees();
+            }
+
+            var sb = new StringBuilder();
+            foreach (var data in employeeData)
+            {
+                sb.AppendLine(data.Id + "," + data.EmployeeName + "," +data.MobileNumber+", "+data.PersonalEmailId);
+            }
+            return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "export.csv");
+        }
+
     }
 }

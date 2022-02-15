@@ -9,7 +9,15 @@ namespace HRManager.Models.ViewModels
 {
     public class AllEmployeeTable
     {
+        public AllEmployeeTable()
+        {
+            this.EmployeeData = new List<EmployeeTableSummary>();
+         
+        }
         public List<EmployeeTableSummary> EmployeeData { get; set; }
         public bool AddVerificationLinks { get; set; }
+
+        
     }
+
 }

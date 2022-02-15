@@ -1,0 +1,42 @@
+﻿@model HRManager.Models.EntityViews.EmployeePFandESIInfo
+
+@if (Model is not null)
+{
+    <div>
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.HiddenFor(model => model.Id)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.HiddenFor(model => model.Id)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.HiddenFor(model => model.UserId)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.HiddenFor(model => model.UserId)
+            </dd>
+            <dt class = "col-sm-2">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="UAN" field-name="@Html.DisplayNameFor(model => model.UAN)" field-value="@Model.UAN">
+                @Html.DisplayNameFor(model => model.UAN)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.UAN)
+            </dd>
+            <dt class = "col-sm-2">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="ESIN" field-name="@Html.DisplayNameFor(model => model.ESIN)" field-value="@Model.ESIN">
+                @Html.DisplayNameFor(model => model.ESIN)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ESIN)
+            </dd>
+        </dl>
+
+
+        @*@Html.ActionLink("Edit","UpdatePFAndESIInfo","Employee",new{Id=Model.Id})|
+
+            @Html.ActionLink("Edit","DeletePFAndESIInfo","Employee",new{id=Model.Id})*@
+    </div>
+    @*<a role="button" href="@Url.Action("UpdatePFAndESIInfo", "Employee",new{Id=Model.Id})">Edit</a>*@
+
+}

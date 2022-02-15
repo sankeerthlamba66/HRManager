@@ -9,8 +9,8 @@ namespace HRManager.Models.Views
     public class EmployeeName
     {
         public byte Id { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
+        public string EmployeeFullName { get; set; }
+        //public string MiddleName { get; set; }
+        //public string LastName { get; set; }
     }
 }

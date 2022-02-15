@@ -1,12 +1,16 @@
-using HRManager.Data.Entity;
-using Microsoft.EntityFrameworkCore;
+
+using HRManager.Business;
+using HRManager.Business.BussinessRepository;
 
 var builder = WebApplication.CreateBuilder(args);
+HRManager.Code.DBSetup.IntializeConfig(builder);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<Context>(options => options.UseSqlServer("Server =Tekfriday282; database=HRManager; User ID=sa; Password=friday123!;"));
-
+builder.Services.AddScoped<IAdminManager,AdminManager>();
+builder.Services.AddScoped<IEmployeeManager,EmployeeManager>();
+builder.Services.AddScoped<ILoginManager,LoginManager>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(20);
@@ -28,11 +32,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Employee}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();

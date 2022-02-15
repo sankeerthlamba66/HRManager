@@ -3,29 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRManager.Models.EntityViews
 {
-    public class EmployeeProfessionalInfo
+    public class EmployeeProfessionalInfo : EntityBase
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
+        [Display(Name = "Organization Name")]
+        [Required]
         public string OrganizationName { get; set; }
+        [Display(Name = "Is This Your Last Employment")]
+        [Required]
         public bool IsThisYourLastEmployment { get; set; }
+        [Display(Name = "Last Designation")]
+        [Required]
         public string LastDesignation { get; set; }
-        public DateOnly StartDate { get; set; }
-        public DateOnly EndDate { get; set; }
+        [Display(Name = "Start Date")]
+        [Required]
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime StartDate { get; set; }
+        [Display(Name = "End Date")]
+        [Required]
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
+        public DateTime EndDate { get; set; }
+        [Display(Name = "CTC")]
+        [Required]
         public int CTC { get; set; }
+        [Display(Name = "Reporting Manager Name")]
+        [Required]
         public string ReportingManagerName { get; set; }
+        [Display(Name = "Reporting Manager Email Id")]
+        [Required]
         public string ReportingManagerEmailId { get; set; }
+        [Display(Name = "HR Name")]
+        [Required]
         public string HRName { get; set; }
+        [Display(Name = "HR Email Id")]
+        [Required]
         public string HREmailId { get; set; }
-        public string OfferLetterPath { get; set; }
-        public string RelievingLetterPath { get; set; }
-        public string ExperienceLetterPath { get; set; }
-        public string PaySlip1 { get; set; }
-        public string PaySlip2 { get; set; }
-        public string PaySlip3 { get; set; }
+        [Display(Name = "Reference Email Id")]
+        [Required]
         public string ReferenceEmailId { get; set; }
     }
 }

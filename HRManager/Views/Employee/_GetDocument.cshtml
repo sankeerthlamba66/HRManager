@@ -1,0 +1,187 @@
+﻿@model HRManager.Models.EntityViews.EmployeeDocument
+
+@if (Model is not null)
+{
+    <div>
+        <dl class="row">
+            <dt class = "col-sm-6">
+                @Html.HiddenFor(model => model.Id)
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.HiddenFor(model => model.Id)
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.HiddenFor(model => model.UserId)
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.HiddenFor(model => model.UserId)
+            </dd>
+            <dt class = "col-sm-6">
+               @* <input type="checkbox" class="validation-checkbox" value="" field-name="@Html.DisplayNameFor(model => model.PassportPhoto)" field-value="@Model.PassportPhoto">*@            
+                @Html.DisplayNameFor(model => model.PassportPhoto)
+            </dt>
+            <dd class = "col-sm-6">
+              @if (!string.IsNullOrEmpty(@Model.PassportPhoto))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PassportPhoto">Passport Photo</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.Resume)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.Resume))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.Resume">Resume</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.PanCard)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.PanCard))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PanCard">Pan Card</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.AadharCard)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.AadharCard))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.AadharCard">Aadhar Card</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.Passport)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.Passport))
+                    {
+                        <a target="_blank" href="'~/Documents/'+@Model.Passport">Passport</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.VoterId)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.VoterId))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.VoterId">Voter Id</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.CurrentAddressProof)
+            </dt>
+            <dd class = "col-sm-6">
+                 @if (!string.IsNullOrEmpty(@Model.CurrentAddressProof))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.CurrentAddressProof">Current Address Proof</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.PermanentAddressProof)
+            </dt>
+            <dd class = "col-sm-6">
+                 @if (!string.IsNullOrEmpty(@Model.PermanentAddressProof))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PermanentAddressProof">Permanent Address Proof</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.FathersAadharCard)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.FathersAadharCard))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.FathersAadharCard">Fathers Aadhar Card</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.MothersAadharCard)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.MothersAadharCard))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.MothersAadharCard">Mothers Aadhar Card</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.ThreeMonthsBankStatementOfSalaryAccount)
+            </dt>
+            <dd class = "col-sm-6">
+                 @if (!string.IsNullOrEmpty(@Model.ThreeMonthsBankStatementOfSalaryAccount))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.ThreeMonthsBankStatementOfSalaryAccount">Three Months Bank Statement Of Salary Account</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.Form16OrIncomeCertificateOfCurrentFinYear)
+            </dt>
+            <dd class = "col-sm-6">
+                 @if (!string.IsNullOrEmpty(@Model.Form16OrIncomeCertificateOfCurrentFinYear))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.Form16OrIncomeCertificateOfCurrentFinYear">Form16 Or Income Certificate Of Current FinYear</a>
+                    }
+                    
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.SSCOrEquivalent)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.SSCOrEquivalent))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.SSCOrEquivalent">SSC Or Equivalent</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.IntermediateOrEquivalent)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.IntermediateOrEquivalent))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.IntermediateOrEquivalent">Intermediate Or Equivalent</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.GraduationOrEquivalent)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.GraduationOrEquivalent))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.GraduationOrEquivalent">Graduation Or Equivalent</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.PGOrEquivalent)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.PGOrEquivalent))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PGOrEquivalent">PG Or Equivalent</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.AdvancedDiplomaIfAny)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.AdvancedDiplomaIfAny))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.AdvancedDiplomaIfAny">Advanced Diploma If Any</a>
+                    }
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.ProfessionalCertificationsIfAny)
+            </dt>
+            <dd class = "col-sm-6">
+                @if (!string.IsNullOrEmpty(@Model.ProfessionalCertificationsIfAny))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.ProfessionalCertificationsIfAny">Professional Certifications If Any</a>
+                    }
+            </dd>
+        </dl>
+          @*@Html.ActionLink("Edit","UpdateDocument","Employee",new{id=Model.Id})|
+           @Html.ActionLink("Delete","DeleteDocument","Employee",new{id=Model.Id})*@
+    </div>
+}

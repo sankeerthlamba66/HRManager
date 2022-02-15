@@ -6,6 +6,6 @@
     {
     <h2>Professional Details</h2>
     <partial name="~/Views/Employee/_GetProfessionalInfo.cshtml" model="item"/>
-    <input type="button" class="btn btn-primary" style="text-center" value="Send Mail" id="SendEmail" onclick="location.href='@Url.Action("SendBGVerificationEmail", "Admin",new{ProfessionalDetailsId=item.Id, EmployeeId=item.UserId})'"/>
+    <input type="button" class="btn btn-primary" style="text-center" value="Send Mail" id="SendEmail" onclick="location.href='@Url.Action("SendBGVerificationEmail", "Admin",new{ProfessionalDetailsId=item.Id})'"/>
     }
 }

@@ -18,6 +18,6 @@ namespace HRManager.Business.BussinessRepository
         EmployeePDValidationSummary GetEmployeePDValidationSummary(int EmployeeId);
         EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId);
         void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate);
-        void SendBGVerificationEmail(int EmployeeId, int ProfessionalDetailsId);
+        void SendBGVerificationEmail(int ProfessionalDetailsId);
     }
 }

@@ -172,11 +172,11 @@ namespace HRManager.Controllers
             }
         }
 
-        public IActionResult SendBGVerificationEmail(int EmployeeId,int ProfessionalDetailsId)
+        public IActionResult SendBGVerificationEmail(int ProfessionalDetailsId)
         {
             try
             {
-                adminManager.SendBGVerificationEmail(EmployeeId,ProfessionalDetailsId);
+                adminManager.SendBGVerificationEmail(ProfessionalDetailsId);
                 return RedirectToAction("BGVerification");
             }
             catch (Exception ex)

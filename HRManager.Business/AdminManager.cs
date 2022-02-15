@@ -59,11 +59,11 @@ namespace HRManager.Business
             Helpers.Utilities.SendEmail(Summary.Email, Subject, Body);
         }
 
-        public void SendBGVerificationEmail(int EmployeeId, int ProfessionalDetailsId)
+        public void SendBGVerificationEmail(int EmployeeUserId, int ProfessionalDetailsId)
         {
-            var Summary = new EmployeeQueries().GetEmployeeBGVerificationSummary(EmployeeId);
+            var Summary = new EmployeeQueries().GetEmployeeFullName(EmployeeUserId);
             var ProfDetails = new EmployeeQueries().GetProfessionalDetails(ProfessionalDetailsId);
-            var EmailTemplate = new AdminQueries().GetBGVEmailTemplate(Summary.Name,ProfDetails);
+            var EmailTemplate = new AdminQueries().GetBGVEmailTemplate(Summary.EmployeeFullName,ProfDetails);
 
             //Substitute placeholders in the templates with the professional details.
             string Subject = EmailTemplate.PDVEmailSubjectTemplate;

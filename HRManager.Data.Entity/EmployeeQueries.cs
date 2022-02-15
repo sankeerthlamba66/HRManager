@@ -105,19 +105,22 @@ namespace HRManager.Data.Entity
             return employeeShortSummary;
         }
 
-        public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId)
+        public EmployeeName GetEmployeeFullName(int EmployeeUserId)
         {
-            EmployeeBGVerificationSummary employeeBGVerificationSummary = new EmployeeBGVerificationSummary();
+            EmployeeName employeeName = new EmployeeName();
             try
             {
-                var bgVerificationSummary = context.EmployeePersonalInfos.FirstOrDefault(s => s.UserId == EmployeeId);
-                employeeBGVerificationSummary.Name=bgVerificationSummary.FirstName+" "+bgVerificationSummary.MiddleName+" "+bgVerificationSummary.LastName;
+                var PersonalDetails = context.EmployeePersonalInfos.Where(s => s.UserId == EmployeeUserId).FirstOrDefault();
+                if (PersonalDetails.MiddleName is not null)
+                { employeeName.EmployeeFullName = PersonalDetails.FirstName + " " + PersonalDetails.MiddleName + " " + PersonalDetails.LastName; }
+                else
+                { employeeName.EmployeeFullName = PersonalDetails.FirstName + " " + PersonalDetails.LastName; }
             }
             catch(Exception ex)
             {
                 ErrorLogger.LogError(ex.Message);
             }
-            return employeeBGVerificationSummary;
+            return employeeName;
         }
 
         public EmployeeIndexModels GetEmployeeDetails(int UserId)

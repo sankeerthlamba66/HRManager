@@ -211,8 +211,8 @@ namespace HRManager.Data.Entity
             {
                 StringBuilder subject = new StringBuilder();
                 EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
-                subject.Append("Sir/Madam,\n        I am HR Manager from TekFriday Pvt. Ltd. This is with regard to referral check of " + EmployeeName +", who worked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him:");
-                subject.Append("\nPeriod Of Employeement:\nCTC:\nDesignation:\nReason Of Leaving:\n");
+                subject.Append("Sir/Madam,\n        I am HR Manager from TekFriday Pvt. Ltd. This is with regard to referral check of " + EmployeeName +", who worked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him/her: ");
+                subject.Append("\nPeriod Of Employeement: From "+professionalInfo.StartDate+" To"+professionalInfo.EndDate+"\nCTC: "+professionalInfo.CTC+"\nDesignation: "+professionalInfo.LastDesignation+"\n");
                 subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
                 EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
             }

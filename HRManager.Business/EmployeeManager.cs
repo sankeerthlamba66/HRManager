@@ -35,22 +35,22 @@ namespace HRManager.Business
         #endregion
 
         #region ProfessionalInfo
-        public EmployeeProfessionalInfo GetProfessionalInfo(int? ProfessionalInfoId,int UserId)
+        public EmployeeProfessionalDocuments GetProfessionalInfo(int? ProfessionalInfoId,int UserId)
         {
             return new EmployeeQueries().GetProfessionalInfo(ProfessionalInfoId,UserId);
         }
 
-        public List<EmployeeProfessionalInfo> GetProfessionalInfo(int UserId)
+        public List<EmployeeProfessionalDocuments> GetProfessionalInfo(int UserId)
         {
             return new EmployeeQueries().GetProfessionalInfo(UserId);
         }
 
-        public int AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
+        public int AddProfessionalInfo(EmployeeProfessionalDocuments ProfessionalInfo)
         {
             return new EmployeeQueries().AddProfessionalInfo(ProfessionalInfo);
         }
 
-        public int UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
+        public int UpdateProfessionalInfo(EmployeeProfessionalDocuments ProfessionalInfo)
         {
             return new EmployeeQueries().UpdateProfessionalInfo(ProfessionalInfo);
         }

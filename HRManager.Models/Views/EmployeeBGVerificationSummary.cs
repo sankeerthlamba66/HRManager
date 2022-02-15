@@ -11,8 +11,8 @@ namespace HRManager.Models.Views
     {
         public EmployeeBGVerificationSummary()
         {
-            this.professionalDetails = new List<EmployeeProfessionalInfo>();
+            this.professionalDetails = new List<EmployeeProfessionalDocuments>();
         }
-        public List<EmployeeProfessionalInfo> professionalDetails { get; set; }
+        public List<EmployeeProfessionalDocuments> professionalDetails { get; set; }
     }
 }

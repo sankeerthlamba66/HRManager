@@ -12,14 +12,14 @@ namespace HRManager.Models.ViewModels
         public EmployeeIndexModels()
         {
             this.employeePersonalInfo = new EmployeePersonalInfo();
-            this.employeeProfessionalInfos = new List<EmployeeProfessionalInfo>();
+            this.employeeProfessionalInfos = new List<EmployeeProfessionalDocuments>();
             this.employeeBankInfos = new List<EmployeeBankInfo>();
             this.employeeInsuranceInfos = new List<EmployeeInsuranceInfo>();
             this.employeePFandESIInfos = new List<EmployeePFandESIInfo>();
             this.employeeDocuments = new EmployeeDocument();
         }
         public EmployeePersonalInfo employeePersonalInfo { get; set; }
-        public List<EmployeeProfessionalInfo> employeeProfessionalInfos { get; set; }
+        public List<EmployeeProfessionalDocuments> employeeProfessionalInfos { get; set; }
         public List<EmployeeBankInfo> employeeBankInfos { get; set; }
         public List<EmployeeInsuranceInfo> employeeInsuranceInfos { get; set; }
         public List<EmployeePFandESIInfo> employeePFandESIInfos { get; set; }

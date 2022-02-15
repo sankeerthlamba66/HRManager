@@ -14,10 +14,10 @@ namespace HRManager.Business.BussinessRepository
         EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId, int UserId);
         EmployeePersonalInfo GetPersonalInfo(int UserId);
         int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo);
-        EmployeeProfessionalInfo GetProfessionalInfo(int? ProfessionalInfoId, int UserId);
-        List<EmployeeProfessionalInfo> GetProfessionalInfo(int UserId);
-        int AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo);
-        int UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo);
+        EmployeeProfessionalDocuments GetProfessionalInfo(int? ProfessionalInfoId, int UserId);
+        List<EmployeeProfessionalDocuments> GetProfessionalInfo(int UserId);
+        int AddProfessionalInfo(EmployeeProfessionalDocuments ProfessionalInfo);
+        int UpdateProfessionalInfo(EmployeeProfessionalDocuments ProfessionalInfo);
         void DeleteProfessionalInfo(int ProfessionalInfoId, int UserId);
         EmployeeBankInfo GetBankInfo(int? EmployeeBankInfoId, int UserId);
         List<EmployeeBankInfo> GetBankInfo(int UserId);

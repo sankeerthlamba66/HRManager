@@ -73,15 +73,17 @@
 <script>
 $(document).ready(function()
 {
+    var FieldsToUpdate1 = [];
+    storeChecked=function()
+    {
+        if("input:checked")
+        {
+            FieldsToUpdate1.push($(this).val());
+        }
+    };
+    $( "input[type=checkbox]" ).on( "click", storeChecked() );
     $("#SendEmail").click(function()
     {
-         var FieldsToUpdate1 = [];
-       $(".validation-checkbox").click(function()
-       {
-           $(input[type='checkbox']).each(function() 
-        {
-          FieldsToUpdate1.push($(this).val());
-        });
         $.ajax(
         {
             type:"POST",
@@ -96,8 +98,6 @@ $(document).ready(function()
 
         });
        });
-   });
-  
 });
 </script>
 }

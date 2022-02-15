@@ -14,9 +14,9 @@ namespace HRManager.Data.Entity
     public class EmployeeQueries
     {
         private readonly Context context=new Context();
-        public EmployeeProfessionalInfo GetProfessionalDetails(int ProfessionalDetailsId)
+        public EmployeeProfessionalDocuments GetProfessionalDetails(int ProfessionalDetailsId)
         {
-            EmployeeProfessionalInfo professionalInfo = new EmployeeProfessionalInfo();
+            EmployeeProfessionalDocuments professionalInfo = new EmployeeProfessionalDocuments();
             try
             {
                 var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalDetailsId);
@@ -156,9 +156,9 @@ namespace HRManager.Data.Entity
             return EmployeePersonalInfo;
         }
 
-        public EmployeeProfessionalInfo GetEmployeeProfessionalInfoMapper(Entities.EmployeeProfessionalInfo ProfessionalInfo)
+        public EmployeeProfessionalDocuments GetEmployeeProfessionalInfoMapper(Entities.EmployeeProfessionalInfo ProfessionalInfo)
         {
-            EmployeeProfessionalInfo employeeProfessionalInfo = new EmployeeProfessionalInfo();
+            EmployeeProfessionalDocuments employeeProfessionalInfo = new EmployeeProfessionalDocuments();
             try
             {
                 employeeProfessionalInfo.Id = ProfessionalInfo.Id;
@@ -343,9 +343,9 @@ namespace HRManager.Data.Entity
         #endregion
 
         #region ProfessionalInfo Queries
-        public EmployeeProfessionalInfo GetProfessionalInfo(int? ProfessionalInfoId,int UserId)
+        public EmployeeProfessionalDocuments GetProfessionalInfo(int? ProfessionalInfoId,int UserId)
         {
-            EmployeeProfessionalInfo employeeProfessionalInfo = null;
+            EmployeeProfessionalDocuments employeeProfessionalInfo = new EmployeeProfessionalDocuments();
             try
             {
                 var professionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalInfoId && s.UserId == UserId);
@@ -358,9 +358,9 @@ namespace HRManager.Data.Entity
             return employeeProfessionalInfo;//list to be returned
         }
 
-        public List<EmployeeProfessionalInfo> GetProfessionalInfo(int UserId)
+        public List<EmployeeProfessionalDocuments> GetProfessionalInfo(int UserId)
         {
-            List<EmployeeProfessionalInfo> employeeProfessionalInfo = new List<EmployeeProfessionalInfo>();
+            List<EmployeeProfessionalDocuments> employeeProfessionalInfo = new List<EmployeeProfessionalDocuments>();
             try
             {
                 var professionalInfo = context.EmployeeProfessionalInfos.Where(s =>s.UserId == UserId).ToList();
@@ -376,7 +376,7 @@ namespace HRManager.Data.Entity
             return employeeProfessionalInfo;//list to be returned
         }
 
-        public int AddProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
+        public int AddProfessionalInfo(EmployeeProfessionalDocuments ProfessionalInfo)
         {
             Entities.EmployeeProfessionalInfo employeeProfessionalInfo = new Entities.EmployeeProfessionalInfo();
             try
@@ -412,7 +412,7 @@ namespace HRManager.Data.Entity
             return employeeProfessionalInfo.Id;//added ProfessionalId value
         }
 
-        public int UpdateProfessionalInfo(EmployeeProfessionalInfo ProfessionalInfo)
+        public int UpdateProfessionalInfo(EmployeeProfessionalDocuments ProfessionalInfo)
         {
             try
             {

@@ -75,9 +75,9 @@ namespace HRManager.Data.Entity
             return employeeCardSummary;
         }
 
-        public EmployeeProfessionalInfo GetEmployeeProfessionalInfoMapper(Entities.EmployeeProfessionalInfo ProfessionalInfo)
+        public EmployeeProfessionalDocuments GetEmployeeProfessionalInfoMapper(Entities.EmployeeProfessionalInfo ProfessionalInfo)
         {
-            EmployeeProfessionalInfo employeeProfessionalInfo = new EmployeeProfessionalInfo();
+            EmployeeProfessionalDocuments employeeProfessionalInfo = new EmployeeProfessionalDocuments();
             try
             {
                 employeeProfessionalInfo.Id = ProfessionalInfo.Id;

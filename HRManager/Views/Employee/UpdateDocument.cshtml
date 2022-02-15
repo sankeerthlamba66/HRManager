@@ -5,176 +5,223 @@
 }
 
 <h3>Edit Your Documents</h3>
-
-<div class="row">
-    <div class="col-md-6">
-        
-           <form asp-action="UpdateDocument" method="post" enctype="multipart/form-data">
-               <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@if (Model is not null)
+{
+    <div class="row">
+        <div class="col-md-12">       
+            <form asp-action="UpdateDocument" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label hidden-for="@Model.employeeDocuments.Id" class="control-label"></label>
                     <input class="form-control" type="hidden" asp-for="@Model.employeeDocuments.Id"/>
                 </div>
 
-                <div class="form group mb-3">
-                    
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PassportPhoto"></label>         
-                <span>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PassportPhoto"/>
-                </span>
-                
+                <div class="mb-3">                    
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PassportPhoto"><strong>Passport Photo</strong></label>  
+                    <div class="form-group">
+                        <input class="form md-12" type="file" id="formFile"asp-for="@Model.employeeFileDocuments.PassportPhoto"/>   
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PassportPhoto))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.PassportPhoto">Passport Photo</a>
+                        }
+                    </div>
                 </div>
-                <span>
-                 @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PassportPhoto))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.PassportPhoto">Passport Photo</a>
-                    }
-                </span>
+
+                <div class="mb-3">                  
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Resume"><strong>Resume</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Resume"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Resume))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.Resume">Resume</a>
+                        }
+                    </div>
+                </div>
+
                 <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Resume))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.Resume">Resume</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Resume"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Resume"/>
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PanCard"><strong>PAN Card</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PanCard"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PanCard))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.PanCard">Pan Card</a>
+                        }
+                    </div>
                 </div>
+
+                <div class="mb-3">                    
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.AadharCard"><strong>Aadhar Card</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.AadharCard"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.AadharCard))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.AadharCard">AadharCard</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">                    
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Passport"><strong>Passport</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Passport"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Passport))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.Passport">Passport</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">                    
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.VoterId"><strong>Voter Id</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.VoterId"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.VoterId))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.VoterId">VoterId</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">                   
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.CurrentAddressProof"><strong>Current Address Proof</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.CurrentAddressProof"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.CurrentAddressProof))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.CurrentAddressProof">Current Address Proof</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">                    
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PermanentAddressProof"><strong>Permanent Address Proof</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PermanentAddressProof"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PermanentAddressProof))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.PermanentAddressProof">Permanent Address Proof</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">                    
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.FathersAadharCard"><strong>Father's Aadhar Card</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.FathersAadharCard"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.FathersAadharCard))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.FathersAadharCard">Fathers Aadhar Card</a>
+                        }
+                    </div>
+                </div>
+
                 <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PanCard))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.PanCard">Pan Card</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PanCard"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PanCard"/>
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.MothersAadharCard"><strong>Mother's Aaadhar Card</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.MothersAadharCard"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.MothersAadharCard))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.MothersAadharCard">Mothers Aadhar Card</a>
+                        }
+                    </div>
                 </div>
+
+                <div class="mb-3">                   
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount"><strong>Three Months Bank Statement Of Salary Account</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount">Three Months Bank Statement Of Salary Account</a>
+                        }
+                    </div>
+                </div>
+
                 <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.AadharCard))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.AadharCard">AadharCard</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.AadharCard"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.AadharCard"/>
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear"><strong>Form 16 Or Income Certificate Of Current Fin Year</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear">Form16OrIncomeCertificateOfCurrentFinYear</a>
+                        }
+                    </div>
                 </div>
+
+                <div class="mb-3">                   
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.SSCOrEquivalent"><strong>SSC Or Equivalent</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.SSCOrEquivalent"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.SSCOrEquivalent))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.SSCOrEquivalent">SSC Or Equivalent</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">                    
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent"><strong>Intermediate Or Equivalent</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.IntermediateOrEquivalent))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.IntermediateOrEquivalent">Intermediate Or Equivalent</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">                    
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent"><strong>Graduation Or Equivalent</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.GraduationOrEquivalent))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.GraduationOrEquivalent">Graduation Or Equivalent</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">                   
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PGOrEquivalent"><strong>PG Or Equivalent</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PGOrEquivalent"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PGOrEquivalent))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.PGOrEquivalent">PG Or Equivalent</a>
+                        }    
+                    </div>
+                </div>
+
+                <div class="mb-3"> 
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny"><strong>Advanced Diploma If Any</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.AdvancedDiplomaIfAny))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.AdvancedDiplomaIfAny">Advanced Diploma If Any</a>
+                        }
+                    </div>
+                </div>
+
                 <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Passport))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.Passport">Passport</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Passport"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Passport"/>
+                    <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny"><strong>Professional Certifications If Any</strong></label>
+                    <div class="form-group">
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny"/>
+                        @if (!string.IsNullOrEmpty(@Model.employeeDocuments.ProfessionalCertificationsIfAny))
+                        {
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.ProfessionalCertificationsIfAny">Professional Certifications If Any</a>
+                        }
+                    </div>
                 </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.VoterId))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.VoterId">VoterId</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.VoterId"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.VoterId"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.CurrentAddressProof))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.CurrentAddressProof">Current Address Proof</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.CurrentAddressProof"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.CurrentAddressProof"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PermanentAddressProof))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.PermanentAddressProof">Permanent Address Proof</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PermanentAddressProof"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PermanentAddressProof"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.FathersAadharCard))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.FathersAadharCard">Fathers Aadhar Card</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.FathersAadharCard"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.FathersAadharCard"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.MothersAadharCard))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.MothersAadharCard">Mothers Aadhar Card</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.MothersAadharCard"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.MothersAadharCard"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount">Three Months Bank Statement Of Salary Account</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear">Form16OrIncomeCertificateOfCurrentFinYear</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.SSCOrEquivalent))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.SSCOrEquivalent">SSC Or Equivalent</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.SSCOrEquivalent"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.SSCOrEquivalent"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.IntermediateOrEquivalent))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.IntermediateOrEquivalent">Intermediate Or Equivalent</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.IntermediateOrEquivalent"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.GraduationOrEquivalent))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.GraduationOrEquivalent">Graduation Or Equivalent</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.GraduationOrEquivalent"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PGOrEquivalent))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.PGOrEquivalent">PG Or Equivalent</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PGOrEquivalent"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PGOrEquivalent"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.AdvancedDiplomaIfAny))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.AdvancedDiplomaIfAny">Advanced Diploma If Any</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.AdvancedDiplomaIfAny"/>
-                </div>
-                <div class="mb-3">
-                    @if (!string.IsNullOrEmpty(@Model.employeeDocuments.ProfessionalCertificationsIfAny))
-                    {
-                        <a target="_blank" href="~/Documents/@Model.employeeDocuments.ProfessionalCertificationsIfAny">Professional Certifications If Any</a>
-                    }
-                <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny"></label>
-                <input class="form-control" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.ProfessionalCertificationsIfAny"/>
-                </div>
-                
+
                 <div class="form-group">
                     <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
                     <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
                 </div>
-           </form>
+            </form>
+        </div>
     </div>
-</div>
-
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

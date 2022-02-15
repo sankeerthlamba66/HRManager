@@ -68,37 +68,55 @@
                 @Html.DisplayNameFor(model => model.OfferLetterPath)
             </dt>
             <dd class = "col-sm-6">
-                @Html.DisplayFor(model => model.OfferLetterPath)
+                 @if (!string.IsNullOrEmpty(@Model.OfferLetterPath))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.OfferLetterPath">Offer Letter Path</a>
+                    }
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.RelievingLetterPath)
             </dt>
             <dd class = "col-sm-6">
-                @Html.DisplayFor(model => model.RelievingLetterPath)
+                 @if (!string.IsNullOrEmpty(@Model.RelievingLetterPath))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.RelievingLetterPath">Relieving Letter Path</a>
+                    }
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.ExperienceLetterPath)
             </dt>
             <dd class = "col-sm-6">
-                @Html.DisplayFor(model => model.ExperienceLetterPath)
+                 @if (!string.IsNullOrEmpty(@Model.ExperienceLetterPath))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.ExperienceLetterPath">Experience Letter Path</a>
+                    }
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.PaySlip1)
             </dt>
             <dd class = "col-sm-6">
-                @Html.DisplayFor(model => model.PaySlip1)
+                 @if (!string.IsNullOrEmpty(@Model.PaySlip1))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PaySlip1">Pay Slip 1</a>
+                    }
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.PaySlip2)
             </dt>
             <dd class = "col-sm-6">
-                @Html.DisplayFor(model => model.PaySlip2)
+                 @if (!string.IsNullOrEmpty(@Model.PaySlip2))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PaySlip2">Pay Slip 2</a>
+                    }
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.PaySlip3)
             </dt>
             <dd class = "col-sm-6">
-                @Html.DisplayFor(model => model.PaySlip3)
+                 @if (!string.IsNullOrEmpty(@Model.PaySlip3))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PaySlip3">Pay Slip 3</a>
+                    }
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.ReferenceEmailId)

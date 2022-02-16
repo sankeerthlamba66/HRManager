@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,8 @@ namespace HRManager.Models.EntityViews
         [Required]
         public Gender Gender { get; set; }
         [Display(Name = "Date Of Birth")]
+        [DataType(DataType.Date)]
+        [Column(TypeName = "Date")]
         [Required]
         public DateTime DateOfBirth { get; set; }
         [Display(Name = "Mobile Number")]

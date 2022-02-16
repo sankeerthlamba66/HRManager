@@ -116,11 +116,22 @@ namespace HRManager.Controllers
         {
             try
             {
-                ProfessionalInfo.Id = null;
-                ProfessionalInfo.UserId = Session.UserId;
-                ProfessionalInfo.CreatedBy = Session.UserName;
+                
                 string path2 = @"Documents";
                 EmployeeProfessionalDocuments employeeProfessionalDocuments = new EmployeeProfessionalDocuments();
+                employeeProfessionalDocuments.Id = null;
+                employeeProfessionalDocuments.UserId = Session.UserId;
+                employeeProfessionalDocuments.CreatedBy = Session.UserName;
+                employeeProfessionalDocuments.OrganizationName = ProfessionalInfo.OrganizationName;
+                employeeProfessionalDocuments.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
+                employeeProfessionalDocuments.LastDesignation= ProfessionalInfo.LastDesignation;
+                employeeProfessionalDocuments.StartDate= ProfessionalInfo.StartDate;
+                employeeProfessionalDocuments.EndDate= ProfessionalInfo.EndDate;
+                employeeProfessionalDocuments.CTC= ProfessionalInfo.CTC;
+                employeeProfessionalDocuments.ReportingManagerName= ProfessionalInfo.ReportingManagerName;
+                employeeProfessionalDocuments.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+                employeeProfessionalDocuments.HRName= ProfessionalInfo.HRName;
+                employeeProfessionalDocuments.HREmailId = ProfessionalInfo.HREmailId;
                 if (ProfessionalInfo.OfferLetter != null)
                 { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(ProfessionalInfo.OfferLetter, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 if (ProfessionalInfo.RelievingLetter != null)

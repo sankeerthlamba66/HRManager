@@ -163,7 +163,7 @@ namespace HRManager.Controllers
             try
             {
                 adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate);
-                return RedirectToAction("Index");
+                return Ok();
                 //return RedirectToAction("PDValidation",new { EmployeeId = EmployeeId });
             }
             catch (Exception ex)

@@ -70,7 +70,7 @@ namespace HRManager.Controllers
 
                 var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
 
-                return PartialView("_AllEmployeeTable", allEmployeeTable);
+                return PartialView("_AllEmployeeTable",allEmployeeTable);
             }
             catch (Exception ex)
             {
@@ -163,7 +163,7 @@ namespace HRManager.Controllers
             try
             {
                 adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate);
-                return Ok();
+                return RedirectToAction("Index");
                 //return RedirectToAction("PDValidation",new { EmployeeId = EmployeeId });
             }
             catch (Exception ex)

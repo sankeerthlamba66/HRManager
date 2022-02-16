@@ -1,6 +1,5 @@
 ﻿@model HRManager.Models.EntityViews.EmployeeProfessionalDocuments
 
-
     <div>
         <dl class="row">
             <dt class = "col-sm-2">
@@ -35,6 +34,20 @@
             </dt>
             <dd class = "col-sm-10">
                 @Html.DisplayFor(model => model.LastDesignation)
+            </dd>
+            <dt class = "col-sm-2">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Start Date" field-name="@Html.DisplayNameFor(model => model.StartDate)" field-value="@Model.StartDate">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+            <dt class = "col-sm-2">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="End Date" field-name="@Html.DisplayNameFor(model => model.EndDate)" field-value="@Model.EndDate">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.EndDate)
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="CTC" field-name="@Html.DisplayNameFor(model => model.CTC)" value="@Model.CTC">
@@ -76,42 +89,60 @@
                 @Html.DisplayNameFor(model => model.OfferLetterPath)
             </dt>
             <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.OfferLetterPath)
+                @if (!string.IsNullOrEmpty(@Model.OfferLetterPath))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.OfferLetterPath">Offer Letter Path</a>
+                    }
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Relieving Letter Path" field-name="@Html.DisplayNameFor(model => model.RelievingLetterPath)" field-value="@Model.RelievingLetterPath">
                 @Html.DisplayNameFor(model => model.RelievingLetterPath)
             </dt>
             <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.RelievingLetterPath)
+                @if (!string.IsNullOrEmpty(@Model.RelievingLetterPath))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.RelievingLetterPath">Relieving Letter Path</a>
+                    }
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Experience Letter Path" field-name="@Html.DisplayNameFor(model => model.ExperienceLetterPath)" field-value="@Model.ExperienceLetterPath">
                 @Html.DisplayNameFor(model => model.ExperienceLetterPath)
             </dt>
             <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.ExperienceLetterPath)
+                @if (!string.IsNullOrEmpty(@Model.ExperienceLetterPath))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.ExperienceLetterPath">Experience Letter Path</a>
+                    }
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Pay Slip 1" field-name="@Html.DisplayNameFor(model => model.PaySlip1)" field-value="@Model.PaySlip1">
                 @Html.DisplayNameFor(model => model.PaySlip1)
             </dt>
             <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.PaySlip1)
+                @if (!string.IsNullOrEmpty(@Model.PaySlip1))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PaySlip1">Pay Slip 1</a>
+                    }
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Pay Slip 2" field-name="@Html.DisplayNameFor(model => model.PaySlip2)" field-value="@Model.PaySlip2">
                 @Html.DisplayNameFor(model => model.PaySlip2)
             </dt>
             <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.PaySlip2)
+                @if (!string.IsNullOrEmpty(@Model.PaySlip2))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PaySlip2">Pay Slip 2</a>
+                    }
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Pay Slip 3" field-name="@Html.DisplayNameFor(model => model.PaySlip3)" field-value="@Model.PaySlip3">
                 @Html.DisplayNameFor(model => model.PaySlip3)
             </dt>
             <dd class = "col-sm-10">
-                @Html.DisplayFor(model => model.PaySlip3)
+                @if (!string.IsNullOrEmpty(@Model.PaySlip3))
+                    {
+                        <a target="_blank" href="~/Documents/@Model.PaySlip3">Pay Slip 3</a>
+                    }
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Reference Email Id" field-name="@Html.DisplayNameFor(model => model.ReferenceEmailId)" field-value="@Model.ReferenceEmailId">
@@ -124,4 +155,3 @@
         @*@Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})
         @Html.ActionLink("Delete","DeleteProfessionalInfo","Employee",new{id=Model.Id})*@
     </div>
-

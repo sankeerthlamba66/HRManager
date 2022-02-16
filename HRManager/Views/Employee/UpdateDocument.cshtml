@@ -19,7 +19,7 @@
                 <div class="mb-3">                    
                     <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PassportPhoto"><strong>Passport Photo</strong></label>  
                     <div class="form-group">
-                        <input class="form md-12" type="file" id="formFile"asp-for="@Model.employeeFileDocuments.PassportPhoto"/>   
+                        <input class="form md-6" type="file" id="formFile"asp-for="@Model.employeeFileDocuments.PassportPhoto"/>   
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PassportPhoto))
                         {
                             <a target="_blank" href="~/Documents/@Model.employeeDocuments.PassportPhoto">Passport Photo</a>

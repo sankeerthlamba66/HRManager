@@ -15,11 +15,9 @@ namespace HRManager.Data.Entity.Entities
         public string OrganizationName { get; set; }
         public bool IsThisYourLastEmployment { get; set; }
         public string LastDesignation { get; set; }
-
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
         public DateTime StartDate { get; set; }
-
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
         public DateTime EndDate { get; set; }

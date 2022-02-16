@@ -38,7 +38,7 @@
                 </div>
                 @if (Session.UserRoles.Contains("Employee") || Session.UserRoles.Contains("HRAdmin") || Session.UserRoles.Contains("HR"))
                 {
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="LogOut">Log Out</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Login" asp-action="LogOut">Log Out</a>
                 }
                 <a class="navbar-brand" asp-area="" asp-controller="Employee" asp-action="Privacy">Privacy</a>
             </div>

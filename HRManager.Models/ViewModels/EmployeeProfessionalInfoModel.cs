@@ -13,9 +13,9 @@ namespace HRManager.Models.ViewModels
     {
         public EmployeeProfessionalInfoModel()
         {
-            this.EmployeeProfessionalDocuments= new EmployeeProfessionalDocuments();
+            this.employeeProfessionalDocuments= new EmployeeProfessionalDocuments();
         }
-        public EmployeeProfessionalDocuments EmployeeProfessionalDocuments { get; set; }
+        public EmployeeProfessionalDocuments employeeProfessionalDocuments { get; set; }
         [Display(Name = "Offer Letter")]
         [Required]
         public IFormFile OfferLetter { get; set; }

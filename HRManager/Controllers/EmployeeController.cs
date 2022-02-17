@@ -160,7 +160,7 @@ namespace HRManager.Controllers
             try
             {
                 EmployeeProfessionalInfoModel employeeProfessionalInfoModel = new EmployeeProfessionalInfoModel();
-                employeeProfessionalInfoModel.EmployeeProfessionalDocuments = employeeManager.GetProfessionalInfo(Id, Session.UserId);
+                employeeProfessionalInfoModel.employeeProfessionalDocuments = employeeManager.GetProfessionalInfo(Id, Session.UserId);
                 return View(employeeProfessionalInfoModel);
             }
             catch (Exception ex)
@@ -174,23 +174,22 @@ namespace HRManager.Controllers
         {
             try
             {
-                EmployeeProfessionalIForms ProfessionalInfo = null;
-                ProfessionalInfo.UserId = Session.UserId;
-                ProfessionalInfo.UpdatedBy = Session.UserName;
                 string path2 = @"Documents";
-                EmployeeProfessionalDocuments employeeProfessionalDocuments = new EmployeeProfessionalDocuments();
-                if (ProfessionalInfo.OfferLetter != null)
-                { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(ProfessionalInfo.OfferLetter, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
-                if (ProfessionalInfo.RelievingLetter != null)
-                { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(ProfessionalInfo.RelievingLetter, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
-                if (ProfessionalInfo.ExperienceLetter != null)
-                { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(ProfessionalInfo.ExperienceLetter, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
-                if (ProfessionalInfo.PaySlip1 != null)
-                { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(ProfessionalInfo.PaySlip1, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
-                if (ProfessionalInfo.PaySlip2 != null)
-                { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(ProfessionalInfo.PaySlip2, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
-                if (ProfessionalInfo.PaySlip3 != null)
-                { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(ProfessionalInfo.PaySlip3, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
+                EmployeeProfessionalDocuments employeeProfessionalDocuments = employeeProfessionalInfoModel.employeeProfessionalDocuments;
+                employeeProfessionalDocuments.UserId = Session.UserId;
+                employeeProfessionalDocuments.UpdatedBy = Session.UserName;
+                if (employeeProfessionalInfoModel.OfferLetter != null)
+                { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(employeeProfessionalInfoModel.OfferLetter, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
+                if (employeeProfessionalInfoModel.RelievingLetter != null)
+                { employeeProfessionalDocuments.RelievingLetterPath = Code.FileManager.UploadDocument(employeeProfessionalInfoModel.RelievingLetter, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
+                if (employeeProfessionalInfoModel.ExperienceLetter != null)
+                { employeeProfessionalDocuments.ExperienceLetterPath = Code.FileManager.UploadDocument(employeeProfessionalInfoModel.ExperienceLetter, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
+                if (employeeProfessionalInfoModel.PaySlip1 != null)
+                { employeeProfessionalDocuments.PaySlip1 = Code.FileManager.UploadDocument(employeeProfessionalInfoModel.PaySlip1, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
+                if (employeeProfessionalInfoModel.PaySlip2 != null)
+                { employeeProfessionalDocuments.PaySlip2 = Code.FileManager.UploadDocument(employeeProfessionalInfoModel.PaySlip2, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
+                if (employeeProfessionalInfoModel.PaySlip3 != null)
+                { employeeProfessionalDocuments.PaySlip3 = Code.FileManager.UploadDocument(employeeProfessionalInfoModel.PaySlip3, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 var updatedProfessionalId = employeeManager.UpdateProfessionalInfo(employeeProfessionalDocuments);
                 return RedirectToAction("Index", new { Id = updatedProfessionalId });
             }

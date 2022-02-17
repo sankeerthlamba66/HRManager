@@ -57,9 +57,16 @@ namespace HRManager.Controllers
 
         public ActionResult LogOut()
         {
-            Session.UserRoles.Clear();
-            // Redirecting to Login page after deleting Session
-            return RedirectToAction("Index", "Login");
+            try
+            {
+                Session.UserRoles.Clear();
+                // Redirecting to Login page after deleting Session
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex) 
+            {
+                return HandleException(ex);
+            }
         }
 
 

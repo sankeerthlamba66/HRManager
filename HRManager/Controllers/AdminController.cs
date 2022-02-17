@@ -29,30 +29,7 @@ namespace HRManager.Controllers
                 return ReturnErrorView(ex);
             }
         }
-        //public IActionResult Index(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
-        //{
-        //    try
-        //    {
-        //        var employeeData = new List<EmployeeTableSummary>();
-        //        if ((DateFrom != null) && (DateTo != null))
-        //        {
-        //            employeeData = adminManager.GetRecentlyUpdatedEmployees(DateFrom.Value, DateTo.Value);
-        //        }
-        //        else
-        //        {
-        //            employeeData = adminManager.GetRecentlyUpdatedEmployees();
-        //        }
-
-        //        var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
-
-        //        return View(allEmployeeTable);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ReturnErrorView(ex);
-        //    }
-        //}
-
+        
         public IActionResult AllEmployeeTable(bool AddVerificationLinks, DateTime? DateFrom, DateTime? DateTo)
         {
             try
@@ -70,7 +47,16 @@ namespace HRManager.Controllers
 
                 var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = AddVerificationLinks, EmployeeData = employeeData };
 
-                return PartialView("_AllEmployeeTable",allEmployeeTable);
+                if (DateFrom != null)
+                { allEmployeeTable.FromDate = DateFrom; }
+
+                if (DateTo != null)
+                { allEmployeeTable.ToDate = DateTo; }
+
+                if (IsAjaxRequest())
+                { return PartialView("_AllEmployeeTable", allEmployeeTable); }
+                else
+                { return View("_AllEmployeeTable", allEmployeeTable); }
             }
             catch (Exception ex)
             {

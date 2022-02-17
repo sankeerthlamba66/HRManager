@@ -12,12 +12,12 @@ namespace HRManager.Models.ViewModels
         public AllEmployeeTable()
         {
             this.EmployeeData = new List<EmployeeTableSummary>();
-         
         }
         public List<EmployeeTableSummary> EmployeeData { get; set; }
         public bool AddVerificationLinks { get; set; }
 
-        
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
     }
 
 }

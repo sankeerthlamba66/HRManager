@@ -159,8 +159,9 @@ namespace HRManager.Controllers
         {
             try
             {
-                var professionalInfo = employeeManager.GetProfessionalInfo(Id, Session.UserId);
-                return View(professionalInfo);
+                EmployeeProfessionalInfoModel employeeProfessionalInfoModel = new EmployeeProfessionalInfoModel();
+                employeeProfessionalInfoModel.EmployeeProfessionalDocuments = employeeManager.GetProfessionalInfo(Id, Session.UserId);
+                return View(employeeProfessionalInfoModel);
             }
             catch (Exception ex)
             {
@@ -169,10 +170,11 @@ namespace HRManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateProfessionalInfo(EmployeeProfessionalIForms ProfessionalInfo)
+        public IActionResult UpdateProfessionalInfo(EmployeeProfessionalInfoModel employeeProfessionalInfoModel)
         {
             try
             {
+                EmployeeProfessionalIForms ProfessionalInfo = null;
                 ProfessionalInfo.UserId = Session.UserId;
                 ProfessionalInfo.UpdatedBy = Session.UserName;
                 string path2 = @"Documents";

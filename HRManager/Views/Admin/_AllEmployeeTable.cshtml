@@ -1,7 +1,14 @@
 ﻿@model HRManager.Models.ViewModels.AllEmployeeTable
-
 @if (Model is not null)
 {
+string strFromDate = string.Empty;
+if(Model.FromDate !=null)
+{ strFromDate = Model.FromDate.Value.ToString("yyyy-MM-dd"); }
+
+string strToDate = string.Empty;
+if(Model.ToDate !=null)
+{ strToDate = Model.ToDate.Value.ToString("yyyy-MM-dd"); }
+
 <table class="table">
     <thead>
         <tr>
@@ -57,7 +64,8 @@
         }
     </tbody>
 </table>
-    <a role="button" class="btn btn-dark" id="Export" asp-area="" asp-controller="Admin" asp-action="Export">Export Data</a>
+
+<a role="button" class="btn btn-dark" id="Export" asp-area="" asp-controller="Admin" asp-action="Export" asp-route-DateFrom="@strFromDate" asp-route-DateTo="@strToDate">Export Data</a>
 }
 
 @section Scripts

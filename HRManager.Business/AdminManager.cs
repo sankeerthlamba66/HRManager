@@ -16,6 +16,7 @@ namespace HRManager.Business
         public void AddEmployee(User user) 
         {
             user.Password = GeneratePassWord();
+            SendUserDetailsMail(user);
             new AdminQueries().AddEmployee(user);
         }
 
@@ -91,6 +92,16 @@ namespace HRManager.Business
             string Body = EmailTemplate.PDVEmailBodyTemplate;
 
             Helpers.Utilities.SendEmail(ProfDetails.HREmailId, Subject, Body);
+        }
+
+        private void SendUserDetailsMail(User user)
+        {
+            var EmailTemplate = new AdminQueries().GetUserDetailsMailTemplate(user);
+
+            string Subject = EmailTemplate.UserDetailsSubjectTemplate;
+            string Body = EmailTemplate.UserDetailsBodyTemplate;
+
+            Helpers.Utilities.SendEmail(user.UserMailId,Subject,Body);
         }
     }
 }

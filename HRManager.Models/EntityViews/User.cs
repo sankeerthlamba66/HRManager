@@ -13,5 +13,6 @@ namespace HRManager.Models.EntityViews
         public string Password { get; set; }
         public string Roles { get; set; }
         public byte OrganizationId { get; set; }
+        public string UserMailId { get; set; }
     }
 }

@@ -24,6 +24,7 @@ namespace HRManager.Data.Entity
                 DBUser.Roles = user.Roles;
                 DBUser.OrganizationId = user.OrganizationId;
                 DBUser.Password = user.Password;
+                //DBUser.UserMailId = user.UserMailId;
                 context.Add(DBUser);
             }
         }
@@ -200,15 +201,15 @@ namespace HRManager.Data.Entity
             PDVEmailTemplate EmailTemplate = new PDVEmailTemplate();
             try
             {                
-                StringBuilder subject = new StringBuilder();
+                StringBuilder Body = new StringBuilder();
                 EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
-                subject.Append("Dear " + EmployeeName + ",\n        The following Details should be updated Or Are not matching with data Provided.\n");
+                Body.Append("Dear " + EmployeeName + ",\n        The following Details should be updated Or Are not matching with data Provided.\n");
                 foreach (var item in FieldsToUpdate)
                 {
-                    subject.Append("* " + item + "\n");
+                    Body.Append("* " + item + "\n");
                 }
-                subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
-                EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
+                Body.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
+                EmailTemplate.PDVEmailBodyTemplate = Body.ToString();
             }
             catch(Exception ex)
             {
@@ -222,18 +223,36 @@ namespace HRManager.Data.Entity
             BGVEmailTemplate EmailTemplate = new BGVEmailTemplate();
             try
             {
-                StringBuilder subject = new StringBuilder();
+                StringBuilder Body = new StringBuilder();
                 EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
-                subject.Append("Sir/Madam,\n        I am HR Manager from TekFriday Pvt. Ltd. This is with regard to referral check of " + EmployeeName +", who worked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him/her: ");
-                subject.Append("\nPeriod Of Employeement: From "+professionalInfo.StartDate+" To"+professionalInfo.EndDate+"\nCTC: "+professionalInfo.CTC+"\nDesignation: "+professionalInfo.LastDesignation+"\n");
-                subject.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
-                EmailTemplate.PDVEmailBodyTemplate = subject.ToString();
+                Body.Append("Sir/Madam,\n        I am HR Manager from TekFriday Pvt. Ltd. This is with regard to referral check of " + EmployeeName +", who worked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him/her: ");
+                Body.Append("\nPeriod Of Employeement: From "+professionalInfo.StartDate+" To"+professionalInfo.EndDate+"\nCTC: "+professionalInfo.CTC+"\nDesignation: "+professionalInfo.LastDesignation+"\n");
+                Body.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
+                EmailTemplate.PDVEmailBodyTemplate = Body.ToString();
             }
             catch( Exception ex)
             {
                 ErrorLogger.LogInfo(ex.Message);
             }
             return EmailTemplate;
+        }
+
+        public UserDetailsEmailTemplate GetUserDetailsMailTemplate(User user)
+        {
+            UserDetailsEmailTemplate userDetailsEmailTemplate = new UserDetailsEmailTemplate();
+            try
+            {
+                userDetailsEmailTemplate.UserDetailsSubjectTemplate = @"Please find your Login Details";
+                StringBuilder Body = new StringBuilder();
+                Body.Append("Dear " + user.UserName + ",\n        Your Login details are: \n EMail:" + user.UserMailId +"\n Password:"+user.Password+"\n");
+                Body.Append("\nRegards\n HRManager\n HR@tekfriday.com");
+                userDetailsEmailTemplate.UserDetailsBodyTemplate = Body.ToString();
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogInfo(ex.Message);
+            }
+            return userDetailsEmailTemplate;
         }
 
     }

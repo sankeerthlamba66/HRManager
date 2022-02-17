@@ -36,10 +36,13 @@ namespace HRManager.Data.Entity
             try
             {
                 var userDetails = context.Users.Where(s => s.UserName.Equals(UserName)).FirstOrDefault();
-                user.Id = userDetails.Id;
-                user.UserName = userDetails.UserName;
-                user.Roles = userDetails.Roles;
-                user.OrganizationId = userDetails.OrganizationId;
+                if (userDetails is not null)
+                {
+                    user.Id = userDetails.Id;
+                    user.UserName = userDetails.UserName;
+                    user.Roles = userDetails.Roles;
+                    user.OrganizationId = userDetails.OrganizationId;
+                }
             }
             catch (Exception ex)
             {

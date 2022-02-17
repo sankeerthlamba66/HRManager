@@ -35,9 +35,10 @@ namespace HRManager.Controllers
                 if (loginManager.CheckUser(loginUser))
                 {
                     var UserDetails = loginManager.GetUserDetails(loginUser.UserName);
-                    Session.UserId = (int)UserDetails.Id;
+                    Session.UserId = Convert.ToInt32(UserDetails.Id);
                     Session.UserName = UserDetails.UserName;
                     Session.UserRoles = UserDetails.Roles.Split(",").ToList();
+                    Session.OrganizationId = UserDetails.OrganizationId;
                     if (UserDetails.Roles.Contains("Employee"))
                     {
                         return RedirectToAction("Index", "Employee");

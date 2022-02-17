@@ -171,6 +171,7 @@ namespace HRManager.Controllers
                 return HandleException(ex);
             }
         }
+
         [HttpGet]
         public IActionResult AddEmployee()
         {
@@ -183,11 +184,13 @@ namespace HRManager.Controllers
                 return HandleException(ex);
             }
         }
+
         [HttpPost]
         public IActionResult AddEmployee(User user)
         {
             try
             {
+                user.CreatedBy = Session.UserName;
                 adminManager.AddEmployee(user);
                 return View();
             }

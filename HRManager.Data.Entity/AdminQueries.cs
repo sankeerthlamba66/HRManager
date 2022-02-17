@@ -17,15 +17,19 @@ namespace HRManager.Data.Entity
 
         public void AddEmployee(User user)
         {
-            Entities.User DBUser = new Entities.User();
+            Entities.User UserDetail = new Entities.User();
             if(user is not null)
             {
-                DBUser.UserName = user.UserName;
-                DBUser.Roles = user.Roles;
-                DBUser.OrganizationId = user.OrganizationId;
-                DBUser.Password = user.Password;
-                DBUser.UserMailId = user.UserMailId;
-                context.Add(DBUser);
+                UserDetail.UserName = user.UserName;
+                UserDetail.Roles = user.Roles;
+                UserDetail.OrganizationId = user.OrganizationId;
+                UserDetail.Password = user.Password;
+                UserDetail.UserMailId = user.UserMailId;
+                UserDetail.CreatedBy = user.CreatedBy;
+                UserDetail.UpdatedBy = user.CreatedBy;
+                UserDetail.CreatedDate = DateTime.Now;
+                UserDetail.UpdatedDate = DateTime.Now;
+                context.Add(UserDetail);
                 context.SaveChanges();
             }
         }

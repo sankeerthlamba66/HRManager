@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRManager.Data.Entity.Migrations
 {
-    public partial class tables : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,10 +15,10 @@ namespace HRManager.Data.Entity.Migrations
                 {
                     Id = table.Column<byte>(type: "tinyint", nullable: false),
                     OrganizationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,15 +33,11 @@ namespace HRManager.Data.Entity.Migrations
                     ConfidentialityAgreement = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ServiceLevelAgreement = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BGVAcknowlwdgement = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BGVEmailSubjectTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BGVEmailBodyTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PDVEmailSubjectTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PDVEmailBodyTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrganizationId = table.Column<byte>(type: "tinyint", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,14 +56,15 @@ namespace HRManager.Data.Entity.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserMailId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Roles = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrganizationId = table.Column<byte>(type: "tinyint", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -81,21 +78,47 @@ namespace HRManager.Data.Entity.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EmployeeAgreementAcceptances",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ConfidentialityAgreementAccepted = table.Column<bool>(type: "bit", nullable: false),
+                    ServiceLevelAgreement = table.Column<bool>(type: "bit", nullable: false),
+                    BGVAcknowledgement = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeAgreementAcceptances", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EmployeeAgreementAcceptances_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EmployeeBankInfos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BankName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NameAsPerBankAccount = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BranchName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IFSCCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BankName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NameAsPerBankAccount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BranchName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IFSCCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,10 +156,10 @@ namespace HRManager.Data.Entity.Migrations
                     AdvancedDiplomaIfAny = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProfessionalCertificationsIfAny = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -155,15 +178,15 @@ namespace HRManager.Data.Entity.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Relationship = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Relationship = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<byte>(type: "tinyint", nullable: false),
                     DateOfBirthAsPerAadhar = table.Column<DateTime>(type: "Date", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -182,31 +205,31 @@ namespace HRManager.Data.Entity.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<byte>(type: "tinyint", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "Date", nullable: false),
-                    MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PersonalEmailId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CurrentAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PermanentAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PersonalEmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CurrentAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PermanentAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BloodGroup = table.Column<byte>(type: "tinyint", nullable: false),
-                    EmergencyContactName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmergencyContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RelationshipWithContact = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PanCardNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AadharCardNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FathersNameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FathersMobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MothersNameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmergencyContactName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmergencyContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RelationshipWithContact = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PanCardNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AadharCardNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FathersNameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FathersMobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MothersNameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HowWereYouReferredToUs = table.Column<byte>(type: "tinyint", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -225,13 +248,13 @@ namespace HRManager.Data.Entity.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UAN = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ESIN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UAN = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ESIN = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -250,27 +273,28 @@ namespace HRManager.Data.Entity.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OrganizationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OrganizationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsThisYourLastEmployment = table.Column<bool>(type: "bit", nullable: false),
-                    LastDesignation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastDesignation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartDate = table.Column<DateTime>(type: "Date", nullable: false),
                     EndDate = table.Column<DateTime>(type: "Date", nullable: false),
                     CTC = table.Column<int>(type: "int", nullable: false),
-                    ReportingManagerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReportingManagerEmailId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HRName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HREmailId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OfferLetterPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RelievingLetterPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExperienceLetterPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PaySlip1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PaySlip2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PaySlip3 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReportingManagerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReportingManagerEmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HRName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HREmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OfferLetterPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RelievingLetterPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExperienceLetterPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PaySlip1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PaySlip2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PaySlip3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReferenceEmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -287,6 +311,11 @@ namespace HRManager.Data.Entity.Migrations
                 name: "IX_ApplicationTexts_OrganizationId",
                 table: "ApplicationTexts",
                 column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeAgreementAcceptances_UserId",
+                table: "EmployeeAgreementAcceptances",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmployeeBankInfos_UserId",
@@ -329,6 +358,9 @@ namespace HRManager.Data.Entity.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ApplicationTexts");
+
+            migrationBuilder.DropTable(
+                name: "EmployeeAgreementAcceptances");
 
             migrationBuilder.DropTable(
                 name: "EmployeeBankInfos");

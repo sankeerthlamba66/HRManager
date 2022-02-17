@@ -145,6 +145,7 @@ namespace HRManager.Controllers
                 if (ProfessionalInfo.PaySlip2 != null)
                 { employeeProfessionalDocuments.PaySlip3 = Code.FileManager.UploadDocument(ProfessionalInfo.PaySlip3, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 var addedProfessionalInfoId = employeeManager.AddProfessionalInfo(employeeProfessionalDocuments);
+                employeeProfessionalDocuments.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                 return RedirectToAction("Index");
                 //return RedirectToAction("PostBankInfo", new { Id = addedProfessionalInfoId });
             }

@@ -39,6 +39,7 @@ namespace HRManager.Data.Entity
                 professionalInfo.PaySlip1 = employeeProfessionalInfo.PaySlip1;
                 professionalInfo.PaySlip2 = employeeProfessionalInfo.PaySlip2;
                 professionalInfo.PaySlip3 = employeeProfessionalInfo.PaySlip3;
+                professionalInfo.ReferenceEmailId = employeeProfessionalInfo.ReferenceEmailId;
             }
             catch (Exception ex)
             {
@@ -200,6 +201,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+                employeeProfessionalInfo.ReferenceEmailId= ProfessionalInfo.ReferenceEmailId;
             }
             catch (Exception ex)
             {
@@ -420,6 +422,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+                employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                 employeeProfessionalInfo.CreatedBy = ProfessionalInfo.CreatedBy;
                 employeeProfessionalInfo.CreatedDate = DateTime.Now;
                 employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.CreatedBy;
@@ -455,6 +458,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+                employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                 employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.UpdatedBy;
                 employeeProfessionalInfo.UpdatedDate = DateTime.Now;
                 context.SaveChanges();

@@ -24,8 +24,9 @@ namespace HRManager.Data.Entity
                 DBUser.Roles = user.Roles;
                 DBUser.OrganizationId = user.OrganizationId;
                 DBUser.Password = user.Password;
-                //DBUser.UserMailId = user.UserMailId;
+                DBUser.UserMailId = user.UserMailId;
                 context.Add(DBUser);
+                context.SaveChanges();
             }
         }
 
@@ -112,6 +113,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+                employeeProfessionalInfo.ReferenceEmailId= ProfessionalInfo.ReferenceEmailId;
             }
             catch (Exception ex)
             {

@@ -9,6 +9,7 @@ namespace HRManager.Data.Entity.Entities
     public class User : EntityBase
     {
         public int Id { get; set; }
+        public string UserMailId { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Roles { get; set; }

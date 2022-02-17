@@ -20,6 +20,7 @@ namespace HRManager.Data.Entity
             optionsBuilder.UseSqlServer(Setup.DBConnectionString);
         }
         public DbSet<ApplicationText> ApplicationTexts { get; set; }
+        public DbSet<EmployeeAgreementAcceptance> EmployeeAgreementAcceptances { get; set; }
         public DbSet<EmployeePersonalInfo> EmployeePersonalInfos { get; set; }
         public DbSet<EmployeeProfessionalInfo>EmployeeProfessionalInfos { get; set; }
         public DbSet<EmployeeBankInfo> EmployeeBankInfos { get; set; }

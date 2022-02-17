@@ -13,8 +13,8 @@ namespace HRManager.Data.Entity.Entities
     {
         public int Id { get; set; }
 
-        public string NameAsPerAadhar { get; set; }
-        public string Relationship { get; set; }
+        public string? NameAsPerAadhar { get; set; }
+        public string? Relationship { get; set; }
         public Gender Gender { get; set; }
 
         [DataType(DataType.Date)]

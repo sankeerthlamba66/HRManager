@@ -15,6 +15,19 @@ namespace HRManager.Data.Entity
     {
         private readonly Context context=new Context();
 
+        public void AddEmployee(User user)
+        {
+            Entities.User DBUser = new Entities.User();
+            if(user is not null)
+            {
+                DBUser.UserName = user.UserName;
+                DBUser.Roles = user.Roles;
+                DBUser.OrganizationId = user.OrganizationId;
+                DBUser.Password = user.Password;
+                context.Add(DBUser);
+            }
+        }
+
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees()
         {
             List<EmployeeTableSummary> employeeTableSummary = new List<EmployeeTableSummary>();

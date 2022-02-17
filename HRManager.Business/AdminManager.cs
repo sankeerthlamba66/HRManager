@@ -7,11 +7,31 @@ using HRManager.Models.Views;
 using HRManager.Models.ViewModels;
 using HRManager.Data.Entity;
 using HRManager.Business.BussinessRepository;
+using HRManager.Models.EntityViews;
 
 namespace HRManager.Business
 {
     public class AdminManager:IAdminManager
     {
+        public void AddEmployee(User user) 
+        {
+            user.Password = GeneratePassWord();
+            new AdminQueries().AddEmployee(user);
+        }
+
+        private string GeneratePassWord()
+        {
+            byte length = 8;
+            const String ValidCharsacters= "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder passWord = new StringBuilder();
+            Random random = new Random();
+            while(0<length--)
+            {
+                passWord.Append(ValidCharsacters[random.Next(ValidCharsacters.Length)]);
+            }
+            return passWord.ToString();
+        }
+
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees()
         {
             return new AdminQueries().GetRecentlyUpdatedEmployees();

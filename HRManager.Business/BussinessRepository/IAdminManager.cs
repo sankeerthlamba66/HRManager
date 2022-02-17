@@ -1,4 +1,5 @@
-﻿using HRManager.Models.ViewModels;
+﻿using HRManager.Models.EntityViews;
+using HRManager.Models.ViewModels;
 using HRManager.Models.Views;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace HRManager.Business.BussinessRepository
 {
     public interface IAdminManager
     {
+        void AddEmployee(User user);
         List<EmployeeTableSummary> GetRecentlyUpdatedEmployees();
         EmployeeAllDetails GetEmployeeAllDetails(int EmployeeUserId);
         List<EmployeeTableSummary> GetRecentlyUpdatedEmployees(DateTime DateFrom, DateTime DateTo);

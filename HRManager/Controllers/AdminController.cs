@@ -5,6 +5,7 @@ using HRManager.Models.ViewModels;
 using HRManager.Code;
 using HRManager.Business.BussinessRepository;
 using System.Text;
+using HRManager.Models.EntityViews;
 
 namespace HRManager.Controllers
 {
@@ -182,18 +183,19 @@ namespace HRManager.Controllers
                 return HandleException(ex);
             }
         }
-        //[HttpPost]
-        //public IActionResult AddEmployee()
-        //{
-        //    try
-        //    {
-        //        return View();
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        return HandleException(ex);            
-        //    }
-        //}
+        [HttpPost]
+        public IActionResult AddEmployee(User user)
+        {
+            try
+            {
+                adminManager.AddEmployee(user);
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
 
         public FileResult Export(DateTime? DateFrom, DateTime? DateTo)
         {

@@ -170,6 +170,30 @@ namespace HRManager.Controllers
                 return HandleException(ex);
             }
         }
+        [HttpGet]
+        public IActionResult AddEmployee()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+        //[HttpPost]
+        //public IActionResult AddEmployee()
+        //{
+        //    try
+        //    {
+        //        return View();
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        return HandleException(ex);            
+        //    }
+        //}
 
         public FileResult Export(DateTime? DateFrom, DateTime? DateTo)
         {
@@ -191,6 +215,5 @@ namespace HRManager.Controllers
             }
             return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "export.csv");
         }
-
     }
 }

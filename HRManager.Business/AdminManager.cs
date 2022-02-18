@@ -103,5 +103,6 @@ namespace HRManager.Business
 
             Helpers.Utilities.SendEmail(user.UserMailId,Subject,Body);
         }
+
     }
 }

@@ -28,7 +28,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                EmployeeIndexModels employeeIndexModels = employeeManager.GetEmployeeDetails(Session.UserId);
+                EmployeeIndexModels employeeIndexModels = employeeManager.GetEmployeeDetails(Session.UserId,Session.OrganizationId);
                 return View(employeeIndexModels);
             }
             catch (Exception ex)
@@ -703,6 +703,23 @@ namespace HRManager.Controllers
             }
         }
         #endregion
+
+        public IActionResult Submit()
+        {
+            try
+            {
+                User user = new User();
+                user.Id = Session.UserId;
+                user.UserName = Session.UserName;
+                user.OrganizationId = (byte)Session.OrganizationId;
+                employeeManager.SendMailToHR(user);
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
 
         #region Miscellaneous
         public IActionResult Privacy()

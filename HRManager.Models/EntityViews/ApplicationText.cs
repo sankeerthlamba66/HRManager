@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Models.EntityViews
 {
-    public class ApplicationText 
+    public class ApplicationText :EntityBase
     {
         public byte Id { get; set; }
         public string ConfidentialityAgreement { get; set; }

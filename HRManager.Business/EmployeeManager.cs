@@ -13,9 +13,9 @@ namespace HRManager.Business
     public class EmployeeManager:IEmployeeManager
     {
         
-        public EmployeeIndexModels GetEmployeeDetails(int UserId)
+        public EmployeeIndexModels GetEmployeeDetails(int UserId,int organizationId)
         {
-            return new EmployeeQueries().GetEmployeeDetails(UserId);
+            return new EmployeeQueries().GetEmployeeDetails(UserId,organizationId);
         }
         #region PersonalInfo
         public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId,int UserId)
@@ -165,5 +165,15 @@ namespace HRManager.Business
             new EmployeeQueries().DeleteDocument(EmployeeDocumentInfoId,UserId);
         }
         #endregion
+
+        public void SendMailToHR(User user)
+        {
+            var EmailTemplate = string.Empty;
+
+            string Subject = string.Empty;
+            string Body = string.Empty;
+            var HRMailId = @"HRMailId@tekfriday.com";
+            Helpers.Utilities.SendEmail(HRMailId, Subject, Body);
+        }
     }
 }

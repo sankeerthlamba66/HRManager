@@ -15,8 +15,8 @@ namespace HRManager.Models.ViewModels
             this.user = new User();
         }
         public User user { get; set; }
-        public bool ConfidentialityAgreementAccepted { get; set; }
-        public bool ServiceLevelAgreement { get; set; }
-        public bool BGVAcknowledgement { get; set; }
+        //public bool ConfidentialityAgreementAccepted { get; set; }
+        //public bool ServiceLevelAgreement { get; set; }
+        //public bool BGVAcknowledgement { get; set; }
     }
 }

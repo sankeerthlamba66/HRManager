@@ -10,7 +10,7 @@ namespace HRManager.Business.BussinessRepository
 {
     public interface IEmployeeManager
     {
-        EmployeeIndexModels GetEmployeeDetails(int UserId);
+        EmployeeIndexModels GetEmployeeDetails(int UserId,int organizationId);
         EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId, int UserId);
         EmployeePersonalInfo GetPersonalInfo(int UserId);
         int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo);
@@ -39,5 +39,6 @@ namespace HRManager.Business.BussinessRepository
         int AddDocument(EmployeeDocument DocumentInfo);
         int UpdateDocument(EmployeeDocument DocumentInfo);
         void DeleteDocument(int EmployeeDocumentInfoId, int UserId);
+        void SendMailToHR(User user);
     }
 }

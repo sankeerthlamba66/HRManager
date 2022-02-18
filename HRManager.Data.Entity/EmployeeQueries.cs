@@ -20,7 +20,6 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalDetailsId);
-
                 //return mapper.Map<EmployeeProfessionalInfo>(employeeProfessionalInfo);
                 professionalInfo.UserId = employeeProfessionalInfo.UserId;
                 professionalInfo.OrganizationName = employeeProfessionalInfo.OrganizationName;
@@ -124,7 +123,7 @@ namespace HRManager.Data.Entity
             return employeeName;
         }
 
-        public EmployeeIndexModels GetEmployeeDetails(int UserId)
+        public EmployeeIndexModels GetEmployeeDetails(int UserId,int organizationId)
         {
             EmployeeIndexModels employeeIndexModels = new EmployeeIndexModels();
             try
@@ -135,12 +134,33 @@ namespace HRManager.Data.Entity
                 employeeIndexModels.employeeInsuranceInfos = GetInsuranceInfo(UserId);
                 employeeIndexModels.employeePFandESIInfos = GetPFAndESIInfo(UserId);
                 employeeIndexModels.employeeDocuments = GetDocument(UserId);
+                employeeIndexModels.applicationTexts=GetApplicationTexts(organizationId);
             }
             catch (Exception ex)
             {
                 ErrorLogger.LogError(ex.Message);
             }
             return employeeIndexModels;
+        }
+
+        public ApplicationText GetApplicationTexts(int organizationId)
+        {
+            ApplicationText applicationText = new ApplicationText();
+            try
+            {
+                var appTexts = context.ApplicationTexts.Where(s=>s.OrganizationId== organizationId).FirstOrDefault();
+                if (appTexts is not null)
+                {
+                    applicationText.ConfidentialityAgreement = appTexts.ConfidentialityAgreement;
+                    applicationText.ServiceLevelAgreement = appTexts.ServiceLevelAgreement;
+                    applicationText.BGVAcknowlwdgement = appTexts.BGVAcknowlwdgement;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return applicationText;
         }
 
         #region Entities to Entity view Mappers returns EntityViews

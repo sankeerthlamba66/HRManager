@@ -1,10 +1,5 @@
-﻿
+﻿@model HRManager.Models.EntityViews.ApplicationText
 
-<nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
-    <a class="navbar-brand" href="#">Navbar</a>
-</nav> 
-  
-<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-  <h3 id="ConfidentialityAgreement">Confidentiality Agreement</h3>
-  <p>..............</p>
+<div>
+    @Html.DisplayFor(model=>model.ConfidentialityAgreement)
 </div>

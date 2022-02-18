@@ -172,7 +172,7 @@ namespace HRManager.Business
 
             string Subject = string.Empty;
             string Body = string.Empty;
-            var HRMailId = @"HRMailId@tekfriday.com";
+            var HRMailId = @"Sankeerth33@gmail.com";
             Helpers.Utilities.SendEmail(HRMailId, Subject, Body);
         }
     }

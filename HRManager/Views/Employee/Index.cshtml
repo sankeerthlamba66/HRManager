@@ -129,10 +129,49 @@
              </div>
         </div>
          }
-        </div>
-        <div>
-            <partial 
-
-        </div>
-    
+        </div>         
+        <fieldset id="Agreements">
+            <partial name="_ConfidentialityAgreement.cshtml" model="@Model.applicationTexts"/>
+            <span>
+                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree" field-value="" id="IAgree"/>
+                <strong>I Agree</strong>
+            </span>
+            <partial name="_ServiceLevelAgreement.cshtml" model="@Model.applicationTexts" />
+            <span>
+                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"field-value="" id="IAgree"/>
+                <strong>I Agree</strong>
+            </span>
+            <partial name="_BGVAcknowlegdement.cshtml" model="@Model.applicationTexts" />
+            <span>
+                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree" field-value="" id="IAgree"/>
+                <strong>I Agree</strong>
+            </span>
+        </fieldset>
+            <br />
+            <input type="submit" class="btn btn-primary" value="Submit" id="SendMail" @*onclick="location.href='@Url.Action("Submit","Employee")'"*@ />
   </form>
+
+
+  @section Scripts
+  {
+  <script>
+   $(document).ready(function() {
+        $("#SendMail").click(function(){
+           var FieldsToUpdate1 = [];
+           $.each($("input[name='IAgree']:checked"), function(){            
+                FieldsToUpdate1.push($(this).val());
+            });
+            if(FieldsToUpdate1.length==3){
+       $.ajax(
+        {
+            url:"/Employee/Submit", //url of the action page
+        }).done(function(response)
+        {
+
+            alert("Email Sent Successfully")
+        });
+            }
+        });
+    });
+</script>
+}

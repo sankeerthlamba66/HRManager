@@ -13,7 +13,7 @@ namespace HRManager.Data.Entity.Entities
         public string UserMailId { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public RoleType Roles { get; set; }
+        public string Roles { get; set; }
 
         public byte OrganizationId { get; set; }
         public virtual Organization Organization { get; set; }

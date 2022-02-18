@@ -1,4 +1,5 @@
 ﻿using HRManager.Models.EntityViews;
+using HRManager.Models.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace HRManager.Models.ViewModels
         {
             this.user = new User();
         }
-        public User user;
+        public User user { get; set; }
+        public bool ConfidentialityAgreementAccepted { get; set; }
+        public bool ServiceLevelAgreement { get; set; }
+        public bool BGVAcknowledgement { get; set; }
     }
 }

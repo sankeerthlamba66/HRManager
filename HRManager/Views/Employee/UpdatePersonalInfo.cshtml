@@ -28,8 +28,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
+                @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(Gender))),"Select Gender")
             </div>
             <div class="form-group">
                 <label asp-for="DateOfBirth" class="control-label"></label>
@@ -58,8 +57,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="BloodGroup" class="control-label"></label>
-                <input asp-for="BloodGroup" class="form-control" />
-                <span asp-validation-for="BloodGroup" class="text-danger"></span>
+                @Html.DropDownListFor(m => m.BloodGroup, new SelectList(Enum.GetValues(typeof(BloodGroup))),"Select Blood Group")
             </div>
             <div class="form-group">
                 <label asp-for="EmergencyContactName" class="control-label"></label>
@@ -108,8 +106,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="HowWereYouReferredToUs" class="control-label"></label>
-                <input asp-for="HowWereYouReferredToUs" class="form-control" />
-                <span asp-validation-for="HowWereYouReferredToUs" class="text-danger"></span>
+                @Html.DropDownListFor(m => m.HowWereYouReferredToUs, new SelectList(Enum.GetValues(typeof(ReferalSource))),"How are U refered to Us")
             </div>
              <br />
             <div class="form-group">

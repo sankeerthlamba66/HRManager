@@ -17,20 +17,36 @@ namespace HRManager.Data.Entity
 
         public void AddEmployee(User user)
         {
-            Entities.User UserDetail = new Entities.User();
-            if(user is not null)
+            try
             {
-                UserDetail.UserName = user.UserName;
-                UserDetail.Roles = user.Roles;
-                UserDetail.OrganizationId = user.OrganizationId;
-                UserDetail.Password = user.Password;
-                UserDetail.UserMailId = user.UserMailId;
-                UserDetail.CreatedBy = user.CreatedBy;
-                UserDetail.UpdatedBy = user.CreatedBy;
-                UserDetail.CreatedDate = DateTime.Now;
-                UserDetail.UpdatedDate = DateTime.Now;
-                context.Add(UserDetail);
-                context.SaveChanges();
+                Entities.User UserDetail = new Entities.User();
+                Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();  
+                if (user is not null)
+                {
+                    UserDetail.UserName = user.UserName;
+                    UserDetail.Roles = user.Roles;
+                    UserDetail.OrganizationId = user.OrganizationId;
+                    UserDetail.Password = user.Password;
+                    UserDetail.UserMailId = user.UserMailId;
+                    UserDetail.CreatedBy = user.CreatedBy;
+                    UserDetail.UpdatedBy = user.CreatedBy;
+                    UserDetail.CreatedDate = DateTime.Now;
+                    UserDetail.UpdatedDate = DateTime.Now;
+                    context.Add(UserDetail);
+                    context.SaveChanges();
+                    employeePersonalInfo.UserId = UserDetail.Id;
+                    employeePersonalInfo.FirstName = user.UserName;
+                    employeePersonalInfo.UpdatedDate = DateTime.Now;
+                    employeePersonalInfo.CreatedDate = DateTime.Now;
+                    employeePersonalInfo.CreatedBy = user.CreatedBy;
+                    employeePersonalInfo.UpdatedBy = user.CreatedBy;
+                    context.Add(employeePersonalInfo);
+                    context.SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
             }
         }
 

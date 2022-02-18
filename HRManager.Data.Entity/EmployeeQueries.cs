@@ -299,7 +299,7 @@ namespace HRManager.Data.Entity
         #region Personal Info queries
         public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId,int UserId)
         {
-            EmployeePersonalInfo _employeePersonalInfo = null;
+            EmployeePersonalInfo _employeePersonalInfo = new EmployeePersonalInfo();
             try
             {
                 var employeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == PersonalInfoId && s.UserId == UserId);
@@ -313,7 +313,7 @@ namespace HRManager.Data.Entity
         }
         public EmployeePersonalInfo GetPersonalInfo(int UserId)
         {
-            EmployeePersonalInfo _employeePersonalInfo = null;
+            EmployeePersonalInfo _employeePersonalInfo = new EmployeePersonalInfo();
             try
             {
                 var employeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.UserId == UserId);
@@ -570,10 +570,10 @@ namespace HRManager.Data.Entity
         {
             try
             {
-                var employeeBankInfo = context.EmployeeProfessionalInfos.Where(s => s.Id == EmployeeBankInfoId && s.UserId == UserId).FirstOrDefault();
+                var employeeBankInfo = context.EmployeeBankInfos.Where(s => s.Id == EmployeeBankInfoId && s.UserId == UserId).FirstOrDefault();
                 if (employeeBankInfo != null)
                 {
-                    context.EmployeeProfessionalInfos.Remove(employeeBankInfo);
+                    context.EmployeeBankInfos.Remove(employeeBankInfo);
                     context.SaveChanges();
                 }
             }
@@ -653,6 +653,7 @@ namespace HRManager.Data.Entity
                 employeeInsuranceInfo.DateOfBirthAsPerAadhar = InsuranceInfo.DateOfBirthAsPerAadhar;
                 employeeInsuranceInfo.UpdatedBy = InsuranceInfo.UpdatedBy;
                 employeeInsuranceInfo.UpdatedDate = DateTime.Now;
+                context.SaveChanges();
             }
             catch (Exception ex)
             {

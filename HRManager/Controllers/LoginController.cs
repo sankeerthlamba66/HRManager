@@ -60,7 +60,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                Session.UserRoles.Clear();
+                HttpContext.Session.Clear();
                 // Redirecting to Login page after deleting Session
                 return RedirectToAction("Index");
             }

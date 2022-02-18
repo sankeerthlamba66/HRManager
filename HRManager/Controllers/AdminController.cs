@@ -192,7 +192,7 @@ namespace HRManager.Controllers
             {
                 user.CreatedBy = Session.UserName;
                 adminManager.AddEmployee(user);
-                return View();
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {

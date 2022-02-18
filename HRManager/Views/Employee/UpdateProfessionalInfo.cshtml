@@ -20,7 +20,7 @@
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.OrganizationName" class="text-danger"></span>
                 </div>
                 <div class="form-group form-check">
-                    <label class="form-check-label">
+                    <label asp-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" class="form-check-label">
                         <input class="form-check-input" asp-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" />
                         <span asp-validation-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" class="text-danger"></span>
                     </label>

@@ -36,7 +36,14 @@ namespace HRManager.Models
     {
         APositive = 0,
         ANegative = 1,
-        xxx = 2
+        BPositive = 2,
+        BNegative = 3,
+        ABPositive = 4,
+        ABNegative = 5,
+        OPositive = 6,
+        ONegative = 7,
+        Others = 8
+
     }
 
     public enum ReferalSource : byte
@@ -44,6 +51,8 @@ namespace HRManager.Models
         LinkedIn = 0,
         Naukri = 1,
         MonsterJobs = 2,
-        xxx = 3
+        SocialMedia = 3,
+        Newspapers= 4,
+        Reference= 5
     }
 }

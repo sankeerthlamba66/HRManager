@@ -166,12 +166,12 @@ namespace HRManager.Business
         }
         #endregion
 
-        public void SendMailToHR(User user)
+        public void SendMailToHR(User EmployeeUserDetails)
         {
-            var EmailTemplate = string.Empty;
-
-            string Subject = string.Empty;
-            string Body = string.Empty;
+            var EmailTemplate = new EmployeeQueries().GetHRMailTemplate(EmployeeUserDetails);
+            new EmployeeQueries().UpdateEmployeeAgreementAcceptance(EmployeeUserDetails.Id, EmployeeUserDetails.UserName);
+            string Subject = EmailTemplate.HRMailSubjectTemplate;
+            string Body = EmailTemplate.HRMailBodyTemplate;
             var HRMailId = @"Sankeerth33@gmail.com";
             Helpers.Utilities.SendEmail(HRMailId, Subject, Body);
         }

@@ -148,7 +148,7 @@
             </span>
         </fieldset>
             <br />
-            <input type="submit" class="btn btn-primary" value="Submit" id="SendMail" @*onclick="location.href='@Url.Action("Submit","Employee")'"*@ />
+            <input type="submit" class="btn btn-primary" value="Submit" disabled id="SendMail" @*onclick="location.href='@Url.Action("Submit","Employee")'"*@ />
   </form>
 
 
@@ -156,22 +156,24 @@
   {
   <script>
    $(document).ready(function() {
-        $("#SendMail").click(function(){
-           var FieldsToUpdate1 = [];
-           $.each($("input[name='IAgree']:checked"), function(){            
+        var FieldsToUpdate1 = [];
+        $.each($("input[name='IAgree']:checked"), function(){            
                 FieldsToUpdate1.push($(this).val());
             });
-            if(FieldsToUpdate1.length==3){
-       $.ajax(
-        {
-            url:"/Employee/Submit", //url of the action page
-        }).done(function(response)
-        {
-
-            alert("Email Sent Successfully")
+        if(FieldsToUpdate1.length==3)
+           { ("#SendMail")..removeAttr('disabled');}
+        else
+           {("#SendMail")..removeAttr('disabled',true);}
+        $("#SendMail").click(function(){
+            $.ajax(
+            {
+                url:"/Employee/Submit", //url of the action page
+            }).done(function(response)
+            {
+                alert("Email Sent Successfully")
+            });
+           
         });
-            }
-        });
-    });
+   });
 </script>
-}
+  }

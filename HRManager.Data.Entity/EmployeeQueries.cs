@@ -111,10 +111,13 @@ namespace HRManager.Data.Entity
             try
             {
                 var PersonalDetails = context.EmployeePersonalInfos.Where(s => s.UserId == EmployeeUserId).FirstOrDefault();
-                if (PersonalDetails.MiddleName is not null)
-                { employeeName.EmployeeFullName = PersonalDetails.FirstName + " " + PersonalDetails.MiddleName + " " + PersonalDetails.LastName; }
-                else
-                { employeeName.EmployeeFullName = PersonalDetails.FirstName + " " + PersonalDetails.LastName; }
+                if (PersonalDetails is not null)
+                {
+                    if (PersonalDetails.MiddleName is not null)
+                    { employeeName.EmployeeFullName = PersonalDetails.FirstName + " " + PersonalDetails.MiddleName + " " + PersonalDetails.LastName; }
+                    else
+                    { employeeName.EmployeeFullName = PersonalDetails.FirstName + " " + PersonalDetails.LastName; }
+                }
             }
             catch(Exception ex)
             {
@@ -981,6 +984,50 @@ namespace HRManager.Data.Entity
         //        ErrorLogger.LogError(ex.Message);
         //    }
         //}
+        #endregion
+
+        #region mail
+        public HREmailTemplate GetHRMailTemplate(User EmployeeUserDetails)
+        {
+            HREmailTemplate hrMailTemplate = new HREmailTemplate();
+            try
+            {
+                hrMailTemplate.HRMailSubjectTemplate = @"New Employee Details Updated";
+                StringBuilder Body = new StringBuilder();
+                Body.Append("Employee with user ID "+ EmployeeUserDetails .Id+ ",name " + EmployeeUserDetails.UserName + "with mail " + EmployeeUserDetails.UserMailId + ",Has uploaded all the documnets, agreed all the conditions and updated all the details. ");
+                hrMailTemplate.HRMailBodyTemplate = Body.ToString();
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return hrMailTemplate;
+        }
+        #endregion
+
+        #region Employee Agreement Acceptance
+        public void UpdateEmployeeAgreementAcceptance(int? employeeUserId,string employeeName)
+        {
+            try
+            {
+                var employeeAgreementAcceptance = context.EmployeeAgreementAcceptances.Where(s => s.UserId == employeeUserId).FirstOrDefault();
+                if (employeeAgreementAcceptance is not null)
+                {
+                    employeeAgreementAcceptance.ConfidentialityAgreementAccepted = true;
+                    employeeAgreementAcceptance.ServiceLevelAgreement = true;
+                    employeeAgreementAcceptance.BGVAcknowledgement = true;
+                    employeeAgreementAcceptance.CreatedBy = employeeName; //if mentioned in the hrAdmin remove this field
+                    employeeAgreementAcceptance.CreatedDate = DateTime.Now;
+                    employeeAgreementAcceptance.UpdatedDate = DateTime.Now;
+                    employeeAgreementAcceptance.UpdatedBy = employeeName;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+        }
         #endregion
     }
 }

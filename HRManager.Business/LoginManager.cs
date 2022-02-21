@@ -17,9 +17,9 @@ namespace HRManager.Business
             return new LoginQueries().CheckUser(loginUser);
         }
 
-        public User GetUserDetails(string UserName)
+        public User GetUserDetails(string UserMailId)
         {
-            return new LoginQueries().GetUserDetails(UserName);
+            return new LoginQueries().GetUserDetails(UserMailId);
         }
     }
 }

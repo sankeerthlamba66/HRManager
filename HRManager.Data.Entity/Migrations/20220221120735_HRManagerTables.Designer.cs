@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRManager.Data.Entity.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220217122237_tabledata")]
-    partial class tabledata
+    [Migration("20220221120735_HRManagerTables")]
+    partial class HRManagerTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

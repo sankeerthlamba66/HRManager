@@ -15,5 +15,8 @@ namespace HRManager.Models.Views
         [Required]
         [Display(Name ="Password")]
         public string Password { get; set; }
+        [Required]
+        [Display(Name = "User Mail Id")]
+        public string UserMailId { get; set; }
     }
 }

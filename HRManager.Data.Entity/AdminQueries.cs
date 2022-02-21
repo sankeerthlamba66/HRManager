@@ -266,7 +266,7 @@ namespace HRManager.Data.Entity
             {
                 userDetailsEmailTemplate.UserDetailsSubjectTemplate = @"Please find your Login Details";
                 StringBuilder Body = new StringBuilder();
-                Body.Append("Dear " + user.UserName + ",\n        Your Login details are: \n EMail:" + user.UserMailId +"\n Password:"+user.Password+"\n");
+                Body.Append("Dear " + user.UserName + ",\n        Your Login details are: \nEMail: " + user.UserMailId +"\n Password: "+user.Password+"\n");
                 Body.Append("\nRegards\n HRManager\n HR@tekfriday.com");
                 userDetailsEmailTemplate.UserDetailsBodyTemplate = Body.ToString();
             }

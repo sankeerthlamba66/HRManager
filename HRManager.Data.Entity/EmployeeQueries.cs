@@ -994,7 +994,7 @@ namespace HRManager.Data.Entity
             {
                 hrMailTemplate.HRMailSubjectTemplate = @"New Employee Details Updated";
                 StringBuilder Body = new StringBuilder();
-                Body.Append("Employee with user ID "+ EmployeeUserDetails .Id+ ",name " + EmployeeUserDetails.UserName + ", with mail " + EmployeeUserDetails.UserMailId + " has uploaded all the documents, agreed to all the conditions and updated all the details. ");
+                Body.Append("Employee with user ID " + EmployeeUserDetails.Id + ",name " + EmployeeUserDetails.UserName + ", with mail " + EmployeeUserDetails.UserMailId+ " has uploaded all the documents, agreed to all the conditions and updated all the details. ");
                 hrMailTemplate.HRMailBodyTemplate = Body.ToString();
             }
             catch (Exception ex)

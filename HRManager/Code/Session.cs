@@ -25,6 +25,17 @@
                 SessionManager.SetSessionString("UserName", value);
             }
         }
+        public static string UserMailId
+        {
+            get
+            {
+                return SessionManager.GetSessionString("UserMailId") ?? String.Empty;
+            }
+            set
+            {
+                SessionManager.SetSessionString("UserMailId", value);
+            }
+        }
 
         public static List<string> UserRoles
         {

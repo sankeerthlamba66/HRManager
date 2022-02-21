@@ -18,7 +18,7 @@ namespace HRManager.Data.Entity
         {
             try
             {
-                var userDetails = context.Users.Where(s => s.UserName.Equals(loginUser.UserName) && s.Password.Equals(loginUser.Password)).Select(s => s);
+                var userDetails = context.Users.Where(s => s.UserMailId.Equals(loginUser.UserMailId) && s.Password.Equals(loginUser.Password)).Select(s => s);
                 if (userDetails != null)
                 {
                     return true;
@@ -30,16 +30,17 @@ namespace HRManager.Data.Entity
             }
             return false;
         }
-        public User GetUserDetails(string UserName)
+        public User GetUserDetails(string UserMailId)
         {
             User user = new User();
             try
             {
-                var userDetails = context.Users.Where(s => s.UserName.Equals(UserName)).FirstOrDefault();
+                var userDetails = context.Users.Where(s => s.UserMailId.Equals(UserMailId)).FirstOrDefault();
                 if (userDetails is not null)
                 {
                     user.Id = userDetails.Id;
                     user.UserName = userDetails.UserName;
+                    user.UserMailId = userDetails.UserMailId;
                     user.Roles = userDetails.Roles;
                     user.OrganizationId = userDetails.OrganizationId;
                 }

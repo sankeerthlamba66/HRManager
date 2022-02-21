@@ -11,6 +11,6 @@ namespace HRManager.Business.BussinessRepository
     public interface ILoginManager
     {
         bool CheckUser(LoginUser loginUser);
-        User GetUserDetails(string UserName);
+        User GetUserDetails(string UserMailId);
     }
 }

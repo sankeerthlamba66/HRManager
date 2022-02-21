@@ -994,7 +994,7 @@ namespace HRManager.Data.Entity
             {
                 hrMailTemplate.HRMailSubjectTemplate = @"New Employee Details Updated";
                 StringBuilder Body = new StringBuilder();
-                Body.Append("Employee with user ID "+ EmployeeUserDetails .Id+ ",name " + EmployeeUserDetails.UserName + "with mail " + EmployeeUserDetails.UserMailId + ",Has uploaded all the documnets, agreed all the conditions and updated all the details. ");
+                Body.Append("Employee with user ID "+ EmployeeUserDetails .Id+ ",name " + EmployeeUserDetails.UserName + ", with mail " + EmployeeUserDetails.UserMailId + " has uploaded all the documents, agreed to all the conditions and updated all the details. ");
                 hrMailTemplate.HRMailBodyTemplate = Body.ToString();
             }
             catch (Exception ex)
@@ -1006,22 +1006,21 @@ namespace HRManager.Data.Entity
         #endregion
 
         #region Employee Agreement Acceptance
-        public void UpdateEmployeeAgreementAcceptance(int? employeeUserId,string employeeName)
+        public void AddEmployeeAgreementAcceptance(int? employeeUserId,string employeeName)
         {
+            Entities.EmployeeAgreementAcceptance employeeAgreementAcceptance = new Entities.EmployeeAgreementAcceptance();
             try
             {
-                var employeeAgreementAcceptance = context.EmployeeAgreementAcceptances.Where(s => s.UserId == employeeUserId).FirstOrDefault();
-                if (employeeAgreementAcceptance is not null)
-                {
-                    employeeAgreementAcceptance.ConfidentialityAgreementAccepted = true;
-                    employeeAgreementAcceptance.ServiceLevelAgreement = true;
-                    employeeAgreementAcceptance.BGVAcknowledgement = true;
-                    employeeAgreementAcceptance.CreatedBy = employeeName; //if mentioned in the hrAdmin remove this field
-                    employeeAgreementAcceptance.CreatedDate = DateTime.Now;
-                    employeeAgreementAcceptance.UpdatedDate = DateTime.Now;
-                    employeeAgreementAcceptance.UpdatedBy = employeeName;
-                    context.SaveChanges();
-                }
+                employeeAgreementAcceptance.UserId= Convert.ToInt32(employeeUserId);
+                employeeAgreementAcceptance.ConfidentialityAgreementAccepted = true;
+                employeeAgreementAcceptance.ServiceLevelAgreement = true;
+                employeeAgreementAcceptance.BGVAcknowledgement = true;
+                employeeAgreementAcceptance.CreatedBy = employeeName; //if mentioned in the hrAdmin remove this field
+                employeeAgreementAcceptance.CreatedDate = DateTime.Now;
+                employeeAgreementAcceptance.UpdatedDate = DateTime.Now;
+                employeeAgreementAcceptance.UpdatedBy = employeeName;
+                context.EmployeeAgreementAcceptances.Add(employeeAgreementAcceptance);
+                context.SaveChanges();               
             }
             catch (Exception ex)
             {

@@ -15,7 +15,7 @@
             <div class="row">
              <div class="card bg-transparent border-3">
               <div class="card-body">
-                <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo">
+                <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo"  id="personaldetails">
               <div class="card-footer">
                 <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePersonalInfo", "Employee",new{Id=Model.employeePersonalInfo.Id})'" />
               </div>
@@ -34,7 +34,7 @@
             {
               <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
                   <div class="cardbody">
-                    <partial name="_GetProfessionalInfo.cshtml" model="item">
+                    <partial name="_GetProfessionalInfo.cshtml" model="item" id="professionaldetails">
                 <div class="card-footer">
                     <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateProfessionalInfo", "Employee",new{Id=item.Id})'" />
                     <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteProfessionalInfo", "Employee",new{Id=item.Id})'" />
@@ -45,16 +45,17 @@
             </div>
             </div>
             <br />
+
         <div>
            <h2>Bank Details
               <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("PostBankInfo", "Employee")'" />
            </h2>
-           <div class="row">
+           <div class="row" >
                 @foreach (var item in @Model.employeeBankInfos)
                 {
                   <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
                     <div class="cardbody">
-                       <partial name="_GetBankInfo.cshtml" model="item"> 
+                       <partial name="_GetBankInfo.cshtml" model="item" id="bankdetails"> 
                        <div class="card-footer">
                         <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("PutBankInfo", "Employee",new{Id=item.Id})'" />
                         <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteBankInfo", "Employee",new{Id=item.Id})'" />
@@ -75,7 +76,7 @@
              {
                <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
                  <div class="card-body">
-                   <partial name="_GetInsuranceInfo.cshtml" model="item">
+                   <partial name="_GetInsuranceInfo.cshtml" model="item" id="insurancedetails">
                   <div class="card-footer">
                      <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateInsuranceInfo", "Employee",new{Id=item.Id})'" />
                      <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteInsuranceInfo", "Employee",new{Id=item.Id})'" />
@@ -96,7 +97,7 @@
             {
              <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
               <div class="cardbody">
-                <partial name="_GetPFandESIInfo.cshtml" model="item">
+                <partial name="_GetPFandESIInfo.cshtml" model="item" id="PFandESIdetails">
                 <div class="card-footer">
                     <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePFandESIInfo", "Employee",new{Id=item.Id})'" />
                     <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeletePFandESIInfo", "Employee",new{Id=item.Id})'" />
@@ -120,7 +121,7 @@
             <div class="row">
             <div class="card bg-transparent border-3">
             <div class="cardbody">
-              <partial name="_GetDocument.cshtml" model="@Model.employeeDocuments">
+              <partial name="_GetDocument.cshtml" model="@Model.employeeDocuments" id="documents">
              <div class="card-footer">
                 <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
                  <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
@@ -129,51 +130,69 @@
              </div>
         </div>
          }
-        </div>         
-        <fieldset id="Agreements">
+        </div>   
+        <br />
+
+        <div>
+            <div>
+            <h3>Confidentiality Agreement</h3>
             <partial name="_ConfidentialityAgreement.cshtml" model="@Model.applicationTexts"/>
             <span>
-                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree" field-value="" id="IAgree"/>
+                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"/>
                 <strong>I Agree</strong>
             </span>
+            </div>
+            <br />
+
+            <div>
+            <h3>Service Level Agreement</h3>
             <partial name="_ServiceLevelAgreement.cshtml" model="@Model.applicationTexts" />
             <span>
-                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"field-value="" id="IAgree"/>
+                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"/>
                 <strong>I Agree</strong>
             </span>
+            </div>
+            <br />
+
+            <div>
+            <h3>BGV Acknowlegdement</h3>
             <partial name="_BGVAcknowlegdement.cshtml" model="@Model.applicationTexts" />
             <span>
-                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree" field-value="" id="IAgree"/>
+                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"/>
                 <strong>I Agree</strong>
             </span>
-        </fieldset>
+            </div>
+        </div>
             <br />
-            <input type="submit" class="btn btn-primary" value="Submit" disabled id="SendMail" @*onclick="location.href='@Url.Action("Submit","Employee")'"*@ />
+            <input type="submit" class="btn btn-primary" value="Submit" id="SendMail" @*onclick="location.href='@Url.Action("Submit","Employee")'"*@ />
   </form>
 
-
-  @section Scripts
+ @section Scripts
   {
   <script>
    $(document).ready(function() {
-        var FieldsToUpdate1 = [];
-        $.each($("input[name='IAgree']:checked"), function(){            
+        $("#SendMail").click(function(){
+           var FieldsToUpdate1 = [];
+           $.each($("input[name='IAgree']:checked"), function(){            
                 FieldsToUpdate1.push($(this).val());
             });
-        if(FieldsToUpdate1.length==3)
-           { ("#SendMail")..removeAttr('disabled');}
-        else
-           {("#SendMail")..removeAttr('disabled',true);}
-        $("#SendMail").click(function(){
-            $.ajax(
+         if ($('#personaldetails').val() != '' && $('#professionaldetails').val() != '' && $('#bankdetails').val() != '' &&$('#insurancedetails').val() != '' &&$('#PFandESIdetails').val() != '' && $('#documents').val() != '' )
+         { 
+           if(FieldsToUpdate1.length==3){
+           $.ajax(
             {
                 url:"/Employee/Submit", //url of the action page
             }).done(function(response)
             {
-                alert("Email Sent Successfully")
+                alert("Submited Successfully")
             });
-           
+                }
+          }
+         else
+            {
+                alert("Please Check all the details")
+            }
         });
-   });
+    });
 </script>
-  }
+}

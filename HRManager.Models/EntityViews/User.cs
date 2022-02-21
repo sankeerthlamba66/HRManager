@@ -20,7 +20,7 @@ namespace HRManager.Models.EntityViews
         [Display(Name = "Organization Id")]
         [Required]
         public byte OrganizationId { get; set; }
-        [Display(Name = "User EmailId")]
+        [Display(Name = "User Email Id")]
         [Required]
         public string UserMailId { get; set; }
     }

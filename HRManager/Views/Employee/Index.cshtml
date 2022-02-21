@@ -15,7 +15,7 @@
             <div class="row">
              <div class="card bg-transparent border-3">
               <div class="card-body">
-                <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo"  id="personaldetails">
+                <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo">
               <div class="card-footer">
                 <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePersonalInfo", "Employee",new{Id=Model.employeePersonalInfo.Id})'" />
               </div>
@@ -34,7 +34,7 @@
             {
               <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
                   <div class="cardbody">
-                    <partial name="_GetProfessionalInfo.cshtml" model="item" id="professionaldetails">
+                    <partial name="_GetProfessionalInfo.cshtml" model="item">
                 <div class="card-footer">
                     <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateProfessionalInfo", "Employee",new{Id=item.Id})'" />
                     <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteProfessionalInfo", "Employee",new{Id=item.Id})'" />
@@ -55,7 +55,7 @@
                 {
                   <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
                     <div class="cardbody">
-                       <partial name="_GetBankInfo.cshtml" model="item" id="bankdetails"> 
+                       <partial name="_GetBankInfo.cshtml" model="item"> 
                        <div class="card-footer">
                         <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("PutBankInfo", "Employee",new{Id=item.Id})'" />
                         <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteBankInfo", "Employee",new{Id=item.Id})'" />
@@ -76,7 +76,7 @@
              {
                <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
                  <div class="card-body">
-                   <partial name="_GetInsuranceInfo.cshtml" model="item" id="insurancedetails">
+                   <partial name="_GetInsuranceInfo.cshtml" model="item">
                   <div class="card-footer">
                      <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateInsuranceInfo", "Employee",new{Id=item.Id})'" />
                      <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteInsuranceInfo", "Employee",new{Id=item.Id})'" />
@@ -97,7 +97,7 @@
             {
              <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
               <div class="cardbody">
-                <partial name="_GetPFandESIInfo.cshtml" model="item" id="PFandESIdetails">
+                <partial name="_GetPFandESIInfo.cshtml" model="item">
                 <div class="card-footer">
                     <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePFandESIInfo", "Employee",new{Id=item.Id})'" />
                     <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeletePFandESIInfo", "Employee",new{Id=item.Id})'" />
@@ -121,7 +121,7 @@
             <div class="row">
             <div class="card bg-transparent border-3">
             <div class="cardbody">
-              <partial name="_GetDocument.cshtml" model="@Model.employeeDocuments" id="documents">
+              <partial name="_GetDocument.cshtml" model="@Model.employeeDocuments">
              <div class="card-footer">
                 <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
                  <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteDocument", "Employee",new{Id=Model.employeeDocuments.Id})'" />
@@ -172,26 +172,55 @@
   <script>
    $(document).ready(function() {
         $("#SendMail").click(function(){
-           var FieldsToUpdate1 = [];
+           var Checkboxes = [];
            $.each($("input[name='IAgree']:checked"), function(){            
-                FieldsToUpdate1.push($(this).val());
+                Checkboxes.push($(this).val());
             });
-         if ($('#personaldetails').val() != '' && $('#professionaldetails').val() != '' && $('#bankdetails').val() != '' &&$('#insurancedetails').val() != '' &&$('#PFandESIdetails').val() != '' && $('#documents').val() != '' )
+
+       if($('#professionaldetails').length>0)
+       {
+         if ($('#personaldetails').length>0 && $('#bankdetails').length>0 && $('#insurancedetails').length>0 && $('#PFandESIdetails').length>0 && $('#documents').length>0)
          { 
-           if(FieldsToUpdate1.length==3){
-           $.ajax(
-            {
-                url:"/Employee/Submit", //url of the action page
-            }).done(function(response)
-            {
-                alert("Submited Successfully")
-            });
-                }
-          }
+          
+           if(Checkboxes.length==3)
+           {
+               $.ajax(
+                {
+                    url:"/Employee/Submit", //url of the action page
+                }).done(function(response)
+                {
+                    alert("Submited Successfully")
+                });
+           }
+         }
          else
             {
-                alert("Please Check all the details")
+                alert("Please Fill all the details")
             }
+        }
+
+        else if ($('#professionaldetails').length==0)
+        {
+          if ($('#personaldetails').length>0 && $('#bankdetails').length>0 && $('#insurancedetails').length>0 && $('#documents').length>0)
+         { 
+          
+           if(Checkboxes.length==3)
+           {
+               $.ajax(
+                {
+                    url:"/Employee/Submit", //url of the action page
+                }).done(function(response)
+                {
+                    alert("Submited Successfully")
+                });
+           }
+         }
+         else
+            {
+                alert("Please Fill all the details")
+            }
+        }
+         
         });
     });
 </script>

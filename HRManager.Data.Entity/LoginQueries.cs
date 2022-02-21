@@ -18,7 +18,7 @@ namespace HRManager.Data.Entity
         {
             try
             {
-                var userDetails = context.Users.Where(s => s.UserMailId.Equals(loginUser.UserMailId) && s.Password.Equals(loginUser.Password)).Select(s => s);
+                var userDetails = context.Users.Where(s => s.UserMailId.Equals(loginUser.UserMailId) && s.Password.Equals(loginUser.Password)).FirstOrDefault();
                 if (userDetails != null)
                 {
                     return true;

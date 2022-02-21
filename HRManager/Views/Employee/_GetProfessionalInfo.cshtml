@@ -9,72 +9,84 @@
             </dt>
             <dd class = "col-sm-6">
                 @Html.HiddenFor(model => model.Id)
+                
             </dd>
             <dt class = "col-sm-6">
                 @Html.HiddenFor(model => model.UserId)
             </dt>
             <dd class = "col-sm-6">
                 @Html.HiddenFor(model => model.UserId)
+                
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.OrganizationName)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.OrganizationName)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.IsThisYourLastEmployment)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.IsThisYourLastEmployment)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.LastDesignation)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.LastDesignation)
+                <br />
             </dd>
              <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.StartDate)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.StartDate)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.EndDate)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.EndDate)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.CTC)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.CTC)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.ReportingManagerName)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.ReportingManagerName)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.ReportingManagerEmailId)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.ReportingManagerEmailId)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.HRName)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.HRName)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.HREmailId)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.HREmailId)
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.OfferLetterPath)
@@ -84,6 +96,7 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.OfferLetterPath">Offer Letter Path</a>
                     }
+                 <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.RelievingLetterPath)
@@ -93,6 +106,7 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.RelievingLetterPath">Relieving Letter Path</a>
                     }
+                <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.ExperienceLetterPath)
@@ -102,6 +116,7 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.ExperienceLetterPath">Experience Letter Path</a>
                     }
+                    <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.PaySlip1)
@@ -111,6 +126,7 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip1">Pay Slip 1</a>
                     }
+                    <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.PaySlip2)
@@ -120,6 +136,7 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip2">Pay Slip 2</a>
                     }
+                    <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.PaySlip3)
@@ -129,12 +146,14 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip3">Pay Slip 3</a>
                     }
+                    <br />
             </dd>
             <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.ReferenceEmailId)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.ReferenceEmailId)
+                <br />
             </dd>
         </dl>
         @*@Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})

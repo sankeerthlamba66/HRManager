@@ -21,6 +21,7 @@
             </dt>
             <dd class = "col-sm-10">
                 @Html.DisplayFor(model => model.NameAsPerAadhar)
+                <br />
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Relationship" field-name="@Html.DisplayNameFor(model => model.Relationship)" field-value="@Model.Relationship">
@@ -28,6 +29,7 @@
             </dt>
             <dd class = "col-sm-10">
                 @Html.DisplayFor(model => model.Relationship)
+                <br />
             </dd>
             <dt class = "col-sm-2">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Gender" field-name="@Html.DisplayNameFor(model => model.Gender)" field-value="@Model.Gender">
@@ -35,6 +37,7 @@
             </dt>
             <dd class = "col-sm-10">
                 @Html.DisplayFor(model => model.Gender)
+                <br />
             </dd>
         </dl>
          @*@Html.ActionLink("Edit","UpdateInsuranceInfo","Employee",new{Id=Model.Id})

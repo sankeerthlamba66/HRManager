@@ -16,94 +16,113 @@
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="MiddleName" class="control-label"></label>
                 <input asp-for="MiddleName" class="form-control" />
                 <span asp-validation-for="MiddleName" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
                 @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(Gender))),"Select Gender")
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="DateOfBirth" class="control-label"></label>
                 <input asp-for="DateOfBirth" class="form-control" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="MobileNumber" class="control-label"></label>
                 <input asp-for="MobileNumber" class="form-control" />
                 <span asp-validation-for="MobileNumber" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="PersonalEmailId" class="control-label"></label>
                 <input asp-for="PersonalEmailId" class="form-control" />
                 <span asp-validation-for="PersonalEmailId" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="CurrentAddress" class="control-label"></label>
                 <input asp-for="CurrentAddress" class="form-control" />
                 <span asp-validation-for="CurrentAddress" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="PermanentAddress" class="control-label"></label>
                 <input asp-for="PermanentAddress" class="form-control" />
                 <span asp-validation-for="PermanentAddress" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="BloodGroup" class="control-label"></label>
                 @Html.DropDownListFor(m => m.BloodGroup, new SelectList(Enum.GetValues(typeof(BloodGroup))),"Select Blood Group")
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="EmergencyContactName" class="control-label"></label>
                 <input asp-for="EmergencyContactName" class="form-control" />
                 <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="EmergencyContactNumber" class="control-label"></label>
                 <input asp-for="EmergencyContactNumber" class="form-control" />
                 <span asp-validation-for="EmergencyContactNumber" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="RelationshipWithContact" class="control-label"></label>
                 <input asp-for="RelationshipWithContact" class="form-control" />
                 <span asp-validation-for="RelationshipWithContact" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="PanCardNumber" class="control-label"></label>
                 <input asp-for="PanCardNumber" class="form-control" />
                 <span asp-validation-for="PanCardNumber" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="NameAsPerAadhar" class="control-label"></label>
                 <input asp-for="NameAsPerAadhar" class="form-control" />
                 <span asp-validation-for="NameAsPerAadhar" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="AadharCardNumber" class="control-label"></label>
                 <input asp-for="AadharCardNumber" class="form-control" />
                 <span asp-validation-for="AadharCardNumber" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="FathersNameAsPerAadhar" class="control-label"></label>
                 <input asp-for="FathersNameAsPerAadhar" class="form-control" />
                 <span asp-validation-for="FathersNameAsPerAadhar" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="FathersMobileNumber" class="control-label"></label>
                 <input asp-for="FathersMobileNumber" class="form-control" />
                 <span asp-validation-for="FathersMobileNumber" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="MothersNameAsPerAadhar" class="control-label"></label>
                 <input asp-for="MothersNameAsPerAadhar" class="form-control" />
                 <span asp-validation-for="MothersNameAsPerAadhar" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="HowWereYouReferredToUs" class="control-label"></label>
                 @Html.DropDownListFor(m => m.HowWereYouReferredToUs, new SelectList(Enum.GetValues(typeof(ReferalSource))),"How are U refered to Us")

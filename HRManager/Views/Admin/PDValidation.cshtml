@@ -11,9 +11,9 @@
     {  
         <h3>Personal Details</h3>
         <div> 
-            
           <partial name="_PersonalInfo.cshtml"  model="@Model.employeePersonalInfo">
         </div>
+        <br />
            
         
          <h3>Professional Details</h3>
@@ -24,6 +24,7 @@
             <partial name="_ProfessionalInfo.cshtml"model="item"/>
           </div>          
         }
+        <br />
 
          <h3>Bank Details</h3>
           
@@ -33,6 +34,7 @@
                <partial name="_BankInfo.cshtml" model="item"/>
             </div>            
         }
+        <br />
 
          <h3>Insurance Details</h3>
          
@@ -42,6 +44,7 @@
                 <partial name="_InsuranceInfo.cshtml" model="item"/>
             </div>
         }
+        <br />
 
          <h3>PF and ESI Details</h3>
          
@@ -51,6 +54,7 @@
                 <partial name="_PFandESIInfo.cshtml" model="item"/>
             </div>
         }
+        <br />
 
          <h3>Documents</h3>
         
@@ -61,6 +65,7 @@
                 </div>
             }           
         }
+        <br />
          <input type="button" class="btn btn-primary" value="SendMail" name="Send Email" id="SendEmail" @*onclick="location.href='@Url.Action("SendPDValidationEmail", "Admin",new{EmployeeId=Model.employeePersonalInfo.Id,FieldsToUpdate="FieldsToUpdate"})'"*@/>
     
      </form>

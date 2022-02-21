@@ -65,6 +65,6 @@ namespace HRManager.Models.EntityViews
         public string AdvancedDiplomaIfAny { get; set; }
 
         [Display(Name = "Professional Certifications If Any")]
-                public string ProfessionalCertificationsIfAny { get; set; }
+        public string ProfessionalCertificationsIfAny { get; set; }
     }
 }

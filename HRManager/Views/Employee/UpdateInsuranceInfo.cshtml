@@ -25,15 +25,18 @@
                 <input asp-for="NameAsPerAadhar" class="form-control" />
                 <span asp-validation-for="NameAsPerAadhar" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Relationship" class="control-label"></label>
                 <input asp-for="Relationship" class="form-control" />
                 <span asp-validation-for="Relationship" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
                 @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(Gender))),"Select Gender")
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="DateOfBirthAsPerAadhar" class="control-label"></label>
                 <input asp-for="DateOfBirthAsPerAadhar" class="form-control" />

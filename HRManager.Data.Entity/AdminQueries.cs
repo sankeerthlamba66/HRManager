@@ -20,7 +20,8 @@ namespace HRManager.Data.Entity
             try
             {
                 Entities.User UserDetail = new Entities.User();
-                Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();  
+                Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();
+                Entities.EmployeeAgreementAcceptance employeeAgreementAcceptance = new Entities.EmployeeAgreementAcceptance();  
                 if (user is not null)
                 {
                     UserDetail.UserName = user.UserName;
@@ -41,6 +42,16 @@ namespace HRManager.Data.Entity
                     employeePersonalInfo.CreatedBy = user.CreatedBy;
                     employeePersonalInfo.UpdatedBy = user.CreatedBy;
                     context.Add(employeePersonalInfo);
+                    context.SaveChanges();
+                    employeeAgreementAcceptance.ConfidentialityAgreementAccepted = false;
+                    employeeAgreementAcceptance.ServiceLevelAgreement = false;
+                    employeeAgreementAcceptance.BGVAcknowledgement = false;
+                    employeeAgreementAcceptance.UserId = UserDetail.Id;
+                    employeeAgreementAcceptance.UpdatedDate = DateTime.Now;
+                    employeeAgreementAcceptance.CreatedDate = DateTime.Now;
+                    employeeAgreementAcceptance.CreatedBy = user.CreatedBy;
+                    employeeAgreementAcceptance.UpdatedBy = user.CreatedBy;
+                    context.Add(employeeAgreementAcceptance);
                     context.SaveChanges();
                 }
             }

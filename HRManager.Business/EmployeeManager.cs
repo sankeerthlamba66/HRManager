@@ -169,7 +169,7 @@ namespace HRManager.Business
         public void SendMailToHR(User EmployeeUserDetails)
         {
             var EmailTemplate = new EmployeeQueries().GetHRMailTemplate(EmployeeUserDetails);
-            new EmployeeQueries().AddEmployeeAgreementAcceptance(EmployeeUserDetails.Id, EmployeeUserDetails.UserName);
+            new EmployeeQueries().UpdateEmployeeAgreementAcceptance(EmployeeUserDetails.Id, EmployeeUserDetails.UserName);
             string Subject = EmailTemplate.HRMailSubjectTemplate;
             string Body = EmailTemplate.HRMailBodyTemplate;
             var HRMailId = @"Sankeerth33@gmail.com";

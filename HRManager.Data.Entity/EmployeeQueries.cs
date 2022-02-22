@@ -1006,21 +1006,20 @@ namespace HRManager.Data.Entity
         #endregion
 
         #region Employee Agreement Acceptance
-        public void AddEmployeeAgreementAcceptance(int? employeeUserId,string employeeName)
-        {
-            Entities.EmployeeAgreementAcceptance employeeAgreementAcceptance = new Entities.EmployeeAgreementAcceptance();
+        public void UpdateEmployeeAgreementAcceptance(int? employeeUserId,string employeeName)
+        {             
             try
             {
-                employeeAgreementAcceptance.UserId= Convert.ToInt32(employeeUserId);
-                employeeAgreementAcceptance.ConfidentialityAgreementAccepted = true;
-                employeeAgreementAcceptance.ServiceLevelAgreement = true;
-                employeeAgreementAcceptance.BGVAcknowledgement = true;
-                employeeAgreementAcceptance.CreatedBy = employeeName; //if mentioned in the hrAdmin remove this field
-                employeeAgreementAcceptance.CreatedDate = DateTime.Now;
-                employeeAgreementAcceptance.UpdatedDate = DateTime.Now;
-                employeeAgreementAcceptance.UpdatedBy = employeeName;
-                context.EmployeeAgreementAcceptances.Add(employeeAgreementAcceptance);
-                context.SaveChanges();               
+                var employeeAgreementAcceptance =context.EmployeeAgreementAcceptances.Where(a => a.UserId == employeeUserId).FirstOrDefault();
+                if (employeeAgreementAcceptance != null)
+                {
+                    employeeAgreementAcceptance.ConfidentialityAgreementAccepted = true;
+                    employeeAgreementAcceptance.ServiceLevelAgreement = true;
+                    employeeAgreementAcceptance.BGVAcknowledgement = true;
+                    employeeAgreementAcceptance.UpdatedDate = DateTime.Now;
+                    employeeAgreementAcceptance.UpdatedBy = employeeName;
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {

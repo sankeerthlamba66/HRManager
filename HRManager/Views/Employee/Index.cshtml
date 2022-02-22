@@ -183,17 +183,7 @@
        {
          if ($('#personaldetails').length>0 && $('#bankdetails').length>0 && $('#insurancedetails').length>0 && $('#PFandESIdetails').length>0 && $('#documents').length>0)
          { 
-          
-           if(Checkboxes.length==3)
-           {
-               $.ajax(
-                {
-                    url:"/Employee/Submit", //url of the action page
-                }).done(function(response)
-                {
-                    alert("Submited Successfully")
-                });
-           }
+                Acceptance(Checkboxes);
          }
          else
             {
@@ -205,17 +195,7 @@
         {
           if ($('#personaldetails').length>0 && $('#bankdetails').length>0 && $('#insurancedetails').length>0 && $('#documents').length>0)
          { 
-          
-           if(Checkboxes.length==3)
-           {
-               $.ajax(
-                {
-                    url:"/Employee/Submit", //url of the action page
-                }).done(function(response)
-                {
-                    alert("Submited Successfully")
-                });
-           }
+          Acceptance(Checkboxes);
          }
          else
             {
@@ -224,6 +204,20 @@
         }
          
         });
+                Acceptance=function(Checkboxes)
+                {                 
+                   if(Checkboxes.length==3)
+                   {
+                       $.ajax(
+                        {
+                            url:"/Employee/Submit", //url of the action page
+                        }).done(function(response)
+                        {
+                            alert("Submited Successfully")
+                        });
+                   }
+
+                };
     });
 </script>
 }

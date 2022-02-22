@@ -711,6 +711,7 @@ namespace HRManager.Controllers
                 User user = new User();
                 user.Id = Session.UserId;
                 user.UserName = Session.UserName;
+                user.UserMailId = Session.UserMailId;
                 user.OrganizationId = (byte)Session.OrganizationId;
                 employeeManager.SendMailToHR(user);
                 return RedirectToAction("Index");

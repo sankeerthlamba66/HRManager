@@ -9,9 +9,9 @@ namespace HRManager.Models.Views
     public class EmployeeShortSummary
     {
         public byte Id { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         //Any other
     }

@@ -21,24 +21,27 @@ namespace HRManager.Data.Entity
             {
                 var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalDetailsId);
                 //return mapper.Map<EmployeeProfessionalInfo>(employeeProfessionalInfo);
-                professionalInfo.UserId = employeeProfessionalInfo.UserId;
-                professionalInfo.OrganizationName = employeeProfessionalInfo.OrganizationName;
-                professionalInfo.LastDesignation = employeeProfessionalInfo.LastDesignation;
-                professionalInfo.IsThisYourLastEmployment = employeeProfessionalInfo.IsThisYourLastEmployment;
-                professionalInfo.StartDate = employeeProfessionalInfo.StartDate;
-                professionalInfo.EndDate = employeeProfessionalInfo.EndDate;
-                professionalInfo.CTC = employeeProfessionalInfo.CTC;
-                professionalInfo.ReportingManagerName = employeeProfessionalInfo.ReportingManagerName;
-                professionalInfo.ReportingManagerEmailId = employeeProfessionalInfo.ReportingManagerEmailId;
-                professionalInfo.HRName = employeeProfessionalInfo.HRName;
-                professionalInfo.HREmailId = employeeProfessionalInfo.HREmailId;
-                professionalInfo.OfferLetterPath = employeeProfessionalInfo.OfferLetterPath;
-                professionalInfo.RelievingLetterPath = employeeProfessionalInfo.RelievingLetterPath;
-                professionalInfo.ExperienceLetterPath = employeeProfessionalInfo.ExperienceLetterPath;
-                professionalInfo.PaySlip1 = employeeProfessionalInfo.PaySlip1;
-                professionalInfo.PaySlip2 = employeeProfessionalInfo.PaySlip2;
-                professionalInfo.PaySlip3 = employeeProfessionalInfo.PaySlip3;
-                professionalInfo.ReferenceEmailId = employeeProfessionalInfo.ReferenceEmailId;
+                if (employeeProfessionalInfo != null)
+                {
+                    professionalInfo.UserId = employeeProfessionalInfo.UserId;
+                    professionalInfo.OrganizationName = employeeProfessionalInfo.OrganizationName;
+                    professionalInfo.LastDesignation = employeeProfessionalInfo.LastDesignation;
+                    professionalInfo.IsThisYourLastEmployment = employeeProfessionalInfo.IsThisYourLastEmployment;
+                    professionalInfo.StartDate = employeeProfessionalInfo.StartDate;
+                    professionalInfo.EndDate = employeeProfessionalInfo.EndDate;
+                    professionalInfo.CTC = employeeProfessionalInfo.CTC;
+                    professionalInfo.ReportingManagerName = employeeProfessionalInfo.ReportingManagerName;
+                    professionalInfo.ReportingManagerEmailId = employeeProfessionalInfo.ReportingManagerEmailId;
+                    professionalInfo.HRName = employeeProfessionalInfo.HRName;
+                    professionalInfo.HREmailId = employeeProfessionalInfo.HREmailId;
+                    professionalInfo.OfferLetterPath = employeeProfessionalInfo.OfferLetterPath;
+                    professionalInfo.RelievingLetterPath = employeeProfessionalInfo.RelievingLetterPath;
+                    professionalInfo.ExperienceLetterPath = employeeProfessionalInfo.ExperienceLetterPath;
+                    professionalInfo.PaySlip1 = employeeProfessionalInfo.PaySlip1;
+                    professionalInfo.PaySlip2 = employeeProfessionalInfo.PaySlip2;
+                    professionalInfo.PaySlip3 = employeeProfessionalInfo.PaySlip3;
+                    professionalInfo.ReferenceEmailId = employeeProfessionalInfo.ReferenceEmailId;
+                }
             }
             catch (Exception ex)
             {
@@ -95,8 +98,11 @@ namespace HRManager.Data.Entity
             try
             {
                 var shortSummery = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == EmployeeId);
-                employeeShortSummary.Name = shortSummery.FirstName+" "+shortSummery.MiddleName+" "+shortSummery.LastName;
-                employeeShortSummary.Email = shortSummery.PersonalEmailId;
+                if (shortSummery != null)
+                {
+                    employeeShortSummary.Name = shortSummery.FirstName + " " + shortSummery.MiddleName + " " + shortSummery.LastName;
+                    employeeShortSummary.Email = shortSummery.PersonalEmailId;
+                }
             }
             catch (Exception ex)
             {
@@ -355,30 +361,32 @@ namespace HRManager.Data.Entity
             try
             {
                 var EmployeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == PersonalInfo.Id && s.UserId == PersonalInfo.UserId);
-                EmployeePersonalInfo.FirstName = PersonalInfo.FirstName;
-                EmployeePersonalInfo.MiddleName = PersonalInfo.MiddleName;
-                EmployeePersonalInfo.LastName = PersonalInfo.LastName;
-                EmployeePersonalInfo.Gender = PersonalInfo.Gender;
-                EmployeePersonalInfo.DateOfBirth = PersonalInfo.DateOfBirth;
-                EmployeePersonalInfo.MobileNumber = PersonalInfo.MobileNumber;
-                EmployeePersonalInfo.PersonalEmailId = PersonalInfo.PersonalEmailId;
-                EmployeePersonalInfo.CurrentAddress = PersonalInfo.CurrentAddress;
-                EmployeePersonalInfo.PermanentAddress = PersonalInfo.PermanentAddress;
-                EmployeePersonalInfo.BloodGroup = PersonalInfo.BloodGroup;
-                EmployeePersonalInfo.EmergencyContactName = PersonalInfo.EmergencyContactName;
-                EmployeePersonalInfo.EmergencyContactNumber = PersonalInfo.EmergencyContactNumber;
-                EmployeePersonalInfo.RelationshipWithContact = PersonalInfo.RelationshipWithContact;
-                EmployeePersonalInfo.PanCardNumber = PersonalInfo.PanCardNumber;
-                EmployeePersonalInfo.NameAsPerAadhar = PersonalInfo.NameAsPerAadhar;
-                EmployeePersonalInfo.AadharCardNumber = PersonalInfo.AadharCardNumber;
-                EmployeePersonalInfo.FathersNameAsPerAadhar = PersonalInfo.FathersNameAsPerAadhar;
-                EmployeePersonalInfo.FathersMobileNumber = PersonalInfo.FathersMobileNumber;
-                EmployeePersonalInfo.MothersNameAsPerAadhar = PersonalInfo.MothersNameAsPerAadhar;
-                EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
-                EmployeePersonalInfo.UpdatedBy = PersonalInfo.UpdatedBy;
-                EmployeePersonalInfo.UpdatedDate = DateTime.Now;
-
-                context.SaveChanges();
+                if (EmployeePersonalInfo is not null)
+                {
+                    EmployeePersonalInfo.FirstName = PersonalInfo.FirstName;
+                    EmployeePersonalInfo.MiddleName = PersonalInfo.MiddleName;
+                    EmployeePersonalInfo.LastName = PersonalInfo.LastName;
+                    EmployeePersonalInfo.Gender = PersonalInfo.Gender;
+                    EmployeePersonalInfo.DateOfBirth = PersonalInfo.DateOfBirth;
+                    EmployeePersonalInfo.MobileNumber = PersonalInfo.MobileNumber;
+                    EmployeePersonalInfo.PersonalEmailId = PersonalInfo.PersonalEmailId;
+                    EmployeePersonalInfo.CurrentAddress = PersonalInfo.CurrentAddress;
+                    EmployeePersonalInfo.PermanentAddress = PersonalInfo.PermanentAddress;
+                    EmployeePersonalInfo.BloodGroup = PersonalInfo.BloodGroup;
+                    EmployeePersonalInfo.EmergencyContactName = PersonalInfo.EmergencyContactName;
+                    EmployeePersonalInfo.EmergencyContactNumber = PersonalInfo.EmergencyContactNumber;
+                    EmployeePersonalInfo.RelationshipWithContact = PersonalInfo.RelationshipWithContact;
+                    EmployeePersonalInfo.PanCardNumber = PersonalInfo.PanCardNumber;
+                    EmployeePersonalInfo.NameAsPerAadhar = PersonalInfo.NameAsPerAadhar;
+                    EmployeePersonalInfo.AadharCardNumber = PersonalInfo.AadharCardNumber;
+                    EmployeePersonalInfo.FathersNameAsPerAadhar = PersonalInfo.FathersNameAsPerAadhar;
+                    EmployeePersonalInfo.FathersMobileNumber = PersonalInfo.FathersMobileNumber;
+                    EmployeePersonalInfo.MothersNameAsPerAadhar = PersonalInfo.MothersNameAsPerAadhar;
+                    EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
+                    EmployeePersonalInfo.UpdatedBy = PersonalInfo.UpdatedBy;
+                    EmployeePersonalInfo.UpdatedDate = DateTime.Now;
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
@@ -465,26 +473,29 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeProfessionalInfo = context.EmployeeProfessionalInfos.FirstOrDefault(s => s.Id == ProfessionalInfo.Id && s.UserId == ProfessionalInfo.UserId);
-                employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
-                employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
-                employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
-                employeeProfessionalInfo.StartDate = ProfessionalInfo.StartDate;
-                employeeProfessionalInfo.EndDate = ProfessionalInfo.EndDate;
-                employeeProfessionalInfo.CTC = ProfessionalInfo.CTC;
-                employeeProfessionalInfo.ReportingManagerName = ProfessionalInfo.ReportingManagerName;
-                employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
-                employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
-                employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
-                employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath;
-                employeeProfessionalInfo.RelievingLetterPath = ProfessionalInfo.RelievingLetterPath;
-                employeeProfessionalInfo.ExperienceLetterPath = ProfessionalInfo.ExperienceLetterPath;
-                employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
-                employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
-                employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
-                employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
-                employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.UpdatedBy;
-                employeeProfessionalInfo.UpdatedDate = DateTime.Now;
-                context.SaveChanges();
+                if (employeeProfessionalInfo != null)
+                {
+                    employeeProfessionalInfo.OrganizationName = ProfessionalInfo.OrganizationName;
+                    employeeProfessionalInfo.IsThisYourLastEmployment = ProfessionalInfo.IsThisYourLastEmployment;
+                    employeeProfessionalInfo.LastDesignation = ProfessionalInfo.LastDesignation;
+                    employeeProfessionalInfo.StartDate = ProfessionalInfo.StartDate;
+                    employeeProfessionalInfo.EndDate = ProfessionalInfo.EndDate;
+                    employeeProfessionalInfo.CTC = ProfessionalInfo.CTC;
+                    employeeProfessionalInfo.ReportingManagerName = ProfessionalInfo.ReportingManagerName;
+                    employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+                    employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
+                    employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
+                    employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath;
+                    employeeProfessionalInfo.RelievingLetterPath = ProfessionalInfo.RelievingLetterPath;
+                    employeeProfessionalInfo.ExperienceLetterPath = ProfessionalInfo.ExperienceLetterPath;
+                    employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
+                    employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
+                    employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+                    employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
+                    employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.UpdatedBy;
+                    employeeProfessionalInfo.UpdatedDate = DateTime.Now;
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
@@ -573,14 +584,17 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeBankInfo = context.EmployeeBankInfos.Where(s => s.Id == BankInfo.Id && s.UserId == BankInfo.UserId).FirstOrDefault();
-                employeeBankInfo.BankName = BankInfo.BankName;
-                employeeBankInfo.NameAsPerBankAccount = BankInfo.NameAsPerBankAccount;
-                employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
-                employeeBankInfo.BranchName = BankInfo.BranchName;
-                employeeBankInfo.IFSCCode = BankInfo.IFSCCode;
-                employeeBankInfo.UpdatedBy = BankInfo.UpdatedBy;
-                employeeBankInfo.UpdatedDate = DateTime.Now;
-                context.SaveChanges();
+                if (employeeBankInfo != null)
+                {
+                    employeeBankInfo.BankName = BankInfo.BankName;
+                    employeeBankInfo.NameAsPerBankAccount = BankInfo.NameAsPerBankAccount;
+                    employeeBankInfo.AccountNumber = BankInfo.AccountNumber;
+                    employeeBankInfo.BranchName = BankInfo.BranchName;
+                    employeeBankInfo.IFSCCode = BankInfo.IFSCCode;
+                    employeeBankInfo.UpdatedBy = BankInfo.UpdatedBy;
+                    employeeBankInfo.UpdatedDate = DateTime.Now;
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
@@ -670,13 +684,16 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeeInsuranceInfo = context.EmployeeInsuranceInfos.Where(s => s.Id == InsuranceInfo.Id && s.UserId == InsuranceInfo.UserId).FirstOrDefault();
-                employeeInsuranceInfo.NameAsPerAadhar = InsuranceInfo.NameAsPerAadhar;
-                employeeInsuranceInfo.Relationship = InsuranceInfo.Relationship;
-                employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
-                employeeInsuranceInfo.DateOfBirthAsPerAadhar = InsuranceInfo.DateOfBirthAsPerAadhar;
-                employeeInsuranceInfo.UpdatedBy = InsuranceInfo.UpdatedBy;
-                employeeInsuranceInfo.UpdatedDate = DateTime.Now;
-                context.SaveChanges();
+                if (employeeInsuranceInfo != null)
+                {
+                    employeeInsuranceInfo.NameAsPerAadhar = InsuranceInfo.NameAsPerAadhar;
+                    employeeInsuranceInfo.Relationship = InsuranceInfo.Relationship;
+                    employeeInsuranceInfo.Gender = InsuranceInfo.Gender;
+                    employeeInsuranceInfo.DateOfBirthAsPerAadhar = InsuranceInfo.DateOfBirthAsPerAadhar;
+                    employeeInsuranceInfo.UpdatedBy = InsuranceInfo.UpdatedBy;
+                    employeeInsuranceInfo.UpdatedDate = DateTime.Now;
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
@@ -764,11 +781,14 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeePFandESIInfo = context.EmployeePFandESIInfos.Where(s => s.Id == PFAndESIInfo.Id && s.UserId == PFAndESIInfo.UserId).FirstOrDefault();
-                employeePFandESIInfo.UAN = PFAndESIInfo.UAN;
-                employeePFandESIInfo.ESIN = PFAndESIInfo.ESIN;
-                employeePFandESIInfo.UpdatedDate = DateTime.Now;
-                employeePFandESIInfo.UpdatedBy = PFAndESIInfo.UpdatedBy;
-                context.SaveChanges();
+                if (employeePFandESIInfo != null)
+                {
+                    employeePFandESIInfo.UAN = PFAndESIInfo.UAN;
+                    employeePFandESIInfo.ESIN = PFAndESIInfo.ESIN;
+                    employeePFandESIInfo.UpdatedDate = DateTime.Now;
+                    employeePFandESIInfo.UpdatedBy = PFAndESIInfo.UpdatedBy;
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {

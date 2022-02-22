@@ -14,10 +14,10 @@ namespace HRManager.Models.EntityViews
         public int UserId { get; set; }
         [Display(Name = "Name As Per Aadhar")]
         [Required]
-        public string NameAsPerAadhar { get; set; }
+        public string? NameAsPerAadhar { get; set; }
         [Display(Name = "Relationship")]
         [Required]
-        public string Relationship { get; set; }
+        public string? Relationship { get; set; }
         [Display(Name = "Gender")]
         [Required]
         public Gender Gender { get; set; }

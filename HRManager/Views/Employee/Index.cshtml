@@ -134,7 +134,8 @@
         <br />
 
         <div>
-            <div>
+          <div class=" row card bg-light border-3">
+            <div class="card-body">
             <h3>Confidentiality Agreement</h3>
             <partial name="_ConfidentialityAgreement.cshtml" model="@Model.applicationTexts"/>
             <span>
@@ -142,9 +143,11 @@
                 <strong>I Agree</strong>
             </span>
             </div>
-            <br />
+          </div>
+          <br />
 
-            <div>
+          <div class="row card bg-light border-3">
+            <div class="card-body">
             <h3>Service Level Agreement</h3>
             <partial name="_ServiceLevelAgreement.cshtml" model="@Model.applicationTexts" />
             <span>
@@ -152,9 +155,11 @@
                 <strong>I Agree</strong>
             </span>
             </div>
-            <br />
+          </div>
+          <br />
 
-            <div>
+          <div class="row card bg-light border-3">
+            <div class="card-body">
             <h3>BGV Acknowlegdement</h3>
             <partial name="_BGVAcknowlegdement.cshtml" model="@Model.applicationTexts" />
             <span>
@@ -162,6 +167,7 @@
                 <strong>I Agree</strong>
             </span>
             </div>
+          </div>
         </div>
             <br />
             <div class= "text-center">

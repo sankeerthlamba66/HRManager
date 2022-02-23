@@ -486,17 +486,17 @@ namespace HRManager.Data.Entity
                     employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
                     employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
                     employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
-                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.OfferLetterPath))
+                    if (!string.IsNullOrEmpty(ProfessionalInfo.OfferLetterPath))
                     { employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath; }
-                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.RelievingLetterPath))
+                    if (!string.IsNullOrEmpty(ProfessionalInfo.RelievingLetterPath))
                     { employeeProfessionalInfo.RelievingLetterPath = ProfessionalInfo.RelievingLetterPath; }
-                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.ExperienceLetterPath))
+                    if (!string.IsNullOrEmpty(ProfessionalInfo.ExperienceLetterPath))
                     { employeeProfessionalInfo.ExperienceLetterPath = ProfessionalInfo.ExperienceLetterPath; }
-                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.PaySlip1))
+                    if (!string.IsNullOrEmpty(ProfessionalInfo.PaySlip1))
                     { employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1; }
-                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.PaySlip2))
+                    if (!string.IsNullOrEmpty(ProfessionalInfo.PaySlip2))
                     { employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2; }
-                    if (string.IsNullOrEmpty(employeeProfessionalInfo.PaySlip3))
+                    if (!string.IsNullOrEmpty(ProfessionalInfo.PaySlip3))
                     { employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3; }
                     employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                     employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.UpdatedBy;

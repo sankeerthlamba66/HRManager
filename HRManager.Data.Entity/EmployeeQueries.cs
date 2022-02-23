@@ -100,6 +100,7 @@ namespace HRManager.Data.Entity
                 var shortSummery = context.EmployeePersonalInfos.FirstOrDefault(s => s.Id == EmployeeId);
                 if (shortSummery != null)
                 {
+                    employeeShortSummary.Id = shortSummery.Id;
                     employeeShortSummary.Name = shortSummery.FirstName + " " + shortSummery.MiddleName + " " + shortSummery.LastName;
                     employeeShortSummary.Email = shortSummery.PersonalEmailId;
                 }
@@ -485,12 +486,18 @@ namespace HRManager.Data.Entity
                     employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
                     employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
                     employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
-                    employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath;
-                    employeeProfessionalInfo.RelievingLetterPath = ProfessionalInfo.RelievingLetterPath;
-                    employeeProfessionalInfo.ExperienceLetterPath = ProfessionalInfo.ExperienceLetterPath;
-                    employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
-                    employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
-                    employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
+                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.OfferLetterPath))
+                    { employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath; }
+                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.RelievingLetterPath))
+                    { employeeProfessionalInfo.RelievingLetterPath = ProfessionalInfo.RelievingLetterPath; }
+                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.ExperienceLetterPath))
+                    { employeeProfessionalInfo.ExperienceLetterPath = ProfessionalInfo.ExperienceLetterPath; }
+                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.PaySlip1))
+                    { employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1; }
+                    if (!string.IsNullOrEmpty(employeeProfessionalInfo.PaySlip2))
+                    { employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2; }
+                    if (string.IsNullOrEmpty(employeeProfessionalInfo.PaySlip3))
+                    { employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3; }
                     employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                     employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.UpdatedBy;
                     employeeProfessionalInfo.UpdatedDate = DateTime.Now;
@@ -1007,21 +1014,26 @@ namespace HRManager.Data.Entity
         #endregion
 
         #region mail
-        public HREmailTemplate GetHRMailTemplate(User EmployeeUserDetails)
+        public EmployeeSubmissionEMail GetEmployeeSubmissionEMailTemplates(User EmployeeUserDetails)
         {
-            HREmailTemplate hrMailTemplate = new HREmailTemplate();
+            EmployeeSubmissionEMail MailTemplate = new EmployeeSubmissionEMail();
             try
             {
-                hrMailTemplate.HRMailSubjectTemplate = @"New Employee Details Updated";
-                StringBuilder Body = new StringBuilder();
-                Body.Append("Employee with user ID " + EmployeeUserDetails.Id + ",name " + EmployeeUserDetails.UserName + ", with mail " + EmployeeUserDetails.UserMailId+ " has uploaded all the documents, agreed to all the conditions and updated all the details. ");
-                hrMailTemplate.HRMailBodyTemplate = Body.ToString();
+                var employeeSubmissionTemplates =context.ApplicationTexts.Where(s=>s.OrganizationId== EmployeeUserDetails.OrganizationId).FirstOrDefault();
+                //hrMailTemplate.EmployeeSubmissionEMailSubjectTemplate = @"New Employee Details Updated";
+                MailTemplate.EmployeeSubmissionEMailSubjectTemplate = employeeSubmissionTemplates.EmployeeSubmissionEMailSubjectTemplate;
+                StringBuilder Body = new StringBuilder(employeeSubmissionTemplates.EmployeeSubmissionEMailBodyTemplate);
+                Body.Replace("EmployeeID", EmployeeUserDetails.Id.ToString());
+                Body.Replace("EmployeeUserName", EmployeeUserDetails.UserName);
+                Body.Replace("EmployeeUserMailId", EmployeeUserDetails.UserMailId);
+                //Body.Append("Employee with user ID EmployeeID,name EmployeeUserName , with mail EmployeeUserMailId has uploaded all the documents, agreed to all the conditions and updated all the details. ");
+                MailTemplate.EmployeeSubmissionEMailBodyTemplate = Body.ToString();
             }
             catch (Exception ex)
             {
                 ErrorLogger.LogError(ex.Message);
             }
-            return hrMailTemplate;
+            return MailTemplate;
         }
         #endregion
 

@@ -15,13 +15,15 @@ namespace HRManager.Data.Entity
     {
         private readonly Context context=new Context();
 
-        public void AddEmployee(User user)
+        public int AddEmployee(User user)
         {
+            Entities.User UserDetail = new Entities.User();
+            Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();
+            Entities.EmployeeAgreementAcceptance employeeAgreementAcceptance = new Entities.EmployeeAgreementAcceptance();
             try
             {
-                Entities.User UserDetail = new Entities.User();
-                Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();
-                Entities.EmployeeAgreementAcceptance employeeAgreementAcceptance = new Entities.EmployeeAgreementAcceptance();  
+                var organization=context.Organizations.Where(s=>s.OrganizationName==user.OrganizationName).FirstOrDefault();
+                user.OrganizationId=organization.Id;
                 if (user is not null)
                 {
                     UserDetail.UserName = user.UserName;
@@ -59,6 +61,7 @@ namespace HRManager.Data.Entity
             {
                 ErrorLogger.LogError(ex.Message);
             }
+            return UserDetail.Id;
         }
 
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees()
@@ -229,14 +232,17 @@ namespace HRManager.Data.Entity
             return employeeBGVerificationSummary;
         }
 
-        public PDVEmailTemplate GetPDVEmailTemplate(string EmployeeName,List<String> FieldsToUpdate)
+        public PDVEmailTemplate GetPDVEmailTemplate(EmployeeShortSummary summary,List<String> FieldsToUpdate)
         {
             PDVEmailTemplate EmailTemplate = new PDVEmailTemplate();
             try
-            {                
-                StringBuilder Body = new StringBuilder();
-                EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
-                Body.Append("Dear " + EmployeeName + ",\n        The following Details should be updated Or Are not matching with data Provided.\n");
+            {
+                var personalDetails = context.EmployeePersonalInfos.Where(s => s.Id == summary.Id).FirstOrDefault();
+                var employeeUserDetails = context.Users.Where(s => s.Id == personalDetails.UserId).FirstOrDefault();
+                var applicationTexts = context.ApplicationTexts.Where(s => s.OrganizationId == employeeUserDetails.OrganizationId).FirstOrDefault();
+                EmailTemplate.PDVEmailSubjectTemplate = applicationTexts.PDVEmailSubjectTemplate;
+                StringBuilder Body = new StringBuilder(applicationTexts.PDVEmailBodyTemplate);
+                Body.Replace("EmployeeName", summary.Name);
                 foreach (var item in FieldsToUpdate)
                 {
                     Body.Append("* " + item + "\n");
@@ -256,10 +262,19 @@ namespace HRManager.Data.Entity
             BGVEmailTemplate EmailTemplate = new BGVEmailTemplate();
             try
             {
-                StringBuilder Body = new StringBuilder();
-                EmailTemplate.PDVEmailSubjectTemplate = @"Verify and Update the following Details";
-                Body.Append("Sir/Madam,\n        I am HR Manager from TekFriday Pvt. Ltd. This is with regard to referral check of " + EmployeeName +", who worked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him/her: ");
-                Body.Append("\nPeriod Of Employeement: From "+professionalInfo.StartDate+" To"+professionalInfo.EndDate+"\nCTC: "+professionalInfo.CTC+"\nDesignation: "+professionalInfo.LastDesignation+"\n");
+                var employeeUserDetails = context.Users.Where(s => s.Id == professionalInfo.UserId).FirstOrDefault();
+                var applicationTexts = context.ApplicationTexts.Where(s => s.OrganizationId == employeeUserDetails.OrganizationId).FirstOrDefault();
+                var organization=context.Organizations.Where(s=>s.Id== employeeUserDetails.OrganizationId).FirstOrDefault();
+                EmailTemplate.PDVEmailSubjectTemplate = applicationTexts.BGVEmailSubjectTemplate;
+                StringBuilder Body = new StringBuilder(applicationTexts.BGVEmailBodyTemplate);
+                Body.Replace("TekFriday", organization.OrganizationName.ToString());
+                Body.Replace("EmployeeName", EmployeeName);
+                Body.Replace("LastDesignation", professionalInfo.LastDesignation);
+                Body.Replace("StartDate", professionalInfo.StartDate.ToString());
+                Body.Replace("EndDate", professionalInfo.EndDate.ToString());
+                Body.Replace("companyCTC", professionalInfo.CTC.ToString());
+                //Body.Append("Sir/Madam,\n        I am HR Manager from TekFriday Pvt. Ltd. This is with regard to referral check of " + EmployeeName +", who worked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him/her: ");
+                //Body.Append("\nPeriod Of Employeement: From "+professionalInfo.StartDate+" To"+professionalInfo.EndDate+"\nCTC: "+professionalInfo.CTC+"\nDesignation: "+professionalInfo.LastDesignation+"\n");
                 Body.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
                 EmailTemplate.PDVEmailBodyTemplate = Body.ToString();
             }
@@ -275,10 +290,15 @@ namespace HRManager.Data.Entity
             UserDetailsEmailTemplate userDetailsEmailTemplate = new UserDetailsEmailTemplate();
             try
             {
-                userDetailsEmailTemplate.UserDetailsSubjectTemplate = @"Please find your Login Details";
-                StringBuilder Body = new StringBuilder();
-                Body.Append("Dear " + user.UserName + ",\n        Your Login details are: \nEMail: " + user.UserMailId +"\n Password: "+user.Password+"\n");
-                Body.Append("\nRegards\n HRManager\n HR@tekfriday.com");
+                var employeeUserDetails = context.Users.Where(s => s.Id == user.Id).FirstOrDefault();
+                var applicationTexts = context.ApplicationTexts.Where(s => s.OrganizationId == employeeUserDetails.OrganizationId).FirstOrDefault();
+                userDetailsEmailTemplate.UserDetailsSubjectTemplate = applicationTexts.EmployeeRegisteredEMailSubjectTemplate;
+                StringBuilder Body = new StringBuilder(@applicationTexts.EmployeeRegisteredEMailBodyTemplate);
+                Body.Replace("UserName",user.UserName);
+                Body.Replace("UserMailId",user.UserMailId);
+                Body.Replace("Password1",user.Password);
+                //Body.Append("Dear UserName ,\n        Your Login details are: \nEMail: UserMailId \n Password: Password\n");
+                //Body.Append("\nRegards\n HRManager\n HR@tekfriday.com");
                 userDetailsEmailTemplate.UserDetailsBodyTemplate = Body.ToString();
             }
             catch (Exception ex)

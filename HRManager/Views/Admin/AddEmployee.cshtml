@@ -32,9 +32,11 @@
             </div>
            <br />
             <div class="form-group">
-                <label asp-for="OrganizationId" class="control-label " style="font-size: 20px"></label>
-                <input asp-for="OrganizationId" class="form-control" placeholder="Organization Id"/>
-                <span asp-validation-for="OrganizationId" class="text-danger"></span>
+                <label asp-for="OrganizationName" class="control-label " style="font-size: 20px"></label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <span style="font size:20px">
+                @Html.DropDownListFor(m => m.OrganizationName, new SelectList(Enum.GetValues(typeof(OrgaizationName))),"Select Organization")
+                </span>
             </div>
             <br />
             <div class="form-group">

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRManager.Data.Entity.Migrations
 {
-    public partial class HRManagerTables : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace HRManager.Data.Entity.Migrations
                 columns: table => new
                 {
                     Id = table.Column<byte>(type: "tinyint", nullable: false),
-                    OrganizationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OrganizationName = table.Column<byte>(type: "tinyint", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "Date", nullable: false),
@@ -33,6 +33,14 @@ namespace HRManager.Data.Entity.Migrations
                     ConfidentialityAgreement = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ServiceLevelAgreement = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BGVAcknowlwdgement = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BGVEmailSubjectTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BGVEmailBodyTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PDVEmailSubjectTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PDVEmailBodyTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmployeeRegisteredEMailSubjectTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmployeeRegisteredEMailBodyTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmployeeSubmissionEMailSubjectTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmployeeSubmissionEMailBodyTemplate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrganizationId = table.Column<byte>(type: "tinyint", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "Date", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),

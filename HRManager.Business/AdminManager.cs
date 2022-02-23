@@ -16,8 +16,8 @@ namespace HRManager.Business
         public void AddEmployee(User user) 
         {
             user.Password = GeneratePassWord();
+            user.Id=new AdminQueries().AddEmployee(user);
             SendUserDetailsMail(user);
-            new AdminQueries().AddEmployee(user);
         }
 
         private string GeneratePassWord()
@@ -71,7 +71,7 @@ namespace HRManager.Business
         public void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate)
         {
             var Summary = new EmployeeQueries().GetEmployeeShortSummary(EmployeeId);
-            var EmailTemplate = new AdminQueries().GetPDVEmailTemplate(Summary.Name,FieldsToUpdate);
+            var EmailTemplate = new AdminQueries().GetPDVEmailTemplate(Summary, FieldsToUpdate);
 
             //Substitute placeholders in the templates with the employee details and Fields List.
             string Subject = EmailTemplate.PDVEmailSubjectTemplate;//string.Empty;

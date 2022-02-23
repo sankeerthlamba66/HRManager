@@ -31,6 +31,14 @@ namespace HRManager.Data.Entity.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("BGVEmailBodyTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BGVEmailSubjectTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConfidentialityAgreement")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -42,8 +50,32 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("Date");
 
+                    b.Property<string>("EmployeeRegisteredEMailBodyTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeRegisteredEMailSubjectTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeSubmissionEMailBodyTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeSubmissionEMailSubjectTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<byte>("OrganizationId")
                         .HasColumnType("tinyint");
+
+                    b.Property<string>("PDVEmailBodyTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PDVEmailSubjectTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ServiceLevelAgreement")
                         .IsRequired()
@@ -507,9 +539,8 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("Date");
 
-                    b.Property<string>("OrganizationName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("OrganizationName")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("UpdatedBy")
                         .IsRequired()

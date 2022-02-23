@@ -17,9 +17,12 @@ namespace HRManager.Models.EntityViews
         [Display(Name = "Roles")]
         [Required]
         public string Roles { get; set; }
-        [Display(Name = "Organization Id")]
+        [Display(Name = "Organization Name")]
         [Required]
-        public byte OrganizationId { get; set; }
+        public OrgaizationName OrganizationName { get; set; }
+        [Display(Name = "Organization ID")]
+        [Required]
+        public Byte OrganizationId { get; set; }
         [Display(Name = "User Email Id")]
         [Required]
         public string UserMailId { get; set; }

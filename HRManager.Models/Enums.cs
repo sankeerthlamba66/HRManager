@@ -55,4 +55,9 @@ namespace HRManager.Models
         Newspapers= 4,
         Reference= 5
     }
+    public enum OrgaizationName : byte
+    {
+        TekFriday=1,
+        Vivifi=2
+    }
 }

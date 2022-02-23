@@ -168,10 +168,10 @@ namespace HRManager.Business
 
         public void SendMailToHR(User EmployeeUserDetails)
         {
-            var EmailTemplate = new EmployeeQueries().GetHRMailTemplate(EmployeeUserDetails);
+            var EmailTemplate = new EmployeeQueries().GetEmployeeSubmissionEMailTemplates(EmployeeUserDetails);
             new EmployeeQueries().UpdateEmployeeAgreementAcceptance(EmployeeUserDetails.Id, EmployeeUserDetails.UserName);
-            string Subject = EmailTemplate.HRMailSubjectTemplate;
-            string Body = EmailTemplate.HRMailBodyTemplate;
+            string Subject = EmailTemplate.EmployeeSubmissionEMailSubjectTemplate;
+            string Body = EmailTemplate.EmployeeSubmissionEMailBodyTemplate;
             var HRMailId = @"Sankeerth33@gmail.com";
             Helpers.Utilities.SendEmail(HRMailId, Subject, Body);
         }

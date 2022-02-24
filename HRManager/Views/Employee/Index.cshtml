@@ -185,50 +185,39 @@
                 Checkboxes.push($(this).val());
             });
 
-       if($('#professionaldetails').length>0)
-       {
-         if ($('#personaldetails').length>0 && $('#bankdetails').length>0 && $('#insurancedetails').length>0 && $('#PFandESIdetails').length>0 && $('#documents').length>0)
+       
+         if ($('#personaldetails').length>0 && $('#bankdetails').length>0 && $('#insurancedetails').length>0 && $('#documents').length>0 && Checkboxes.length==3)
          { 
-                Acceptance(Checkboxes);
+             if($('#professionaldetails').length>0 && $('#PFandESIdetails').length>0)
+             {
+                 Acceptance();
+                 alert("Submited Successfully")
+             }
+             else if ($('#professionaldetails').length>0 && $('#PFandESIdetails').length==0)
+             {
+                 alert("Please provide PF and ESI Details ")
+             }
+             else if ($('#professionaldetails').length==0)
+             {
+                 Acceptance();
+                 alert("Submited Successfully")
+             }
          }
          else
-            {
-                alert("Please Fill all the details")
-            }
-        }
-
-        else if ($('#professionaldetails').length==0)
-        {
-          if ($('#personaldetails').length>0 && $('#bankdetails').length>0 && $('#insurancedetails').length>0 && $('#documents').length>0)
-         { 
-          Acceptance(Checkboxes);
+         {
+             alert("Please Fill all the details")
          }
-         else
-            {
-                alert("Please provide all the details")
-            }
-        }
-         
         });
-                Acceptance=function(Checkboxes)
-                {                 
-                   if(Checkboxes.length==3)
-                   {
-                       $.ajax(
-                        {
-                            url:"/Employee/Submit", //url of the action page
-                        }).done(function()
-                        {
-                            alert("Submited Successfully")
-                        });
-                   }
-                   else
-                   {
-                        alert("Please Check the Agreements")
-                   }
-
-                }
-                
+        Acceptance=function()
+        {
+            $.ajax(
+              {
+                url:"/Employee/Submit", //url of the action page
+              }).done(function(response)
+              {
+                 
+              });
+        }
     });
 </script>
 }

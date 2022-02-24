@@ -2,11 +2,19 @@
 
 @if(Model is not null)
 {
+    <h2>Professional Details</h2>
     @foreach(var item in Model.professionalDetails)
     {
-    <h2>Professional Details</h2>
-    <partial name="~/Views/Employee/_GetProfessionalInfo.cshtml" model="item"/>
-    <input type="button" class="btn btn-primary" style="text-center" value="Send Mail" id="SendEmail" onclick="location.href='@Url.Action("SendBGVerificationEmail", "Admin",new{ProfessionalDetailsId=item.Id,EmployeeUserId=item.UserId})'"/>
+    <div class="row">
+    <div class="card bg-transparent border-3">
+        <div class="cardbody">
+            <partial name="~/Views/Employee/_GetProfessionalInfo.cshtml" model="item"/>
+            <input type="button" class="btn btn-primary" value="Send Mail" id="SendEmail" onclick="location.href='@Url.Action("SendBGVerificationEmail", "Admin",new{ProfessionalDetailsId=item.Id,EmployeeUserId=item.UserId})'"/>
+        </div>
+        <br />
+    </div>
+    </div>
+    <br />
     }
 }
 @*ajax for alert*@

@@ -11,12 +11,12 @@
     </div>*@
     <div class="form-outline form-white mb-4">
         <label class="form-label" for="UserMailId">User Mail Id</label>
-        <input asp-for="UserMailId" id="UserMailId" class="form-control form-control-lg" />
+        <input asp-for="UserMailId" id="UserMailId" class="form-control form-control-lg" required />
     </div>
 
     <div class="form-outline form-white mb-4">
         <label class="form-label" asp-for="Password">Password</label>
-        <input type="password" asp-for="Password" id="Password" class="form-control form-control-lg" />
+        <input type="password" asp-for="Password" id="Password" class="form-control form-control-lg" required />
     </div>
 
         <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>

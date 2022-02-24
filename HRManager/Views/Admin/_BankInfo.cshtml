@@ -3,51 +3,51 @@
 @*<h3>Bank Details</h3>*@
     <div>
         <dl class="row">
-            <dt class = "col-sm-2">
+            <dt class = "col-sm-4">
                 @Html.HiddenFor(model => model.Id)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class = "col-sm-8">
                 @Html.HiddenFor(model => model.Id)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class = "col-sm-4">
                 @Html.HiddenFor(model => model.UserId)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class = "col-sm-8">
                 @Html.HiddenFor(model => model.UserId)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Bank Name" field-name="@Html.DisplayNameFor(model => model.BankName)" field-value="@Model.BankName">
                 @Html.DisplayNameFor(model => model.BankName)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.BankName)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Name As Per Bank Account" field-name="@Html.DisplayNameFor(model => model.NameAsPerBankAccount)" field-value="@Model.NameAsPerBankAccount">
                 @Html.DisplayNameFor(model => model.NameAsPerBankAccount)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.NameAsPerBankAccount)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Account Number" field-name="@Html.DisplayNameFor(model => model.AccountNumber)" field-value="@Model.AccountNumber">
                 @Html.DisplayNameFor(model => model.AccountNumber)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.AccountNumber)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Branch Name" field-name="@Html.DisplayNameFor(model => model.BranchName)" field-value="@Model.BranchName">
                 @Html.DisplayNameFor(model => model.BranchName)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.BranchName)
             </dd>
-            <dt class = "col-sm-2">
+            <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="IFSC Code" field-name="@Html.DisplayNameFor(model => model.IFSCCode)" field-value="@Model.IFSCCode">
                 @Html.DisplayNameFor(model => model.IFSCCode)
             </dt>
-            <dd class = "col-sm-10">
+            <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.IFSCCode)
             </dd>
         </dl>

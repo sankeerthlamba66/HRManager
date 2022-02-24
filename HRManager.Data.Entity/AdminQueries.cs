@@ -245,9 +245,9 @@ namespace HRManager.Data.Entity
                 Body.Replace("EmployeeName", summary.Name);
                 foreach (var item in FieldsToUpdate)
                 {
-                    Body.Append("* " + item + "\n");
+                    Body.Append("\n * " + item );
                 }
-                Body.Append("\nRegards\n HR Manager\n HR@tekfriday.com");
+                Body.Append("\n\nRegards\n HR Manager\n HR@tekfriday.com");
                 EmailTemplate.PDVEmailBodyTemplate = Body.ToString();
             }
             catch(Exception ex)
@@ -270,8 +270,8 @@ namespace HRManager.Data.Entity
                 Body.Replace("TekFriday", organization.OrganizationName.ToString());
                 Body.Replace("EmployeeName", EmployeeName);
                 Body.Replace("LastDesignation", professionalInfo.LastDesignation);
-                Body.Replace("StartDate", professionalInfo.StartDate.ToString());
-                Body.Replace("EndDate", professionalInfo.EndDate.ToString());
+                Body.Replace("StartDate", professionalInfo.StartDate.ToString("dd/MM/yyyy"));
+                Body.Replace("EndDate", professionalInfo.EndDate.ToString("dd/MM/yyyy"));
                 Body.Replace("companyCTC", professionalInfo.CTC.ToString());
                 //Body.Append("Sir/Madam,\n        I am HR Manager from TekFriday Pvt. Ltd. This is with regard to referral check of " + EmployeeName +", who worked with you as " + professionalInfo.LastDesignation + ". Can you please let me know the following details about him/her: ");
                 //Body.Append("\nPeriod Of Employeement: From "+professionalInfo.StartDate+" To"+professionalInfo.EndDate+"\nCTC: "+professionalInfo.CTC+"\nDesignation: "+professionalInfo.LastDesignation+"\n");

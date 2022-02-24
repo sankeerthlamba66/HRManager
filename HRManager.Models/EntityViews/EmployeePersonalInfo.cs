@@ -16,7 +16,6 @@ namespace HRManager.Models.EntityViews
         [Required]
         public string FirstName { get; set; }
         [Display(Name = "Middle Name")]
-        [Required]
         public string MiddleName { get; set; }
         [Display(Name ="Last Name")]
         [Required]
@@ -72,7 +71,6 @@ namespace HRManager.Models.EntityViews
         [Required]
         public string MothersNameAsPerAadhar { get; set; }
         [Display(Name = "How Were You Referred To Us")]
-        [Required]
         public ReferalSource HowWereYouReferredToUs { get; set; }
     }
 }

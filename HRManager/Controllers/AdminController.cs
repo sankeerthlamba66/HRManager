@@ -214,9 +214,10 @@ namespace HRManager.Controllers
             }
 
             var sb = new StringBuilder();
+            sb.AppendLine("Id,Employee Name,MobileNumber,Personal EmailId,PANCard");
             foreach (var data in employeeData)
             {
-                sb.AppendLine(data.Id + "," + data.EmployeeName + "," +data.MobileNumber+", "+data.PersonalEmailId);
+                sb.AppendLine(data.Id + "," + data.EmployeeName + "," +data.MobileNumber+", "+data.PersonalEmailId+","+data.PanCard);
             }
             return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "export.csv");
         }

@@ -7,7 +7,9 @@
         <form asp-action="AddDocument" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3"> 
-                <label asp-for="PassportPhoto" class="control-label fw-bold"></label>
+                <label asp-for="PassportPhoto" class="control-label fw-bold">
+                    <span>Passport Photo<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="PassportPhoto" class="custom-file-input" required  />
                 <span asp-validation-for="PassportPhoto" class="text-danger"></span>
@@ -15,21 +17,27 @@
             </div>
 
             <div class="mb-3"> 
-                <label asp-for="Resume" class="control-label fw-bold"></label>
+                <label asp-for="Resume" class="control-label fw-bold">
+                    <span>Resume<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="Resume" class="custom-file-input" required />
                 <span asp-validation-for="Resume" class="text-danger"></span>
                  </div>
             </div>
             <div class="mb-3"> 
-                <label asp-for="PanCard" class="control-label fw-bold"></label>
+                <label asp-for="PanCard" class="control-label fw-bold">
+                    <span>Pan Card<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="PanCard" class="custom-file-input" required />
                 <span asp-validation-for="PanCard" class="text-danger"></span>
                  </div>
             </div>
             <div class="mb-3"> 
-                <label asp-for="AadharCard" class="control-label fw-bold"></label>
+                <label asp-for="AadharCard" class="control-label fw-bold">
+                    <span>Aadhar Card<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="AadharCard" class="custom-file-input" required />
                 <span asp-validation-for="AadharCard" class="text-danger"></span>
@@ -53,7 +61,9 @@
             </div>
 
             <div class="mb-3"> 
-                <label asp-for="CurrentAddressProof" class="control-label fw-bold"></label>
+                <label asp-for="CurrentAddressProof" class="control-label fw-bold">
+                    <span>Current Address Proof<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="CurrentAddressProof" class="custom-file-input" required />
                 <span asp-validation-for="CurrentAddressProof" class="text-danger"></span>
@@ -61,7 +71,9 @@
             </div>
 
             <div class="mb-3"> 
-                <label asp-for="PermanentAddressProof" class="control-label fw-bold"></label>
+                <label asp-for="PermanentAddressProof" class="control-label fw-bold">
+                    <span>Permanent Address Proof<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="PermanentAddressProof" class="custom-file-input" required />
                 <span asp-validation-for="PermanentAddressProof" class="text-danger"></span>
@@ -69,7 +81,9 @@
             </div>
 
             <div class="mb-3"> 
-                <label asp-for="FathersAadharCard" class="control-label fw-bold"></label>
+                <label asp-for="FathersAadharCard" class="control-label fw-bold">
+                    <span>Father's Aadhar Card<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="FathersAadharCard" class="custom-file-input" required />
                 <span asp-validation-for="FathersAadharCard" class="text-danger"></span>
@@ -77,7 +91,9 @@
             </div>
 
             <div class="mb-3"> 
-                <label asp-for="MothersAadharCard" class="control-label fw-bold"></label>
+                <label asp-for="MothersAadharCard" class="control-label fw-bold">
+                    <span>Mother's Aadhar Card<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="MothersAadharCard" class="custom-file-input" required />
                 <span asp-validation-for="MothersAadharCard" class="text-danger"></span>
@@ -101,7 +117,9 @@
             </div>
 
             <div class="mb-3"> 
-                <label asp-for="SSCOrEquivalent" class="control-label fw-bold"></label>
+                <label asp-for="SSCOrEquivalent" class="control-label fw-bold">
+                    <span>SSC Or Equivalent<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file" asp-for="SSCOrEquivalent" class="custom-file-input" required/>
                 <span asp-validation-for="SSCOrEquivalent" class="text-danger"></span>
@@ -109,7 +127,9 @@
             </div>
 
             <div class="mb-3"> 
-                <label asp-for="IntermediateOrEquivalent" class="control-label fw-bold"></label>
+                <label asp-for="IntermediateOrEquivalent" class="control-label fw-bold">
+                    <span>Intermediate Or Equivalent<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input  type="file" asp-for="IntermediateOrEquivalent" class="custom-file-input" required />
                 <span asp-validation-for="IntermediateOrEquivalent" class="text-danger"></span>
@@ -117,7 +137,9 @@
             </div>
 
             <div class="mb-3"> 
-                <label asp-for="GraduationOrEquivalent" class="control-label fw-bold"></label>
+                <label asp-for="GraduationOrEquivalent" class="control-label fw-bold">
+                    <span>Graduation Or Equivalent<sup class="star" style="color:red;">*</sup></span>
+                </label>
                 <div class="form-group">
                 <input type="file"  asp-for="GraduationOrEquivalent" class="custom-file-input" required />
                 <span asp-validation-for="GraduationOrEquivalent" class="text-danger"></span>
@@ -149,7 +171,7 @@
             </div>
             <br />
             <div class="form-group">               
-                 <input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />
+                 @*<input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />*@
                  <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>              
             </div>
         </form>

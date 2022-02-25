@@ -7,20 +7,20 @@
         <form asp-action="AddPFAndESIInfo">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UAN" class="control-label"></label>
+                <label asp-for="UAN" class="control-label"><span>UAN<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="UAN" class="form-control" />
                 <span asp-validation-for="UAN" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <label asp-for="ESIN" class="control-label"></label>
+                <label asp-for="ESIN" class="control-label"><span>ESIN<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="ESIN" class="form-control" />
                 <span asp-validation-for="ESIN" class="text-danger"></span>
             </div>
              <br />
             <div class="form-group">
-                <input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />
-                <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
+@*                <input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />
+*@                <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
             </div>
         </form>
     </div>

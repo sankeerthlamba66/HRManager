@@ -7,38 +7,38 @@
         <form asp-action="PostBankInfo">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="BankName" class="control-label"></label>
+                <label asp-for="BankName" class="control-label"><span>Bank Name<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="BankName" class="form-control" />
                 <span asp-validation-for="BankName" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <label asp-for="NameAsPerBankAccount" class="control-label"></label>
+                <label asp-for="NameAsPerBankAccount" class="control-label"><span>Name As Per Bank Account<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="NameAsPerBankAccount" class="form-control" />
                 <span asp-validation-for="NameAsPerBankAccount" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <label asp-for="AccountNumber" class="control-label"></label>
+                <label asp-for="AccountNumber" class="control-label"><span>Account Number<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="AccountNumber" class="form-control" />
                 <span asp-validation-for="AccountNumber" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <label asp-for="BranchName" class="control-label"></label>
+                <label asp-for="BranchName" class="control-label"><span>Branch Name<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="BranchName" class="form-control" />
                 <span asp-validation-for="BranchName" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <label asp-for="IFSCCode" class="control-label"></label>
+                <label asp-for="IFSCCode" class="control-label"><span>IFSC Code<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="IFSCCode" class="form-control" />
                 <span asp-validation-for="IFSCCode" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">               
-                <input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />
-                <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>              
+@*                <input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />
+*@                <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>              
             </div>
         </form>
     </div>

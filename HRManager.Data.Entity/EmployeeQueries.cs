@@ -1024,7 +1024,7 @@ namespace HRManager.Data.Entity
                 MailTemplate.EmployeeSubmissionEMailSubjectTemplate = employeeSubmissionTemplates.EmployeeSubmissionEMailSubjectTemplate;
                 StringBuilder Body = new StringBuilder(employeeSubmissionTemplates.EmployeeSubmissionEMailBodyTemplate);
                 Body.Replace("EmployeeID", EmployeeUserDetails.Id.ToString());
-                Body.Replace("EmployeeUserName", EmployeeUserDetails.UserName);
+                Body.Replace("EmployeeUserName", GetEmployeeFullName((int)EmployeeUserDetails.Id).EmployeeFullName);
                 Body.Replace("EmployeeUserMailId", EmployeeUserDetails.UserMailId);
                 //Body.Append("Employee with user ID EmployeeID,name EmployeeUserName , with mail EmployeeUserMailId has uploaded all the documents, agreed to all the conditions and updated all the details. ");
                 MailTemplate.EmployeeSubmissionEMailBodyTemplate = Body.ToString();

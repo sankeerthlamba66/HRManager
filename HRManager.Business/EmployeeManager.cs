@@ -172,7 +172,7 @@ namespace HRManager.Business
             new EmployeeQueries().UpdateEmployeeAgreementAcceptance(EmployeeUserDetails.Id, EmployeeUserDetails.UserName);
             string Subject = EmailTemplate.EmployeeSubmissionEMailSubjectTemplate;
             string Body = EmailTemplate.EmployeeSubmissionEMailBodyTemplate;
-            var HRMailId = @"Sankeerth33@gmail.com";
+            var HRMailId = Helpers.Utilities.HRMailId;
             Helpers.Utilities.SendEmail(HRMailId, Subject, Body);
         }
     }

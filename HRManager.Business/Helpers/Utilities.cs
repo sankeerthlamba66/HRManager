@@ -12,17 +12,19 @@ namespace HRManager.Business.Helpers
     internal static class Utilities
     {
         //Functionality to send email
+        public static string HRMailId = "srinivas.rathod@tekfriday.com";
+        public static string HRName = "srinivas";
         public static void SendEmail(string EmailId, string Subject, string Body)
         { 
             try
             {
-                var senderEmail = new MailAddress("Sankeerth33@gmail.com", "Sankeerth");
-                //
+                var senderEmail = new MailAddress(HRMailId, HRName);
+                var password = "Sri@2250";
                 var receiverEmail = new MailAddress(EmailId);
-                var password = "S@nkeerth66";//HRadmin or HR password
+                //HRadmin or HR password
                 var smtp = new SmtpClient
                 {
-                    Host = "smtp.gmail.com", //smtp address 
+                    Host = "smtp.ionos.com", //smtp.ionos.com
                     Port = 587,             //port number to be updated
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,

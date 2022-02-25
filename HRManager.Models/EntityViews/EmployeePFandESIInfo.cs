@@ -11,11 +11,13 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
+
+        [Required]
         [Display(Name = "UAN")]
-        [Required]
         public string? UAN { get; set; }
-        [Display(Name = "ESIN")]
+
         [Required]
+        [Display(Name = "ESIN")]
         public string? ESIN { get; set; }
     }
 }

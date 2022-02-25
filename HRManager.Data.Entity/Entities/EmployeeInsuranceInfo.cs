@@ -19,7 +19,7 @@ namespace HRManager.Data.Entity.Entities
 
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
-        public DateTime DateOfBirthAsPerAadhar { get; set; }
+        public DateTime? DateOfBirthAsPerAadhar { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
     }

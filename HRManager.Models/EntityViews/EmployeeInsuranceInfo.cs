@@ -25,7 +25,7 @@ namespace HRManager.Models.EntityViews
         [Required]
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
-        public DateTime DateOfBirthAsPerAadhar { get; set; }
+        public DateTime? DateOfBirthAsPerAadhar { get; set; }
         
     }
 }

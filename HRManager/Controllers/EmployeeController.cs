@@ -130,9 +130,10 @@ namespace HRManager.Controllers
                 employeeProfessionalDocuments.CTC= ProfessionalInfo.CTC;
                 employeeProfessionalDocuments.ReportingManagerName= ProfessionalInfo.ReportingManagerName;
                 employeeProfessionalDocuments.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+                employeeProfessionalDocuments.ReportingManagerMobileNumber = ProfessionalInfo.ReportingManagerMobileNumber;
                 employeeProfessionalDocuments.HRName= ProfessionalInfo.HRName;
                 employeeProfessionalDocuments.HREmailId = ProfessionalInfo.HREmailId;
-                employeeProfessionalDocuments.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
+                //employeeProfessionalDocuments.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                 if (ProfessionalInfo.OfferLetter != null)
                 { employeeProfessionalDocuments.OfferLetterPath = Code.FileManager.UploadDocument(ProfessionalInfo.OfferLetter, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 if (ProfessionalInfo.RelievingLetter != null)
@@ -146,7 +147,6 @@ namespace HRManager.Controllers
                 if (ProfessionalInfo.PaySlip2 != null)
                 { employeeProfessionalDocuments.PaySlip3 = Code.FileManager.UploadDocument(ProfessionalInfo.PaySlip3, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 var addedProfessionalInfoId = employeeManager.AddProfessionalInfo(employeeProfessionalDocuments);
-                employeeProfessionalDocuments.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                 return RedirectToAction("Index");
                 //return RedirectToAction("PostBankInfo", new { Id = addedProfessionalInfoId });
             }

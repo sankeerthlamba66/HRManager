@@ -139,6 +139,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.CTC = ProfessionalInfo.CTC;
                 employeeProfessionalInfo.ReportingManagerName = ProfessionalInfo.ReportingManagerName;
                 employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+                employeeProfessionalInfo.ReportingManagerMobileNumber = ProfessionalInfo.ReportingManagerMobileNumber;
                 employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
                 employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
                 employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath;
@@ -147,7 +148,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
-                employeeProfessionalInfo.ReferenceEmailId= ProfessionalInfo.ReferenceEmailId;
+                //employeeProfessionalInfo.ReferenceEmailId= ProfessionalInfo.ReferenceEmailId;
             }
             catch (Exception ex)
             {

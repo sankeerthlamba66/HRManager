@@ -32,6 +32,7 @@ namespace HRManager.Data.Entity
                     professionalInfo.CTC = employeeProfessionalInfo.CTC;
                     professionalInfo.ReportingManagerName = employeeProfessionalInfo.ReportingManagerName;
                     professionalInfo.ReportingManagerEmailId = employeeProfessionalInfo.ReportingManagerEmailId;
+                    professionalInfo.ReportingManagerMobileNumber = employeeProfessionalInfo.ReportingManagerMobileNumber;
                     professionalInfo.HRName = employeeProfessionalInfo.HRName;
                     professionalInfo.HREmailId = employeeProfessionalInfo.HREmailId;
                     professionalInfo.OfferLetterPath = employeeProfessionalInfo.OfferLetterPath;
@@ -40,7 +41,7 @@ namespace HRManager.Data.Entity
                     professionalInfo.PaySlip1 = employeeProfessionalInfo.PaySlip1;
                     professionalInfo.PaySlip2 = employeeProfessionalInfo.PaySlip2;
                     professionalInfo.PaySlip3 = employeeProfessionalInfo.PaySlip3;
-                    professionalInfo.ReferenceEmailId = employeeProfessionalInfo.ReferenceEmailId;
+                   // professionalInfo.ReferenceEmailId = employeeProfessionalInfo.ReferenceEmailId;
                 }
             }
             catch (Exception ex)
@@ -199,7 +200,7 @@ namespace HRManager.Data.Entity
                 EmployeePersonalInfo.FathersNameAsPerAadhar = PersonalInfo.FathersNameAsPerAadhar;
                 EmployeePersonalInfo.FathersMobileNumber = PersonalInfo.FathersMobileNumber;
                 EmployeePersonalInfo.MothersNameAsPerAadhar = PersonalInfo.MothersNameAsPerAadhar;
-                EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
+                //EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
             }
             catch (Exception ex)
             {
@@ -223,6 +224,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.CTC = ProfessionalInfo.CTC;
                 employeeProfessionalInfo.ReportingManagerName = ProfessionalInfo.ReportingManagerName;
                 employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+                employeeProfessionalInfo.ReportingManagerMobileNumber = ProfessionalInfo.ReportingManagerMobileNumber;
                 employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
                 employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
                 employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath;
@@ -231,7 +233,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
-                employeeProfessionalInfo.ReferenceEmailId= ProfessionalInfo.ReferenceEmailId;
+                //employeeProfessionalInfo.ReferenceEmailId= ProfessionalInfo.ReferenceEmailId;
             }
             catch (Exception ex)
             {
@@ -383,7 +385,7 @@ namespace HRManager.Data.Entity
                     EmployeePersonalInfo.FathersNameAsPerAadhar = PersonalInfo.FathersNameAsPerAadhar;
                     EmployeePersonalInfo.FathersMobileNumber = PersonalInfo.FathersMobileNumber;
                     EmployeePersonalInfo.MothersNameAsPerAadhar = PersonalInfo.MothersNameAsPerAadhar;
-                    EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
+                    //EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
                     EmployeePersonalInfo.UpdatedBy = PersonalInfo.UpdatedBy;
                     EmployeePersonalInfo.UpdatedDate = DateTime.Now;
                     context.SaveChanges();
@@ -446,6 +448,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.CTC = ProfessionalInfo.CTC;
                 employeeProfessionalInfo.ReportingManagerName = ProfessionalInfo.ReportingManagerName;
                 employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+                employeeProfessionalInfo.ReportingManagerMobileNumber = ProfessionalInfo.ReportingManagerMobileNumber;
                 employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
                 employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
                 employeeProfessionalInfo.OfferLetterPath = ProfessionalInfo.OfferLetterPath;
@@ -454,7 +457,7 @@ namespace HRManager.Data.Entity
                 employeeProfessionalInfo.PaySlip1 = ProfessionalInfo.PaySlip1;
                 employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2;
                 employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3;
-                employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
+                //employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                 employeeProfessionalInfo.CreatedBy = ProfessionalInfo.CreatedBy;
                 employeeProfessionalInfo.CreatedDate = DateTime.Now;
                 employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.CreatedBy;
@@ -484,6 +487,7 @@ namespace HRManager.Data.Entity
                     employeeProfessionalInfo.CTC = ProfessionalInfo.CTC;
                     employeeProfessionalInfo.ReportingManagerName = ProfessionalInfo.ReportingManagerName;
                     employeeProfessionalInfo.ReportingManagerEmailId = ProfessionalInfo.ReportingManagerEmailId;
+                    employeeProfessionalInfo.ReportingManagerMobileNumber = ProfessionalInfo.ReportingManagerMobileNumber;
                     employeeProfessionalInfo.HRName = ProfessionalInfo.HRName;
                     employeeProfessionalInfo.HREmailId = ProfessionalInfo.HREmailId;
                     if (!string.IsNullOrEmpty(ProfessionalInfo.OfferLetterPath))
@@ -498,7 +502,7 @@ namespace HRManager.Data.Entity
                     { employeeProfessionalInfo.PaySlip2 = ProfessionalInfo.PaySlip2; }
                     if (!string.IsNullOrEmpty(ProfessionalInfo.PaySlip3))
                     { employeeProfessionalInfo.PaySlip3 = ProfessionalInfo.PaySlip3; }
-                    employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
+                    //employeeProfessionalInfo.ReferenceEmailId = ProfessionalInfo.ReferenceEmailId;
                     employeeProfessionalInfo.UpdatedBy = ProfessionalInfo.UpdatedBy;
                     employeeProfessionalInfo.UpdatedDate = DateTime.Now;
                     context.SaveChanges();

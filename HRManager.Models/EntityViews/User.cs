@@ -10,21 +10,29 @@ namespace HRManager.Models.EntityViews
     public class User :EntityBase
     {
         public int? Id { get; set; }
-        [Display(Name = "User Name")]
+        
         [Required]
+        [Display(Name = "User Name")]
+        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         public string? UserName { get; set; }
         public string? Password { get; set; }
+        
+        [Required]
         [Display(Name = "Roles")]
-        [Required]
+        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         public string? Roles { get; set; }
+
+        [Required]
         [Display(Name = "Organization Name")]
-        [Required]
         public OrgaizationName OrganizationName { get; set; }
+
+        [Required]
         [Display(Name = "Organization ID")]
-        [Required]
         public Byte OrganizationId { get; set; }
-        [Display(Name = "User Email Id")]
+
         [Required]
+        [EmailAddress]
+        [Display(Name = "User Email Id")]
         public string? UserMailId { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace HRManager.Data.Entity.Entities
         public string? FathersNameAsPerAadhar { get; set; }
         public string? FathersMobileNumber { get; set; }
         public string? MothersNameAsPerAadhar { get; set; }
-        public ReferalSource HowWereYouReferredToUs { get; set; }
+        //public ReferalSource HowWereYouReferredToUs { get; set; }
 
         public int UserId { get; set; }
         public virtual User User { get; set; }

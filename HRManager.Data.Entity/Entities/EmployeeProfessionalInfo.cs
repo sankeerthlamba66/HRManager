@@ -24,6 +24,7 @@ namespace HRManager.Data.Entity.Entities
         public int CTC { get; set; }
         public string? ReportingManagerName { get; set; }
         public string? ReportingManagerEmailId { get; set; }
+        public string? ReportingManagerMobileNumber { get; set; }
         public string? HRName { get; set; }
         public string? HREmailId { get; set; }
         public string? OfferLetterPath { get; set; }
@@ -32,7 +33,7 @@ namespace HRManager.Data.Entity.Entities
         public string? PaySlip1 { get; set; }
         public string? PaySlip2 { get; set; }
         public string? PaySlip3 { get; set; }
-        public string? ReferenceEmailId { get; set; }
+        //public string? ReferenceEmailId { get; set; }
 
 
 

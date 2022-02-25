@@ -11,20 +11,27 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
+        
+        [Required]
         [Display(Name = "Bank Name")]
-        [Required]
         public string? BankName { get; set; }
+        
+        [Required]
         [Display(Name = "Name As Per Bank Account")]
-        [Required]
         public string? NameAsPerBankAccount { get; set; }
+        
+        [Required]
         [Display(Name = "Account Number")]
-        [Required]
+        [RegularExpression(@"^[0-9]", ErrorMessage = "Use digits only please")]
         public string? AccountNumber { get; set; }
+        
+        [Required]
         [Display(Name = "Branch Name")]
-        [Required]
         public string? BranchName { get; set; }
-        [Display(Name = "IFSC Code")]
+        
         [Required]
+        [Display(Name = "IFSC Code")]
+        [RegularExpression(@"^[A-Z0-9]", ErrorMessage = "Use Block Letters and Numerics only please")]
         public string? IFSCCode { get; set; }
 
     }

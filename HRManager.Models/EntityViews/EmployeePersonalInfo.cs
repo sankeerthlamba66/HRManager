@@ -12,69 +12,97 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
-        [Display(Name = "First Name")]
+
         [Required]
+        [Display(Name = "First Name")]
+        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         public string? FirstName { get; set; }
+
+        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         [Display(Name = "Middle Name")]
         public string? MiddleName { get; set; }
-        [Display(Name ="Last Name")]
+
         [Required]
+        [Display(Name ="Last Name")]
+        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         public string? LastName { get; set; }
+
         [Display(Name = "Gender")]
         [Required]
         public Gender Gender { get; set; }
+
+        [Required]
         [Display(Name = "Date Of Birth")]
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
-        [Required]
         public DateTime DateOfBirth { get; set; }
+
+        [Required]
+        [Phone]
         [Display(Name = "Mobile Number")]
-        [Required]
-        [MaxLength(10)]
         public string? MobileNumber { get; set; }
+
+        [Required]
+        [EmailAddress]
         [Display(Name = "Personal Email Id")]
-        [Required]
         public string? PersonalEmailId { get; set; }
+
+        [Required]
         [Display(Name = "Current Address")]
-        [Required]
         public string? CurrentAddress { get; set; }
+
+        [Required]
         [Display(Name = "Permanent Address")]
-        [Required]
         public string? PermanentAddress { get; set; }
+
+        [Required]
         [Display(Name = "Blood Group")]
-        [Required]
         public BloodGroup BloodGroup { get; set; }
+
+        [Required]
         [Display(Name = "Emergency Contact Name")]
-        [Required]
+        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         public string? EmergencyContactName { get; set; }
+
+        [Required]
+        [Phone]
         [Display(Name = "Emergency Contact Number")]
-        [Required]
-        [MaxLength(10)]
         public string? EmergencyContactNumber { get; set; }
+
+        [Required]
         [Display(Name = "Relationship With Contact")]
-        [Required]
         public string? RelationshipWithContact { get; set; }
+
+        [Required]
         [Display(Name = "Pan Card Number")]
-        [Required]
-        [MaxLength(10)]
+        [StringLength(10,MinimumLength=10)]
+        [RegularExpression(@"^[A-Z0-9]", ErrorMessage = "Use letters and digits only please")]
         public string? PanCardNumber { get; set; }
+
+        [Required]
         [Display(Name = "Name As Per Aadhar")]
-        [Required]
         public string? NameAsPerAadhar { get; set; }
+
+        [Required]
         [Display(Name = "Aadhar Card Number")]
-        [Required]
-        [MaxLength(12)]
+        [StringLength(12, MinimumLength = 12)]
+        [RegularExpression(@"^[0-9]", ErrorMessage = "Use digits only please")]
         public string? AadharCardNumber { get; set; }
+
+        [Required]
         [Display(Name = "Father's Name As per Aadhar")]
-        [Required]
+        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         public string? FathersNameAsPerAadhar { get; set; }
+
+        [Phone]
         [Display(Name = "Father's Mobile Number")]
-        [Required]
         public string? FathersMobileNumber { get; set; }
+
+        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         [Display(Name = "Mother's Name As per Aadhar")]
-        [Required]
         public string? MothersNameAsPerAadhar { get; set; }
-        [Display(Name = "How Were You Referred To Us")]
-        public ReferalSource HowWereYouReferredToUs { get; set; }
+
+        //[Display(Name = "How Were You Referred To Us")]
+        //public ReferalSource HowWereYouReferredToUs { get; set; }
     }
 }

@@ -33,7 +33,9 @@
             <br />
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"><span>Gender<sup class="star" style="color:red;">*</sup></span></label>
+                <span style="font-size:20px">
                 @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(Gender))),"Select Gender")
+                </span>
             </div>
             <br />
             <div class="form-group">
@@ -61,7 +63,7 @@
             </div>
             <br />
             <div class="form-group">
-                <label asp-for="PermanentAddress" class="control-label"><span>PermanentAddress<sup class="star" style="color:red;">*</sup></span></label>
+                <label asp-for="PermanentAddress" class="control-label"><span>Permanent Address<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="PermanentAddress" class="form-control" />
                 <span asp-validation-for="PermanentAddress" class="text-danger"></span>
             </div>
@@ -85,7 +87,7 @@
             <br />
             <div class="form-group">
                 <label asp-for="RelationshipWithContact" class="control-label"><span>Relationship With Contact<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="RelationshipWithContact" class="form-control" />
+                @Html.DropDownListFor(m => m.RelationshipWithContact, new SelectList(Enum.GetValues(typeof(EmergencyContact))),"Relationship Type")
                 <span asp-validation-for="RelationshipWithContact" class="text-danger"></span>
             </div>
             <br />
@@ -125,11 +127,7 @@
                 <span asp-validation-for="MothersNameAsPerAadhar" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group">
-                <label asp-for="HowWereYouReferredToUs" class="control-label"><span>How Were You Referred To Us<sup class="star" style="color:red;">*</sup></span></label>
-                @Html.DropDownListFor(m => m.HowWereYouReferredToUs, new SelectList(Enum.GetValues(typeof(ReferalSource))),"How are U refered to Us")
-            </div>
-             <br />
+
             <div class="form-group">
 @*                <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
 *@                <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>

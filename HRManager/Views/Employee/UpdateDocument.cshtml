@@ -19,7 +19,7 @@
                 <div class="mb-3">                    
                     <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.PassportPhoto"><strong>Passport Photo</strong></label>  
                     <div class="form-group">
-                        <input class="form md-6" type="file" id="formFile"asp-for="@Model.employeeFileDocuments.PassportPhoto"/>   
+                        <input class="form md-6" type="file" id="formFile"asp-for="@Model.employeeFileDocuments.PassportPhoto" />   
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PassportPhoto))
                         {
                             <a target="_blank" href="~/Documents/@Model.employeeDocuments.PassportPhoto">Passport Photo</a>
@@ -44,7 +44,7 @@
                         <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.PanCard"/>
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.PanCard))
                         {
-                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.PanCard">Pan Card</a>
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.PanCard">PAN Card</a>
                         }
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.AadharCard"/>
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.AadharCard))
                         {
-                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.AadharCard">AadharCard</a>
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.AadharCard">Aadhar Card</a>
                         }
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                         <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.VoterId"/>
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.VoterId))
                         {
-                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.VoterId">VoterId</a>
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.VoterId">Voter Id</a>
                         }
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.FathersAadharCard"/>
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.FathersAadharCard))
                         {
-                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.FathersAadharCard">Fathers Aadhar Card</a>
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.FathersAadharCard">Father's Aadhar Card</a>
                         }
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.MothersAadharCard"/>
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.MothersAadharCard))
                         {
-                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.MothersAadharCard">Mothers Aadhar Card</a>
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.MothersAadharCard">Mother's Aadhar Card</a>
                         }
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                 <div class="mb-3">                   
                     <label for="formFile" class="form-label" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount"><strong>Three Months Bank Statement Of Salary Account</strong></label>
                     <div class="form-group">
-                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount" display="block"/>
+                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.ThreeMonthsBankStatementOfSalaryAccount"/>
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount))
                         {
                             <a target="_blank" href="~/Documents/@Model.employeeDocuments.ThreeMonthsBankStatementOfSalaryAccount">Three Months Bank Statement Of Salary Account</a>
@@ -143,7 +143,7 @@
                         <input class="form md-6" type="file" id="formFile" asp-for="@Model.employeeFileDocuments.Form16OrIncomeCertificateOfCurrentFinYear"/>
                         @if (!string.IsNullOrEmpty(@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear))
                         {
-                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear">Form16OrIncomeCertificateOfCurrentFinYear</a>
+                            <a target="_blank" href="~/Documents/@Model.employeeDocuments.Form16OrIncomeCertificateOfCurrentFinYear">Form 16 Or Income Certificate Of Current Fin Year</a>
                         }
                     </div>
                 </div>

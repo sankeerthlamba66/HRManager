@@ -4,7 +4,7 @@
 <hr />
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
         <form asp-action="AddEmployee" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
@@ -23,21 +23,14 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>*@
-            <div class="form-group">
+            < class="form-group">
                 <label asp-for="Roles" class="control-label" style="font-size: 20px"></label>
+                <input class="dropdown" onclick="Ur"/>
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span style="font size:20px">
-                @Html.DropDownListFor(m => m.Roles, new SelectList(Enum.GetValues(typeof(RoleType))),"Select Role")
+               <span style="font-size:15px">
+                @Html.DropDownListFor(m => m.OrganizationName, new SelectList(Enum.GetValues(typeof(OrganizationName))),"Select Organization")
                 </span>
-            </div>
-           <br />
-            <div class="form-group">
-                <label asp-for="OrganizationName" class="control-label " style="font-size: 20px"></label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <span style="font size:20px">
-                @Html.DropDownListFor(m => m.OrganizationName, new SelectList(Enum.GetValues(typeof(OrgaizationName))),"Select Organization")
-                </span>
-            </div>
+            </>
             <br />
             <div class="form-group">
                 <label asp-for="UserMailId" class="control-label" style="font-size: 20px"></label>

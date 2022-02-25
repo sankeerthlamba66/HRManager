@@ -75,6 +75,13 @@
                 <br />
             </dd>
             <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.ReportingManagerMobileNumber)
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.ReportingManagerMobileNumber)
+                <br />
+            </dd>
+            <dt class = "col-sm-6">
                 @Html.DisplayNameFor(model => model.HRName)
             </dt>
             <dd class = "col-sm-6">
@@ -147,13 +154,6 @@
                         <a target="_blank" href="~/Documents/@Model.PaySlip3">Pay Slip 3</a>
                     }
                     <br />
-            </dd>
-            <dt class = "col-sm-6">
-                @Html.DisplayNameFor(model => model.ReferenceEmailId)
-            </dt>
-            <dd class = "col-sm-6">
-                @Html.DisplayFor(model => model.ReferenceEmailId)
-                <br />
             </dd>
         </dl>
         @*@Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})

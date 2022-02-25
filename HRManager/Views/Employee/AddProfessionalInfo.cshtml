@@ -79,6 +79,14 @@
             </div>
             <br />
             <div class="form-group">
+                <label asp-for="ReportingManagerMobileNumber" class="control-label">
+                    <span>Reporting Manager Mobile Number<sup class="star" style="color:red;">*</sup></span>
+                </label>
+                <input asp-for="ReportingManagerMobileNumber" class="form-control" required/>
+                <span asp-validation-for="ReportingManagerMobileNumber" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
                 <label asp-for="HRName" class="control-label">
                     <span>HR Name<sup class="star" style="color:red;">*</sup></span>
                 </label>

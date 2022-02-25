@@ -14,8 +14,8 @@ namespace HRManager.Models
 
     public enum Gender : byte
     {
-        Male = 0,
-        Female = 1
+        Male = 1,
+        Female = 2
     }
 
     public enum DocumentType : byte
@@ -46,18 +46,26 @@ namespace HRManager.Models
 
     }
 
-    public enum ReferalSource : byte
-    {
-        LinkedIn = 0,
-        Naukri = 1,
-        MonsterJobs = 2,
-        SocialMedia = 3,
-        Newspapers= 4,
-        Reference= 5
-    }
-    public enum OrgaizationName : byte
+    public enum OrganizationName : byte
     {
         TekFriday=1,
         Vivifi=2
+    }
+
+    public enum EmergencyContact : byte
+    {
+        Father = 1,
+        Mother = 2,
+        Spouse = 3,
+        Relative = 4
+    }
+
+    public enum Relationship : byte
+    {
+        Father = 1,
+        Mother = 2,
+        Spouse = 3,
+        Children = 4
+
     }
 }

@@ -13,9 +13,9 @@ namespace HRManager.Models.EntityViews
         public int UserId { get; set; }
         [Display(Name = "UAN")]
         [Required]
-        public string UAN { get; set; }
+        public string? UAN { get; set; }
         [Display(Name = "ESIN")]
         [Required]
-        public string ESIN { get; set; }
+        public string? ESIN { get; set; }
     }
 }

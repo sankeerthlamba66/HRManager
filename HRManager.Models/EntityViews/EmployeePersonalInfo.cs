@@ -14,12 +14,12 @@ namespace HRManager.Models.EntityViews
         public int UserId { get; set; }
         [Display(Name = "First Name")]
         [Required]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
         [Display(Name = "Middle Name")]
-        public string MiddleName { get; set; }
+        public string? MiddleName { get; set; }
         [Display(Name ="Last Name")]
         [Required]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         [Display(Name = "Gender")]
         [Required]
         public Gender Gender { get; set; }
@@ -30,46 +30,50 @@ namespace HRManager.Models.EntityViews
         public DateTime DateOfBirth { get; set; }
         [Display(Name = "Mobile Number")]
         [Required]
-        public string MobileNumber { get; set; }
+        [MaxLength(10)]
+        public string? MobileNumber { get; set; }
         [Display(Name = "Personal Email Id")]
         [Required]
-        public string PersonalEmailId { get; set; }
+        public string? PersonalEmailId { get; set; }
         [Display(Name = "Current Address")]
         [Required]
-        public string CurrentAddress { get; set; }
+        public string? CurrentAddress { get; set; }
         [Display(Name = "Permanent Address")]
         [Required]
-        public string PermanentAddress { get; set; }
+        public string? PermanentAddress { get; set; }
         [Display(Name = "Blood Group")]
         [Required]
         public BloodGroup BloodGroup { get; set; }
         [Display(Name = "Emergency Contact Name")]
         [Required]
-        public string EmergencyContactName { get; set; }
+        public string? EmergencyContactName { get; set; }
         [Display(Name = "Emergency Contact Number")]
         [Required]
-        public string EmergencyContactNumber { get; set; }
+        [MaxLength(10)]
+        public string? EmergencyContactNumber { get; set; }
         [Display(Name = "Relationship With Contact")]
         [Required]
-        public string RelationshipWithContact { get; set; }
+        public string? RelationshipWithContact { get; set; }
         [Display(Name = "Pan Card Number")]
         [Required]
-        public string PanCardNumber { get; set; }
+        [MaxLength(10)]
+        public string? PanCardNumber { get; set; }
         [Display(Name = "Name As Per Aadhar")]
         [Required]
-        public string NameAsPerAadhar { get; set; }
+        public string? NameAsPerAadhar { get; set; }
         [Display(Name = "Aadhar Card Number")]
         [Required]
-        public string AadharCardNumber { get; set; }
+        [MaxLength(12)]
+        public string? AadharCardNumber { get; set; }
         [Display(Name = "Father's Name As per Aadhar")]
         [Required]
-        public string FathersNameAsPerAadhar { get; set; }
+        public string? FathersNameAsPerAadhar { get; set; }
         [Display(Name = "Father's Mobile Number")]
         [Required]
-        public string FathersMobileNumber { get; set; }
+        public string? FathersMobileNumber { get; set; }
         [Display(Name = "Mother's Name As per Aadhar")]
         [Required]
-        public string MothersNameAsPerAadhar { get; set; }
+        public string? MothersNameAsPerAadhar { get; set; }
         [Display(Name = "How Were You Referred To Us")]
         public ReferalSource HowWereYouReferredToUs { get; set; }
     }

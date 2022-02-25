@@ -14,13 +14,13 @@ namespace HRManager.Models.EntityViews
         public int UserId { get; set; }
         [Display(Name = "Organization Name")]
         [Required]
-        public string OrganizationName { get; set; }
+        public string? OrganizationName { get; set; }
         [Display(Name = "Is This Your Last Employment")]
         [Required]
         public bool IsThisYourLastEmployment { get; set; }
         [Display(Name = "Last Designation")]
         [Required]
-        public string LastDesignation { get; set; }
+        public string? LastDesignation { get; set; }
         [Display(Name = "Start Date")]
         [Required]
         [DataType(DataType.Date)]
@@ -36,18 +36,18 @@ namespace HRManager.Models.EntityViews
         public int CTC { get; set; }
         [Display(Name = "Reporting Manager Name")]
         [Required]
-        public string ReportingManagerName { get; set; }
+        public string? ReportingManagerName { get; set; }
         [Display(Name = "Reporting Manager Email Id")]
         [Required]
-        public string ReportingManagerEmailId { get; set; }
+        public string? ReportingManagerEmailId { get; set; }
         [Display(Name = "HR Name")]
         [Required]
-        public string HRName { get; set; }
+        public string? HRName { get; set; }
         [Display(Name = "HR Email Id")]
         [Required]
-        public string HREmailId { get; set; }
+        public string? HREmailId { get; set; }
         [Display(Name = "Reference Email Id")]
         [Required]
-        public string ReferenceEmailId { get; set; }
+        public string? ReferenceEmailId { get; set; }
     }
 }

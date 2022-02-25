@@ -12,16 +12,16 @@ namespace HRManager.Models.Views
         public int Id { get; set; }
 
         [Display(Name = "Employee Name")]
-        public string EmployeeName { get; set; }
+        public string? EmployeeName { get; set; }
 
         [Display(Name = "Mobile Number")]
-        public string MobileNumber { get; set; }
+        public string? MobileNumber { get; set; }
 
         [Display(Name = "Personal EmailId")]
-        public string PersonalEmailId { get; set; }
+        public string? PersonalEmailId { get; set; }
 
         [Display(Name = "PAN Card")]
-        public string PanCard { get; set; }
+        public string? PanCard { get; set; }
 
         [Display(Name = "UserID")]
         public int UserId { get; set; }

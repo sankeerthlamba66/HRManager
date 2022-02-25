@@ -9,7 +9,7 @@ namespace HRManager.Models.ViewModels
 {
     public class AllEmployeeCards
     {
-        public List<EmployeeCardSummary> EmployeeData { get; set; }
+        public List<EmployeeCardSummary>? EmployeeData { get; set; }
         public bool AddVerificationLinks { get; set; }
     }
 }

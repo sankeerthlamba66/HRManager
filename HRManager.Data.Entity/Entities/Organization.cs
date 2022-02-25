@@ -12,7 +12,7 @@ namespace HRManager.Data.Entity.Entities
         public byte Id { get; set; }
         public OrgaizationName OrganizationName { get; set; }
 
-        public ICollection<User> Users { get; set; }
-        public ICollection<ApplicationText> ApplicationTexts { get; set; }
+        public ICollection<User>? Users { get; set; }
+        public ICollection<ApplicationText>? ApplicationTexts { get; set; }
     }
 }

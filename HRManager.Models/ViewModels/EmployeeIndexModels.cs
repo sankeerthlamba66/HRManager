@@ -27,6 +27,6 @@ namespace HRManager.Models.ViewModels
         public List<EmployeePFandESIInfo> employeePFandESIInfos { get; set; }
         public EmployeeDocument employeeDocuments { get; set; }
         public ApplicationText applicationTexts { get; set; }
-        public EmployeeAgreementAcceptance employeeAgreementAcceptance { get; set; }
+        public EmployeeAgreementAcceptance? employeeAgreementAcceptance { get; set; }
     }
 }

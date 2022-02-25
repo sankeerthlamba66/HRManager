@@ -101,7 +101,7 @@ namespace HRManager.Data.Entity
                 if (shortSummery != null)
                 {
                     employeeShortSummary.Id = shortSummery.Id;
-                    employeeShortSummary.Name = shortSummery.FirstName + " " + shortSummery.MiddleName + " " + shortSummery.LastName;
+                    employeeShortSummary.Name = GetEmployeeFullName(shortSummery.UserId).EmployeeFullName;
                     employeeShortSummary.Email = shortSummery.PersonalEmailId;
                 }
             }

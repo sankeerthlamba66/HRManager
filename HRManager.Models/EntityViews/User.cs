@@ -24,7 +24,7 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "Organization Name")]
-        public OrgaizationName OrganizationName { get; set; }
+        public OrganizationName OrganizationName { get; set; }
 
         [Required]
         [Display(Name = "Organization ID")]

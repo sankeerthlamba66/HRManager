@@ -52,6 +52,36 @@ namespace HRManager.Controllers
             }
         }
 
+        public IActionResult AddPersonalInfo()
+        {
+            try
+            {
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
+        public IActionResult AddPersonalInfo(EmployeePersonalInfo employeePersonalInfo)
+        {
+            try
+            {
+                employeePersonalInfo.Id = null;
+                employeePersonalInfo.UserId = Session.UserId;
+                employeePersonalInfo.CreatedBy = Session.UserName;
+                var employeePersonalInfoId = employeeManager.AddPersonalInfo(employeePersonalInfo,Session.OrganizationId);
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
+
         [HttpGet]
         public IActionResult UpdatePersonalInfo()
         {

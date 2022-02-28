@@ -11,6 +11,9 @@ namespace HRManager.Models.Views
     {
         public int Id { get; set; }
 
+        [Display(Name ="Employee Id")]
+        public string EmployeeId { get; set; }
+
         [Display(Name = "Employee Name")]
         public string? EmployeeName { get; set; }
 

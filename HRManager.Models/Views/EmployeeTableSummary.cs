@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 namespace HRManager.Models.Views
 {
     public class EmployeeTableSummary
-    { 
+    {
+        [Display(Name = "Employee Id")]
+        public string EmployeeId { get; set; }
         public int Id { get; set; }
         [Display(Name = "Employee Name")]
         public string? EmployeeName { get; set; }

@@ -37,14 +37,6 @@ namespace HRManager.Data.Entity
                     UserDetail.UpdatedDate = DateTime.Now;
                     context.Add(UserDetail);
                     context.SaveChanges();
-                    employeePersonalInfo.UserId = UserDetail.Id;
-                    employeePersonalInfo.FirstName = user.UserName;
-                    employeePersonalInfo.UpdatedDate = DateTime.Now;
-                    employeePersonalInfo.CreatedDate = DateTime.Now;
-                    employeePersonalInfo.CreatedBy = user.CreatedBy;
-                    employeePersonalInfo.UpdatedBy = user.CreatedBy;
-                    context.Add(employeePersonalInfo);
-                    context.SaveChanges();
                     employeeAgreementAcceptance.ConfidentialityAgreementAccepted = false;
                     employeeAgreementAcceptance.ServiceLevelAgreement = false;
                     employeeAgreementAcceptance.BGVAcknowledgement = false;

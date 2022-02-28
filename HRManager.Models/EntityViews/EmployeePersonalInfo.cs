@@ -12,6 +12,7 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
+        public string EmployeeId { get; set; }
 
         [Required]
         [Display(Name = "First Name")]

@@ -11,6 +11,7 @@ namespace HRManager.Business.BussinessRepository
     public interface IEmployeeManager
     {
         EmployeeIndexModels GetEmployeeDetails(int UserId,int organizationId);
+        int AddPersonalInfo(EmployeePersonalInfo PersonalInfo, int OrganizationId);
         EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId, int UserId);
         EmployeePersonalInfo GetPersonalInfo(int UserId);
         int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo);

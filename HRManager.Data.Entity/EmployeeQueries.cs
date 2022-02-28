@@ -359,6 +359,72 @@ namespace HRManager.Data.Entity
             return _employeePersonalInfo;
         }
 
+        public string GenerateEmployeeId(int UserId, int OrganizationId)
+        {
+            string employeeId = UserId.ToString();
+            while(employeeId.Length<4)
+            {
+                employeeId = "0" + employeeId;
+            }
+            var organization = context.Organizations.Where(s => s.Id == OrganizationId).FirstOrDefault();
+            if (organization is not null)
+            {
+                if (organization.OrganizationName.Equals("Tekfriday"))
+                {
+                    employeeId = "T" + employeeId;
+                }
+                else if(organization.OrganizationName.Equals("Vivifi"))
+                {
+                    employeeId = "V" + employeeId;
+                }
+            }
+            return employeeId;
+
+        }
+        public int AddPersonalInfo(EmployeePersonalInfo personalInfo,int OrganizationId)
+        {
+            Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();
+            try
+            {
+                
+                if (personalInfo is not null)
+                {
+                    employeePersonalInfo.UserId = personalInfo.UserId;
+                    employeePersonalInfo.EmployeeId = GenerateEmployeeId(personalInfo.UserId,OrganizationId);
+                    employeePersonalInfo.FirstName = personalInfo.FirstName;
+                    employeePersonalInfo.MiddleName = personalInfo.MiddleName;
+                    employeePersonalInfo.LastName = personalInfo.LastName;
+                    employeePersonalInfo.Gender = personalInfo.Gender;
+                    employeePersonalInfo.DateOfBirth = personalInfo.DateOfBirth;
+                    employeePersonalInfo.MobileNumber = personalInfo.MobileNumber;
+                    employeePersonalInfo.PersonalEmailId = personalInfo.PersonalEmailId;
+                    employeePersonalInfo.CurrentAddress = personalInfo.CurrentAddress;
+                    employeePersonalInfo.PermanentAddress = personalInfo.PermanentAddress;
+                    employeePersonalInfo.BloodGroup = personalInfo.BloodGroup;
+                    employeePersonalInfo.EmergencyContactName = personalInfo.EmergencyContactName;
+                    employeePersonalInfo.EmergencyContactNumber = personalInfo.EmergencyContactNumber;
+                    employeePersonalInfo.RelationshipWithContact = personalInfo.RelationshipWithContact;
+                    employeePersonalInfo.PanCardNumber = personalInfo.PanCardNumber;
+                    employeePersonalInfo.NameAsPerAadhar = personalInfo.NameAsPerAadhar;
+                    employeePersonalInfo.AadharCardNumber = personalInfo.AadharCardNumber;
+                    employeePersonalInfo.FathersNameAsPerAadhar = personalInfo.FathersNameAsPerAadhar;
+                    employeePersonalInfo.FathersMobileNumber = personalInfo.FathersMobileNumber;
+                    employeePersonalInfo.MothersNameAsPerAadhar = personalInfo.MothersNameAsPerAadhar;
+                    employeePersonalInfo.UpdatedDate = DateTime.Now;
+                    employeePersonalInfo.CreatedDate = DateTime.Now;
+                    employeePersonalInfo.CreatedBy = personalInfo.CreatedBy;
+                    employeePersonalInfo.UpdatedBy = personalInfo.CreatedBy;
+                    context.Add(employeePersonalInfo);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return employeePersonalInfo.Id;
+        }
+
         public int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo)
         {
             try

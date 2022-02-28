@@ -18,6 +18,10 @@ namespace HRManager.Business
             return new EmployeeQueries().GetEmployeeDetails(UserId,organizationId);
         }
         #region PersonalInfo
+        public int AddPersonalInfo(EmployeePersonalInfo PersonalInfo,int OrganizationId)
+        {
+            return new EmployeeQueries().AddPersonalInfo(PersonalInfo,OrganizationId);
+        }
         public EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId,int UserId)
         {
             return new EmployeeQueries().GetPersonalInfo(PersonalInfoId, UserId);

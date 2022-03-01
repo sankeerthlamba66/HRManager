@@ -14,18 +14,18 @@
             <br />
             <div class="form-group">
                 <label asp-for="Relationship" class="control-label"><span>Relationship<sup class="star" style="color:red;">*</sup></span></label>
-                <span style="font-size:20px">
-                @Html.DropDownListFor(m => m.Relationship, new SelectList(Enum.GetValues(typeof(Relationship))),"Relationship")
-                </span>
+                <select class="form-select" aria-label="Default select example" asp-for="Relationship"  asp-items="Html.GetEnumSelectList<Relationship>()">
+                    <option selected></option>
+                </select>
                 <span asp-validation-for="Relationship" class="text-danger"></span>
             </div>
             <br />
              <div class="form-group">
                 <label asp-for="Gender" class="control-label"><span>Gender<sup class="star" style="color:red;">*</sup></span></label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <span style="font-size:20px">
-                @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(Gender))),"Select Gender")
-                </span>
+                <select class="form-select" aria-label="Default select example" asp-for="Gender"  asp-items="Html.GetEnumSelectList<Gender>()">
+                    <option selected>Select</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">

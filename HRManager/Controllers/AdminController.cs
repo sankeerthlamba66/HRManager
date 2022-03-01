@@ -214,12 +214,17 @@ namespace HRManager.Controllers
             }
 
             var sb = new StringBuilder();
-            sb.AppendLine("Id,Employee Name,MobileNumber,Personal EmailId,PANCard");
+            sb.AppendLine("Id,EmployeeID,Employee Name,DOB,Mobile No,Personal EmailId,PANCard");
             foreach (var data in employeeData)
             {
-                sb.AppendLine(data.Id + "," + data.EmployeeName + "," +data.MobileNumber+", "+data.PersonalEmailId+","+data.PanCard);
+                sb.AppendLine(data.Id + ","+data.EmployeeId +","+ data.EmployeeNameAsPerAadhar +","+data.DateOfBirth+ "," +data.MobileNumber+", "+data.PersonalEmailId+","+data.PanCard);
             }
             return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "export.csv");
+        }
+        public IActionResult SearchEmployee(string? searchValue)
+        {
+            var EmployeeData = adminManager.GetRecentlyUpdatedEmployees().Where(s => s.MobileNumber.Contains(searchValue) || s.PersonalEmailId.Contains(searchValue)).ToList();
+            return PartialView("Index", EmployeeData);
         }
     }
 }

@@ -16,21 +16,25 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "First Name")]
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
         public string? FirstName { get; set; }
 
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
         [Display(Name = "Middle Name")]
         public string? MiddleName { get; set; }
 
         [Required]
         [Display(Name ="Last Name")]
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
         public string? LastName { get; set; }
 
-        [Display(Name = "Gender")]
         [Required]
+        [Display(Name = "Gender")]
         public Gender Gender { get; set; }
+
+        [Required]
+        [Display(Name = "Marital Status")]
+        public MaritalStatus MaritalStatus { get; set; }
 
         [Required]
         [Display(Name = "Date Of Birth")]
@@ -40,6 +44,7 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Phone]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         [Display(Name = "Mobile Number")]
         public string? MobileNumber { get; set; }
 
@@ -49,12 +54,56 @@ namespace HRManager.Models.EntityViews
         public string? PersonalEmailId { get; set; }
 
         [Required]
-        [Display(Name = "Current Address")]
-        public string? CurrentAddress { get; set; }
+        [Display(Name = "Address Line 1")]
+        public string? CurrentAddressLine1 { get; set; }
 
         [Required]
-        [Display(Name = "Permanent Address")]
-        public string? PermanentAddress { get; set; }
+        [Display(Name = "Address Line 2")]
+        public string? CurrentAddressLine2 { get; set; }
+
+        [Required]
+        [Display(Name = "Address Line 3")]
+        public string? CurrentAddressLine3 { get; set; }
+
+        [Required]
+        [Display(Name = "City")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
+        public string? CurrentCity { get; set; }
+
+        [Required]
+        [Display(Name = "State")]
+        public States CurrentState { get; set; }
+
+        [Required]
+        [Display(Name = "Pincode")]
+        //[RegularExpression(@"^([0-9]{6})*$", ErrorMessage = "Use digits only please")]
+        public int? CurrentPinCode { get; set; }
+
+        [Required]
+        [Display(Name = "Adress Line 1")]
+        public string? PermanentAddressLine1 { get; set; }
+
+        [Required]
+        [Display(Name = "Adress Line 2")]
+        public string? PermanentAddressLine2 { get; set; }
+
+        [Required]
+        [Display(Name = "Address Line 3")]
+        public string? PermanentAddressLine3 { get; set; }
+
+        [Required]
+        [Display(Name = "City")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
+        public string? PermanentCity { get; set; }
+
+        [Required]
+        [Display(Name = "State")]
+        public States PermanentState { get; set; }
+
+        [Required]
+        [Display(Name = "Pincode")]
+        //[RegularExpression(@"^[0-9]*$", ErrorMessage = "Use digits only please")]
+        public int? PermanentPincode { get; set; }
 
         [Required]
         [Display(Name = "Blood Group")]
@@ -62,12 +111,13 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "Emergency Contact Name")]
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
         public string? EmergencyContactName { get; set; }
 
         [Required]
         [Phone]
         [Display(Name = "Emergency Contact Number")]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         public string? EmergencyContactNumber { get; set; }
 
         [Required]
@@ -77,30 +127,32 @@ namespace HRManager.Models.EntityViews
         [Required]
         [Display(Name = "Pan Card Number")]
         [StringLength(10,MinimumLength=10)]
-        [RegularExpression(@"^[A-Z0-9]", ErrorMessage = "Use letters and digits only please")]
+        [RegularExpression(@"^[A-Z0-9]*$", ErrorMessage = "Use Block letters and digits only please")]
         public string? PanCardNumber { get; set; }
 
         [Required]
         [Display(Name = "Name As Per Aadhar")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
         public string? NameAsPerAadhar { get; set; }
 
         [Required]
         [Display(Name = "Aadhar Card Number")]
         [StringLength(12, MinimumLength = 12)]
-        [RegularExpression(@"^[0-9]", ErrorMessage = "Use digits only please")]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Use digits only please")]
         public string? AadharCardNumber { get; set; }
 
         [Required]
         [Display(Name = "Father's Name As per Aadhar")]
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
         public string? FathersNameAsPerAadhar { get; set; }
 
         [Phone]
         [Display(Name = "Father's Mobile Number")]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         public string? FathersMobileNumber { get; set; }
 
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         [Display(Name = "Mother's Name As per Aadhar")]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
         public string? MothersNameAsPerAadhar { get; set; }
 
         //[Display(Name = "How Were You Referred To Us")]

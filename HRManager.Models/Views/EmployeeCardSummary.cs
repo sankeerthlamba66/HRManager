@@ -11,11 +11,14 @@ namespace HRManager.Models.Views
     {
         public int Id { get; set; }
 
-        [Display(Name ="Employee Id")]
+        [Display(Name = "Employee Id")]
         public string EmployeeId { get; set; }
 
         [Display(Name = "Employee Name")]
-        public string? EmployeeName { get; set; }
+        public string? EmployeeNameAsPerAadhar { get; set; }
+
+        [Display(Name = "Date Of Birth")]
+        public string? DateOfBirth { get; set; }
 
         [Display(Name = "Mobile Number")]
         public string? MobileNumber { get; set; }
@@ -23,10 +26,10 @@ namespace HRManager.Models.Views
         [Display(Name = "Personal EmailId")]
         public string? PersonalEmailId { get; set; }
 
-        [Display(Name = "PAN Card")]
-        public string? PanCard { get; set; }
-
         [Display(Name = "UserID")]
         public int UserId { get; set; }
+
+        [Display(Name = "PAN Card")]
+        public string? PanCard { get; set; }
     }
 }

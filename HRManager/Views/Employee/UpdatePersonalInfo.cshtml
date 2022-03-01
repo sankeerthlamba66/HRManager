@@ -5,137 +5,216 @@
 }
 
 <h3>Edit Your Personal Details</h3>
+@if (Model is not null)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-controller="Employee" asp-action="UpdatePersonalInfo" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-controller="Employee" asp-action="UpdatePersonalInfo" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label">
+                        <span>First Name<sup class="star" style="color:red;">*</sup></span>
+                    </label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="MiddleName" class="control-label"></label>
+                    <input asp-for="MiddleName" class="form-control" />
+                    <span asp-validation-for="MiddleName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"><span>Last Name<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"><span>Gender<sup class="star" style="color:red;">*</sup></span></label>
+                    <select class="form-select" aria-label="Default select example" asp-for="Gender"  asp-items="Html.GetEnumSelectList<Gender>()">
+                    <option selected>Select</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="MaritalStatus" class="control-label"><span>Marital Status<sup class="star" style="color:red;">*</sup></span></label>
+                    <select class="form-select" aria-label="Default select example" asp-for="MaritalStatus"  asp-items="Html.GetEnumSelectList<MaritalStatus>()">
+                    <option selected>Select</option>
+                    </select>
+                    <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="DateOfBirth" class="control-label"><span>Date Of Birth<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="DateOfBirth" class="form-control" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="MobileNumber" class="control-label"><span>Mobile Number<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="MobileNumber" class="form-control" />
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="PersonalEmailId" class="control-label"><span>Personal Email Id<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="PersonalEmailId" class="form-control" />
+                    <span asp-validation-for="PersonalEmailId" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="CurrentAddressLine1" class="control-label"></label>
+                    <input asp-for="CurrentAddressLine1" class="form-control" />
+                    <span asp-validation-for="CurrentAddressLine1" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="CurrentAddressLine2" class="control-label"></label>
+                    <input asp-for="CurrentAddressLine2" class="form-control" />
+                    <span asp-validation-for="CurrentAddressLine2" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="CurrentAddressLine3" class="control-label"></label>
+                    <input asp-for="CurrentAddressLine3" class="form-control" />
+                    <span asp-validation-for="CurrentAddressLine3" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="CurrentCity" class="control-label"></label>
+                    <input asp-for="CurrentCity" class="form-control" />
+                    <span asp-validation-for="CurrentCity" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="CurrentState" class="control-label"></label>
+                    <select class="form-select" aria-label="Default select example" asp-for="CurrentState"  asp-items="Html.GetEnumSelectList<States>()">
+                    <option selected>Select</option>
+                    </select>
+                    <span asp-validation-for="CurrentState" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="CurrentPinCode" class="control-label"></label>
+                    <input asp-for="CurrentPinCode" class="form-control" />
+                    <span asp-validation-for="CurrentPinCode" class="text-danger"></span>
+                </div> 
+                <br />
+                <div class="form-group">
+                    <label asp-for="PermanentAddressLine1" class="control-label"></label>
+                    <input asp-for="PermanentAddressLine1" class="form-control" />
+                    <span asp-validation-for="PermanentAddressLine1" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="PermanentAddressLine2" class="control-label"></label>
+                    <input asp-for="PermanentAddressLine2" class="form-control" />
+                    <span asp-validation-for="PermanentAddressLine2" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="PermanentAddressLine3" class="control-label"></label>
+                    <input asp-for="PermanentAddressLine3" class="form-control" />
+                    <span asp-validation-for="PermanentAddressLine3" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="PermanentCity" class="control-label"></label>
+                    <input asp-for="PermanentCity" class="form-control" />
+                    <span asp-validation-for="PermanentCity" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="PermanentState" class="control-label"></label>
+                    <select class="form-select" aria-label="Default select example" asp-for="PermanentState"  asp-items="Html.GetEnumSelectList<States>()">
+                    <option selected>Select</option>
+                    </select>
+                    <span asp-validation-for="PermanentState" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="PermanentPincode" class="control-label"></label>
+                    <input asp-for="PermanentPincode" class="form-control" />
+                    <span asp-validation-for="PermanentPincode" class="text-danger"></span>
+                </div>            
+                <br />
+                <div class="form-group">
+                    <label asp-for="BloodGroup" class="control-label"><span>Blood Group<sup class="star" style="color:red;">*</sup></span></label>
+                    <select class="form-select" aria-label="Default select example" asp-for="BloodGroup"  asp-items="Html.GetEnumSelectList<BloodGroup>()">
+                        <option selected>Select</option>
+                    </select>
+                    <span asp-validation-for="BloodGroup" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="EmergencyContactName" class="control-label"><span>Emergency Contact Name<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="EmergencyContactName" class="form-control" />
+                    <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="EmergencyContactNumber" class="control-label"><span>Emergency Contact Number<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="EmergencyContactNumber" class="form-control" />
+                    <span asp-validation-for="EmergencyContactNumber" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="RelationshipWithContact" class="control-label"><span>Relationship With Contact<sup class="star" style="color:red;">*</sup></span></label>
+                    <select class="form-select" aria-label="Default select example" asp-for="RelationshipWithContact"  asp-items="Html.GetEnumSelectList<EmergencyContactRelationship>()">
+                    <option selected>Select</option>
+                    </select>
+                   <span asp-validation-for="RelationshipWithContact" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="PanCardNumber" class="control-label"><span>PAN Card Number<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="PanCardNumber" class="form-control" />
+                    <span asp-validation-for="PanCardNumber" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="NameAsPerAadhar" class="control-label"><span>Name As Per Aadhar<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="NameAsPerAadhar" class="form-control" />
+                    <span asp-validation-for="NameAsPerAadhar" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="AadharCardNumber" class="control-label"><span>Aadhar Card Number<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="AadharCardNumber" class="form-control" />
+                    <span asp-validation-for="AadharCardNumber" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="FathersNameAsPerAadhar" class="control-label"><span>Fathers Name As PerAadhar<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="FathersNameAsPerAadhar" class="form-control" />
+                    <span asp-validation-for="FathersNameAsPerAadhar" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="FathersMobileNumber" class="control-label"><span>Fathers Mobile Number<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="FathersMobileNumber" class="form-control" />
+                    <span asp-validation-for="FathersMobileNumber" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="MothersNameAsPerAadhar" class="control-label"><span>Mothers Name As Per Aadhar<sup class="star" style="color:red;">*</sup></span></label>
+                    <input asp-for="MothersNameAsPerAadhar" class="form-control" />
+                    <span asp-validation-for="MothersNameAsPerAadhar" class="text-danger"></span>
+                </div>
+                <br />
 
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label">
-                <span>First Name<sup class="star" style="color:red;">*</sup></span>
-                </label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="MiddleName" class="control-label"></label>
-                <input asp-for="MiddleName" class="form-control" />
-                <span asp-validation-for="MiddleName" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"><span>Last Name<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"><span>Gender<sup class="star" style="color:red;">*</sup></span></label>
-                <span style="font-size:20px">
-                @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(Gender))),"Select Gender")
-                </span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label"><span>Date Of Birth<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="DateOfBirth" class="form-control" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="MobileNumber" class="control-label"><span>Mobile Number<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="MobileNumber" class="form-control" />
-                <span asp-validation-for="MobileNumber" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="PersonalEmailId" class="control-label"><span>Personal Email Id<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="PersonalEmailId" class="form-control" />
-                <span asp-validation-for="PersonalEmailId" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="CurrentAddress" class="control-label"><span>Current Address<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="CurrentAddress" class="form-control" />
-                <span asp-validation-for="CurrentAddress" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="PermanentAddress" class="control-label"><span>Permanent Address<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="PermanentAddress" class="form-control" />
-                <span asp-validation-for="PermanentAddress" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="BloodGroup" class="control-label"><span>Blood Group<sup class="star" style="color:red;">*</sup></span></label>
-                @Html.DropDownListFor(m => m.BloodGroup, new SelectList(Enum.GetValues(typeof(BloodGroup))),"Select Blood Group")
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="EmergencyContactName" class="control-label"><span>Emergency Contact Name<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="EmergencyContactName" class="form-control" />
-                <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="EmergencyContactNumber" class="control-label"><span>Emergency Contact Number<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="EmergencyContactNumber" class="form-control" />
-                <span asp-validation-for="EmergencyContactNumber" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="RelationshipWithContact" class="control-label"><span>Relationship With Contact<sup class="star" style="color:red;">*</sup></span></label>
-                @Html.DropDownListFor(m => m.RelationshipWithContact, new SelectList(Enum.GetValues(typeof(EmergencyContact))),"Relationship Type")
-                <span asp-validation-for="RelationshipWithContact" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="PanCardNumber" class="control-label"><span>PAN Card Number<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="PanCardNumber" class="form-control" />
-                <span asp-validation-for="PanCardNumber" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="NameAsPerAadhar" class="control-label"><span>Name As Per Aadhar<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="NameAsPerAadhar" class="form-control" />
-                <span asp-validation-for="NameAsPerAadhar" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="AadharCardNumber" class="control-label"><span>Aadhar Card Number<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="AadharCardNumber" class="form-control" />
-                <span asp-validation-for="AadharCardNumber" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="FathersNameAsPerAadhar" class="control-label"><span>Fathers Name As PerAadhar<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="FathersNameAsPerAadhar" class="form-control" />
-                <span asp-validation-for="FathersNameAsPerAadhar" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="FathersMobileNumber" class="control-label"><span>Fathers Mobile Number<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="FathersMobileNumber" class="form-control" />
-                <span asp-validation-for="FathersMobileNumber" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="MothersNameAsPerAadhar" class="control-label"><span>Mothers Name As Per Aadhar<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="MothersNameAsPerAadhar" class="form-control" />
-                <span asp-validation-for="MothersNameAsPerAadhar" class="text-danger"></span>
-            </div>
-            <br />
-
-            <div class="form-group">
-@*                <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
-*@                <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
-            </div>
-        </form>
+                <div class="form-group">
+                    @*<input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>*@
+                      <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
+}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

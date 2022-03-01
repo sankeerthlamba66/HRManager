@@ -15,8 +15,14 @@ if(Model.ToDate !=null)
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeData[0].Id)
             </th>
+             <th>
+                @Html.DisplayNameFor(model => model.EmployeeData[0].EmployeeId)
+            </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeData[0].EmployeeName)
+                @Html.DisplayNameFor(model => model.EmployeeData[0].EmployeeNameAsPerAadhar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeData[0].DateOfBirth)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeData[0].MobileNumber)
@@ -45,8 +51,14 @@ if(Model.ToDate !=null)
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EmployeeName)
+                @Html.DisplayFor(modelItem => item.EmployeeNameAsPerAadhar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MobileNumber)
@@ -76,4 +88,16 @@ if(Model.ToDate !=null)
 
 @section Scripts
 {
+    $("#SearchWith").click(
+function()
+    {
+        $.ajax(
+            {
+                url:"/Admin/SearchEmployee?searchValue="+$("#search").val();
+            }
+        ).done(function(data))
+        {
+
+        });
+    });
 }

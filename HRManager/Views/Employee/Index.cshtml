@@ -11,9 +11,16 @@
   <form asp-controller="Employee" asp-action="Index">
              
         <div>
-          <h2>Personal Details</h2>
+          <h2>Personal Details
+               @if(Model.employeePersonalInfo is null)
+               {
+                    <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddPersonalInfo", "Employee")'" />
+               }
+          </h2>
+        @if (Model.employeePersonalInfo is not null)
+        {
             <div class="row">
-             <div class="card bg-transparent border-3">
+                <div class="card bg-transparent border-3">
               <div class="card-body">
                 <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo">
               <div class="card-footer">
@@ -22,6 +29,7 @@
              </div>
             </div>
             </div>
+        }
         </div>
         <br />
 
@@ -195,7 +203,7 @@
              }
              else if ($('#professionaldetails').length>0 && $('#PFandESIdetails').length==0)
              {
-                 confirm("Please provide PF and ESI Details ")
+                 alert("Please provide PF and ESI Details ")
              }
              else if ($('#professionaldetails').length==0)
              {

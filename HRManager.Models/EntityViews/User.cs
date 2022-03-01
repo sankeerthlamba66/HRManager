@@ -13,13 +13,13 @@ namespace HRManager.Models.EntityViews
         
         [Required]
         [Display(Name = "User Name")]
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
+        [RegularExpression(@"^[a-zA-Z \s]*$", ErrorMessage = "Use letters only please")]
         public string? UserName { get; set; }
+
         public string? Password { get; set; }
         
         [Required]
         [Display(Name = "Roles")]
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
         public string? Roles { get; set; }
 
         [Required]

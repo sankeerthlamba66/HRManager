@@ -52,11 +52,11 @@ namespace HRManager.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult AddPersonalInfo()
         {
             try
             {
-
                 return View();
             }
             catch (Exception ex)
@@ -65,6 +65,7 @@ namespace HRManager.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult AddPersonalInfo(EmployeePersonalInfo employeePersonalInfo)
         {
             try
@@ -74,7 +75,7 @@ namespace HRManager.Controllers
                 employeePersonalInfo.CreatedBy = Session.UserName;
                 var employeePersonalInfoId = employeeManager.AddPersonalInfo(employeePersonalInfo,Session.OrganizationId);
 
-                return View();
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {

@@ -12,19 +12,24 @@ namespace HRManager.Models.EntityViews
     {
         public int? Id { get; set; }
         public int UserId { get; set; }
+        
+        [Required]
         [Display(Name = "Name As Per Aadhar")]
-        [Required]
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Use letters only please")]
         public string? NameAsPerAadhar { get; set; }
+        
+        [Required]
         [Display(Name = "Relationship")]
-        [Required]
         public string? Relationship { get; set; }
-        [Display(Name = "Gender")]
+        
         [Required]
+        [Display(Name = "Gender")]
         public Gender Gender { get; set; }
-        [Display(Name = "Date Of Birth As Per Aadhar")]
+        
         [Required]
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
+        [Display(Name = "Date Of Birth As Per Aadhar")]
         public DateTime? DateOfBirthAsPerAadhar { get; set; }
         
     }

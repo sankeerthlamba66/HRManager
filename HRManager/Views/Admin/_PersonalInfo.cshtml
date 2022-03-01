@@ -44,6 +44,13 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.Gender)
             </dd>
+             <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Marital Status" field-name="@Html.DisplayNameFor(model => model.MaritalStatus)" field-value="@Model.MaritalStatus"/>
+                @Html.DisplayNameFor(model => model.MaritalStatus)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.MaritalStatus)
+            </dd>
             <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox"  value="Date Of Birth" field-name="@Html.DisplayNameFor(model => model.DateOfBirth)" field-value="@Model.DateOfBirth"/>
                 @Html.DisplayNameFor(model => model.DateOfBirth)
@@ -66,18 +73,88 @@
                 @Html.DisplayFor(model => model.PersonalEmailId)
             </dd>
             <dt class = "col-sm-4">
-                <input type="checkbox" class="validation-checkbox" name="checkbox"  value="Current Address" field-name="@Html.DisplayNameFor(model => model.CurrentAddress)" field-value="@Model.CurrentAddress"/>
-                @Html.DisplayNameFor(model => model.CurrentAddress)
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Address Line 1"  field-name="@Html.DisplayNameFor(model => model.CurrentAddressLine1)" field-value="@Model.CurrentAddressLine1"/>
+                @Html.DisplayNameFor(model => model.CurrentAddressLine1)
             </dt>
             <dd class = "col-sm-8">
-                @Html.DisplayFor(model => model.CurrentAddress)
+                @Html.DisplayFor(model => model.CurrentAddressLine1)
             </dd>
             <dt class = "col-sm-4">
-                <input type="checkbox" class="validation-checkbox" name="checkbox"  value="Permanent Address" field-name="@Html.DisplayNameFor(model => model.PermanentAddress)" field-value="@Model.PermanentAddress"/>
-                @Html.DisplayNameFor(model => model.PermanentAddress)
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Address Line 2"  field-name="@Html.DisplayNameFor(model => model.CurrentAddressLine2)" field-value="@Model.CurrentAddressLine2"/>
+                @Html.DisplayNameFor(model => model.CurrentAddressLine2)
             </dt>
             <dd class = "col-sm-8">
-                @Html.DisplayFor(model => model.PermanentAddress)
+                @Html.DisplayFor(model => model.CurrentAddressLine2)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Address Line 3"  field-name="@Html.DisplayNameFor(model => model.CurrentAddressLine3)" field-value="@Model.CurrentAddressLine3"/>
+                @Html.DisplayNameFor(model => model.CurrentAddressLine3)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.CurrentCity)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="City"  field-name="@Html.DisplayNameFor(model => model.CurrentCity)" field-value="@Model.CurrentCity"/>
+                @Html.DisplayNameFor(model => model.CurrentCity)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.CurrentState)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="State"  field-name="@Html.DisplayNameFor(model => model.CurrentState)" field-value="@Model.CurrentState"/>
+                @Html.DisplayNameFor(model => model.CurrentState)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.CurrentState)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Pincode"  field-name="@Html.DisplayNameFor(model => model.CurrentPinCode)" field-value="@Model.CurrentPinCode"/>
+                @Html.DisplayNameFor(model => model.CurrentPinCode)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.CurrentPinCode)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Address Line 1"  field-name="@Html.DisplayNameFor(model => model.PermanentAddressLine1)" field-value="@Model.PermanentAddressLine1"/>
+                @Html.DisplayNameFor(model => model.PermanentAddressLine1)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.PermanentAddressLine1)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Address Line 2"  field-name="@Html.DisplayNameFor(model => model.PermanentAddressLine2)" field-value="@Model.PermanentAddressLine2"/>
+                @Html.DisplayNameFor(model => model.PermanentAddressLine2)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.PermanentAddressLine2)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Address Line 3"  field-name="@Html.DisplayNameFor(model => model.PermanentAddressLine3)" field-value="@Model.PermanentAddressLine3"/>
+                @Html.DisplayNameFor(model => model.PermanentAddressLine3)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.PermanentAddressLine3)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="City"  field-name="@Html.DisplayNameFor(model => model.PermanentCity)" field-value="@Model.PermanentCity"/>
+                @Html.DisplayNameFor(model => model.PermanentCity)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.PermanentCity)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="State"  field-name="@Html.DisplayNameFor(model => model.PermanentState)" field-value="@Model.PermanentState"/>
+                @Html.DisplayNameFor(model => model.PermanentState)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.PermanentState)
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Pincode"  field-name="@Html.DisplayNameFor(model => model.PermanentPincode)" field-value="@Model.PermanentPincode"/>
+                @Html.DisplayNameFor(model => model.PermanentPincode)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.PermanentPincode)
             </dd>
             <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox"  value="Blood Group" field-name="@Html.DisplayNameFor(model => model.BloodGroup)" field-value="@Model.BloodGroup"/>

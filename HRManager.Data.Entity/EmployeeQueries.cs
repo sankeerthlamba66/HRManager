@@ -185,11 +185,22 @@ namespace HRManager.Data.Entity
                 EmployeePersonalInfo.MiddleName = PersonalInfo.MiddleName;
                 EmployeePersonalInfo.LastName = PersonalInfo.LastName;
                 EmployeePersonalInfo.Gender = PersonalInfo.Gender;
+                EmployeePersonalInfo.MaritalStatus = PersonalInfo.MaritalStatus;
                 EmployeePersonalInfo.DateOfBirth = PersonalInfo.DateOfBirth;
                 EmployeePersonalInfo.MobileNumber = PersonalInfo.MobileNumber;
                 EmployeePersonalInfo.PersonalEmailId = PersonalInfo.PersonalEmailId;
-                EmployeePersonalInfo.CurrentAddress = PersonalInfo.CurrentAddress;
-                EmployeePersonalInfo.PermanentAddress = PersonalInfo.PermanentAddress;
+                EmployeePersonalInfo.CurrentAddressLine1 = PersonalInfo.CurrentAddressLine1;
+                EmployeePersonalInfo.CurrentAddressLine2 = PersonalInfo.CurrentAddressLine2;
+                EmployeePersonalInfo.CurrentAddressLine3 = PersonalInfo.CurrentAddressLine3;
+                EmployeePersonalInfo.CurrentCity = PersonalInfo.CurrentCity;
+                EmployeePersonalInfo.CurrentState = PersonalInfo.CurrentState;
+                EmployeePersonalInfo.CurrentPinCode = PersonalInfo.CurrentPinCode;
+                EmployeePersonalInfo.PermanentAddressLine1 = PersonalInfo.PermanentAddressLine1;
+                EmployeePersonalInfo.PermanentAddressLine2 = PersonalInfo.PermanentAddressLine2;
+                EmployeePersonalInfo.PermanentAddressLine3 = PersonalInfo.PermanentAddressLine3;
+                EmployeePersonalInfo.PermanentCity = PersonalInfo.PermanentCity;
+                EmployeePersonalInfo.PermanentState = PersonalInfo.PermanentState;
+                EmployeePersonalInfo.PermanentPincode = PersonalInfo.PermanentPincode;
                 EmployeePersonalInfo.BloodGroup = PersonalInfo.BloodGroup;
                 EmployeePersonalInfo.EmergencyContactName = PersonalInfo.EmergencyContactName;
                 EmployeePersonalInfo.EmergencyContactNumber = PersonalInfo.EmergencyContactNumber;
@@ -345,7 +356,7 @@ namespace HRManager.Data.Entity
         }
         public EmployeePersonalInfo GetPersonalInfo(int UserId)
         {
-            EmployeePersonalInfo _employeePersonalInfo = new EmployeePersonalInfo();
+            EmployeePersonalInfo _employeePersonalInfo = null;
             try
             {
                 var employeePersonalInfo = context.EmployeePersonalInfos.FirstOrDefault(s => s.UserId == UserId);
@@ -361,24 +372,24 @@ namespace HRManager.Data.Entity
 
         public string GenerateEmployeeId(int UserId, int OrganizationId)
         {
-            string employeeId = UserId.ToString();
+            StringBuilder employeeId = new StringBuilder(UserId.ToString());
             while(employeeId.Length<4)
             {
-                employeeId = "0" + employeeId;
+                employeeId.Insert(0,"0");
             }
             var organization = context.Organizations.Where(s => s.Id == OrganizationId).FirstOrDefault();
             if (organization is not null)
             {
-                if (organization.OrganizationName.Equals("Tekfriday"))
+                if (organization.OrganizationName.ToString().Contains("TekFriday"))
                 {
-                    employeeId = "T" + employeeId;
+                    employeeId.Insert(0, "T");
                 }
-                else if(organization.OrganizationName.Equals("Vivifi"))
+                else if(organization.OrganizationName.ToString().Contains("Vivifi"))
                 {
-                    employeeId = "V" + employeeId;
+                    employeeId.Insert(0, "T");
                 }
             }
-            return employeeId;
+            return employeeId.ToString();
 
         }
         public int AddPersonalInfo(EmployeePersonalInfo personalInfo,int OrganizationId)
@@ -395,11 +406,22 @@ namespace HRManager.Data.Entity
                     employeePersonalInfo.MiddleName = personalInfo.MiddleName;
                     employeePersonalInfo.LastName = personalInfo.LastName;
                     employeePersonalInfo.Gender = personalInfo.Gender;
+                    employeePersonalInfo.MaritalStatus = personalInfo.MaritalStatus;
                     employeePersonalInfo.DateOfBirth = personalInfo.DateOfBirth;
                     employeePersonalInfo.MobileNumber = personalInfo.MobileNumber;
                     employeePersonalInfo.PersonalEmailId = personalInfo.PersonalEmailId;
-                    employeePersonalInfo.CurrentAddress = personalInfo.CurrentAddress;
-                    employeePersonalInfo.PermanentAddress = personalInfo.PermanentAddress;
+                    employeePersonalInfo.CurrentAddressLine1 = personalInfo.CurrentAddressLine1;
+                    employeePersonalInfo.CurrentAddressLine2 = personalInfo.CurrentAddressLine2;
+                    employeePersonalInfo.CurrentAddressLine3 = personalInfo.CurrentAddressLine3;
+                    employeePersonalInfo.CurrentCity = personalInfo.CurrentCity;
+                    employeePersonalInfo.CurrentState = personalInfo.CurrentState;
+                    employeePersonalInfo.CurrentPinCode = personalInfo.CurrentPinCode;
+                    employeePersonalInfo.PermanentAddressLine1 = personalInfo.PermanentAddressLine1;
+                    employeePersonalInfo.PermanentAddressLine2 = personalInfo.PermanentAddressLine2;
+                    employeePersonalInfo.PermanentAddressLine3 = personalInfo.PermanentAddressLine3;
+                    employeePersonalInfo.PermanentCity = personalInfo.PermanentCity;
+                    employeePersonalInfo.PermanentState = personalInfo.PermanentState;
+                    employeePersonalInfo.PermanentPincode = personalInfo.PermanentPincode;
                     employeePersonalInfo.BloodGroup = personalInfo.BloodGroup;
                     employeePersonalInfo.EmergencyContactName = personalInfo.EmergencyContactName;
                     employeePersonalInfo.EmergencyContactNumber = personalInfo.EmergencyContactNumber;
@@ -436,11 +458,22 @@ namespace HRManager.Data.Entity
                     EmployeePersonalInfo.MiddleName = PersonalInfo.MiddleName;
                     EmployeePersonalInfo.LastName = PersonalInfo.LastName;
                     EmployeePersonalInfo.Gender = PersonalInfo.Gender;
+                    EmployeePersonalInfo.MaritalStatus = PersonalInfo.MaritalStatus;
                     EmployeePersonalInfo.DateOfBirth = PersonalInfo.DateOfBirth;
                     EmployeePersonalInfo.MobileNumber = PersonalInfo.MobileNumber;
                     EmployeePersonalInfo.PersonalEmailId = PersonalInfo.PersonalEmailId;
-                    EmployeePersonalInfo.CurrentAddress = PersonalInfo.CurrentAddress;
-                    EmployeePersonalInfo.PermanentAddress = PersonalInfo.PermanentAddress;
+                    EmployeePersonalInfo.CurrentAddressLine1 = PersonalInfo.CurrentAddressLine1;
+                    EmployeePersonalInfo.CurrentAddressLine2 = PersonalInfo.CurrentAddressLine2;
+                    EmployeePersonalInfo.CurrentAddressLine3 = PersonalInfo.CurrentAddressLine3;
+                    EmployeePersonalInfo.CurrentCity = PersonalInfo.CurrentCity;
+                    EmployeePersonalInfo.CurrentState = PersonalInfo.CurrentState;
+                    EmployeePersonalInfo.CurrentPinCode = PersonalInfo.CurrentPinCode;
+                    EmployeePersonalInfo.PermanentAddressLine1 = PersonalInfo.PermanentAddressLine1;
+                    EmployeePersonalInfo.PermanentAddressLine2 = PersonalInfo.PermanentAddressLine2;
+                    EmployeePersonalInfo.PermanentAddressLine3 = PersonalInfo.PermanentAddressLine3;
+                    EmployeePersonalInfo.PermanentCity = PersonalInfo.PermanentCity;
+                    EmployeePersonalInfo.PermanentState = PersonalInfo.PermanentState;
+                    EmployeePersonalInfo.PermanentPincode = PersonalInfo.PermanentPincode;
                     EmployeePersonalInfo.BloodGroup = PersonalInfo.BloodGroup;
                     EmployeePersonalInfo.EmergencyContactName = PersonalInfo.EmergencyContactName;
                     EmployeePersonalInfo.EmergencyContactNumber = PersonalInfo.EmergencyContactNumber;

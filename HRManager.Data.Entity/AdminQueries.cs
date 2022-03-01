@@ -18,7 +18,7 @@ namespace HRManager.Data.Entity
         public int AddEmployee(User user)
         {
             Entities.User UserDetail = new Entities.User();
-            Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();
+            //Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();
             Entities.EmployeeAgreementAcceptance employeeAgreementAcceptance = new Entities.EmployeeAgreementAcceptance();
             try
             {
@@ -64,7 +64,7 @@ namespace HRManager.Data.Entity
                 var employeesPersonlInfos = context.EmployeePersonalInfos.OrderByDescending(s => s.UpdatedDate).ToList();
                 foreach (var item in employeesPersonlInfos)
                 {
-                    employeeTableSummary.Add(GetEmployeeTableSummaryMapper(item));
+                    employeeTableSummary.Add(EmployeeTableSummaryMapper(item));
                 }
             }
             catch (Exception ex)
@@ -73,16 +73,15 @@ namespace HRManager.Data.Entity
             }
             return employeeTableSummary;
         }
-        public EmployeeTableSummary GetEmployeeTableSummaryMapper(Entities.EmployeePersonalInfo employeePersonalInfo)
+        public EmployeeTableSummary EmployeeTableSummaryMapper(Entities.EmployeePersonalInfo employeePersonalInfo)
         {
             EmployeeTableSummary employeeTableSummary = new EmployeeTableSummary();
             try
             {
                 employeeTableSummary.Id = employeePersonalInfo.Id;
-                if (!string.IsNullOrEmpty(employeePersonalInfo.MiddleName))
-                { employeeTableSummary.EmployeeName = employeePersonalInfo.FirstName + " " + employeePersonalInfo.MiddleName + " " + employeePersonalInfo.LastName; }
-                else
-                { employeeTableSummary.EmployeeName = employeePersonalInfo.FirstName + " " + employeePersonalInfo.LastName; }
+                employeeTableSummary.EmployeeId = employeePersonalInfo.EmployeeId;
+                employeeTableSummary.EmployeeNameAsPerAadhar = employeePersonalInfo.NameAsPerAadhar;
+                employeeTableSummary.DateOfBirth = employeePersonalInfo.DateOfBirth.ToString("dd/MM/yyyy");
                 employeeTableSummary.MobileNumber = employeePersonalInfo.MobileNumber;
                 employeeTableSummary.PersonalEmailId = employeePersonalInfo.PersonalEmailId;
                 employeeTableSummary.PanCard = employeePersonalInfo.PanCardNumber;
@@ -94,16 +93,15 @@ namespace HRManager.Data.Entity
             }
             return employeeTableSummary;
         }
-        public EmployeeCardSummary GetEmployeeCardSummaryMapper(Entities.EmployeePersonalInfo employeePersonalInfo)
+        public EmployeeCardSummary EmployeeCardSummaryMapper(Entities.EmployeePersonalInfo employeePersonalInfo)
         {
             EmployeeCardSummary employeeCardSummary = new EmployeeCardSummary();
             try
             {
                 employeeCardSummary.Id = employeePersonalInfo.Id;
-                if (!string.IsNullOrEmpty(employeePersonalInfo.MiddleName))
-                { employeeCardSummary.EmployeeName = employeePersonalInfo.FirstName + " " + employeePersonalInfo.MiddleName + " " + employeePersonalInfo.LastName; }
-                else 
-                { employeeCardSummary.EmployeeName= employeePersonalInfo.FirstName+ " " + employeePersonalInfo.LastName; }
+                employeeCardSummary.EmployeeId=employeePersonalInfo.EmployeeId;
+                employeeCardSummary.EmployeeNameAsPerAadhar = employeePersonalInfo.NameAsPerAadhar;
+                employeeCardSummary.DateOfBirth = employeePersonalInfo.DateOfBirth.ToString("dd/MM/yyyy");
                 employeeCardSummary.MobileNumber = employeePersonalInfo.MobileNumber;
                 employeeCardSummary.PersonalEmailId = employeePersonalInfo.PersonalEmailId;
                 employeeCardSummary.PanCard = employeePersonalInfo.PanCardNumber;
@@ -156,7 +154,7 @@ namespace HRManager.Data.Entity
                 var employeesPersonlInfos = context.EmployeePersonalInfos.Where(s => s.UpdatedDate <= DateTo && s.UpdatedDate >= DateFrom).OrderByDescending(s => s.UpdatedDate).ToList();
                 foreach (var item in employeesPersonlInfos)
                 {
-                    employeeTableSummary.Add(GetEmployeeTableSummaryMapper(item));
+                    employeeTableSummary.Add(EmployeeTableSummaryMapper(item));
                 }
             }
             catch (Exception ex)
@@ -174,7 +172,7 @@ namespace HRManager.Data.Entity
                 var employeesPersonlInfos = context.EmployeePersonalInfos.OrderByDescending(s => s.UpdatedDate).ToList();
                 foreach (var item in employeesPersonlInfos)
                 {
-                    employeeCardsSummary.Add(GetEmployeeCardSummaryMapper(item));
+                    employeeCardsSummary.Add(EmployeeCardSummaryMapper(item));
                 }
             }
             catch (Exception ex)
@@ -192,7 +190,7 @@ namespace HRManager.Data.Entity
                 var employeesPersonlInfos = context.EmployeePersonalInfos.Where(s => s.UpdatedDate <= DateTo && s.UpdatedDate >= DateFrom).OrderByDescending(s => s.UpdatedDate).ToList();
                 foreach (var item in employeesPersonlInfos)
                 {
-                    employeeCardsSummary.Add(GetEmployeeCardSummaryMapper(item));
+                    employeeCardsSummary.Add(EmployeeCardSummaryMapper(item));
                 }
             }
             catch (Exception ex)

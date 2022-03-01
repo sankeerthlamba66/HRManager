@@ -9,11 +9,17 @@ namespace HRManager.Models.Views
 {
     public class EmployeeTableSummary
     {
+        public int Id { get; set; }
+
         [Display(Name = "Employee Id")]
         public string EmployeeId { get; set; }
-        public int Id { get; set; }
+        
         [Display(Name = "Employee Name")]
-        public string? EmployeeName { get; set; }
+        public string? EmployeeNameAsPerAadhar { get; set; }
+
+        [Display(Name ="Date Of Birth")]
+        public string? DateOfBirth { get; set; }
+
         [Display(Name = "Mobile Number")]
         public string? MobileNumber { get; set; }
 

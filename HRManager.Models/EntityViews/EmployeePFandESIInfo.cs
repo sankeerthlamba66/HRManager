@@ -14,6 +14,8 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "UAN")]
+        [StringLength(12,MinimumLength =12)]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Use digits only please")]
         public string? UAN { get; set; }
 
         [Required]

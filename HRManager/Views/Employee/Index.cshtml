@@ -191,19 +191,20 @@
              if($('#professionaldetails').length>0 && $('#PFandESIdetails').length>0)
              {
                  Acceptance();
-                 alert("Submited Successfully")
+                 confirm("Submited Successfully")
              }
              else if ($('#professionaldetails').length>0 && $('#PFandESIdetails').length==0)
              {
-                 alert("Please provide PF and ESI Details ")
+                 confirm("Please provide PF and ESI Details ")
              }
              else if ($('#professionaldetails').length==0)
              {
                  Acceptance();
-                 alert("Submited Successfully")
+                 confirm("Submited Successfully")
              }
          }
          else
+
          {
              alert("Please Fill all the details")
          }

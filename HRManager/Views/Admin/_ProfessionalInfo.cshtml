@@ -70,6 +70,13 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.ReportingManagerEmailId)
             </dd>
+             <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.ReportingManagerMobileNumber)
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.ReportingManagerMobileNumber)
+                <br />
+            </dd>
             <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="HR Name" field-name="@Html.DisplayNameFor(model => model.HRName)" field-value="@Model.HRName">
                 @Html.DisplayNameFor(model => model.HRName)
@@ -143,13 +150,6 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip3">Pay Slip 3</a>
                     }
-            </dd>
-            <dt class = "col-sm-4">
-                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Reference Email Id" field-name="@Html.DisplayNameFor(model => model.ReferenceEmailId)" field-value="@Model.ReferenceEmailId">
-                @Html.DisplayNameFor(model => model.ReferenceEmailId)
-            </dt>
-            <dd class = "col-sm-8">
-                @Html.DisplayFor(model => model.ReferenceEmailId)
             </dd>
         </dl>
         @*@Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})

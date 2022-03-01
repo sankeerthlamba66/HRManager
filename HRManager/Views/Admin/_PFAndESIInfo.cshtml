@@ -22,6 +22,9 @@
             </dt>
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.UAN)
+                <span>
+                    <input type="text" style="float:right;"/>
+                </span>
             </dd>
             <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="ESIN" field-name="@Html.DisplayNameFor(model => model.ESIN)" field-value="@Model.ESIN">
@@ -29,6 +32,9 @@
             </dt>
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.ESIN)
+                 <span>
+                    <input type="text" style="float:right;"/>
+                </span>
             </dd>
         </dl>
 

@@ -13,6 +13,12 @@
             </div>
             <br />
             <div class="form-group">
+                <label asp-for="DateOfBirthAsPerAadhar" class="control-label"><span>Date Of Birth As Per Aadhar<sup class="star" style="color:red;">*</sup></span></label>
+                <input asp-for="DateOfBirthAsPerAadhar" class="form-control" />
+                <span asp-validation-for="DateOfBirthAsPerAadhar" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
                 <label asp-for="Relationship" class="control-label"><span>Relationship<sup class="star" style="color:red;">*</sup></span></label>
                 <select class="form-select" aria-label="Default select example" asp-for="Relationship"  asp-items="Html.GetEnumSelectList<Relationship>()">
                     <option selected></option>
@@ -26,12 +32,6 @@
                     <option selected>Select</option>
                 </select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="DateOfBirthAsPerAadhar" class="control-label"><span>Date Of Birth As Per Aadhar<sup class="star" style="color:red;">*</sup></span></label>
-                <input asp-for="DateOfBirthAsPerAadhar" class="form-control" />
-                <span asp-validation-for="DateOfBirthAsPerAadhar" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">

@@ -21,7 +21,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.OrganizationName)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Organization-Name"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
@@ -31,7 +31,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.IsThisYourLastEmployment)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Is-This-Your-Last-Employment"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
@@ -41,7 +41,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.LastDesignation)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Last-Designation"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
@@ -51,7 +51,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.StartDate)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Start-Date"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
@@ -61,7 +61,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.EndDate)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-End-Date"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
@@ -71,7 +71,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.CTC)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-CTC"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
@@ -81,7 +81,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.ReportingManagerName)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Reporting-Manager-Name"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
@@ -91,16 +91,17 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.ReportingManagerEmailId)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Reporting-Manager-Email-Id"/>
                 </span>
             </dd>
              <dt class = "col-sm-6">
+                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Reporting Manager Mobile Number" field-name="@Html.DisplayNameFor(model => model.ReportingManagerMobileNumber)" value="@Model.ReportingManagerMobileNumber">
                 @Html.DisplayNameFor(model => model.ReportingManagerMobileNumber)
             </dt>
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.ReportingManagerMobileNumber)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Reporting-Manager-Mobile-Number"/>
                 </span>
                 <br />
             </dd>
@@ -111,7 +112,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.HRName)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-HR-Name"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
@@ -121,11 +122,11 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.HREmailId)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-HR-Email-Id"/>
                 </span>
             </dd>
             <dt class = "col-sm-4">
-                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Offer Letter Path" field-name="@Html.DisplayNameFor(model => model.OfferLetterPath)" field-value="@Model.OfferLetterPath">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Offer Letter" field-name="@Html.DisplayNameFor(model => model.OfferLetterPath)" field-value="@Model.OfferLetterPath">
                 @Html.DisplayNameFor(model => model.OfferLetterPath)
             </dt>
             <dd class = "col-sm-8">
@@ -133,9 +134,12 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.OfferLetterPath">Offer Letter</a>
                     }
+                     <span>
+                         <input type="text" style="float:right;" id="Comment-Offer-Letter"/>
+                    </span>
             </dd>
             <dt class = "col-sm-4">
-                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Relieving Letter Path" field-name="@Html.DisplayNameFor(model => model.RelievingLetterPath)" field-value="@Model.RelievingLetterPath">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Relieving Letter" field-name="@Html.DisplayNameFor(model => model.RelievingLetterPath)" field-value="@Model.RelievingLetterPath">
                 @Html.DisplayNameFor(model => model.RelievingLetterPath)
             </dt>
             <dd class = "col-sm-8">
@@ -143,9 +147,12 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.RelievingLetterPath">Relieving Letter</a>
                     }
+                    <span>
+                         <input type="text" style="float:right;" id="Comment-Relieving-Letter"/>
+                    </span>
             </dd>
             <dt class = "col-sm-4">
-                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Experience Letter Path" field-name="@Html.DisplayNameFor(model => model.ExperienceLetterPath)" field-value="@Model.ExperienceLetterPath">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Experience Letter" field-name="@Html.DisplayNameFor(model => model.ExperienceLetterPath)" field-value="@Model.ExperienceLetterPath">
                 @Html.DisplayNameFor(model => model.ExperienceLetterPath)
             </dt>
             <dd class = "col-sm-8">
@@ -153,6 +160,9 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.ExperienceLetterPath">Experience Letter</a>
                     }
+                     <span>
+                         <input type="text" style="float:right;" id="Comment-Experience-Letter"/>
+                    </span>
             </dd>
             <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Pay Slip 1" field-name="@Html.DisplayNameFor(model => model.PaySlip1)" field-value="@Model.PaySlip1">
@@ -163,6 +173,9 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip1">Pay Slip 1</a>
                     }
+                     <span>
+                         <input type="text" style="float:right;" id="Comment-Pay-Slip-1"/>
+                    </span>
             </dd>
             <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Pay Slip 2" field-name="@Html.DisplayNameFor(model => model.PaySlip2)" field-value="@Model.PaySlip2">
@@ -173,6 +186,9 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip2">Pay Slip 2</a>
                     }
+                     <span>
+                         <input type="text" style="float:right;" id="Comment-Pay-Slip-2"/>
+                    </span>
             </dd>
             <dt class = "col-sm-4">
                 <input type="checkbox" class="validation-checkbox" name="checkbox" value="Pay Slip 3" field-name="@Html.DisplayNameFor(model => model.PaySlip3)" field-value="@Model.PaySlip3">
@@ -183,6 +199,9 @@
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip3">Pay Slip 3</a>
                     }
+                     <span>
+                         <input type="text" style="float:right;" id="Comment-Pay-Slip-3"/>
+                    </span>
             </dd>
         </dl>
         @*@Html.ActionLink("Edit","UpdateProfessionalInfo","Employee",new{Id=Model.Id})

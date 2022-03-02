@@ -22,7 +22,18 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.NameAsPerAadhar)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Name-As-Per-Aadhar"/>
+                </span>
+                <br />
+            </dd>
+            <dt class = "col-sm-4">
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="Date of Birth As Per Aadhar" field-name="@Html.DisplayNameFor(model => model.DateOfBirthAsPerAadhar)" field-value="@Model.DateOfBirthAsPerAadhar">
+                @Html.DisplayNameFor(model => model.DateOfBirthAsPerAadhar)
+            </dt>
+            <dd class = "col-sm-8">
+                @Html.DisplayFor(model => model.DateOfBirthAsPerAadhar)
+                 <span>
+                    <input type="text" style="float:right;" id="Comment-Date-Of-Birth-As-Per-Aadhar"/>
                 </span>
                 <br />
             </dd>
@@ -33,7 +44,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.Relationship)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Relationship"/>
                 </span>
                 <br />
             </dd>
@@ -44,7 +55,7 @@
             <dd class = "col-sm-8">
                 @Html.DisplayFor(model => model.Gender)
                  <span>
-                    <input type="text" style="float:right;"/>
+                    <input type="text" style="float:right;" id="Comment-Gender"/>
                 </span>
                 <br />
             </dd>

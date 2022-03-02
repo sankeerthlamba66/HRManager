@@ -234,9 +234,9 @@ namespace HRManager.Data.Entity
                 EmailTemplate.PDVEmailSubjectTemplate = applicationTexts.PDVEmailSubjectTemplate;
                 StringBuilder Body = new StringBuilder(applicationTexts.PDVEmailBodyTemplate);
                 Body.Replace("EmployeeName", summary.Name);
-                foreach (var item in FieldsToUpdate)
+                for(int i=0;i< FieldsToUpdate.Count();i+=2)
                 {
-                    Body.Append("\n * " + item );
+                    Body.Append("\n * " + FieldsToUpdate[i]+"("+ FieldsToUpdate[i+1]+")");
                 }
                 Body.Append("\n\nRegards\n HR Manager\n HR@tekfriday.com");
                 EmailTemplate.PDVEmailBodyTemplate = Body.ToString();

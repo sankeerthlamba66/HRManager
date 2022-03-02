@@ -26,6 +26,12 @@
                 <span asp-validation-for="NameAsPerAadhar" class="text-danger"></span>
             </div>
             <br />
+             <div class="form-group">
+                <label asp-for="DateOfBirthAsPerAadhar" class="control-label"></label>
+                <input asp-for="DateOfBirthAsPerAadhar" class="form-control" />
+                <span asp-validation-for="DateOfBirthAsPerAadhar" class="text-danger"></span>
+            </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Relationship" class="control-label"></label>
                 <select class="form-select" aria-label="Default select example" asp-for="Relationship"  asp-items="Html.GetEnumSelectList<Relationship>()">
@@ -42,12 +48,6 @@
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group">
-                <label asp-for="DateOfBirthAsPerAadhar" class="control-label"></label>
-                <input asp-for="DateOfBirthAsPerAadhar" class="form-control" />
-                <span asp-validation-for="DateOfBirthAsPerAadhar" class="text-danger"></span>
-            </div>
-             <br />
             <div class="form-group">
                 <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
                 <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>

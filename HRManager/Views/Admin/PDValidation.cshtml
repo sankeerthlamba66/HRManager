@@ -103,6 +103,10 @@
            var FieldsToUpdate1 = [];
            $.each($("input[name='checkbox']:checked"), function(){            
                 FieldsToUpdate1.push($(this).val());
+                var val=$(this).val().replaceAll(" ","-")
+                var CommentId="#Comment-"+val
+                var CommentVal=$(CommentId).val()
+                FieldsToUpdate1.push(CommentVal)
             });
        $.ajax(
         {

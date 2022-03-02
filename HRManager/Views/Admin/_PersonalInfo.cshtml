@@ -17,7 +17,7 @@
                 @Html.HiddenFor(model => model.UserId)
             </dd>
             <dt class = "col-sm-4">
-                <input type="checkbox" class="validation-checkbox" name="checkbox" value="First Name" />
+                <input type="checkbox" class="validation-checkbox" name="checkbox" value="First Name" field-name="@Html.DisplayNameFor(model => model.FirstName)" field-value="@Model.FirstName"/>
                 @Html.DisplayNameFor(model => model.FirstName)
             </dt>
             <dd class = "col-sm-8">

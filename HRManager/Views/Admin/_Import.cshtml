@@ -1,0 +1,16 @@
+﻿@model HRManager.Models.EntityViews.User
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<form asp-action="Import" enctype="multipart/form-data" method="post">
+  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <input type="file" asp-for="File" class="custom-file-input" />
+     </div>
+     <br />
+     <div class="form-group">
+                 @*<input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />*@
+          <input type="submit" value="Submit" class="btn btn-primary" style="float: right;" onsubmit="alert('Emails sent successfully'444)"/>
+      </div>
+ </form>

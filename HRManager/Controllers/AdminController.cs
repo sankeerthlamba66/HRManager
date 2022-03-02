@@ -6,6 +6,8 @@ using HRManager.Code;
 using HRManager.Business.BussinessRepository;
 using System.Text;
 using HRManager.Models.EntityViews;
+using OfficeOpenXml;
+using ExcelDataReader;
 
 namespace HRManager.Controllers
 {
@@ -233,6 +235,35 @@ namespace HRManager.Controllers
             {
                 return HandleException(ex);
             }
+        }
+
+        public ActionResult Import(IFormFile file)
+        {
+            if(file is not null)
+            {
+                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                using(var stream=new MemoryStream())
+                {
+                    file.CopyTo(stream);
+                    stream.Position = 0;
+                    using(var reader=ExcelReaderFactory.CreateReader(stream))
+                    {
+                        while(reader.Read())
+                        {
+                            User user = new User();
+                            user.UserName = reader.GetValue(0).ToString();
+                            user.UserMailId = reader.GetValue(1).ToString();
+                            user.Roles = "Employee";
+                            user.OrganizationName = Models.OrganizationName.TekFriday;
+                            user.CreatedBy = Session.UserName;
+                            adminManager.AddEmployee(user);
+                            //user.OrganizationName =reader.GetValue(2).ToString();
+
+                        }
+                    }
+                }
+            }
+            return PartialView("_Import");
         }
     }
 }

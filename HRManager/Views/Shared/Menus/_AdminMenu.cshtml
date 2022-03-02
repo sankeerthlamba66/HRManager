@@ -6,6 +6,6 @@
         <a class="nav-link text-dark fw-bold" asp-area="" asp-controller="Admin" asp-action="AddEmployee">Register New Employee</a>
      </li>
      <li class="nav-item">
-        <a class="nav-link text-dark fw-bold" asp-area="" asp-controller="Admin" asp-action="....">Import</a>
+        <a class="nav-link text-dark fw-bold" asp-controller="Admin" asp-action="Import" onclick="@Html.PartialAsync("_Import.cshtml")">Import</a>
      </li>
 }

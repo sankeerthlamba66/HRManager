@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -34,5 +35,7 @@ namespace HRManager.Models.EntityViews
         [EmailAddress]
         [Display(Name = "User Email Id")]
         public string? UserMailId { get; set; }
+
+        public IFormFile? File { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 
 <h4>Register New Employee</h4>
 <hr />
-
+   
 <div class="row">
     <div class="col-md-5">
-        <form asp-action="AddEmployee" method="post">
+        <form asp-action="AddEmployee" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
@@ -45,6 +45,10 @@
                 <span asp-validation-for="UserMailId" class="text-danger"></span>
             </div>
             <br />
+            <div class="form-group">
+                <input type="file" asp-for="File" class="custom-file-input" />
+
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

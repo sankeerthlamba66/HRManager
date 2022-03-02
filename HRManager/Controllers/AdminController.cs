@@ -223,8 +223,16 @@ namespace HRManager.Controllers
         }
         public IActionResult SearchEmployee(string? searchValue)
         {
-            var EmployeeData = adminManager.GetRecentlyUpdatedEmployees().Where(s => s.MobileNumber.Contains(searchValue) || s.PersonalEmailId.Contains(searchValue)).ToList();
-            return PartialView("Index", EmployeeData);
+            try
+            {
+                var EmployeeData = adminManager.GetRecentlyUpdatedEmployees().Where(s => s.MobileNumber.Contains(searchValue) || s.PersonalEmailId.Contains(searchValue)).ToList();
+                var allEmployeeTable = new AllEmployeeTable() { AddVerificationLinks = true, EmployeeData = EmployeeData };
+                return PartialView("_AllEmployeeTable", allEmployeeTable);
+            }
+            catch(Exception ex)
+            {
+                return HandleException(ex);
+            }
         }
     }
 }

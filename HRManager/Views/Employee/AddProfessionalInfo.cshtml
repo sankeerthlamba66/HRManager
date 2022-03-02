@@ -34,8 +34,10 @@
                 <label asp-for="LastDesignation" class="control-label">
                     <span>Last Designation<sup class="star" style="color:red;">*</sup></span>
                 </label>
-                <input asp-for="LastDesignation" class="form-control" required />
-                <span asp-validation-for="LastDesignation" class="text-danger"></span>
+                <input asp-for="LastDesignation" class="form-control" required="required"
+                        oninvalid="this.setCustomValidity('Enter Last Designation')"
+                        oninput="this.setCustomValidity('Required field')/>
+                <span asp-validation-for="LastDesignation" class="text-danger" ></span>
             </div>
             <br />
             <div class="form-group">

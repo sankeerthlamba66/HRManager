@@ -15,7 +15,7 @@
             <input type="date" id="SearchToDate" name="DateTo"/>
             <a role="button" class="btn btn-primary" id="SearchEmps">Sort</a>
             <div style="float:right">
-            <input type="search" id="Search" name="Search"/>
+            <input type="search" id="SearchEmployees" name="Search"/>
             <a role="button" class="btn btn-primary" id="SearchWith" >Search</a>
             </div>
         </div>
@@ -63,6 +63,20 @@ $(document).ready(function () {
         //loadAllEmployeeTableData();
         //$("#table-tab").trigger("click");
         document.getElementById("table-tab").click();
+    });
+    $("#SearchWith").click(function()
+    {
+        $("#table-data.alert").show();
+        $.ajax(
+            {
+                url:"/Admin/SearchEmployee?searchValue="+$("#SearchEmployees").val(),
+                success: function(data)
+                        {           
+                            $("#table-data-container").html(data);
+                            $("#table-data.alert").hide();
+                        }               
+            }
+        )
     });
     $("#table-tab").click(function () {
         loadAllEmployeeTableData();

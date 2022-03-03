@@ -34,7 +34,7 @@
             <br />
             <div class="form-group">
                 <label asp-for="Relationship" class="control-label"></label>
-                <select class="form-select" aria-label="Default select example" asp-for="Relationship"  asp-items="Html.GetEnumSelectList<Relationship>()">
+                <select class="form-select" aria-label="Default select example" asp-for="Relationship"  asp-items="@(new SelectList(Enum.GetValues(typeof(Relationship))))">
                  <option selected>Select</option>
                 </select>
                 <span asp-validation-for="Relationship" class="text-danger"></span>
@@ -42,7 +42,7 @@
             <br />
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-                <select class="form-select" aria-label="Default select example" asp-for="Gender"  asp-items="Html.GetEnumSelectList<Gender>()">
+                <select class="form-select" aria-label="Default select example" asp-for="Gender"  asp-items="@(new SelectList(Enum.GetValues(typeof(Gender))))">
                     <option selected>Select</option>
                 </select>
                 <span asp-validation-for="Gender" class="text-danger"></span>

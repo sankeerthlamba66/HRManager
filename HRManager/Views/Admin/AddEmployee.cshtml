@@ -25,15 +25,19 @@
             </div>*@
             <div class="form-group">
                 <label asp-for="Roles" class="control-label" style="font-size: 20px"></label>
-                <select class="form-select" aria-label="Default select example" asp-for="Roles"  asp-items="Html.GetEnumSelectList<RoleType>()">
+                @*<select class="form-select" aria-label="Default select example" asp-for="Roles"  asp-items="Html.GetEnumSelectList<RoleType>()">
                     <option selected>Select</option>
-                </select>
+                </select>*@
+                @*<input asp-for="Roles" class="form-control; dropdown-item" list="" ondrop="location.href='@Html.DropDownListFor(m=>m.Roles,new SelectList(Enum.GetValues(typeof(RoleType))))'" />*@
+                <select class="form-select" aria-label="Default select example" asp-for="Roles"  asp-items="@(new SelectList(Enum.GetValues(typeof(RoleType))))">
+                    <option selected>Select</option>
+                 </select>
                 <span asp-validation-for="Roles" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
                 <label asp-for="OrganizationName" class="control-label" style="font-size: 20px"></label>
-                 <select class="form-select" aria-label="Default select example" asp-for="OrganizationName"  asp-items="Html.GetEnumSelectList<OrganizationName>()">
+                 <select class="form-select" aria-label="Default select example" asp-for="OrganizationName"  asp-items="@(new SelectList(Enum.GetValues(typeof(OrganizationName))))">
                     <option selected>Select</option>
                  </select>
                  <span asp-validation-for="OrganizationName" class="text-danger"></span>
@@ -45,10 +49,6 @@
                 <span asp-validation-for="UserMailId" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group">
-                <input type="file" asp-for="File" class="custom-file-input" />
-
-            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

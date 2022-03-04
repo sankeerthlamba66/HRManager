@@ -16,19 +16,19 @@ namespace HRManager.Data.Entity.Entities
         public string? FirstName { get; set; }
         public string? MiddleName { get; set; }
         public string? LastName { get; set; }
-        public Gender Gender { get; set; }
-        public MaritalStatus MaritalStatus { get; set; }
+        public string? Gender { get; set; }
+        public string? MaritalStatus { get; set; }
         public string? CurrentAddressLine1 { get; set; }
         public string? CurrentAddressLine2 { get; set; }
         public string? CurrentAddressLine3 { get; set; }
         public string? CurrentCity { get; set; }
-        public States CurrentState { get; set; }
+        public string? CurrentState { get; set; }
         public int? CurrentPinCode { get; set; }
         public string? PermanentAddressLine1 { get; set; }
         public string? PermanentAddressLine2 { get; set; }
         public string? PermanentAddressLine3 { get; set; }
         public string? PermanentCity { get; set; }
-        public States PermanentState { get; set; }
+        public string? PermanentState { get; set; }
         public int? PermanentPincode { get; set; }
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
@@ -37,7 +37,7 @@ namespace HRManager.Data.Entity.Entities
         public string? PersonalEmailId { get; set; }
         public string? CurrentAddress { get; set; }
         public string? PermanentAddress { get; set; }
-        public BloodGroup BloodGroup { get; set; }
+        public string? BloodGroup { get; set; }
         public string? EmergencyContactName { get; set; }
         public string? EmergencyContactNumber { get; set; }
         public string? RelationshipWithContact { get; set; }

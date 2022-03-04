@@ -29,7 +29,7 @@
                     <option selected>Select</option>
                 </select>*@
                 @*<input asp-for="Roles" class="form-control; dropdown-item" list="" ondrop="location.href='@Html.DropDownListFor(m=>m.Roles,new SelectList(Enum.GetValues(typeof(RoleType))))'" />*@
-                <select class="form-select" aria-label="Default select example" asp-for="Roles"  asp-items="@(new SelectList(Enum.GetValues(typeof(RoleType))))">
+                <select class="form-select" aria-label="Default select example" asp-for="Roles"  asp-items="@Html.GetEnumSelectList<RoleType>()">
                     <option selected>Select</option>
                  </select>
                 <span asp-validation-for="Roles" class="text-danger"></span>
@@ -45,8 +45,14 @@
             <br />
             <div class="form-group">
                 <label asp-for="UserMailId" class="control-label" style="font-size: 20px"></label>
-                <input asp-for="UserMailId" class="form-control"placeholder="User Email Id" />
+                <input asp-for="UserMailId" class="form-control" placeholder="User Email Id" />
                 <span asp-validation-for="UserMailId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="MobileNumber" class="control-label" style="font-size: 20px"></label>
+                <input asp-for="MobileNumber" class="form-control" placeholder="Mobile Number" />
+                <span asp-validation-for="MobileNumber" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">

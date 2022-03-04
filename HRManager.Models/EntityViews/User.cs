@@ -24,8 +24,8 @@ namespace HRManager.Models.EntityViews
         public string? Roles { get; set; }
 
         [Required]
-        [Display(Name = "Organization Name")]
-        public OrganizationName OrganizationName { get; set; }
+        [Display(Name = "Entity")]
+        public string? OrganizationName { get; set; }
 
         [Required]
         [Display(Name = "Organization ID")]
@@ -35,6 +35,12 @@ namespace HRManager.Models.EntityViews
         [EmailAddress]
         [Display(Name = "User Email Id")]
         public string? UserMailId { get; set; }
+
+        [Required]
+        [Phone]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
+        [Display(Name = "Mobile Number")]
+        public string? MobileNumber { get; set; }
 
         public IFormFile? File { get; set; }
     }

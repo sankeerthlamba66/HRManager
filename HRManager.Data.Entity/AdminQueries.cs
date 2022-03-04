@@ -13,7 +13,11 @@ namespace HRManager.Data.Entity
 {
     public class AdminQueries
     {
-        private readonly Context context=new Context();
+        private readonly Context context;
+        public AdminQueries()
+        {
+            context = new Context();
+        }
 
         public int AddEmployee(User user)
         {
@@ -31,6 +35,7 @@ namespace HRManager.Data.Entity
                     UserDetail.OrganizationId = user.OrganizationId;
                     UserDetail.Password = user.Password;
                     UserDetail.UserMailId = user.UserMailId;
+                    UserDetail.MobileNumber = user.MobileNumber;
                     UserDetail.CreatedBy = user.CreatedBy;
                     UserDetail.UpdatedBy = user.CreatedBy;
                     UserDetail.CreatedDate = DateTime.Now;

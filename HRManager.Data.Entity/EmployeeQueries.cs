@@ -13,7 +13,12 @@ namespace HRManager.Data.Entity
 {
     public class EmployeeQueries
     {
-        private readonly Context context=new Context();
+        private readonly Context context;
+        public EmployeeQueries()
+        {
+            context = new Context();
+        }
+
         public EmployeeProfessionalDocuments GetProfessionalDetails(int ProfessionalDetailsId)
         {
             EmployeeProfessionalDocuments professionalInfo = new EmployeeProfessionalDocuments();
@@ -121,10 +126,7 @@ namespace HRManager.Data.Entity
                 var PersonalDetails = context.EmployeePersonalInfos.Where(s => s.UserId == EmployeeUserId).FirstOrDefault();
                 if (PersonalDetails is not null)
                 {
-                    if (PersonalDetails.MiddleName is not null)
-                    { employeeName.EmployeeFullName = PersonalDetails.FirstName + " " + PersonalDetails.MiddleName + " " + PersonalDetails.LastName; }
-                    else
-                    { employeeName.EmployeeFullName = PersonalDetails.FirstName + " " + PersonalDetails.LastName; }
+                    employeeName.EmployeeFullName = PersonalDetails.NameAsPerAadhar;
                 }
             }
             catch(Exception ex)

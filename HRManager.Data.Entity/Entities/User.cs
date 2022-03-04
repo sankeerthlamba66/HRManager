@@ -14,6 +14,7 @@ namespace HRManager.Data.Entity.Entities
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Roles { get; set; }
+        public string MobileNumber { get; set; }
 
         public byte OrganizationId { get; set; }
         public virtual Organization Organization { get; set; }

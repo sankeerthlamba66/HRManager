@@ -15,7 +15,7 @@ namespace HRManager.Data.Entity.Entities
 
         public string? NameAsPerAadhar { get; set; }
         public string? Relationship { get; set; }
-        public Gender Gender { get; set; }
+        public string? Gender { get; set; }
 
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]

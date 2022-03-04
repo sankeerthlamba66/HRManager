@@ -30,11 +30,11 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "Gender")]
-        public Gender Gender { get; set; }
+        public string? Gender { get; set; }
 
         [Required]
         [Display(Name = "Marital Status")]
-        public MaritalStatus MaritalStatus { get; set; }
+        public string? MaritalStatus { get; set; }
 
         [Required]
         [Display(Name = "Date Of Birth")]
@@ -72,7 +72,7 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "State")]
-        public States CurrentState { get; set; }
+        public string? CurrentState { get; set; }
 
         [Required]
         [Display(Name = "Pincode")]
@@ -98,7 +98,7 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "State")]
-        public States PermanentState { get; set; }
+        public string? PermanentState { get; set; }
 
         [Required]
         [Display(Name = "Pincode")]
@@ -107,7 +107,7 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "Blood Group")]
-        public BloodGroup BloodGroup { get; set; }
+        public string? BloodGroup { get; set; }
 
         [Required]
         [Display(Name = "Emergency Contact Name")]

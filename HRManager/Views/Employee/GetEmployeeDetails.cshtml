@@ -1,0 +1,128 @@
+﻿@model HRManager.Models.ViewModels.EmployeeIndexModels
+
+@{
+    ViewData["Title"] = "GetEmployeeDetails";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <h1 class="text-center">Your Details</h1>
+ <form asp-controller="Employee" asp-action="GetEmployeeDetails" >   
+ <div>
+   @if(Model is not null)
+    {
+   
+        <div>
+          <h2>Personal Details </h2>
+            <div class="row">
+                <div class="card bg-transparent border-3">
+              <div class="card-body">
+                <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo">
+             </div>
+            </div>
+            </div>
+        </div>
+        <br />
+
+        <div>
+             <h2>Professional Details</h2> 
+              <div class="row">
+            @foreach (var item in @Model.employeeProfessionalInfos)
+            {
+              <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
+                  <div class="cardbody">
+                    <partial name="_GetProfessionalInfo.cshtml" model="item">
+                </div>
+              </div>
+            }
+            </div>
+            </div>
+            <br />
+
+        <div>
+           <h2>Bank Details</h2>
+           <div class="row" >
+                @foreach (var item in @Model.employeeBankInfos)
+                {
+                  <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
+                    <div class="cardbody">
+                       <partial name="_GetBankInfo.cshtml" model="item"> 
+                    </div>
+                  </div>
+                }
+           </div>
+        </div>
+        <br />
+
+        <div>
+           <h2>Insurance Details</h2>
+           <div class="row">
+             @foreach(var item in @Model.employeeInsuranceInfos)
+             {
+               <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
+                 <div class="card-body">
+                   <partial name="_GetInsuranceInfo.cshtml" model="item">
+                 </div>
+               </div>
+             }
+          </div>
+        </div>
+        <br />
+
+        <div>
+           <h2>PF and ESI Details</h2>
+           <div class="row">
+            @foreach(var item in @Model.employeePFandESIInfos)
+            {
+             <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
+              <div class="cardbody">
+                <partial name="_GetPFandESIInfo.cshtml" model="item">
+              </div>
+             </div>
+            }
+           </div>
+        </div>
+        <br />
+        
+        <div>
+             <h2>Documents</h2>
+        @if(Model.employeeDocuments is not null)
+        {      
+            <div class="row">
+            <div class="card bg-transparent border-3">
+            <div class="cardbody">
+              <partial name="_GetDocument.cshtml" model="@Model.employeeDocuments">
+             </div>
+             </div>
+        </div>
+         }
+        </div>   
+        <br />
+
+        @*<div>
+          <div class=" row card bg-light border-3">
+            <div class="card-body">
+            <h3>Confidentiality Agreement</h3>
+            <partial name="_ConfidentialityAgreement.cshtml" model="@Model.applicationTexts"/>
+            </div>
+          </div>
+          <br />
+
+          <div class="row card bg-light border-3">
+            <div class="card-body">
+            <h3>Service Level Agreement</h3>
+            <partial name="_ServiceLevelAgreement.cshtml" model="@Model.applicationTexts" />
+            </div>
+          </div>
+          <br />*@
+
+          @*<div class="row card bg-light border-3"\>
+            <div class="card-body">
+            <h3>BGV Acknowlegdement</h3>
+            <partial name="_BGVAcknowlegdement.cshtml" model="@Model.applicationTexts" />
+            </div>
+          </div>
+          </div>
+          <br />*@
+    }
+   </div>
+  </form>

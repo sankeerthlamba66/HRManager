@@ -12,8 +12,12 @@ namespace HRManager.Data.Entity
 {
     public class LoginQueries
     {
-        private readonly Context context=new Context();
-        
+        private readonly Context context;
+        public LoginQueries()
+        {
+            context = new Context();
+        }
+
         public bool CheckUser(LoginUser loginUser)
         {
             try

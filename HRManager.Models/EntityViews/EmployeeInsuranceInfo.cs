@@ -24,7 +24,7 @@ namespace HRManager.Models.EntityViews
         
         [Required]
         [Display(Name = "Gender")]
-        public Gender Gender { get; set; }
+        public string? Gender { get; set; }
         
         [Required]
         [DataType(DataType.Date)]

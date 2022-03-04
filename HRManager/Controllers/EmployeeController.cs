@@ -735,6 +735,20 @@ namespace HRManager.Controllers
         }
         #endregion
 
+
+        [HttpGet]
+        public IActionResult GetEmployeeDetails()
+        {
+            try
+            {
+                EmployeeIndexModels employeeIndexModels = employeeManager.GetEmployeeDetails(Session.UserId, Session.OrganizationId);
+                return View("GetEmployeeDetails",employeeIndexModels);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex);
+            }
+        }
         public IActionResult Submit()
         {
             try
@@ -745,7 +759,7 @@ namespace HRManager.Controllers
                 user.UserMailId = Session.UserMailId;
                 user.OrganizationId = (byte)Session.OrganizationId;
                 employeeManager.SendMailToHR(user);
-                return RedirectToAction("Index");
+                return RedirectToAction("GetEmployeeDetails");
             }
             catch(Exception ex)
             {

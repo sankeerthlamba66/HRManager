@@ -223,6 +223,7 @@ namespace HRManager.Controllers
             }
             return File(new UTF8Encoding().GetBytes(sb.ToString()), "text/csv", "export.csv");
         }
+
         public IActionResult SearchEmployee(string? searchValue)
         {
             try
@@ -254,7 +255,8 @@ namespace HRManager.Controllers
                             user.UserName = reader.GetValue(0).ToString();
                             user.UserMailId = reader.GetValue(1).ToString();
                             user.Roles = "Employee";
-                            user.OrganizationName = Models.OrganizationName.TekFriday;
+                            user.OrganizationName = reader.GetValue(2).ToString();
+                            user.MobileNumber = reader.GetValue(3).ToString();
                             user.CreatedBy = Session.UserName;
                             adminManager.AddEmployee(user);
                             //user.OrganizationName =reader.GetValue(2).ToString();

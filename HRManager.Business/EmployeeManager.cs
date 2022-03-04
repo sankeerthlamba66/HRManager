@@ -17,6 +17,11 @@ namespace HRManager.Business
         {
             return new EmployeeQueries().GetEmployeeDetails(UserId,organizationId);
         }
+
+        public bool CheckAgreements(int UserId)
+        {
+            return new EmployeeQueries().CheckAgreements(UserId);
+        }
         #region PersonalInfo
         public int AddPersonalInfo(EmployeePersonalInfo PersonalInfo,int OrganizationId)
         {
@@ -36,6 +41,7 @@ namespace HRManager.Business
             return new EmployeeQueries().UpdatePersonalInfo(PersonalInfo);
         }
 
+        
         #endregion
 
         #region ProfessionalInfo

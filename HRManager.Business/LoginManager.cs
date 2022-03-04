@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HRManager.Business
 {
-    public class LoginManager:ILoginManager
+    public class LoginManager : ILoginManager
     {
         public bool CheckUser(LoginUser loginUser)
         {
@@ -21,5 +21,6 @@ namespace HRManager.Business
         {
             return new LoginQueries().GetUserDetails(UserMailId);
         }
+
     }
 }

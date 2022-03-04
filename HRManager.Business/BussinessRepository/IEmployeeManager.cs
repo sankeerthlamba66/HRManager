@@ -12,6 +12,7 @@ namespace HRManager.Business.BussinessRepository
     {
         EmployeeIndexModels GetEmployeeDetails(int UserId,int organizationId);
         int AddPersonalInfo(EmployeePersonalInfo PersonalInfo, int OrganizationId);
+        bool CheckAgreements(int UserId);
         EmployeePersonalInfo GetPersonalInfo(int? PersonalInfoId, int UserId);
         EmployeePersonalInfo GetPersonalInfo(int UserId);
         int UpdatePersonalInfo(EmployeePersonalInfo PersonalInfo);

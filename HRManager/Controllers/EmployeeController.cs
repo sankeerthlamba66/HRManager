@@ -17,7 +17,7 @@ namespace HRManager.Controllers
         private readonly IEmployeeManager employeeManager;
         private readonly ILogger<EmployeeController> _logger;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeManager _employeeManager, IWebHostEnvironment webHostEnvironment)
+        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeManager _employeeManager, IWebHostEnvironment webHostEnvironment, ILoginManager _loginManager)
         {
             _webHostEnvironment = webHostEnvironment;
             _logger = logger;
@@ -28,6 +28,10 @@ namespace HRManager.Controllers
         {
             try
             {
+                if (employeeManager.CheckAgreements(Session.UserId))
+                {
+                    return RedirectToAction("GetEmployeeDetails", "Employee");
+                }
                 EmployeeIndexModels employeeIndexModels = employeeManager.GetEmployeeDetails(Session.UserId,Session.OrganizationId);
                 return View(employeeIndexModels);
             }
@@ -759,7 +763,7 @@ namespace HRManager.Controllers
                 user.UserMailId = Session.UserMailId;
                 user.OrganizationId = (byte)Session.OrganizationId;
                 employeeManager.SendMailToHR(user);
-                return RedirectToAction("GetEmployeeDetails");
+                return RedirectToAction("GetEmployeeDetails", "Employee");
             }
             catch(Exception ex)
             {

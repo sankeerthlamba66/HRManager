@@ -19,6 +19,24 @@ namespace HRManager.Data.Entity
             context = new Context();
         }
 
+        public bool CheckAgreements(int UserId)
+        {
+            bool result = false;
+            try
+            {
+                var agreement = context.EmployeeAgreementAcceptances.Where(s => s.UserId == UserId).FirstOrDefault();
+                if (agreement.ServiceLevelAgreement == true)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return result;
+        }
+
         public EmployeeProfessionalDocuments GetProfessionalDetails(int ProfessionalDetailsId)
         {
             EmployeeProfessionalDocuments professionalInfo = new EmployeeProfessionalDocuments();

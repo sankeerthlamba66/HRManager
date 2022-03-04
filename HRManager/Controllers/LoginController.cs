@@ -42,7 +42,7 @@ namespace HRManager.Controllers
                     Session.OrganizationId = UserDetails.OrganizationId;
                     if (UserDetails.Roles.Contains("Employee"))
                     {
-                        return RedirectToAction("Index", "Employee");
+                       return RedirectToAction("Index", "Employee");
                     }
                     else if (UserDetails.Roles.Contains("HRAdmin"))
                     {

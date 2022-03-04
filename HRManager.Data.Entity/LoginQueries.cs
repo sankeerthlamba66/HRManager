@@ -55,5 +55,6 @@ namespace HRManager.Data.Entity
             }
             return user;
         }
+
     }
 }

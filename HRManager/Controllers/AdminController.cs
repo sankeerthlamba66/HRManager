@@ -118,8 +118,6 @@ namespace HRManager.Controllers
             }
         }
 
-        
-
         public IActionResult PDValidationPopup(int EmployeeId)
         {
             try
@@ -238,7 +236,7 @@ namespace HRManager.Controllers
             }
         }
 
-        public ActionResult Import(IFormFile file)
+        public IActionResult Import(IFormFile file)
         {
             if(file is not null)
             {

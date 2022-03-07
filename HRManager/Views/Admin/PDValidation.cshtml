@@ -14,7 +14,7 @@
             <div class="card bg-transparent border-3">
                   <div class="cardbody">
                      <partial name="_PersonalInfo.cshtml"  model="@Model.employeePersonalInfo">
-              </div>
+                  </div>
              </div>
         </div>
         <br />
@@ -40,9 +40,9 @@
         <div class="row"> 
                 <div class="card bg-transparent border-3">
                   <div class="cardbody">
-               <partial name="_BankInfo.cshtml" model="item"/>
-               </div>
-             </div>
+                    <partial name="_BankInfo.cshtml" model="item"/>
+                  </div>
+                </div>
             </div>            
         }
         <br />
@@ -54,10 +54,10 @@
         <div class="row"> 
                 <div class="card bg-transparent border-3">
                   <div class="cardbody">
-                <partial name="_InsuranceInfo.cshtml" model="item"/>
+                     <partial name="_InsuranceInfo.cshtml" model="item"/>
+                  </div>
                 </div>
-             </div>
-            </div>
+        </div>
         }
         <br />
 
@@ -90,7 +90,11 @@
         }
         <br />
         <div class="text-center">
-         <input type="button" class="btn btn-primary" value="Send Email" name="Send Email" id="SendEmail" @*onclick="location.href='@Url.Action("SendPDValidationEmail", "Admin",new{EmployeeId=Model.employeePersonalInfo.Id,FieldsToUpdate="FieldsToUpdate"})'"*@/>
+            <span>
+                <input type="button" class="btn btn-primary" value="Send Email" name="Send Email" id="SendEmail" @*onclick="location.href='@Url.Action("SendPDValidationEmail", "Admin",new{EmployeeId=Model.employeePersonalInfo.Id,FieldsToUpdate="FieldsToUpdate"})'"*@/>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" class="btn btn-primary" value="Validate" name="Validate" id="Validate" onclick="location.href='@Url.Action("PDvalidate", "Admin",new{EmployeeUserId=@Model.employeePersonalInfo.UserId})'"/>
+            </span>
         </div>
      </form>
 </div>

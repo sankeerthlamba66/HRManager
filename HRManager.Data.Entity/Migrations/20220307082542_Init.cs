@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRManager.Data.Entity.Migrations
 {
-    public partial class TABLES : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -329,6 +329,31 @@ namespace HRManager.Data.Entity.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Validations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Submitted = table.Column<bool>(type: "bit", nullable: false),
+                    PDValidated = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "Date", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Validations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Validations_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ApplicationTexts_OrganizationId",
                 table: "ApplicationTexts",
@@ -374,6 +399,12 @@ namespace HRManager.Data.Entity.Migrations
                 name: "IX_Users_OrganizationId",
                 table: "Users",
                 column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Validations_UserId",
+                table: "Validations",
+                column: "UserId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -401,6 +432,9 @@ namespace HRManager.Data.Entity.Migrations
 
             migrationBuilder.DropTable(
                 name: "EmployeeProfessionalInfos");
+
+            migrationBuilder.DropTable(
+                name: "Validations");
 
             migrationBuilder.DropTable(
                 name: "Users");

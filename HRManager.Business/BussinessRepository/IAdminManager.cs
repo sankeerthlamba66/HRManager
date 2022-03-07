@@ -19,7 +19,8 @@ namespace HRManager.Business.BussinessRepository
         List<EmployeeCardSummary> GetRecentlyUpdatedEmployeeCards(DateTime DateFrom, DateTime DateTo);
         EmployeePDValidationSummary GetEmployeePDValidationSummary(int EmployeeId);
         EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeId);
-        void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate);
+        void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate, string AdminUserName);
         void SendBGVerificationEmail(int ProfessionalDetailsId);
+        void UpdatePDValidate(int EmployeeId, string AdminUserName);
     }
 }

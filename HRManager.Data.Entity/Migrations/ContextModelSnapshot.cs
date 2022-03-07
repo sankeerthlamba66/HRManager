@@ -626,6 +626,43 @@ namespace HRManager.Data.Entity.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("HRManager.Data.Entity.Entities.Validation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("Date");
+
+                    b.Property<bool>("PDValidated")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Submitted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("Date");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Validations");
+                });
+
             modelBuilder.Entity("HRManager.Data.Entity.Entities.ApplicationText", b =>
                 {
                     b.HasOne("HRManager.Data.Entity.Entities.Organization", "Organization")
@@ -725,6 +762,17 @@ namespace HRManager.Data.Entity.Migrations
                     b.Navigation("Organization");
                 });
 
+            modelBuilder.Entity("HRManager.Data.Entity.Entities.Validation", b =>
+                {
+                    b.HasOne("HRManager.Data.Entity.Entities.User", "User")
+                        .WithOne("Validation")
+                        .HasForeignKey("HRManager.Data.Entity.Entities.Validation", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("HRManager.Data.Entity.Entities.Organization", b =>
                 {
                     b.Navigation("ApplicationTexts");
@@ -746,6 +794,9 @@ namespace HRManager.Data.Entity.Migrations
                         .IsRequired();
 
                     b.Navigation("ProfessionalInfos");
+
+                    b.Navigation("Validation")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

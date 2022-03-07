@@ -105,6 +105,19 @@ namespace HRManager.Controllers
             }
         }
 
+        public IActionResult PDValidate(int EmployeeUserId)
+        {
+            try
+            {
+                adminManager.UpdatePDValidate(EmployeeUserId,Session.UserName);
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                return ReturnErrorView(ex);
+            }
+        }
+
         public ViewResult BGVerification(int EmployeeUserId)
         {
             try
@@ -149,7 +162,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate);
+                adminManager.SendPDValidationEmail(EmployeeId, FieldsToUpdate,Session.UserName);
                 return RedirectToAction("Index");
                 //return RedirectToAction("PDValidation",new { EmployeeId = EmployeeId });
             }

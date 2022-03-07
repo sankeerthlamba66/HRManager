@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRManager.Models.EntityViews;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -31,5 +32,6 @@ namespace HRManager.Models.Views
 
         [Display(Name = "PAN Card")]
         public string? PanCard { get; set; }
+        public Validation validate { get; set; }
     }
 }

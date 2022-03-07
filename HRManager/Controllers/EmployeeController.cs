@@ -28,7 +28,7 @@ namespace HRManager.Controllers
         {
             try
             {
-                if (employeeManager.CheckAgreements(Session.UserId))
+                if (employeeManager.CheckSubmission(Session.UserId))
                 {
                     return RedirectToAction("GetEmployeeDetails", "Employee");
                 }

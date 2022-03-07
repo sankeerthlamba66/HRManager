@@ -10,7 +10,7 @@ namespace HRManager.Models.EntityViews
 {
     public class User :EntityBase
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         
         [Required]
         [Display(Name = "User Name")]

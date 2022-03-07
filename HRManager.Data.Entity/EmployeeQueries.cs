@@ -19,15 +19,18 @@ namespace HRManager.Data.Entity
             context = new Context();
         }
 
-        public bool CheckAgreements(int UserId)
+        public bool CheckSubmission(int UserId)
         {
             bool result = false;
             try
             {
-                var agreement = context.EmployeeAgreementAcceptances.Where(s => s.UserId == UserId).FirstOrDefault();
-                if (agreement.ServiceLevelAgreement == true)
+                var validation = context.Validations.Where(s => s.UserId == UserId).FirstOrDefault();
+                if (validation != null)
                 {
-                    result = true;
+                    if (validation.Submitted == true)
+                    {
+                        result = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -127,6 +130,7 @@ namespace HRManager.Data.Entity
                     employeeShortSummary.Id = shortSummery.Id;
                     employeeShortSummary.Name = GetEmployeeFullName(shortSummery.UserId).EmployeeFullName;
                     employeeShortSummary.Email = shortSummery.PersonalEmailId;
+                    employeeShortSummary.UserID = shortSummery.UserId;
                 }
             }
             catch (Exception ex)
@@ -201,6 +205,7 @@ namespace HRManager.Data.Entity
             try
             {
                 EmployeePersonalInfo.Id = PersonalInfo.Id;
+                EmployeePersonalInfo.UserId = PersonalInfo.UserId;
                 EmployeePersonalInfo.FirstName = PersonalInfo.FirstName;
                 EmployeePersonalInfo.MiddleName = PersonalInfo.MiddleName;
                 EmployeePersonalInfo.LastName = PersonalInfo.LastName;
@@ -231,6 +236,7 @@ namespace HRManager.Data.Entity
                 EmployeePersonalInfo.FathersNameAsPerAadhar = PersonalInfo.FathersNameAsPerAadhar;
                 EmployeePersonalInfo.FathersMobileNumber = PersonalInfo.FathersMobileNumber;
                 EmployeePersonalInfo.MothersNameAsPerAadhar = PersonalInfo.MothersNameAsPerAadhar;
+                
                 //EmployeePersonalInfo.HowWereYouReferredToUs = PersonalInfo.HowWereYouReferredToUs;
             }
             catch (Exception ex)
@@ -238,6 +244,25 @@ namespace HRManager.Data.Entity
                 ErrorLogger.LogError(ex.Message);
             }
             return EmployeePersonalInfo;
+        }
+
+        public void UpdateSubmission(int UserID,string UserName)
+        {
+            try
+            {
+                var validation = context.Validations.Where(s => s.UserId == UserID).FirstOrDefault();
+                if (validation != null)
+                {
+                    validation.Submitted = true;
+                    validation.UpdatedBy = UserName;
+                    validation.UpdatedDate = DateTime.Now;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
         }
 
         public EmployeeProfessionalDocuments GetEmployeeProfessionalInfoMapper(Entities.EmployeeProfessionalInfo ProfessionalInfo)

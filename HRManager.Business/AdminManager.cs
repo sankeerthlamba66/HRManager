@@ -63,12 +63,17 @@ namespace HRManager.Business
             return new AdminQueries().GetEmployeePDValidationSummary(EmployeeId);
         }
 
+        public void UpdatePDValidate(int EmployeeId,string AdminUserName)
+        {
+            new AdminQueries().UpdatePDvalidate(EmployeeId,AdminUserName);
+        }
+
         public EmployeeBGVerificationSummary GetEmployeeBGVerificationSummary(int EmployeeUserId)
         {
             return new AdminQueries().GetEmployeeBGVerificationSummary(EmployeeUserId);
         }
 
-        public void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate)
+        public void SendPDValidationEmail(int EmployeeId, List<string> FieldsToUpdate,string AdminUserName)
         {
             var Summary = new EmployeeQueries().GetEmployeeShortSummary(EmployeeId);
             var EmailTemplate = new AdminQueries().GetPDVEmailTemplate(Summary, FieldsToUpdate);
@@ -76,7 +81,7 @@ namespace HRManager.Business
             //Substitute placeholders in the templates with the employee details and Fields List.
             string Subject = EmailTemplate.PDVEmailSubjectTemplate;//string.Empty;
             string Body = EmailTemplate.PDVEmailBodyTemplate;//string.Empty;
-
+            new AdminQueries().UpdateSubmitValidation(AdminUserName,Summary.UserID);
             Helpers.Utilities.SendEmail(Summary.Email, Subject, Body);
         }
 

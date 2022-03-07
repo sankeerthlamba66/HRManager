@@ -29,7 +29,7 @@
                     <option selected>Select</option>
                 </select>*@
                 @*<input asp-for="Roles" class="form-control; dropdown-item" list="" ondrop="location.href='@Html.DropDownListFor(m=>m.Roles,new SelectList(Enum.GetValues(typeof(RoleType))))'" />*@
-                <select class="form-select" aria-label="Default select example" asp-for="Roles"  asp-items="@Html.GetEnumSelectList<RoleType>()">
+                <select class="form-select" aria-label="Default select example" asp-for="Roles"  asp-items="@(new SelectList(Enum.GetValues(typeof(RoleType))))">
                     <option selected>Select</option>
                  </select>
                 <span asp-validation-for="Roles" class="text-danger"></span>

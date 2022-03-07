@@ -18,9 +18,9 @@ namespace HRManager.Business
             return new EmployeeQueries().GetEmployeeDetails(UserId,organizationId);
         }
 
-        public bool CheckAgreements(int UserId)
+        public bool CheckSubmission(int UserId)
         {
-            return new EmployeeQueries().CheckAgreements(UserId);
+            return new EmployeeQueries().CheckSubmission(UserId);
         }
         #region PersonalInfo
         public int AddPersonalInfo(EmployeePersonalInfo PersonalInfo,int OrganizationId)
@@ -179,6 +179,7 @@ namespace HRManager.Business
         public void SendMailToHR(User EmployeeUserDetails)
         {
             var EmailTemplate = new EmployeeQueries().GetEmployeeSubmissionEMailTemplates(EmployeeUserDetails);
+            new EmployeeQueries().UpdateSubmission(EmployeeUserDetails.Id, EmployeeUserDetails.UserName);
             new EmployeeQueries().UpdateEmployeeAgreementAcceptance(EmployeeUserDetails.Id, EmployeeUserDetails.UserName);
             string Subject = EmailTemplate.EmployeeSubmissionEMailSubjectTemplate;
             string Body = EmailTemplate.EmployeeSubmissionEMailBodyTemplate;

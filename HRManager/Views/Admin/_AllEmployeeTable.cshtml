@@ -66,15 +66,23 @@ if(Model.ToDate !=null)
             <td>
                 @Html.DisplayFor(modelItem => item.PersonalEmailId)
             </td>
-             <td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PanCard)
             </td>
-             <td>
+            <td>
                 @Html.HiddenFor(modelItem => item.UserId)
             </td>
-            <td>
-              @Html.ActionLink("PD Validation","PDValidation","Admin",new{EmployeeUserId=item.UserId})
-            </td>
+            @if (item.validate.PDValidated == false)
+            {
+                  <td>
+                    @Html.ActionLink("Validation","PDValidation","Admin",new{EmployeeUserId=item.UserId})
+                  </td>
+             }else
+             {
+                  <td>
+                    @Html.ActionLink("Validated By "+item.validate.UpdatedBy,"PDValidation","Admin",new{EmployeeUserId=item.UserId})
+                  </td>  
+             }
             <td>
               @Html.ActionLink("BG Verification","BGVerification","Admin",new{EmployeeUserId=item.UserId})
             </td>

@@ -25,5 +25,6 @@ namespace HRManager.Data.Entity.Entities
         public EmployeePersonalInfo PersonalInfo { get; set; }
         public ICollection<EmployeePFandESIInfo> PFandESIInfos { get; set; }
         public ICollection<EmployeeProfessionalInfo> ProfessionalInfos { get; set; }
+        public Validation Validation { get; set; }
     }
 }

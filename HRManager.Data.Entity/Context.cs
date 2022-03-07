@@ -29,5 +29,6 @@ namespace HRManager.Data.Entity
         public DbSet<EmployeeDocument>EmployeeDocuments { get; set; }
         public DbSet<Organization>Organizations{ get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Validation> Validations { get; set; }
     }
 }

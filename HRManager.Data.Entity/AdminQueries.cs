@@ -24,6 +24,7 @@ namespace HRManager.Data.Entity
             Entities.User UserDetail = new Entities.User();
             //Entities.EmployeePersonalInfo employeePersonalInfo = new Entities.EmployeePersonalInfo();
             Entities.EmployeeAgreementAcceptance employeeAgreementAcceptance = new Entities.EmployeeAgreementAcceptance();
+            Entities.Validation validation = new Entities.Validation();
             try
             {
                 var organization=context.Organizations.Where(s=>s.OrganizationName==user.OrganizationName).FirstOrDefault();
@@ -52,6 +53,15 @@ namespace HRManager.Data.Entity
                     employeeAgreementAcceptance.UpdatedBy = user.CreatedBy;
                     context.Add(employeeAgreementAcceptance);
                     context.SaveChanges();
+                    validation.PDValidated = false;
+                    validation.Submitted = false;
+                    validation.CreatedBy = user.CreatedBy;
+                    validation.UpdatedBy = user.CreatedBy;
+                    validation.UpdatedDate = DateTime.Now;
+                    validation.CreatedDate = DateTime.Now;
+                    validation.UserId = UserDetail.Id;
+                    context.Validations.Add(validation);
+                    context.SaveChanges();
                 }
             }
             catch(Exception ex)
@@ -59,6 +69,44 @@ namespace HRManager.Data.Entity
                 ErrorLogger.LogError(ex.Message);
             }
             return UserDetail.Id;
+        }
+
+        public void UpdateSubmitValidation(string AdminUserName,int EmployeeUserID)
+        {
+            try
+            {
+                var validation = context.Validations.Where(s => s.UserId == EmployeeUserID).FirstOrDefault();
+                if (validation != null)
+                {
+                    validation.Submitted = false;
+                    validation.UpdatedBy=AdminUserName;
+                    validation.UpdatedDate = DateTime.Now;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+        }
+
+        public void UpdatePDvalidate(int EmployeeUserID,string AdminUserName)
+        {
+            try
+            {
+                var validation = context.Validations.Where(s => s.UserId == EmployeeUserID).FirstOrDefault();
+                if (validation != null)
+                {
+                    validation.PDValidated = true;
+                    validation.UpdatedBy = AdminUserName;
+                    validation.UpdatedDate = DateTime.Now;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
         }
 
         public List<EmployeeTableSummary> GetRecentlyUpdatedEmployees()
@@ -78,6 +126,25 @@ namespace HRManager.Data.Entity
             }
             return employeeTableSummary;
         }
+
+        public Validation GetValidationDetails(int UserID)
+        {
+            Validation validation = new Validation();
+            try
+            {
+                var EmployeeEalidation = context.Validations.Where(s => s.UserId == UserID).FirstOrDefault();
+                if (EmployeeEalidation != null)
+                {
+                    validation.PDValidated = EmployeeEalidation.PDValidated;
+                    validation.UpdatedBy= EmployeeEalidation.UpdatedBy;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.LogError(ex.Message);
+            }
+            return validation;
+        }
         public EmployeeTableSummary EmployeeTableSummaryMapper(Entities.EmployeePersonalInfo employeePersonalInfo)
         {
             EmployeeTableSummary employeeTableSummary = new EmployeeTableSummary();
@@ -91,6 +158,8 @@ namespace HRManager.Data.Entity
                 employeeTableSummary.PersonalEmailId = employeePersonalInfo.PersonalEmailId;
                 employeeTableSummary.PanCard = employeePersonalInfo.PanCardNumber;
                 employeeTableSummary.UserId = employeePersonalInfo.UserId;
+                
+                employeeTableSummary.validate = GetValidationDetails(employeePersonalInfo.UserId);
             }
             catch (Exception ex)
             {
@@ -111,6 +180,7 @@ namespace HRManager.Data.Entity
                 employeeCardSummary.PersonalEmailId = employeePersonalInfo.PersonalEmailId;
                 employeeCardSummary.PanCard = employeePersonalInfo.PanCardNumber;
                 employeeCardSummary.UserId = employeePersonalInfo.UserId;
+                employeeCardSummary.validate = GetValidationDetails(employeePersonalInfo.UserId);
             }
             catch (Exception ex)
             {

@@ -21,7 +21,7 @@ namespace HRManager.Data.Entity.Entities
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
         public DateTime EndDate { get; set; }
-        public int CTC { get; set; }
+        public string? CTC { get; set; }
         public string? ReportingManagerName { get; set; }
         public string? ReportingManagerEmailId { get; set; }
         public string? ReportingManagerMobileNumber { get; set; }

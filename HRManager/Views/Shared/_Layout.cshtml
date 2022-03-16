@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - HRManager</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/HRManager.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -35,13 +35,11 @@
                             await Html.RenderPartialAsync("~/Views/Shared/Menus/_AdminMenu.cshtml");
                         }
                     </ul>
-                </div>
-     
-                    @if (Session.UserRoles.Contains("Employee") || Session.UserRoles.Contains("HRAdmin") || Session.UserRoles.Contains("HR"))
-                    {
-                        <a class="nav nav-link fw-bold" asp-area="" asp-controller="Login" asp-action="LogOut">Log Out</a>
-                    }
-                <a class="nav-link text-dark fw-bold " asp-area="" asp-controller="Employee" asp-action="Privacy">Privacy</a>
+                </div>    
+            @if (Session.UserRoles.Contains("Employee") || Session.UserRoles.Contains("HRAdmin") || Session.UserRoles.Contains("HR"))
+                {
+                    <a class="nav nav-link fw-bold" asp-area="" asp-controller="Login" asp-action="LogOut" style="font-size:20px;">Log Out</a>
+                }
             </div>
         </nav>
     </header>

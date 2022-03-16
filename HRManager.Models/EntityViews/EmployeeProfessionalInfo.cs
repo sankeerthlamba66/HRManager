@@ -38,12 +38,13 @@ namespace HRManager.Models.EntityViews
         public DateTime EndDate { get; set; }
 
         [Required]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Use Numeric only please")]
         [Display(Name = "CTC")]
-        public int CTC { get; set; }
+        public string? CTC { get; set; }
 
         [Required]
         [Display(Name = "Reporting Manager Name")]
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
+        [RegularExpression(@"^[a-zA-Z]*$", ErrorMessage = "Use letters only please")]
         public string? ReportingManagerName { get; set; }
 
         [Required]
@@ -56,7 +57,7 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "HR Name")]
-        [RegularExpression(@"^[a-zA-Z]", ErrorMessage = "Use letters only please")]
+        [RegularExpression(@"^[a-zA-Z]*$", ErrorMessage = "Use letters only please")]
         public string? HRName { get; set; }
 
         [Required]

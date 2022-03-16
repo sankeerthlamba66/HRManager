@@ -23,13 +23,13 @@ namespace HRManager.Data.Entity.Entities
         public string? CurrentAddressLine3 { get; set; }
         public string? CurrentCity { get; set; }
         public string? CurrentState { get; set; }
-        public int? CurrentPinCode { get; set; }
+        public string? CurrentPinCode { get; set; }
         public string? PermanentAddressLine1 { get; set; }
         public string? PermanentAddressLine2 { get; set; }
         public string? PermanentAddressLine3 { get; set; }
         public string? PermanentCity { get; set; }
         public string? PermanentState { get; set; }
-        public int? PermanentPincode { get; set; }
+        public string? PermanentPincode { get; set; }
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
         public DateTime DateOfBirth { get; set; }

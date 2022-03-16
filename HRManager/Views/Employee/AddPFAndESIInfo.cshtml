@@ -1,7 +1,9 @@
 ﻿@model HRManager.Models.EntityViews.EmployeePFandESIInfo
 
+<div class="card bg-white border-3 col-sm-10 mx-auto" >
+<div class="card-header bg-primary">
 <h3 class="align-content-center">PF and ESI Details</h3>
-<hr />
+</div>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="AddPFAndESIInfo">
@@ -25,7 +27,7 @@
         </form>
     </div>
 </div>
-
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

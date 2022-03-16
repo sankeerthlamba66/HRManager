@@ -4,151 +4,151 @@
 {
     <div id="professionaldetails">
         <dl class="row" >
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.HiddenFor(model => model.Id)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.HiddenFor(model => model.Id)
                 
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.HiddenFor(model => model.UserId)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.HiddenFor(model => model.UserId)
                 
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.OrganizationName)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.OrganizationName)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.IsThisYourLastEmployment)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.IsThisYourLastEmployment)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.LastDesignation)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.LastDesignation)
                 <br />
             </dd>
-             <dt class = "col-sm-6">
+             <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.StartDate)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.StartDate)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.EndDate)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.EndDate)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.CTC)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.CTC)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.ReportingManagerName)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.ReportingManagerName)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.ReportingManagerEmailId)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.ReportingManagerEmailId)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.ReportingManagerMobileNumber)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.ReportingManagerMobileNumber)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.HRName)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.HRName)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.HREmailId)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                 @Html.DisplayFor(model => model.HREmailId)
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.OfferLetterPath)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                  @if (!string.IsNullOrEmpty(@Model.OfferLetterPath))
                     {
                         <a target="_blank" href="~/Documents/@Model.OfferLetterPath">Offer Letter</a>
                     }
                  <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.RelievingLetterPath)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                  @if (!string.IsNullOrEmpty(@Model.RelievingLetterPath))
                     {
                         <a target="_blank" href="~/Documents/@Model.RelievingLetterPath">Relieving Letter</a>
                     }
                 <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.ExperienceLetterPath)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                  @if (!string.IsNullOrEmpty(@Model.ExperienceLetterPath))
                     {
                         <a target="_blank" href="~/Documents/@Model.ExperienceLetterPath">Experience Letter</a>
                     }
                     <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.PaySlip1)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                  @if (!string.IsNullOrEmpty(@Model.PaySlip1))
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip1">Pay Slip 1</a>
                     }
                     <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.PaySlip2)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                  @if (!string.IsNullOrEmpty(@Model.PaySlip2))
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip2">Pay Slip 2</a>
                     }
                     <br />
             </dd>
-            <dt class = "col-sm-6">
+            <dt class = "col-sm-7">
                 @Html.DisplayNameFor(model => model.PaySlip3)
             </dt>
-            <dd class = "col-sm-6">
+            <dd class = "col-sm-5">
                  @if (!string.IsNullOrEmpty(@Model.PaySlip3))
                     {
                         <a target="_blank" href="~/Documents/@Model.PaySlip3">Pay Slip 3</a>

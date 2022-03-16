@@ -11,37 +11,40 @@
   <form asp-controller="Employee" asp-action="Index">
              
         <div>
-          <h2>Personal Details
+            <div class="row">
+               <div class="card-header bg-primary"><h2>Personal Details
                @if(Model.employeePersonalInfo is null)
                {
-                    <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddPersonalInfo", "Employee")'" />
+                    <input type="button" class="btn btn-secondary" title="Add" value="Add" style="float:right;" onclick="location.href='@Url.Action("AddPersonalInfo", "Employee")'" />
                }
-          </h2>
-        @if (Model.employeePersonalInfo is not null)
-        {
-            <div class="row">
-                <div class="card bg-transparent border-3">
-              <div class="card-body">
+               </h2>
+                </div>
+            @if (Model.employeePersonalInfo is not null)
+            {
+             <div class="card bg-white border-3 mx-auto">
+              <div class="card-body">              
                 <partial name="_GetPersonalInfo.cshtml" model="@Model.employeePersonalInfo">
-              <div class="card-footer">
-                <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePersonalInfo", "Employee",new{Id=Model.employeePersonalInfo.Id})'" />
-              </div>
+                  <div class="card-footer">
+                    <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePersonalInfo", "Employee",new{Id=Model.employeePersonalInfo.Id})'" />
+                  </div>
              </div>
             </div>
+            }
             </div>
-        }
         </div>
         <br />
 
         <div>
+            <div class="row">
+                <div class="card-header bg-primary">
              <h2>Professional Details
-                 <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddProfessionalInfo", "Employee")'" />
-             </h2> 
-              <div class="row">
+                 <input type="button" class="btn btn-secondary" style="float:right;" title="Add" value="Add" onclick="location.href='@Url.Action("AddProfessionalInfo", "Employee")'" />
+             </h2>
+             </div>
             @foreach (var item in @Model.employeeProfessionalInfos)
             {
-              <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
-                  <div class="cardbody">
+              <div class="card bg-white border-3 col-sm-6 mx-auto">
+                  <div class="card-body">
                     <partial name="_GetProfessionalInfo.cshtml" model="item">
                 <div class="card-footer">
                     <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdateProfessionalInfo", "Employee",new{Id=item.Id})'" />
@@ -55,13 +58,15 @@
             <br />
 
         <div>
-           <h2>Bank Details
-              <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("PostBankInfo", "Employee")'" />
-           </h2>
-           <div class="row" >
+            <div class="row">
+                <div class="card-header bg-primary">
+                   <h2>Bank Details
+                      <input type="button" class="btn btn-secondary" style="float:right;" title="Add" value="Add" onclick="location.href='@Url.Action("PostBankInfo", "Employee")'" />
+                   </h2>
+               </div>
                 @foreach (var item in @Model.employeeBankInfos)
                 {
-                  <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
+                  <div class="card bg-white border-3 col-sm-6 mx-auto">
                     <div class="cardbody">
                        <partial name="_GetBankInfo.cshtml" model="item"> 
                        <div class="card-footer">
@@ -69,23 +74,26 @@
                         <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeleteBankInfo", "Employee",new{Id=item.Id})'" />
                        </div>
                     </div>
-                  </div>
+                    </div>
                 }
+                </div>
            </div>
-        </div>
         <br />
 
         <div>
+            
+           <div class="row">
+               <div class="card-header bg-primary">
            <h2>Insurance Details
                @if(@Model.employeeInsuranceInfos.Count<5)
                {
-                <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddInsuranceInfo", "Employee")'" /> 
+                <input type="button" class="btn btn-secondary" style="float:right;" title="Add" value="Add" onclick="location.href='@Url.Action("AddInsuranceInfo", "Employee")'" /> 
                }
            </h2>
-           <div class="row">
+           </div>
              @foreach(var item in @Model.employeeInsuranceInfos)
              {
-               <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
+               <div class="card bg-white border-3 col-sm-6 mx-auto">
                  <div class="card-body">
                    <partial name="_GetInsuranceInfo.cshtml" model="item">
                   <div class="card-footer">
@@ -100,40 +108,45 @@
         <br />
 
         <div>
-           <h2>PF and ESI Details
-            @if (@Model.employeePFandESIInfos.Count == 0 )
-            {
-                <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddPFAndESIInfo", "Employee")'" />
-            }
-        </h2>
            <div class="row">
-            @foreach(var item in @Model.employeePFandESIInfos)
-            {
-             <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
-              <div class="cardbody">
-                <partial name="_GetPFandESIInfo.cshtml" model="item">
-                <div class="card-footer">
-                    <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePFandESIInfo", "Employee",new{Id=item.Id})'" />
-                    <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeletePFandESIInfo", "Employee",new{Id=item.Id})'" />
+               <div class="card-header bg-primary">
+                    <h2>PF and ESI Details
+                        @if (@Model.employeePFandESIInfos.Count == 0 )
+                        {
+                            <input type="button" class="btn btn-secondary" style="float:right;" title="Add" value="Add" onclick="location.href='@Url.Action("AddPFAndESIInfo", "Employee")'" />
+                        }
+                    </h2>
                 </div>
-              </div>
+         @foreach(var item in @Model.employeePFandESIInfos)
+            {
+             <div class="card bg-white border-3 col-sm-6 mx-auto">
+                  <div class="cardbody">
+                    <partial name="_GetPFandESIInfo.cshtml" model="item">
+                    <div class="card-footer">
+                        <input type="button" class="btn btn-secondary" title="Edit" value="Edit" onclick="location.href='@Url.Action("UpdatePFandESIInfo", "Employee",new{Id=item.Id})'" />
+                        <input type="button" class="btn btn-secondary" title="Delete" value="Delete" onclick="location.href='@Url.Action("DeletePFandESIInfo", "Employee",new{Id=item.Id})'" />
+                    </div>
+                  </div>
              </div>
-            }
+             }
            </div>
         </div>
         <br />
         
-        <div>
+        <div>           
+           <div class="row">
+               <div class="card-header bg-primary">
              <h2>Documents
                  @if(Model.employeeDocuments is null)
                 {
-                    <input type="button" class="btn btn-secondary" title="Add" value="Add" onclick="location.href='@Url.Action("AddDocument", "Employee")'" />
+                    <input type="button" class="btn btn-secondary" style="float:right;" title="Add" value="Add" onclick="location.href='@Url.Action("AddDocument", "Employee")'" />
                 }
             </h2>
+            </div>
         @if(Model.employeeDocuments is not null)
         {      
             <div class="row">
-            <div class="card bg-transparent border-3">
+            <div class="card bg-white border-3 mx-auto">
             <div class="cardbody">
               <partial name="_GetDocument.cshtml" model="@Model.employeeDocuments">
              <div class="card-footer">
@@ -147,22 +160,22 @@
         </div>   
         <br />
 
-        <div>
-          <div class=" row card bg-light border-3">
-            <div class="card-body">
-            <h3>Confidentiality Agreement</h3>
-            <partial name="_ConfidentialityAgreement.cshtml" model="@Model.applicationTexts"/>
-            <span>
-                <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"/>
-                <strong>I Agree</strong>
-            </span>
+        <div class="row">
+            <div class="card-header bg-primary"> <h3>Confidentiality Agreement</h3></div>
+            <div class="card bg-light border-3 mx-auto">
+              
+                <div class="card-body">
+                    <partial name="_ConfidentialityAgreement.cshtml" model="@Model.applicationTexts"/>
+                    <span>
+                        <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"/>
+                        <strong>I Agree</strong>
+                    </span>
+                </div>
             </div>
-          </div>
-          <br />
-
-          <div class="row card bg-light border-3">
+        <br />
+        <div class="card-header bg-primary"><h3>Service Level Agreement</h3></div>
+          <div class="row card bg-light border-3 mx-auto">
             <div class="card-body">
-            <h3>Service Level Agreement</h3>
             <partial name="_ServiceLevelAgreement.cshtml" model="@Model.applicationTexts" />
             <span>
                 <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"/>
@@ -171,10 +184,9 @@
             </div>
           </div>
           <br />
-
-          <div class="row card bg-light border-3"\>
+          <div class="card-header bg-primary"><h3>BGV Acknowlegdement</h3></div>
+          <div class="row card bg-light border-3 mx-auto">
             <div class="card-body">
-            <h3>BGV Acknowlegdement</h3>
             <partial name="_BGVAcknowlegdement.cshtml" model="@Model.applicationTexts" />
             <span>
                 <input type="checkbox" name="IAgree" class="validation-checkbox" value="I Agree"/>

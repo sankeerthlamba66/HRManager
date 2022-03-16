@@ -54,15 +54,15 @@ namespace HRManager.Models.EntityViews
         public string? PersonalEmailId { get; set; }
 
         [Required]
-        [Display(Name = "Address Line 1")]
+        [Display(Name = "Line 1")]
         public string? CurrentAddressLine1 { get; set; }
 
         [Required]
-        [Display(Name = "Address Line 2")]
+        [Display(Name = "Line 2")]
         public string? CurrentAddressLine2 { get; set; }
 
         [Required]
-        [Display(Name = "Address Line 3")]
+        [Display(Name = "Line 3")]
         public string? CurrentAddressLine3 { get; set; }
 
         [Required]
@@ -76,19 +76,20 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "Pincode")]
-        //[RegularExpression(@"^([0-9]{6})*$", ErrorMessage = "Use digits only please")]
-        public int? CurrentPinCode { get; set; }
+        [StringLength(6,MinimumLength = 6)]
+        [RegularExpression(@"^([0-9])*$", ErrorMessage = "Use digits only please")]
+        public string? CurrentPinCode { get; set; }
 
         [Required]
-        [Display(Name = "Adress Line 1")]
+        [Display(Name = "Line 1")]
         public string? PermanentAddressLine1 { get; set; }
 
         [Required]
-        [Display(Name = "Adress Line 2")]
+        [Display(Name = "Line 2")]
         public string? PermanentAddressLine2 { get; set; }
 
         [Required]
-        [Display(Name = "Address Line 3")]
+        [Display(Name = "Line 3")]
         public string? PermanentAddressLine3 { get; set; }
 
         [Required]
@@ -102,8 +103,9 @@ namespace HRManager.Models.EntityViews
 
         [Required]
         [Display(Name = "Pincode")]
-        //[RegularExpression(@"^[0-9]*$", ErrorMessage = "Use digits only please")]
-        public int? PermanentPincode { get; set; }
+        [StringLength(6, MinimumLength = 6)]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Use digits only please")]
+        public string? PermanentPincode { get; set; }
 
         [Required]
         [Display(Name = "Blood Group")]

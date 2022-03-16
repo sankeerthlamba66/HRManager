@@ -1,6 +1,7 @@
 ﻿@model HRManager.Models.EntityViews.EmployeePersonalInfo
 
-    <div  id="personaldetails">
+<div id="myTabContent" class="tab-content">
+    <div lass="tab-pane fade active show"id="personaldetails">
         <dl class="row">
             <dt class = "col-sm-4">
                 @Html.HiddenFor(model => model.Id)
@@ -70,7 +71,26 @@
                 @Html.DisplayFor(model => model.PersonalEmailId)
                 <br />
             </dd>
-            <dt class = "col-sm-4">
+            <dt class="col-sm-4">
+                Current Address
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.CurrentAddressLine1),
+                @Html.DisplayFor(model => model.CurrentAddressLine2),
+                @Html.DisplayFor(model => model.CurrentAddressLine3),
+                @Html.DisplayFor(model => model.CurrentCity)
+                @Html.DisplayFor(model => model.CurrentState)
+                @Html.DisplayFor(model => model.CurrentPinCode)
+                <br />
+            </dd>
+            <dt class="col-sm-4">
+                Permanent Address
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.PermanentAddressLine1),@Html.DisplayFor(model => model.PermanentAddressLine2),@Html.DisplayFor(model => model.PermanentAddressLine3),@Html.DisplayFor(model => model.PermanentCity),@Html.DisplayFor(model => model.PermanentState),@Html.DisplayFor(model => model.PermanentPincode)
+                <br />
+            </dd>
+            @*<dt class = "col-sm-4">
                 @Html.DisplayNameFor(model => model.CurrentAddressLine1)
             </dt>
             <dd class = "col-sm-6">
@@ -153,7 +173,7 @@
             <dd class = "col-sm-6">
                 @Html.DisplayFor(model => model.PermanentPincode)
                 <br />
-            </dd>
+            </dd>*@
             <dt class = "col-sm-4">
                 @Html.DisplayNameFor(model => model.BloodGroup)
             </dt>
@@ -228,5 +248,5 @@
         @*@Html.ActionLink("Edit","UpdatePersonalInfo","Employee",new{id=Model.Id})*@
 
     </div>
-
+</div>
 

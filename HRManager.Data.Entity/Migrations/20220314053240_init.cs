@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRManager.Data.Entity.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -225,13 +225,13 @@ namespace HRManager.Data.Entity.Migrations
                     CurrentAddressLine3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CurrentCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CurrentState = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CurrentPinCode = table.Column<int>(type: "int", nullable: true),
+                    CurrentPinCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentAddressLine1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentAddressLine2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentAddressLine3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentState = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PermanentPincode = table.Column<int>(type: "int", nullable: true),
+                    PermanentPincode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "Date", nullable: false),
                     MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PersonalEmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -300,7 +300,7 @@ namespace HRManager.Data.Entity.Migrations
                     LastDesignation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartDate = table.Column<DateTime>(type: "Date", nullable: false),
                     EndDate = table.Column<DateTime>(type: "Date", nullable: false),
-                    CTC = table.Column<int>(type: "int", nullable: false),
+                    CTC = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReportingManagerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReportingManagerEmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReportingManagerMobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),

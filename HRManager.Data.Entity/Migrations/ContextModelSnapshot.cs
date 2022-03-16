@@ -338,8 +338,8 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<string>("CurrentCity")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CurrentPinCode")
-                        .HasColumnType("int");
+                    b.Property<string>("CurrentPinCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CurrentState")
                         .HasColumnType("nvarchar(max)");
@@ -405,8 +405,8 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<string>("PermanentCity")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PermanentPincode")
-                        .HasColumnType("int");
+                    b.Property<string>("PermanentPincode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PermanentState")
                         .HasColumnType("nvarchar(max)");
@@ -478,8 +478,8 @@ namespace HRManager.Data.Entity.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CTC")
-                        .HasColumnType("int");
+                    b.Property<string>("CTC")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");

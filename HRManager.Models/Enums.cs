@@ -16,7 +16,8 @@ namespace HRManager.Models
     public enum Gender : byte
     {
         Male = 1,
-        Female = 2
+        Female = 2,
+        Others= 3
     }
 
     public enum DocumentType : byte

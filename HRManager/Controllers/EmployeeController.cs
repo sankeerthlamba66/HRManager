@@ -179,7 +179,7 @@ namespace HRManager.Controllers
                 { employeeProfessionalDocuments.PaySlip1 = Code.FileManager.UploadDocument(ProfessionalInfo.PaySlip1, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 if (ProfessionalInfo.PaySlip2 != null)
                 { employeeProfessionalDocuments.PaySlip2 = Code.FileManager.UploadDocument(ProfessionalInfo.PaySlip2, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
-                if (ProfessionalInfo.PaySlip2 != null)
+                if (ProfessionalInfo.PaySlip3 != null)
                 { employeeProfessionalDocuments.PaySlip3 = Code.FileManager.UploadDocument(ProfessionalInfo.PaySlip3, Path.Combine(_webHostEnvironment.WebRootPath, path2)); }
                 var addedProfessionalInfoId = employeeManager.AddProfessionalInfo(employeeProfessionalDocuments);
                 return RedirectToAction("Index");

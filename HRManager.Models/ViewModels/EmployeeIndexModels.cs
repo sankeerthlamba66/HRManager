@@ -11,20 +11,20 @@ namespace HRManager.Models.ViewModels
     {
         public EmployeeIndexModels()
         {
-            this.employeePersonalInfo = new EmployeePersonalInfo();
-            this.employeeProfessionalInfos = new List<EmployeeProfessionalDocuments>();
-            this.employeeBankInfos = new List<EmployeeBankInfo>();
-            this.employeeInsuranceInfos = new List<EmployeeInsuranceInfo>();
-            this.employeePFandESIInfos = new List<EmployeePFandESIInfo>();
-            this.employeeDocuments = new EmployeeDocument();
-            this.applicationTexts = new ApplicationText();
+            //this.employeePersonalInfo = new EmployeePersonalInfo();
+            //this.employeeProfessionalInfos = new List<EmployeeProfessionalDocuments>();
+            //this.employeeBankInfos = new List<EmployeeBankInfo>();
+            //this.employeeInsuranceInfos = new List<EmployeeInsuranceInfo>();
+            //this.employeePFandESIInfos = new List<EmployeePFandESIInfo>();
+            //this.employeeDocuments = new EmployeeDocument();
+            //this.applicationTexts = new ApplicationText();
 
         }
         public EmployeePersonalInfo employeePersonalInfo { get; set; }
         public List<EmployeeProfessionalDocuments> employeeProfessionalInfos { get; set; }
-        public List<EmployeeBankInfo> employeeBankInfos { get; set; }
+        public EmployeeBankInfo employeeBankInfos { get; set; }
         public List<EmployeeInsuranceInfo> employeeInsuranceInfos { get; set; }
-        public List<EmployeePFandESIInfo> employeePFandESIInfos { get; set; }
+        public EmployeePFandESIInfo employeePFandESIInfos { get; set; }
         public EmployeeDocument employeeDocuments { get; set; }
         public ApplicationText applicationTexts { get; set; }
         public EmployeeAgreementAcceptance? employeeAgreementAcceptance { get; set; }

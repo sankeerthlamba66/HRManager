@@ -34,17 +34,14 @@
         }
 
          <h3>Bank Details</h3>
-          
-        foreach (var item in @Model.employeeBankInfos)
-        {
+
         <div class="row"> 
                 <div class="card bg-transparent border-3">
                   <div class="cardbody">
-                    <partial name="_BankInfo.cshtml" model="item"/>
+                    <partial name="_BankInfo.cshtml" model="@Model.employeeBankInfos"/>
                   </div>
                 </div>
             </div>            
-        }
         <br />
 
          <h3>Insurance Details</h3>
@@ -63,17 +60,14 @@
 
          <h3>PF and ESI Details</h3>
          
-        foreach(var item in @Model.employeePFandESIInfos)
-        {
         <div class="row"> 
                 <div class="card bg-transparent border-3">
                   <div class="cardbody">
-                <partial name="_PFandESIInfo.cshtml" model="item"/>
+                <partial name="_PFandESIInfo.cshtml" model="@Model.employeePFandESIInfos"/>
                 </div>
              </div>
             </div>
             <br />
-        }
 
          <h3>Documents</h3>
         

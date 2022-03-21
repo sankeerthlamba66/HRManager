@@ -77,7 +77,7 @@ namespace HRManager.Business
             return new EmployeeQueries().GetBankInfo(EmployeeBankInfoId,UserId);
         }
 
-        public List<EmployeeBankInfo> GetBankInfo( int UserId)
+        public EmployeeBankInfo GetBankInfo( int UserId)
         {
             return new EmployeeQueries().GetBankInfo(UserId);
         }
@@ -129,7 +129,7 @@ namespace HRManager.Business
             return new EmployeeQueries().GetPFAndESIInfo(EmployeePFAndESIInfoId,UserId);
         }
 
-        public List<EmployeePFandESIInfo> GetPFAndESIInfo(int UserId)
+        public EmployeePFandESIInfo GetPFAndESIInfo(int UserId)
         {
             return new EmployeeQueries().GetPFAndESIInfo(UserId);
         }

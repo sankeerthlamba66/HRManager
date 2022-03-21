@@ -22,7 +22,7 @@ namespace HRManager.Business.BussinessRepository
         int UpdateProfessionalInfo(EmployeeProfessionalDocuments ProfessionalInfo);
         void DeleteProfessionalInfo(int ProfessionalInfoId, int UserId);
         EmployeeBankInfo GetBankInfo(int? EmployeeBankInfoId, int UserId);
-        List<EmployeeBankInfo> GetBankInfo(int UserId);
+        EmployeeBankInfo GetBankInfo(int UserId);
         int AddBankInfo(EmployeeBankInfo ProfessionalInfo);
         int UpdateBankInfo(EmployeeBankInfo BankInfo);
         void DeleteBankInfo(int EmployeeBankInfoId, int UserId);
@@ -32,7 +32,7 @@ namespace HRManager.Business.BussinessRepository
         int UpdateInsuranceInfo(EmployeeInsuranceInfo InsuranceInfo);
         void DeleteInsuranceInfo(int EmployeeInsuranceInfoId, int UserId);
         EmployeePFandESIInfo GetPFAndESIInfo(int? EmployeePFAndESIInfoId, int UserId);
-        List<EmployeePFandESIInfo> GetPFAndESIInfo(int UserId);
+        EmployeePFandESIInfo GetPFAndESIInfo(int UserId);
         int AddPFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo);
         int UpdatePFAndESIInfo(EmployeePFandESIInfo PFAndESIInfo);
         void DeletePFAndESIInfo(int EmployeePFAndESIInfoId, int UserId);

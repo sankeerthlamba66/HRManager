@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRManager.Data.Entity.Migrations
 {
-    public partial class init : Migration
+    public partial class inti : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -188,8 +188,8 @@ namespace HRManager.Data.Entity.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Relationship = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Relationship = table.Column<byte>(type: "tinyint", nullable: false),
+                    Gender = table.Column<byte>(type: "tinyint", nullable: false),
                     DateOfBirthAsPerAadhar = table.Column<DateTime>(type: "Date", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "Date", nullable: true),
@@ -218,29 +218,29 @@ namespace HRManager.Data.Entity.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MaritalStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<byte>(type: "tinyint", nullable: false),
+                    MaritalStatus = table.Column<byte>(type: "tinyint", nullable: false),
                     CurrentAddressLine1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CurrentAddressLine2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CurrentAddressLine3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CurrentCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CurrentState = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CurrentState = table.Column<byte>(type: "tinyint", nullable: false),
                     CurrentPinCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentAddressLine1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentAddressLine2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentAddressLine3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PermanentState = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PermanentState = table.Column<byte>(type: "tinyint", nullable: false),
                     PermanentPincode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "Date", nullable: false),
                     MobileNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PersonalEmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CurrentAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PermanentAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BloodGroup = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BloodGroup = table.Column<byte>(type: "tinyint", nullable: false),
                     EmergencyContactName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmergencyContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RelationshipWithContact = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RelationshipWithContact = table.Column<byte>(type: "tinyint", nullable: false),
                     PanCardNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NameAsPerAadhar = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AadharCardNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),

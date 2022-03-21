@@ -4,9 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Edit Your PF and ESI Details</h3>
-
-<div class="row">
+<div class="card border-3 col-sm-10 mx-auto" >
+<div class="card-header bg-primary">
+<h3 class="text-center">PF & ESI Details</h3>
+</div>
+  <div class="card-body align-items-center">
+  <div class="row">
     <div class="col-md-4">
         <form asp-action="UpdatePFAndESIInfo">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

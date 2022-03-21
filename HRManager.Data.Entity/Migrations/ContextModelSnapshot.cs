@@ -278,14 +278,14 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<DateTime?>("DateOfBirthAsPerAadhar")
                         .HasColumnType("Date");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("Gender")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("NameAsPerAadhar")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Relationship")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("Relationship")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -314,8 +314,8 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<string>("AadharCardNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BloodGroup")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("BloodGroup")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -341,8 +341,8 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<string>("CurrentPinCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CurrentState")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("CurrentState")
+                        .HasColumnType("tinyint");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("Date");
@@ -366,14 +366,14 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("Gender")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MaritalStatus")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("MaritalStatus")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("MiddleName")
                         .HasColumnType("nvarchar(max)");
@@ -408,14 +408,14 @@ namespace HRManager.Data.Entity.Migrations
                     b.Property<string>("PermanentPincode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PermanentState")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("PermanentState")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("PersonalEmailId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RelationshipWithContact")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte>("RelationshipWithContact")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");

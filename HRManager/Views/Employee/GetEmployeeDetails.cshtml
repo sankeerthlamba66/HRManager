@@ -41,11 +41,11 @@
         <div>
            <h2>Bank Details</h2>
            <div class="row" >
-                @foreach (var item in @Model.employeeBankInfos)
+                @if (@Model.employeeBankInfos is not null)
                 {
                   <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
                     <div class="cardbody">
-                       <partial name="_GetBankInfo.cshtml" model="item"> 
+                       <partial name="_GetBankInfo.cshtml" model="Model.employeeBankInfos"> 
                     </div>
                   </div>
                 }
@@ -71,11 +71,11 @@
         <div>
            <h2>PF and ESI Details</h2>
            <div class="row">
-            @foreach(var item in @Model.employeePFandESIInfos)
+            @if(@Model.employeePFandESIInfos is not null)
             {
              <div class="card bg-transparent border-3 col-sm-6" style="max-width: 40rem">
               <div class="cardbody">
-                <partial name="_GetPFandESIInfo.cshtml" model="item">
+                <partial name="_GetPFandESIInfo.cshtml" model="@Model.employeePFandESIInfos">
               </div>
              </div>
             }

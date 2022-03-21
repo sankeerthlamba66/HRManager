@@ -1,9 +1,10 @@
 ﻿@model HRManager.Models.EntityViews.User
-
-<h4>Register New Employee</h4>
-<hr />
-   
-<div class="row">
+<div class="card border-3 col-sm-10 mx-auto" >
+<div class="card-header bg-primary">
+<h3 class="text-center">Register New Employee</h3>
+</div>
+  <div class="card-body align-items-center">
+  <div class="row">
     <div class="col-md-5">
         <form asp-action="AddEmployee" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -60,6 +61,8 @@
             </div>
         </form>
     </div>
+</div>
+</div>
 </div>
 
 @section Scripts {

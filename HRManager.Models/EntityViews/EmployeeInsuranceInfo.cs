@@ -20,11 +20,11 @@ namespace HRManager.Models.EntityViews
         
         [Required]
         [Display(Name = "Relationship")]
-        public string? Relationship { get; set; }
+        public Relationship Relationship { get; set; }
         
         [Required]
         [Display(Name = "Gender")]
-        public string? Gender { get; set; }
+        public Gender Gender { get; set; }
         
         [Required]
         [DataType(DataType.Date)]

@@ -4,9 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Edit Your Insurance Details</h3>
-
-<div class="row">
+<div class="card border-3 col-sm-10 mx-auto" >
+<div class="card-header bg-primary">
+<h3 class="text-center">Insurance Details</h3>
+</div>
+  <div class="card-body align-items-center">
+  <div class="row">
     <div class="col-md-4">
         <form asp-action="UpdateInsuranceInfo">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -34,7 +37,7 @@
             <br />
             <div class="form-group">
                 <label asp-for="Relationship" class="control-label"></label>
-                <select class="form-select" aria-label="Default select example" asp-for="Relationship"  asp-items="@(new SelectList(Enum.GetValues(typeof(Relationship))))">
+                <select class="form-select" aria-label="Default select example" asp-for="Relationship"  asp-items="Html.GetEnumSelectList<Relationship>()">
                  <option selected>Select</option>
                 </select>
                 <span asp-validation-for="Relationship" class="text-danger"></span>
@@ -42,7 +45,7 @@
             <br />
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-                <select class="form-select" aria-label="Default select example" asp-for="Gender"  asp-items="@(new SelectList(Enum.GetValues(typeof(Gender))))">
+                <select class="form-select" aria-label="Default select example" asp-for="Gender"  asp-items="Html.GetEnumSelectList<Gender>()">
                     <option selected>Select</option>
                 </select>
                 <span asp-validation-for="Gender" class="text-danger"></span>

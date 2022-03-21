@@ -36,7 +36,7 @@ namespace HRManager.Models
 
     public enum BloodGroup : byte
     {
-        [Display(Name = "A+")]
+        [System.ComponentModel.Description("A+")]
         APositive = 0,
 
         [Display(Name = "A-")]

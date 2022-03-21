@@ -684,7 +684,7 @@ namespace HRManager.Data.Entity
             try
             {
                 var bankInfo = context.EmployeeBankInfos.Where(s => s.Id == EmployeeBankInfoId && s.UserId == UserId).FirstOrDefault();
-                employeeBankInfo = GetEmployeeBankMapper(bankInfo);
+                if (bankInfo is not null) { employeeBankInfo = GetEmployeeBankMapper(bankInfo); }
             }
             catch (Exception ex)
             {
@@ -693,14 +693,14 @@ namespace HRManager.Data.Entity
             return employeeBankInfo;
         }
 
-        public List<EmployeeBankInfo> GetBankInfo(int UserId)
+        public EmployeeBankInfo GetBankInfo(int UserId)
         {
-            List<EmployeeBankInfo> employeeBankInfo = new List<EmployeeBankInfo>();
+            EmployeeBankInfo employeeBankInfo = null;
             try
             {
-                var bankInfo = context.EmployeeBankInfos.Where(s => s.UserId == UserId).ToList();
-                foreach (var item in bankInfo)
-                { employeeBankInfo.Add(GetEmployeeBankMapper(item)); }
+                var bankInfo = context.EmployeeBankInfos.Where(s => s.UserId == UserId).FirstOrDefault();
+                if (bankInfo is not null)
+                { employeeBankInfo = GetEmployeeBankMapper(bankInfo); }
             }
             catch (Exception ex)
             {
@@ -882,7 +882,10 @@ namespace HRManager.Data.Entity
             try
             {
                 var employeePFAndESIInfo = context.EmployeePFandESIInfos.Where(s => s.Id == EmployeePFAndESIInfoId && s.UserId == UserId).FirstOrDefault();
-                _employeePFandESIInfo = GetPFandESIInfoMapper(employeePFAndESIInfo);
+                if (employeePFAndESIInfo is not null)
+                {
+                    _employeePFandESIInfo = GetPFandESIInfoMapper(employeePFAndESIInfo);
+                }
             }
             catch (Exception ex)
             {
@@ -891,15 +894,15 @@ namespace HRManager.Data.Entity
             return _employeePFandESIInfo;
         }
 
-        public List<EmployeePFandESIInfo> GetPFAndESIInfo(int UserId)
+        public EmployeePFandESIInfo GetPFAndESIInfo(int UserId)
         {
-            List<EmployeePFandESIInfo> _employeePFandESIInfo = new List<EmployeePFandESIInfo>();
+            EmployeePFandESIInfo _employeePFandESIInfo = null;
             try
             {
-                var employeePFAndESIInfo = context.EmployeePFandESIInfos.Where(s=>s.UserId == UserId).ToList();
-                foreach (var item in employeePFAndESIInfo)
+                var employeePFAndESIInfo = context.EmployeePFandESIInfos.Where(s=>s.UserId == UserId).FirstOrDefault();
+                if (employeePFAndESIInfo != null)
                 {
-                    _employeePFandESIInfo.Add(GetPFandESIInfoMapper(item));
+                    _employeePFandESIInfo = GetPFandESIInfoMapper(employeePFAndESIInfo);
                 }
             }
             catch (Exception ex)

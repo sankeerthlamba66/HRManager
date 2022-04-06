@@ -1,12 +1,12 @@
 ﻿@model HRManager.Models.EntityViews.EmployeeProfessionalIForms
-<div class="card border-3 col-sm-10 mx-auto" >
+<div class="card border-primary col-sm-10 mx-auto" >
 <div class="card-header bg-primary">
 <h3 class="text-center">Professional Details</h3>
 </div>
   <div class="card-body align-items-center">
   <div class="row">
          <div class="card-body align-items-center">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <form asp-action="AddProfessionalInfo" enctype="multipart/form-data" >
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 @*<div class="form-group">
@@ -19,6 +19,8 @@
                     <input asp-for="UserId" class="form-control" />
                     <span asp-validation-for="UserId" class="text-danger"></span>
                 </div>*@
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="OrganizationName" class="control-label">
                       <span>Organization Name<sup class="star" style="color:red;">*</sup></span>
@@ -26,13 +28,17 @@
                     <input asp-for="OrganizationName" class="form-control" required />
                     <span asp-validation-for="OrganizationName" class="text-danger"></span>
                 </div>
-                <br />
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="IsThisYourLastEmployment" /> @Html.DisplayNameFor(model => model.IsThisYourLastEmployment)
-                    </label>
+                </div>
+                <div class="col">
+                <div class="form-group form-check form-switch">
+                    <label class="form-check-label" asp-for="IsThisYourLastEmployment" id="flexSwitchCheckDefault"></label>
+                    <input class="form-check-input" asp-for="IsThisYourLastEmployment" for="flexSwitchCheckDefault"/>
+                </div>
+                </div>
                 </div>
                 <br />
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="LastDesignation" class="control-label">
                         <span>Last Designation<sup class="star" style="color:red;">*</sup></span>
@@ -42,7 +48,20 @@
                             oninput="this.setCustomValidity('Required field')/>
                     <span asp-validation-for="LastDesignation" class="text-danger" ></span>
                 </div>
+                </div>
+                <div class="col">
+                 <div class="form-group">
+                    <label asp-for="CTC" class="control-label">
+                        <span>CTC<sup class="star" style="color:red;">*</sup></span>
+                    </label>
+                    <input asp-for="CTC" class="form-control" required />
+                    <span asp-validation-for="CTC" class="text-danger"></span>
+                </div>
+                </div>
+                </div>
                 <br />
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="StartDate" class="control-label">
                         <span>Start Date<sup class="star" style="color:red;">*</sup></span>
@@ -50,7 +69,8 @@
                     <input asp-for="StartDate" class="form-control" required/>
                     <span asp-validation-for="StartDate" class="text-danger"></span>
                 </div>
-                <br />
+                </div>
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="EndDate" class="control-label">
                         <span>End Date<sup class="star" style="color:red;">*</sup></span>
@@ -58,15 +78,11 @@
                     <input asp-for="EndDate" class="form-control" required />
                     <span asp-validation-for="EndDate" class="text-danger"></span>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="CTC" class="control-label">
-                        <span>CTC<sup class="star" style="color:red;">*</sup></span>
-                    </label>
-                    <input asp-for="CTC" class="form-control" required />
-                    <span asp-validation-for="CTC" class="text-danger"></span>
+                </div>
                 </div>
                 <br />
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="ReportingManagerName" class="control-label">
                         <span>Reporting Manager Name<sup class="star" style="color:red;">*</sup></span>
@@ -74,7 +90,8 @@
                     <input asp-for="ReportingManagerName" class="form-control" required/>
                     <span asp-validation-for="ReportingManagerName" class="text-danger"></span>
                 </div>
-                <br />
+                </div>
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="ReportingManagerEmailId" class="control-label">
                         <span>Reporting Manager Email Id<sup class="star" style="color:red;">*</sup></span>
@@ -82,7 +99,8 @@
                     <input asp-for="ReportingManagerEmailId" class="form-control" required/>
                     <span asp-validation-for="ReportingManagerEmailId" class="text-danger"></span>
                 </div>
-                <br />
+                </div>
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="ReportingManagerMobileNumber" class="control-label">
                         <span>Reporting Manager Mobile Number<sup class="star" style="color:red;">*</sup></span>
@@ -90,7 +108,11 @@
                     <input asp-for="ReportingManagerMobileNumber" class="form-control" required/>
                     <span asp-validation-for="ReportingManagerMobileNumber" class="text-danger"></span>
                 </div>
+                </div>
+                </div>
                 <br />
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="HRName" class="control-label">
                         <span>HR Name<sup class="star" style="color:red;">*</sup></span>
@@ -98,7 +120,8 @@
                     <input asp-for="HRName" class="form-control" required/>
                     <span asp-validation-for="HRName" class="text-danger"></span>
                 </div>
-                <br />
+                </div>
+                <div class="col">
                 <div class="form-group">
                     <label asp-for="HREmailId" class="control-label">
                         <span>HR Email Id<sup class="star" style="color:red;">*</sup></span>
@@ -106,66 +129,58 @@
                     <input asp-for="HREmailId" class="form-control" required/>
                     <span asp-validation-for="HREmailId" class="text-danger"></span>
                 </div>
+                 </div>
+                 </div>
                  <br />
-                <div class="mb-3">
+                <div class="form-group col-6">
                     <label asp-for="OfferLetter" class="control-label">
                         <span>Offer Letter<sup class="star" style="color:red;">*</sup></span>
                     </label>
-                    <div class="form-group">
-                    <input type="file" asp-for="OfferLetter" class="custom-file-input" required/>
+                    <input type="file" asp-for="OfferLetter" class="form-control" required/>
                     <span asp-validation-for="OfferLetter" class="text-danger"></span>
-                    </div>
                 </div>
                 <br />
-                <div class="mb-3">
+                <div class="form-group col-6">
                     <label asp-for="RelievingLetter" class="control-label">
                         <span>Relieving Letter<sup class="star" style="color:red;">*</sup></span>
                     </label>
-                    <div class="form-group">
-                    <input type="file" asp-for="RelievingLetter" class="custom-file-input" required />
+                    <input type="file" asp-for="RelievingLetter" class="form-control" required />
                     <span asp-validation-for="RelievingLetter" class="text-danger"></span>
-                    </div>
                 </div>
                 <br />
-                <div class="mb-3">
+                <div class="form-group col-6">
                     <label asp-for="ExperienceLetter" class="control-label">
                         <span>Experience Letter<sup class="star" style="color:red;">*</sup></span>
                     </label>
-                    <div class="form-group">
-                    <input type="file" asp-for="ExperienceLetter" class="custom-file-input" required />
+                    <input type="file" asp-for="ExperienceLetter" class="form-control" required />
                     <span asp-validation-for="ExperienceLetter" class="text-danger"></span>
-                    </div>
                 </div>
                 <br />
-                <div class="mb-3">
+                <div class="form-group col-6">
                     <label asp-for="PaySlip1" class="control-label">
                         <span>Pay Slip 1<sup class="star" style="color:red;">*</sup></span>
                     </label>
-                    <div class="form-group">
-                    <input type="file" asp-for="PaySlip1" class="custom-file-input" required />
+                    <input type="file" asp-for="PaySlip1" class="form-control" required />
                     <span asp-validation-for="PaySlip1" class="text-danger"></span>
-                    </div>
                 </div>
                 <br />
-                <div class="mb-3">
+                <div class="form-group col-6">
                     <label asp-for="PaySlip2" class="control-label"></label>
-                    <div class="form-group">
-                    <input type="file" asp-for="PaySlip2" class="custom-file-input" />
+                    <input type="file" asp-for="PaySlip2" class="form-control" />
                     <span asp-validation-for="PaySlip2" class="text-danger"></span>
-                    </div>
                 </div>
                 <br />
-                <div class="mb-3">
+                <div class="form-group col-6">
                     <label asp-for="PaySlip3" class="control-label"></label>
-                    <div class="form-group">
-                    <input type="file" asp-for="PaySlip3" class="custom-file-input" />
+                    <div class="">
+                    <input type="file" asp-for="PaySlip3" class="form-control" />
                     <span asp-validation-for="PaySlip3" class="text-danger"></span>
                     </div>
                 </div>
                 <br />
-                <div class="form-group">
+                <div class="form-group; text-center">
                      @*<input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />*@
-                     <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
+                     <input type="submit" value="Save" class="btn btn-primary"/>
                 </div>
             </form>
         </div>

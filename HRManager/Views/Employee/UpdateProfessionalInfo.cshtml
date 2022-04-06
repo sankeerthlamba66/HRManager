@@ -5,152 +5,189 @@
 }
 @if (Model is not null)
 {
-    <div class="card border-3 col-sm-10 mx-auto" >
+    <div class="card border-primary col-sm-10 mx-auto" >
        <div class="card-header bg-primary">
         <h3 class="text-center">Professional Details</h3>
         </div>
           <div class="card-body align-items-center">
           <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <form asp-action="UpdateProfessionalInfo" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label hidden-for="@Model.employeeProfessionalDocuments.Id" class="control-label"></label>
                     <input class="form-control" type="hidden" asp-for="@Model.employeeProfessionalDocuments.Id"/>
                 </div>
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.OrganizationName" class="control-label"></label>
+                    <label asp-for="@Model.employeeProfessionalDocuments.OrganizationName" class="control-label" style="font-weight:bold"></label>
                     <input asp-for="@Model.employeeProfessionalDocuments.OrganizationName" class="form-control" />
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.OrganizationName" class="text-danger"></span>
                 </div>
-                <br />
-                <div class="form-group form-check">
-                    <label asp-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" class="form-check-label">
-                        <input class="form-check-input" asp-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" />
-                        <span asp-validation-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" class="text-danger"></span>
-                    </label>
+                </div>
+                <div class="col">
+                <div class="form-group form-check form-switch">
+                    <label asp-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" class="form-check-label" style="font-weight:bold" id="flexSwitchCheckDefault"></label>
+                    <input class="form-check-input" asp-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" for="flexSwitchCheckDefault"/>
+                    <span asp-validation-for="@Model.employeeProfessionalDocuments.IsThisYourLastEmployment" class="text-danger"></span>    
+                </div>
+                </div>
                 </div>
                 <br />
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.LastDesignation" class="control-label"></label>
+                    <label asp-for="@Model.employeeProfessionalDocuments.LastDesignation" class="control-label" style="font-weight:bold"></label>
                     <input asp-for="@Model.employeeProfessionalDocuments.LastDesignation" class="form-control" />
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.LastDesignation" class="text-danger"></span>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.StartDate" class="control-label"></label>
-                    <input asp-for="@Model.employeeProfessionalDocuments.StartDate" class="form-control" />
-                    <span asp-validation-for="@Model.employeeProfessionalDocuments.StartDate" class="text-danger"></span>
                 </div>
-                <br />
+                <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.EndDate" class="control-label"></label>
-                    <input asp-for="@Model.employeeProfessionalDocuments.EndDate" class="form-control" />
-                    <span asp-validation-for="@Model.employeeProfessionalDocuments.EndDate" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.CTC" class="control-label"></label>
+                    <label asp-for="@Model.employeeProfessionalDocuments.CTC" class="control-label" style="font-weight:bold"></label>
                     <input asp-for="@Model.employeeProfessionalDocuments.CTC" class="form-control" />
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.CTC" class="text-danger"></span>
                 </div>
+                </div>
+                </div>
                 <br />
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.ReportingManagerName" class="control-label"></label>
+                    <label asp-for="@Model.employeeProfessionalDocuments.StartDate" class="control-label" style="font-weight:bold"></label>
+                    <input asp-for="@Model.employeeProfessionalDocuments.StartDate" class="form-control" />
+                    <span asp-validation-for="@Model.employeeProfessionalDocuments.StartDate" class="text-danger"></span>
+                </div>
+               </div>
+               <div class="col">
+                <div class="form-group">
+                    <label asp-for="@Model.employeeProfessionalDocuments.EndDate" class="control-label" style="font-weight:bold"></label>
+                    <input asp-for="@Model.employeeProfessionalDocuments.EndDate" class="form-control" />
+                    <span asp-validation-for="@Model.employeeProfessionalDocuments.EndDate" class="text-danger"></span>
+                </div>
+                </div>
+                </div>
+                <br />
+                <div class="row mb-6">
+                <div class="col">
+                <div class="form-group">
+                    <label asp-for="@Model.employeeProfessionalDocuments.ReportingManagerName" class="control-label" style="font-weight:bold"></label>
                     <input asp-for="@Model.employeeProfessionalDocuments.ReportingManagerName" class="form-control" />
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.ReportingManagerName" class="text-danger"></span>
                 </div>
-                <br />
+                </div>
+                <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.ReportingManagerEmailId" class="control-label"></label>
+                    <label asp-for="@Model.employeeProfessionalDocuments.ReportingManagerEmailId" class="control-label" style="font-weight:bold"></label>
                     <input asp-for="@Model.employeeProfessionalDocuments.ReportingManagerEmailId" class="form-control" />
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.ReportingManagerEmailId" class="text-danger"></span>
                 </div>
-                <br />
+                </div>
+                <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.ReportingManagerMobileNumber" class="control-label"></label>
+                    <label asp-for="@Model.employeeProfessionalDocuments.ReportingManagerMobileNumber" class="control-label" style="font-weight:bold"></label>
                     <input asp-for="@Model.employeeProfessionalDocuments.ReportingManagerMobileNumber" class="form-control" />
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.ReportingManagerMobileNumber" class="text-danger"></span>
                 </div>
+                </div>
+                </div>
                 <br />
+                <div class="row mb-6">
+                <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.HRName" class="control-label"></label>
+                    <label asp-for="@Model.employeeProfessionalDocuments.HRName" class="control-label" style="font-weight:bold"></label>
                     <input asp-for="@Model.employeeProfessionalDocuments.HRName" class="form-control" />
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.HRName" class="text-danger"></span>
                 </div>
-                <br />
+                </div>
+                 <div class="col">
                 <div class="form-group">
-                    <label asp-for="@Model.employeeProfessionalDocuments.HREmailId" class="control-label"></label>
+                    <label asp-for="@Model.employeeProfessionalDocuments.HREmailId" class="control-label" style="font-weight:bold"></label>
                     <input asp-for="@Model.employeeProfessionalDocuments.HREmailId" class="form-control" />
                     <span asp-validation-for="@Model.employeeProfessionalDocuments.HREmailId" class="text-danger"></span>
                 </div>
-                <div class="mb-3">                    
+                </div>
+                </div>
+                <br />
+                <div class="form-group; col-8">                    
                     <label for="formFile" class="form-label" asp-for="@Model.OfferLetter"><strong>Offer Letter</strong></label>
-                    <div class="form-group">
-                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.OfferLetter"/>
+                    <div class="input-group">
+                        <input class="form-control" type="file" id="formFile" asp-for="@Model.OfferLetter"/>
+                        <span class="input-group-text" id="basic-addon2" >
                         @if (!string.IsNullOrEmpty(@Model.employeeProfessionalDocuments.OfferLetterPath))
                         {
                             <a target="_blank" href="~/Documents/@Model.employeeProfessionalDocuments.OfferLetterPath">Offer Letter</a>
                         }
+                        </span>
                     </div>
                 </div>
 
-                <div class="mb-3">                    
-                    <label for="formFile" class="form-label" asp-for="@Model.RelievingLetter"><strong>Relieving Letter</strong></label>
-                    <div class="form-group">
-                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.RelievingLetter"/>
-                        @if (!string.IsNullOrEmpty(@Model.employeeProfessionalDocuments.RelievingLetterPath))
-                        {
-                            <a target="_blank" href="~/Documents/@Model.employeeProfessionalDocuments.RelievingLetterPath">Relieving Letter</a>
-                        }
+                <div class="form-group; col-8">                    
+                    <label for="formFile" class="form-label"asp-for="@Model.RelievingLetter"><strong>Relieving Letter</strong></label>
+                    <div class="input-group ">
+                        <input class="form-control" type="file" id="formFile" asp-for="@Model.RelievingLetter"/>
+                        <span class="input-group-text" id="basic-addon2" >
+                            @if (!string.IsNullOrEmpty(@Model.employeeProfessionalDocuments.RelievingLetterPath))
+                            {
+                                <a target="_blank" href="~/Documents/@Model.employeeProfessionalDocuments.RelievingLetterPath">Relieving Letter</a>
+                            }
+                        </span>
                     </div>
                 </div>
                 <br />
-                <div class="mb-3">                    
+                <div class="form-group; col-8">                    
                     <label for="formFile" class="form-label" asp-for="@Model.ExperienceLetter"><strong>Experience Letter</strong></label>
-                    <div class="form-group">
-                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.ExperienceLetter"/>
+                    <div class="input-group">
+                        <input class="form-control" type="file" id="formFile" asp-for="@Model.ExperienceLetter"/>
+                        <span class="input-group-text" id="basic-addon2" >
                         @if (!string.IsNullOrEmpty(@Model.employeeProfessionalDocuments.ExperienceLetterPath))
                         {
                             <a target="_blank" href="~/Documents/@Model.employeeProfessionalDocuments.ExperienceLetterPath">Experience Letter</a>
                         }
+                        </span>
                     </div>
                 </div>
                 <br />
-                <div class="mb-3">                    
+                <div class="form-group; col-8">                    
                     <label for="formFile" class="form-label" asp-for="@Model.PaySlip1"><strong>Pay Slip 1</strong></label>
-                    <div class="form-group">
-                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.PaySlip1"/>
+                    <div class="input-group">
+                        <input class="form-control" type="file" id="formFile" asp-for="@Model.PaySlip1"/>
+                        <span class="input-group-text" id="basic-addon2" >
                         @if (!string.IsNullOrEmpty(@Model.employeeProfessionalDocuments.PaySlip1))
                         {
                             <a target="_blank" href="~/Documents/@Model.employeeProfessionalDocuments.PaySlip1">Pay Slip 1</a>
                         }
+                        </span>
                     </div>
                 </div>
-                <div class="mb-3">                    
+                <div class="form-group; col-8">                    
                     <label for="formFile" class="form-label" asp-for="@Model.PaySlip2"><strong>Pay Slip 2</strong></label>
-                    <div class="form-group">
-                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.PaySlip2"/>
+                    <div class="input-group">
+                        <input class="form-control" type="file" id="formFile" asp-for="@Model.PaySlip2"/>
+                        <span class="input-group-text" id="basic-addon2" >
                         @if (!string.IsNullOrEmpty(@Model.employeeProfessionalDocuments.PaySlip2))
                         {
                             <a target="_blank" href="~/Documents/@Model.employeeProfessionalDocuments.PaySlip2">Pay Slip 2</a>
                         }
+                        </span>
                     </div>
                 </div>
-                <div class="mb-3">                    
+                <div class="form-group; col-8">                    
                     <label for="formFile" class="form-label" asp-for="@Model.PaySlip3"><strong>Pay Slip 3</strong></label>
-                    <div class="form-group">
-                        <input class="form md-6" type="file" id="formFile" asp-for="@Model.PaySlip3"/>
+                    <div class="input-group">
+                        <input class="form-control" type="file" id="formFile" asp-for="@Model.PaySlip3"/>
+                        <span class="input-group-text" id="basic-addon2" >
                         @if (!string.IsNullOrEmpty(@Model.employeeProfessionalDocuments.PaySlip3))
                         {
                             <a target="_blank" href="~/Documents/@Model.employeeProfessionalDocuments.PaySlip3">Pay Slip 3</a>
                         }
+                        </span>
                     </div>
                 </div>
                  <br />
                 <div class="form-group">
-                    <input type="submit" value="Back" class="btn btn-primary" asp-action="Index"/>
-                    <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
             </form>
         </div>

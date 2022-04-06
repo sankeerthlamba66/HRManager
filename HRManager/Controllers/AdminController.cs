@@ -212,7 +212,6 @@ namespace HRManager.Controllers
                 return HandleException(ex);
             }
         }
-
         public FileResult Export(DateTime? DateFrom, DateTime? DateTo)
         {
             var employeeData = new List<EmployeeTableSummary>();

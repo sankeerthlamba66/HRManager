@@ -1,19 +1,19 @@
 ﻿@model HRManager.Models.EntityViews.EmployeeFileDocument
-<div class="card border-3 col-sm-10 mx-auto" >
+<div class="card border-primary col-sm-10 mx-auto" >
 <div class="card-header bg-primary">
 <h3 class="text-center">Documents</h3>
 </div>
   <div class="card-body align-items-center">
   <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <form asp-action="AddDocument" enctype="multipart/form-data" >
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="mb-3"> 
                     <label asp-for="PassportPhoto" class="control-label fw-bold">
                         <span>Passport Photo<sup class="star" style="color:red;">*</sup></span>
                     </label>
-                    <div class="form-group">
-                    <input type="file" asp-for="PassportPhoto" class="custom-file-input" required  />
+                    <div class="file-upload">
+                    <input type="file" asp-for="PassportPhoto" class="file" required  />
                     <span asp-validation-for="PassportPhoto" class="text-danger"></span>
                      </div>
                 </div>

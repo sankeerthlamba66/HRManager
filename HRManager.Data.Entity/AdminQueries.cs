@@ -47,7 +47,7 @@ namespace HRManager.Data.Entity
                     employeeAgreementAcceptance.ServiceLevelAgreement = false;
                     employeeAgreementAcceptance.BGVAcknowledgement = false;
                     employeeAgreementAcceptance.UserId = UserDetail.Id;
-                    employeeAgreementAcceptance.UpdatedDate = DateTime.Now;
+                    employeeAgreementAcceptance     .UpdatedDate = DateTime.Now;
                     employeeAgreementAcceptance.CreatedDate = DateTime.Now;
                     employeeAgreementAcceptance.CreatedBy = user.CreatedBy;
                     employeeAgreementAcceptance.UpdatedBy = user.CreatedBy;

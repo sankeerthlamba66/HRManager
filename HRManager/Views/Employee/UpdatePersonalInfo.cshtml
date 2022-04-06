@@ -4,12 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Edit Your Personal Details</h3>
 @if (Model is not null)
 {
-<div class="card bg-white border-3 col-sm-10 mx-auto" >
+<div class="card border-primary col-sm-12 mx-auto" >
 <div class="card-header bg-primary">
-<h3 class="align-content-center">Personal Details</h3>
+<h3 class="text-center">Personal Details</h3>
 </div>
   <div class="card-body align-items-center">
   <div class="row">
@@ -272,23 +271,14 @@
                 <span asp-validation-for="FathersMobileNumber" class="text-danger"></span>
             </div>
             </div>
-            </div>
-            <br />
-            <div class="form-group col-md-4">
+            <div class="col">
+            <div class="form-group">
                 <label asp-for="MothersNameAsPerAadhar" class="control-label" style="font-weight:bold"></label>
                 <input asp-for="MothersNameAsPerAadhar" class="form-control" />
                 <span asp-validation-for="MothersNameAsPerAadhar" class="text-danger"></span>
             </div>
-           @* <div class="form-group">
-                <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
-                <span asp-validation-for="CreatedBy" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UpdatedBy" class="control-label"></label>
-                <input asp-for="UpdatedBy" class="form-control" />
-                <span asp-validation-for="UpdatedBy" class="text-danger"></span>
-            </div>*@
+            </div>
             <br />
             <div class="form-group; text-center">
                 <input type="submit" value="Save" class="btn btn-primary" />

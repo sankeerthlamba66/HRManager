@@ -635,7 +635,7 @@ namespace HRManager.Controllers
                 }
                 if (DocumentInfo.Resume != null)
                 {
-                    //System.IO.File.Delete(employeeDocumentModelInfo.employeeDocuments.Resume);
+                    //System.IO.File.Delete(employeeDocumentModelInfo.empl/oyeeDocuments.Resume);
                     employeeDocument.Resume = Code.FileManager.UploadDocument(DocumentInfo.Resume, Path.Combine(_webHostEnvironment.WebRootPath, path2)); 
                 }
                 if (DocumentInfo.PanCard != null)

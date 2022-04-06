@@ -1,32 +1,38 @@
 ﻿@model HRManager.Models.EntityViews.EmployeePFandESIInfo
 
-<div class="card border-3 col-sm-10 mx-auto" >
+<div class="card border-primary col-sm-10 mx-auto" >
 <div class="card-header bg-primary">
 <h3 class="text-center">PF & ESI </h3>
 </div>
   <div class="card-body align-items-center">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-12">
         <form asp-action="AddPFAndESIInfo">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row mb-6">
+             <div class="col">
             <div class="form-group">
                 <label asp-for="UAN" class="control-label"><span>UAN<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="UAN" class="form-control" />
                 <span asp-validation-for="UAN" class="text-danger"></span>
             </div>
-            <br />
+            </div>
+            <div class="col">
             <div class="form-group">
                 <label asp-for="ESIN" class="control-label"><span>ESIN<sup class="star" style="color:red;">*</sup></span></label>
                 <input asp-for="ESIN" class="form-control" />
                 <span asp-validation-for="ESIN" class="text-danger"></span>
             </div>
+            </div>
+            </div>
              <br />
-            <div class="form-group">
+            <div class="form-group; text-center">
 @*                <input type="submit" value="Back"  class="btn btn-primary" asp-action="Index" />
-*@                <input type="submit" value="Save" class="btn btn-primary" style="float: right;"/>
+*@                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
+</div>
 </div>
 </div>
 @section Scripts {
